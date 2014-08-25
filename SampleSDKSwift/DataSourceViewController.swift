@@ -28,7 +28,7 @@ class DataSourceViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "DataSouce SDK Demo"
     }
     
     
