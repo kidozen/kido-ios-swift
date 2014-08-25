@@ -26,7 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             applicationName: kApplicationName,
             applicationKey: kApplicationKey,
             strictSSL: false)
-        self.createViewControllers()
+        
+        createViewControllers()
+        
+        kzApplication?.initializeServices(willStartCb:nil, success: { [weak self](response, responseObject) in
+            self!.menuViewController!.enableView()
+        }, failure: { (response, error) in
+            // Alertview
+            // Something wrong happened.
+        })
         
         return true
     }

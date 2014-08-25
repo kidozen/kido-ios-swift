@@ -126,7 +126,7 @@ extension KZApplication {
         }
     }
   
-    func doPassiveAuthentication(success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func doPassiveAuthentication(#success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.applicationAuthentication.doPassiveAuthentication(success, failure: failure)
     }
