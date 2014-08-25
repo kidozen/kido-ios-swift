@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>58A93E97-A529-42F9-84D3-DF3A22CFBD53</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SampleSDKSwift</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8610ACE063D1BFE11541846C50E47FDA32B7034C</key>
+		<string>ssh://bitbucket.org/nmiyasato/kidosdkswift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SampleSDKSwift.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8610ACE063D1BFE11541846C50E47FDA32B7034C</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://bitbucket.org/nmiyasato/kidosdkswift.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8610ACE063D1BFE11541846C50E47FDA32B7034C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8610ACE063D1BFE11541846C50E47FDA32B7034C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SampleSDKSwift</string>
+		</dict>
+	</array>
+</dict>
+</plist>
