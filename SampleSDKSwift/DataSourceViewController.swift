@@ -31,12 +31,6 @@ class DataSourceViewController : UIViewController {
         
     }
     
-    func enableInteraction()
-    {
-        self.view.userInteractionEnabled = true
-        activityIndicator.stopAnimating()
-
-    }
     
     @IBAction func queryNoParametersPressed(sender: AnyObject)
     {
@@ -51,21 +45,11 @@ class DataSourceViewController : UIViewController {
             
         }, failure: { [weak self](response, error) -> () in
             self!.activityIndicator.stopAnimating()
-            UIAlertView(  title: "Error while authenticating",
+            UIAlertView(  title: "Error while querying",
                 message: error?.localizedDescription,
                 delegate:nil,
                 cancelButtonTitle: "OK").show()
 
-        })
-        let a = ["helo" : "value"]
-        kzApplication?.loggingService?.write(a, message: "aesfwe", level: .LogLevelVerbose, willStartCb: { () -> () in
-            println("To start writing log")
-        }, success: {
-            (response, responseObject) in
-            println("Did finish writing log \(responseObject)")
-            
-        }, failure: { (response, error) in
-            println("Error \(error)")
         })
     }
     
