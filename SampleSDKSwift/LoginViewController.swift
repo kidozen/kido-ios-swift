@@ -16,15 +16,16 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     weak var kzApplication : KZApplication?
-    var tenantName : String?
-    var appName : String?
+    var tenantName = kTenant
+    var appName = kApplicationName
     
-    var didLogin : (() -> ())?
+    var didLogin : kzVoidCb?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        marketPlace.text = tenantName! + " - " + appName!
+        marketPlace.text = tenantName + " - " + appName
+        self.title = "Active Login"
     }
     
     @IBAction func loginPressed(sender: AnyObject)

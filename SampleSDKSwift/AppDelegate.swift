@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
     var kzApplication : KZApplication?
-    var kzDatasource : KZDatasource?
-    var mainViewController : DataSourceViewController?
-    var loginViewController : LoginViewController?
+    var menuViewController : MenuViewController?
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool
     {
@@ -36,30 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createViewControllers()
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
         
-        loginViewController!.tenantName = kTenant
-        loginViewController!.appName = kApplicationName
-        loginViewController!.didLogin = didFinishAuthentication
-        loginViewController!.kzApplication = kzApplication
+        menuViewController = MenuViewController(nibName: "MenuViewController", bundle: nil)
+
+        menuViewController!.kzApplication = kzApplication
+        var navMenuVC = UINavigationController(rootViewController: menuViewController)
         
-        
-        mainViewController = DataSourceViewController(nibName: "DataSourceViewController", bundle: nil)
-        
-        self.window!.rootViewController = loginViewController
+        self.window!.rootViewController = navMenuVC
         self.window!.makeKeyAndVisible()
     }
         
-    func didFinishAuthentication()
-    {
-        let kzToken = kzApplication?.applicationAuthentication?.tokenController.kzToken!
-        self.mainViewController!.kzToken = kzToken
-        self.mainViewController!.enableInteraction()
-        self.mainViewController!.kzApplication = kzApplication
-
-        window!.rootViewController = mainViewController
-    }
-    
     
     func applicationWillResignActive(application: UIApplication!) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

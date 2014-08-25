@@ -30,28 +30,40 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RX-G7-Oai">
-                            <rect key="frame" x="117" y="88" width="86" height="30"/>
+                            <rect key="frame" x="117" y="46" width="86" height="30"/>
                             <state key="normal" title="Datasources">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="dataSourcesPressed:" destination="-1" eventType="touchUpInside" id="4cc-GY-kVz"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obi-SB-img">
-                            <rect key="frame" x="78" y="133" width="165" height="30"/>
+                            <rect key="frame" x="78" y="84" width="165" height="30"/>
                             <state key="normal" title="Active Login (user/pass)">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="activeLoginPressed:" destination="-1" eventType="touchUpInside" id="QoB-nL-V2C"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kp-ML-9bS">
-                            <rect key="frame" x="112" y="176" width="96" height="30"/>
+                            <rect key="frame" x="112" y="122" width="96" height="30"/>
                             <state key="normal" title="Passive Login">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="passiveLoginPressed:" destination="-1" eventType="touchUpInside" id="y2n-RQ-h8h"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38B-Qe-Ksx">
-                            <rect key="frame" x="131" y="50" width="59" height="30"/>
+                            <rect key="frame" x="131" y="8" width="59" height="30"/>
                             <state key="normal" title="Services">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="servicesPressed:" destination="-1" eventType="touchUpInside" id="UKC-Fi-RM7"/>
+                            </connections>
                         </button>
                     </subviews>
                 </scrollView>
