@@ -32,7 +32,12 @@ class MenuViewController : UIViewController {
     
     @IBAction func dataSourcesPressed(sender: AnyObject)
     {
-        
+        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+            var dsVC = DataSourceViewController(nibName: "DataSourceViewController", bundle: nil)
+            self.navigationController.pushViewController(dsVC, animated: true)
+        } else {
+            UIAlertView(title: "First login", message: "First you have to authenticate.", delegate: nil, cancelButtonTitle: "Ok").show()
+        }
     }
     
     @IBAction func activeLoginPressed(sender: AnyObject)
