@@ -34,9 +34,11 @@ class MenuViewController : UIViewController {
     {
         if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
             var dsVC = DataSourceViewController(nibName: "DataSourceViewController", bundle: nil)
+            dsVC.kzApplication = kzApplication
+            
             self.navigationController.pushViewController(dsVC, animated: true)
         } else {
-            UIAlertView(title: "First login", message: "First you have to authenticate.", delegate: nil, cancelButtonTitle: "Ok").show()
+            UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
         }
     }
     
@@ -46,6 +48,7 @@ class MenuViewController : UIViewController {
         loginVC.kzApplication = kzApplication
         loginVC.didLogin = {
             UIAlertView(title: "Active login", message: "Successfully Authenticated!", delegate: nil, cancelButtonTitle: "Ok").show()
+            self.navigationController.popToRootViewControllerAnimated(true)
         }
         
         self.navigationController.pushViewController(loginVC, animated: true)
