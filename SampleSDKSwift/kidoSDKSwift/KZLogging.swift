@@ -22,6 +22,7 @@ class KZLogging : KZBaseService {
     override init(endPoint: String!, name: String?, tokenController: KZTokenController!) {
         super.init(endPoint: endPoint, name: nil, tokenController: tokenController)
         networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        self.configureNetworkManager()
     }
 
     private func path(forLevel level:LogLevel, message:String?) -> String {
@@ -54,10 +55,7 @@ class KZLogging : KZBaseService {
     {
         // Response is not JSON, but text/plain
         networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
-        self.configureNetworkManager()
-
         willStartCb?()
-        
         
         let path = self.path(forLevel: level, message: message)
         
@@ -79,8 +77,6 @@ class KZLogging : KZBaseService {
     func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.configureResponseSerializer(AFJSONResponseSerializer())
-        self.configureNetworkManager()
-
         willStartCb?()
         
         networkManager.GET(path: "", parameters: nil, success:success, failure: failure)
@@ -90,9 +86,6 @@ class KZLogging : KZBaseService {
     func clear(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.configureResponseSerializer(AFJSONResponseSerializer())
-
-        self.configureNetworkManager()
-        
         willStartCb?()
         
         networkManager.DELETE(  path: "",
@@ -105,7 +98,6 @@ class KZLogging : KZBaseService {
     override func configureNetworkManager()
     {
         addAuthorizationHeader()
-        networkManager.strictSSL = self.strictSSL!
     }
 
 }

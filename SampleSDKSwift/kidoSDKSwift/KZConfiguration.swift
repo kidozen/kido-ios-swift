@@ -18,7 +18,6 @@ class KZConfiguration : KZBaseService {
     
     func save(object : AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         self.networkManager.POST(path:self.name, parameters: object, success: success, failure: failure)
@@ -26,7 +25,6 @@ class KZConfiguration : KZBaseService {
     
     func get(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         self.networkManager.GET(path:self.name, parameters: nil, success: success, failure: failure)
@@ -34,7 +32,6 @@ class KZConfiguration : KZBaseService {
     
     func remove(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         self.networkManager.DELETE(path:self.name, parameters: nil, success: success, failure: failure)
@@ -43,7 +40,6 @@ class KZConfiguration : KZBaseService {
     
     func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         self.networkManager.GET(path:"", parameters: nil, success: success, failure: failure)

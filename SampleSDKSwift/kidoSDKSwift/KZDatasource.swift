@@ -37,7 +37,6 @@ class KZDatasource : KZBaseService {
                         success:kzDidFinishCb?,
                         failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         networkManager.GET(path:self.name,
@@ -59,7 +58,6 @@ class KZDatasource : KZBaseService {
                         failure: kzDidFailCb?)
     {
         
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         networkManager.POST(path:self.name, parameters: data, success: {
