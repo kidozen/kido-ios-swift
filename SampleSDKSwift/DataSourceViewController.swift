@@ -44,12 +44,7 @@ class DataSourceViewController : UIViewController {
                 self!.activityIndicator.stopAnimating()
             
         }, failure: { [weak self](response, error) -> () in
-            self!.activityIndicator.stopAnimating()
-            UIAlertView(  title: "Error while querying",
-                message: error?.localizedDescription,
-                delegate:nil,
-                cancelButtonTitle: "OK").show()
-
+            self!.showError(error)
         })
     }
     
@@ -71,13 +66,7 @@ class DataSourceViewController : UIViewController {
             }, failure:
             {
                 [weak self](response, error) -> () in
-                
-                    self!.activityIndicator.stopAnimating()
-                    UIAlertView(  title: "Error while querying",
-                    message: error?.localizedDescription,
-                    delegate:nil,
-                    cancelButtonTitle: "OK").show()
-
+                self!.showError(error)
             })
         
     }
@@ -100,12 +89,7 @@ class DataSourceViewController : UIViewController {
             {
                 [weak self](response, error) -> () in
                 
-                self!.activityIndicator.stopAnimating()
-                UIAlertView(  title: "Error while querying",
-                    message: error?.localizedDescription,
-                    delegate:nil,
-                    cancelButtonTitle: "OK").show()
-                
+                self!.showError(error)
         })
     }
     
@@ -120,12 +104,7 @@ class DataSourceViewController : UIViewController {
             self!.activityIndicator.stopAnimating()
             
             }, failure: { [weak self](response, error) -> () in
-                self!.activityIndicator.stopAnimating()
-                UIAlertView(  title: "Error while querying",
-                    message: error?.localizedDescription,
-                    delegate:nil,
-                    cancelButtonTitle: "OK").show()
-                
+                self!.showError(error)
         })
     }
     
@@ -137,6 +116,16 @@ class DataSourceViewController : UIViewController {
         var parameters = NSJSONSerialization.JSONObjectWithData(any!, options:NSJSONReadingOptions.MutableContainers, error: &error) as? Dictionary<String, AnyObject>
         
         return parameters
+    }
+    
+    private func showError(error:NSError?)
+    {
+        self.activityIndicator.stopAnimating()
+        UIAlertView(  title: "Error while querying",
+            message: error?.localizedDescription,
+            delegate:nil,
+            cancelButtonTitle: "OK").show()
+    
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject)
