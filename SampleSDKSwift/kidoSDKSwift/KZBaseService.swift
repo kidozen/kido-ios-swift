@@ -14,7 +14,11 @@ class KZBaseService {
     internal let endPoint : String!
     internal let name : String?
     internal weak var tokenController : KZTokenController!
-    var strictSSL : Bool?
+    var strictSSL : Bool? {
+        didSet {
+            networkManager.strictSSL = strictSSL!
+        }
+    }
 
     /// Always implement init in base classes.
     /// There was a bug with the KZTokenController.

@@ -16,27 +16,27 @@ class KZService : KZBaseService {
         self.configureNetworkManager()
     }
     
-    func invokeMethod(method:String, data:AnyObject,  willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func invokeMethod(method:String, data:AnyObject?,  willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.POST(path: "invoke/\(method)", parameters: data, success: success, failure: failure)
     }
 
-    func invokeMethod(method:String, data:AnyObject, timeout:Int, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func invokeMethod(method:String, data:AnyObject?, timeout:Int, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.addHeaders(["timeout": String(timeout)])
         self.networkManager.POST(path: "invoke/\(method)", parameters: data, success: success, failure: failure)
     }
 
-    func invokeMethodUsingAuthorization(method:String, data:AnyObject,  willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func invokeMethodUsingAuthorization(method:String, data:AnyObject?,  willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.addHeaders(["x-kidozen-actas" : self.bearerHeader()])
         self.networkManager.POST(path: "invoke/\(method)", parameters: data, success: success, failure: failure)
     }
 
-    func invokeMethodUsingAuthorization(method:String, data:AnyObject, timeout:Int, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func invokeMethodUsingAuthorization(method:String, data:AnyObject?, timeout:Int, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.addHeaders(["timeout" : String(timeout),
