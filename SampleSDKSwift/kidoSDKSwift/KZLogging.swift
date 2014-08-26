@@ -37,7 +37,7 @@ class KZLogging : KZBaseService {
         
     }
     
-    func write(object:AnyObject?,
+    func write(object:Dictionary<String, AnyObject>?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,
         success:kzDidFinishCb?,
@@ -46,7 +46,7 @@ class KZLogging : KZBaseService {
         self.write(object, message: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    func write(object:AnyObject?,
+    func write(object:Dictionary<String, AnyObject>?,
               message:String?,
                 level:LogLevel!,
           willStartCb:kzVoidCb?,
@@ -71,6 +71,16 @@ class KZLogging : KZBaseService {
                         outerFailure(response:response, error:error)
                     }
         })
+    }
+    
+    func query(query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        willStartCb?()
+        
+        let parameters = ["query" : query]
+        
+        networkManager.GET(path: "", parameters: query, success:success, failure: failure)
+        
     }
 
     

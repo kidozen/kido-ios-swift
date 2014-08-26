@@ -9,5 +9,10 @@
 import Foundation
 
 class LogViewController : UIViewController {
+ 
+    override func viewDidLoad() {
+        self.title = "Log SDK Demo"
+    }
+    
     
 }
