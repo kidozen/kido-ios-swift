@@ -36,6 +36,8 @@
 		6D736F1A19887A6F002043B5 /* KZIdentityProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D736F1919887A6F002043B5 /* KZIdentityProviderFactory.swift */; };
 		6D736F2119887F62002043B5 /* KZADFSIdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D736F2019887F62002043B5 /* KZADFSIdentityProvider.swift */; };
 		6D736F24198881B8002043B5 /* KZIdentityProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D736F23198881B8002043B5 /* KZIdentityProviderProtocol.swift */; };
+		6D7781EC19ACC8B1009E8D51 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7781EB19ACC8B1009E8D51 /* ServicesViewController.swift */; };
+		6D7781EE19ACC8CE009E8D51 /* ServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7781ED19ACC8CE009E8D51 /* ServicesViewController.xib */; };
 		6D8438B4198A7C0C005343B5 /* DataSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D8438B3198A7C0C005343B5 /* DataSourceViewController.xib */; };
 		6D8438B6198A7C1C005343B5 /* DataSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8438B5198A7C1C005343B5 /* DataSourceViewController.swift */; };
 		6D8438B8198A7E8E005343B5 /* KZWRAPv09IdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8438B7198A7E8E005343B5 /* KZWRAPv09IdentityProvider.swift */; };
@@ -114,6 +116,8 @@
 		6D736F1919887A6F002043B5 /* KZIdentityProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZIdentityProviderFactory.swift; path = SampleSDKSwift/kidoSDKSwift/KZIdentityProviderFactory.swift; sourceTree = "<group>"; };
 		6D736F2019887F62002043B5 /* KZADFSIdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZADFSIdentityProvider.swift; path = SampleSDKSwift/kidoSDKSwift/KZADFSIdentityProvider.swift; sourceTree = "<group>"; };
 		6D736F23198881B8002043B5 /* KZIdentityProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZIdentityProviderProtocol.swift; path = SampleSDKSwift/kidoSDKSwift/KZIdentityProviderProtocol.swift; sourceTree = "<group>"; };
+		6D7781EB19ACC8B1009E8D51 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		6D7781ED19ACC8CE009E8D51 /* ServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesViewController.xib; sourceTree = "<group>"; };
 		6D8438B3198A7C0C005343B5 /* DataSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataSourceViewController.xib; sourceTree = "<group>"; };
 		6D8438B5198A7C1C005343B5 /* DataSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceViewController.swift; sourceTree = "<group>"; };
 		6D8438B7198A7E8E005343B5 /* KZWRAPv09IdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZWRAPv09IdentityProvider.swift; path = SampleSDKSwift/kidoSDKSwift/KZWRAPv09IdentityProvider.swift; sourceTree = "<group>"; };
@@ -199,12 +203,14 @@
 				6D272F8D1987E7540098D8B2 /* AppDelegate.swift */,
 				6D4D19AC19A7E8B50047DC3F /* MenuViewController.swift */,
 				6D4D19B019A7E95A0047DC3F /* MenuViewController.xib */,
-				6D8438B3198A7C0C005343B5 /* DataSourceViewController.xib */,
 				6D8438B5198A7C1C005343B5 /* DataSourceViewController.swift */,
+				6D8438B3198A7C0C005343B5 /* DataSourceViewController.xib */,
 				6D8438BA198AC611005343B5 /* LoginViewController.swift */,
 				6D8438BD198AC631005343B5 /* LoginViewController.xib */,
-				6D272F941987E7540098D8B2 /* Images.xcassets */,
+				6D7781EB19ACC8B1009E8D51 /* ServicesViewController.swift */,
+				6D7781ED19ACC8CE009E8D51 /* ServicesViewController.xib */,
 				6D272FAA1987E7D20098D8B2 /* SampleSDKSwiftBridge.h */,
+				6D272F941987E7540098D8B2 /* Images.xcassets */,
 				6D272F8B1987E7540098D8B2 /* Supporting Files */,
 			);
 			path = SampleSDKSwift;
@@ -417,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D7781EE19ACC8CE009E8D51 /* ServicesViewController.xib in Resources */,
 				6D272F951987E7540098D8B2 /* Images.xcassets in Resources */,
 				6D8438B4198A7C0C005343B5 /* DataSourceViewController.xib in Resources */,
 				6D8438BE198AC631005343B5 /* LoginViewController.xib in Resources */,
@@ -474,6 +481,7 @@
 				6DB1F1991998F6780016D874 /* KZService.swift in Sources */,
 				6D272FEC1987EBDE0098D8B2 /* KZAuthenticationConfig.swift in Sources */,
 				6D2BD08419916E400029169F /* KZLogging.swift in Sources */,
+				6D7781EC19ACC8B1009E8D51 /* ServicesViewController.swift in Sources */,
 				6D8438B8198A7E8E005343B5 /* KZWRAPv09IdentityProvider.swift in Sources */,
 				6D2BD096199565EF0029169F /* KZNotification.swift in Sources */,
 				6D736F1A19887A6F002043B5 /* KZIdentityProviderFactory.swift in Sources */,
