@@ -27,6 +27,14 @@ class MenuViewController : UIViewController {
     
     @IBAction func servicesPressed(sender: AnyObject)
     {
+        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+            var dsVC = DataSourceViewController(nibName: "DataSourceViewController", bundle: nil)
+            dsVC.kzApplication = kzApplication
+            
+            self.navigationController.pushViewController(dsVC, animated: true)
+        } else {
+            UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
+        }
         
     }
     

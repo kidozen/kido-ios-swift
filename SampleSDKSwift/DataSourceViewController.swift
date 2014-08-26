@@ -57,12 +57,8 @@ class DataSourceViewController : UIViewController {
 
         activityIndicator.startAnimating()
 
-        var jsonString  = jsonParametersTextView.text
-        var any  = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        var error : NSError?
-        var parameters = NSJSONSerialization.JSONObjectWithData(any!, options:NSJSONReadingOptions.MutableContainers, error: &error) as? Dictionary<String, AnyObject>
+        var parameters = self.getCurrentParameters()
 
-        
         ds = kzApplication?.datasource(dataSourceName.text)
         
         ds!.query(      data: parameters,
@@ -77,7 +73,7 @@ class DataSourceViewController : UIViewController {
                 [weak self](response, error) -> () in
                 
                     self!.activityIndicator.stopAnimating()
-                    UIAlertView(  title: "Error while authenticating",
+                    UIAlertView(  title: "Error while querying",
                     message: error?.localizedDescription,
                     delegate:nil,
                     cancelButtonTitle: "OK").show()
@@ -85,7 +81,63 @@ class DataSourceViewController : UIViewController {
             })
         
     }
+
+    @IBAction func invokeWithParameters(sender: AnyObject) {
+        activityIndicator.startAnimating()
+        
+        var parameters = self.getCurrentParameters()
+        
+        ds = kzApplication?.datasource(dataSourceName.text)
+        
+        ds!.invoke(data: parameters,
+            willStartCb: nil,
+            success:
+            {
+                [weak self]  (response, responseObject) -> () in
+                self!.textView.text = "response is \(responseObject!)"
+                self!.activityIndicator.stopAnimating()
+            }, failure:
+            {
+                [weak self](response, error) -> () in
+                
+                self!.activityIndicator.stopAnimating()
+                UIAlertView(  title: "Error while querying",
+                    message: error?.localizedDescription,
+                    delegate:nil,
+                    cancelButtonTitle: "OK").show()
+                
+        })
+    }
     
+    @IBAction func invokeWithoutParameters(sender: AnyObject) {
+        activityIndicator.startAnimating()
+        
+        ds = kzApplication?.datasource(dataSourceName.text)
+        
+        ds!.invoke(willStartCb: nil, success: {
+            [weak self] (response, responseObject) -> () in
+            self!.textView.text = "response is \(responseObject!)"
+            self!.activityIndicator.stopAnimating()
+            
+            }, failure: { [weak self](response, error) -> () in
+                self!.activityIndicator.stopAnimating()
+                UIAlertView(  title: "Error while querying",
+                    message: error?.localizedDescription,
+                    delegate:nil,
+                    cancelButtonTitle: "OK").show()
+                
+        })
+    }
+    
+    private func getCurrentParameters() -> Dictionary<String, AnyObject>?
+    {
+        var jsonString  = jsonParametersTextView.text
+        var any  = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        var error : NSError?
+        var parameters = NSJSONSerialization.JSONObjectWithData(any!, options:NSJSONReadingOptions.MutableContainers, error: &error) as? Dictionary<String, AnyObject>
+        
+        return parameters
+    }
     
     @IBAction func dismissKeyboard(sender: AnyObject)
     {
