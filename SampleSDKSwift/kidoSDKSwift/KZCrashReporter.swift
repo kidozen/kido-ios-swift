@@ -26,9 +26,6 @@ class KZCrashReporter
     private weak var crashReporter : PLCrashReporter?
     private var stringCrashReport : String!
     
-    private var breadcrumbsFd : CInt?
-    
-    private var postCrashCb : PLCrashReporterPostCrashSignalCallback?
     var isInitialized : Bool
     
     init(urlString:String!, tokenController:KZTokenController!, strictSSL:Bool!)
@@ -52,14 +49,6 @@ class KZCrashReporter
             self.manageCrashReport()
         }
         
-        // TODO: How can we add the post Crash callback in swift?
-        
-//        self.postCrashCb = { (PLCrashReporterPostCrashSignalCallback) -> Int32 in
-//        }
-        
-//        let cb : PLCrashReporterCallbacks =  PLCrashReporterCallbacks(version: 0, context: nil, handleSignal: postCrashCb!)
-//        [self.baseReporter setCrashCallbacks: &cb];
-        
         var error : NSError?
         
         if (self.crashReporter?.enableCrashReporterAndReturnError(&error) == true) {
@@ -70,19 +59,6 @@ class KZCrashReporter
         self.isInitialized = true
         
     }
-    
-    func addBreadCrumb(logString:String!)
-    {
-        
-        if (self.breadcrumbsFd? == nil) {
-            self.breadcrumbsFd = open(self.breadcrumbFilename(), O_CREAT | O_WRONLY, 0644)
-        }
-        
-        let length : UInt = UInt(logString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-        
-        write(self.breadcrumbsFd!, logString, length)
-    }
-    
     
     private func stringifiedCrashReport(theData:NSData!, inout error:NSError?) -> String?
     {
