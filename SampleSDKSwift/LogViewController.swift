@@ -32,10 +32,11 @@ class LogViewController : UIViewController {
         
         kzApplication?.write(dictionary, message: title, level: LogLevel.LogLevelError, willStartCb: { () -> () in
             
-        }, success: { (response, responseObject) -> () in
-            
-        }, failure: { (response, error) -> () in
-            
+        }, success: {[weak self] (response, responseObject) -> () in
+            self!.reponseTextView.text = "\(responseObject?)"
+
+        }, failure: { [weak self](response, error) -> () in
+            self!.showError(error)
         })
         
     }
@@ -44,8 +45,8 @@ class LogViewController : UIViewController {
         logService = kzApplication?.loggingService
         logService?.all({ () -> () in
             
-        }, success: { (response, responseObject) -> () in
-            self.reponseTextView.text = "\(responseObject)"
+        }, success: { [weak self](response, responseObject) -> () in
+            self!.reponseTextView.text = "\(responseObject)"
             
         }, failure: { [weak self] (response, error) -> () in
             self!.showError(error)
