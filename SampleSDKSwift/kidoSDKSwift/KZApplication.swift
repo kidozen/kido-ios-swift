@@ -190,13 +190,13 @@ extension KZApplication {
 extension KZApplication {
     
     func write(object:Dictionary<String, AnyObject>?,
-        messageTitle:String?,
+        message:String?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
     {
-        self.loggingService?.write(object, messageTitle: messageTitle,
+        self.loggingService?.write(object, message:message,
                                              level: level,
                                        willStartCb: willStartCb,
                                            success: success,

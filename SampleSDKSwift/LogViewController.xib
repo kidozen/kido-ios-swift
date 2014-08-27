@@ -66,13 +66,13 @@
                             <rect key="frame" x="25" y="92" width="127" height="30"/>
                             <color key="backgroundColor" white="0.87506300400000003" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-09-foZ">
                             <rect key="frame" x="168" y="92" width="133" height="30"/>
                             <color key="backgroundColor" white="0.87506300400000003" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                         </textField>
                     </subviews>
                 </scrollView>

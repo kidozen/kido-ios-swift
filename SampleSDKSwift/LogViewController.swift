@@ -30,7 +30,7 @@ class LogViewController : UIViewController {
         
         let dictionary = [key:value]
         
-        kzApplication?.write(dictionary, messageTitle: title, level: LogLevel.LogLevelError, willStartCb: { () -> () in
+        kzApplication?.write(dictionary, message: title, level: LogLevel.LogLevelError, willStartCb: { () -> () in
             
         }, success: { (response, responseObject) -> () in
             
