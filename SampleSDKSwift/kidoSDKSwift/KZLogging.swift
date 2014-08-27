@@ -19,24 +19,25 @@ enum  LogLevel : Int {
 
 class KZLogging : KZBaseService {
     
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!) {
-        super.init(endPoint: endPoint, name: nil, tokenController: tokenController)
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.configureNetworkManager()
-    }
-
-    private func path(forLevel level:LogLevel, messageTitle:String?) -> String {
-        var path = "?level=" + String(level.toRaw())
-        
-        if let m = messageTitle {
-            let percentString = m.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-            path += "&message=" + percentString
-        }
-        
-        return path
-        
+    enum LogType : Int {
+        case Query = 0,
+            Clear,
+            Write
     }
     
+    private var logType : LogType {
+        didSet {
+            // Every time we change the logType, we should reconfigure the network manager
+            // as responses are not always the same.
+            configureNetworkManager()
+        }
+    }
+    
+    override init(endPoint: String!, name: String?, tokenController: KZTokenController!) {
+        self.logType = .Query
+        super.init(endPoint: endPoint, name: nil, tokenController: tokenController)
+    }
+
     func write(object:Dictionary<String, AnyObject>?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,
@@ -53,8 +54,8 @@ class KZLogging : KZBaseService {
               success:kzDidFinishCb?,
               failure:kzDidFailCb?)
     {
-        // Response is not JSON, but text/plain
-        networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.logType = .Write
+        
         willStartCb?()
         
         let path = self.path(forLevel: level, messageTitle: messageTitle)
@@ -73,8 +74,10 @@ class KZLogging : KZBaseService {
         })
     }
     
-    func query(query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+    func query(query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    {
+        self.logType = .Query
+
         willStartCb?()
         
         let parameters = ["query" : query]
@@ -86,7 +89,8 @@ class KZLogging : KZBaseService {
     
     func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.logType = .Query
+        
         willStartCb?()
         
         networkManager.GET(path: "", parameters: nil, success:success, failure: failure)
@@ -95,7 +99,8 @@ class KZLogging : KZBaseService {
     
     func clear(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.logType = .Clear
+        
         willStartCb?()
         
         networkManager.DELETE(  path: "",
@@ -104,9 +109,34 @@ class KZLogging : KZBaseService {
                                failure: failure)
         
     }
+    
+    private func path(forLevel level:LogLevel, messageTitle:String?) -> String {
+        var path = "?level=" + String(level.toRaw())
+        
+        if let m = messageTitle {
+            let percentString = m.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            path += "&message=" + percentString
+        }
+        
+        return path
+        
+    }
 
     override func configureNetworkManager()
     {
+        switch (logType) {
+            
+        case .Query, .Clear:
+            networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+            
+        case .Write:
+            // Response is not JSON, but text/plain
+            networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        default:
+            networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+            
+        }
+        
         addAuthorizationHeader()
     }
 
