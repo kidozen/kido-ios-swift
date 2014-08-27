@@ -25,6 +25,20 @@ class MenuViewController : UIViewController {
         self.activityIndicator.stopAnimating()
     }
     
+    @IBAction func loggingPressed(sender: AnyObject) {
+        
+        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+            var logVC = LogViewController(nibName: "LogViewController", bundle: nil)
+            logVC.kzApplication = kzApplication
+            
+            self.navigationController.pushViewController(logVC, animated: true)
+        } else {
+            UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
+        }
+
+        
+    }
+    
     @IBAction func servicesPressed(sender: AnyObject)
     {
         if (self.kzApplication!.applicationAuthentication.authenticated! == true) {

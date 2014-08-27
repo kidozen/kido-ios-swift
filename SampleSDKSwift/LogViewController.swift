@@ -15,9 +15,29 @@ class LogViewController : UIViewController {
     
     @IBOutlet weak var reponseTextView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var keyTextfield: UITextField!
+    @IBOutlet weak var valueTextfield: UITextField!
+    @IBOutlet weak var titleTextfield: UITextField!
     
     override func viewDidLoad() {
         self.title = "Log SDK Demo"
+    }
+    
+    @IBAction func writePressed(sender: AnyObject) {
+        let title = titleTextfield.text
+        let key = keyTextfield.text
+        let value = valueTextfield.text
+        
+        let dictionary = [key:value]
+        
+        kzApplication?.write(dictionary, messageTitle: title, level: LogLevel.LogLevelError, willStartCb: { () -> () in
+            
+        }, success: { (response, responseObject) -> () in
+            
+        }, failure: { (response, error) -> () in
+            
+        })
+        
     }
     
     @IBAction func queryPressed(sender: AnyObject) {

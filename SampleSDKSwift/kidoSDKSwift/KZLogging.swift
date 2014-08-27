@@ -25,10 +25,10 @@ class KZLogging : KZBaseService {
         self.configureNetworkManager()
     }
 
-    private func path(forLevel level:LogLevel, message:String?) -> String {
+    private func path(forLevel level:LogLevel, messageTitle:String?) -> String {
         var path = "?level=" + String(level.toRaw())
         
-        if let m = message {
+        if let m = messageTitle {
             let percentString = m.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             path += "&message=" + percentString
         }
@@ -43,11 +43,11 @@ class KZLogging : KZBaseService {
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
     {
-        self.write(object, message: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
+        self.write(object, messageTitle: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
     }
     
     func write(object:Dictionary<String, AnyObject>?,
-              message:String?,
+              messageTitle:String?,
                 level:LogLevel!,
           willStartCb:kzVoidCb?,
               success:kzDidFinishCb?,
@@ -57,7 +57,7 @@ class KZLogging : KZBaseService {
         networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
         willStartCb?()
         
-        let path = self.path(forLevel: level, message: message)
+        let path = self.path(forLevel: level, messageTitle: messageTitle)
         
         networkManager.POST(path: path, parameters: object, success: {
             (response,responseObject) in
