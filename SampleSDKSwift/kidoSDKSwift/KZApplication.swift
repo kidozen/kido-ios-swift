@@ -189,7 +189,7 @@ extension KZApplication {
 // Services - Logging
 extension KZApplication {
     
-    func write(object:AnyObject?,
+    func write(object:Dictionary<String, AnyObject>?,
         message:String?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,

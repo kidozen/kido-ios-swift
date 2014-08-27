@@ -214,10 +214,10 @@
 				6D7781EB19ACC8B1009E8D51 /* ServicesViewController.swift */,
 				6D7781ED19ACC8CE009E8D51 /* ServicesViewController.xib */,
 				6D272FAA1987E7D20098D8B2 /* SampleSDKSwiftBridge.h */,
-				6D272F941987E7540098D8B2 /* Images.xcassets */,
-				6D272F8B1987E7540098D8B2 /* Supporting Files */,
 				6D2EFE8B19AD210A00A51884 /* LogViewController.swift */,
 				6D2EFE8D19AD211F00A51884 /* LogViewController.xib */,
+				6D272F941987E7540098D8B2 /* Images.xcassets */,
+				6D272F8B1987E7540098D8B2 /* Supporting Files */,
 			);
 			path = SampleSDKSwift;
 			sourceTree = "<group>";
