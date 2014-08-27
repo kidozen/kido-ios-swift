@@ -23,6 +23,22 @@ class LogViewController : UIViewController {
         self.title = "Log SDK Demo"
     }
     
+    @IBAction func clearPressed(sender: AnyObject) {
+        kzApplication?.clear({ () -> () in
+            
+        }, success: { [weak self](response, responseObject) -> () in
+            
+            UIAlertView(  title: "Log Cleared",
+                message: "Log Cleared",
+                delegate:nil,
+                cancelButtonTitle: "OK").show()
+            self!.reponseTextView.text = "\(responseObject?)"
+
+        }, failure: { [weak self](response, error) -> () in
+            self!.showError(error)
+        })
+    }
+    
     @IBAction func writePressed(sender: AnyObject) {
         let title = titleTextfield.text
         let key = keyTextfield.text
