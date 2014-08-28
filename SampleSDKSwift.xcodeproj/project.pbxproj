@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D112158198BD10800058D26 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D112157198BD10800058D26 /* libPods.a */; };
+		6D226F1219AF6ED4003C396D /* CrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D226F1119AF6ED4003C396D /* CrashViewController.swift */; };
+		6D226F1419AF6EE9003C396D /* CrashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D226F1319AF6EE9003C396D /* CrashViewController.xib */; };
 		6D2502681989C65100E738D0 /* KZApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2502671989C65100E738D0 /* KZApplicationServices.swift */; };
 		6D25026A1989C68C00E738D0 /* KZBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2502691989C68C00E738D0 /* KZBaseService.swift */; };
 		6D272F8E1987E7540098D8B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D272F8D1987E7540098D8B2 /* AppDelegate.swift */; };
@@ -84,6 +86,8 @@
 		6D112153198BD0CC00058D26 /* libPods-AFNetworkActivityLogger.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworkActivityLogger.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworkActivityLogger.a"; sourceTree = "<group>"; };
 		6D112155198BD10400058D26 /* libPods-AFNetworkActivityLogger.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworkActivityLogger.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworkActivityLogger.a"; sourceTree = "<group>"; };
 		6D112157198BD10800058D26 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		6D226F1119AF6ED4003C396D /* CrashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashViewController.swift; sourceTree = "<group>"; };
+		6D226F1319AF6EE9003C396D /* CrashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CrashViewController.xib; sourceTree = "<group>"; };
 		6D2502671989C65100E738D0 /* KZApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZApplicationServices.swift; path = SampleSDKSwift/kidoSDKSwift/KZApplicationServices.swift; sourceTree = "<group>"; };
 		6D2502691989C68C00E738D0 /* KZBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZBaseService.swift; path = SampleSDKSwift/kidoSDKSwift/KZBaseService.swift; sourceTree = "<group>"; };
 		6D272F881987E7540098D8B2 /* SampleSDKSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSDKSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +219,8 @@
 				6D7781ED19ACC8CE009E8D51 /* ServicesViewController.xib */,
 				6D2EFE8B19AD210A00A51884 /* LogViewController.swift */,
 				6D2EFE8D19AD211F00A51884 /* LogViewController.xib */,
+				6D226F1119AF6ED4003C396D /* CrashViewController.swift */,
+				6D226F1319AF6EE9003C396D /* CrashViewController.xib */,
 				6D272FAA1987E7D20098D8B2 /* SampleSDKSwiftBridge.h */,
 				6D272F941987E7540098D8B2 /* Images.xcassets */,
 				6D272F8B1987E7540098D8B2 /* Supporting Files */,
@@ -434,6 +440,7 @@
 				6D8438B4198A7C0C005343B5 /* DataSourceViewController.xib in Resources */,
 				6D2EFE8E19AD211F00A51884 /* LogViewController.xib in Resources */,
 				6D8438BE198AC631005343B5 /* LoginViewController.xib in Resources */,
+				6D226F1419AF6EE9003C396D /* CrashViewController.xib in Resources */,
 				6D4D19B119A7E95A0047DC3F /* MenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +505,7 @@
 				6D8438BB198AC611005343B5 /* LoginViewController.swift in Sources */,
 				6D272FF31987EC720098D8B2 /* KZUser.swift in Sources */,
 				6D25026A1989C68C00E738D0 /* KZBaseService.swift in Sources */,
+				6D226F1219AF6ED4003C396D /* CrashViewController.swift in Sources */,
 				6D272F8E1987E7540098D8B2 /* AppDelegate.swift in Sources */,
 				6DCE155B199AA82500D9049D /* KZTokenRefresher.swift in Sources */,
 				6D736F171988567C002043B5 /* KZApplicationAuthentication.swift in Sources */,

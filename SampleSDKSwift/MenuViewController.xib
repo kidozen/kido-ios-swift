@@ -79,6 +79,15 @@
                                 <action selector="loggingPressed:" destination="-1" eventType="touchUpInside" id="wpm-rt-dJP"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuT-6k-r5v">
+                            <rect key="frame" x="120" y="198" width="80" height="30"/>
+                            <state key="normal" title="Crashdump">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="crashPressed:" destination="-1" eventType="touchUpInside" id="n6H-yr-oFT"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </scrollView>
             </subviews>

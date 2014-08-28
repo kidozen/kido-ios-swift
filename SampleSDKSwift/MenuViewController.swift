@@ -64,6 +64,15 @@ class MenuViewController : UIViewController {
         }
     }
     
+    @IBAction func crashPressed(sender: AnyObject) {
+        var crashVC = CrashViewController(nibName: "CrashViewController", bundle: nil)
+        crashVC.kzApplication = kzApplication
+        self.navigationController.pushViewController(crashVC, animated: true)
+        
+        
+    }
+    
+    
     @IBAction func activeLoginPressed(sender: AnyObject)
     {
         var loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
@@ -84,4 +93,6 @@ class MenuViewController : UIViewController {
             UIAlertView(title: "Active login", message: "Authentication Fail", delegate: nil, cancelButtonTitle: "Ok").show()
         })
     }
+    
+    
 }

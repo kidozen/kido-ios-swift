@@ -20,10 +20,10 @@ class KZApplication : KZObject {
     private var applicationConfiguration = KZApplicationConfiguration()
     private var applicationServices : KZApplicationServices?
     
-    private var tenantMarketPlace : String?
-    private var applicationKey : String?
-    private var applicationName : String?
-    private var strictSSL : Bool?
+    private var tenantMarketPlace : String!
+    private var applicationKey : String!
+    private var applicationName : String!
+    private var strictSSL : Bool!
     
     /**
     *
@@ -34,7 +34,6 @@ class KZApplication : KZObject {
     * @param applicationKey Is the application key that gives you access to logging services (Required)
     * without username/password authentication.
     * @param strictSSL Whether we want SSL to be bypassed or not,  only use in development (Required)
-    * @param callback method that will get called
     *
     */
     init(tenantMarketPlace:String,
