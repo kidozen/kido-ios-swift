@@ -149,6 +149,10 @@ class KZCrashReporter
         self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
         self.networkManager.addAuthorizationHeader(tokenController.kzToken)
         
+        // We have to override the Content-Type to only be application/json, dropping the charset, because
+        // the server just won't allow anything else.
+        self.networkManager.addHeaders(["Accept": "application/json", "Content-Type": "application/json"])
+        
         self.networkManager.POST(path: "",
                            parameters: parameters,
                               success:
