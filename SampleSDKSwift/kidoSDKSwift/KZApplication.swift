@@ -19,7 +19,8 @@ class KZApplication : KZObject {
     
     private var applicationConfiguration = KZApplicationConfiguration()
     private var applicationServices : KZApplicationServices?
-    
+    private var crashReporter : KZCrashReporter?
+
     private var tenantMarketPlace : String!
     private var applicationKey : String!
     private var applicationName : String!
@@ -235,6 +236,24 @@ extension KZApplication {
     func sendMail(parameters:Dictionary<String, String>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.mailService.send(parameters, attachments: attachments, willStartCb: willStartCb, success: success, failure: failure)
     }
-    
-    
+}
+
+// Crash reporting
+extension KZApplication {
+    func enableCrashReporter() {
+        if (self.crashReporter? == nil || self.crashReporter?.isInitialized == false) {
+            if (NSGetUncaughtExceptionHandler() != nil) {
+                println("Warning -- NSSetUncaughtExceptionHandler is not nil. Overriding will occur")
+            }
+
+            self.crashReporter = KZCrashReporter(urlString: self.applicationConfiguration.url, tokenController: self.applicationAuthentication.tokenController, strictSSL: self.strictSSL)
+                self.crashReporter?.enableCrashReporter(nil, didSendCrashReportCb: {(response, responseObject) in
+                                                                println("\(response)")
+                                                                println("\(responseObject)")
+                                                            }, didFailCrashReportCb: {(response, error) in
+                                                                println("\(response)")
+                                                                println("\(error)")
+})
+        }
+    }
 }

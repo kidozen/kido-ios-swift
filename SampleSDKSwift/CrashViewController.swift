@@ -11,4 +11,12 @@ import Foundation
 class CrashViewController : UIViewController {
     var kzApplication : KZApplication?
     
+    @IBAction func crashButtonPressed(sender: AnyObject) {
+        kzApplication?.enableCrashReporter()
+        
+        let array = []
+//        println("\(array[1])")
+        
+        
+    }
 }

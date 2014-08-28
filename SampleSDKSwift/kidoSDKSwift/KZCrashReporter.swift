@@ -43,15 +43,18 @@ class KZCrashReporter
     func enableCrashReporter(willStartCb:kzVoidCb?, didSendCrashReportCb:kzDidFinishCb?, didFailCrashReportCb:kzDidFailCb?)
     {
         willStartCb?()
+        self.success = didSendCrashReportCb
+        self.failure = didFailCrashReportCb
         
         self.crashReporter = PLCrashReporter.sharedReporter()
+        
         if (self.crashReporter?.hasPendingCrashReport() == true) {
             self.manageCrashReport()
         }
         
         var error : NSError?
         
-        if (self.crashReporter?.enableCrashReporterAndReturnError(&error) == true) {
+        if (self.crashReporter?.enableCrashReporterAndReturnError(&error) == false) {
             failure?(response: nil, error: error)
             NSLog("Could not enable crash reporter. Error is \(error)")
         }
@@ -89,7 +92,7 @@ class KZCrashReporter
             
             self.stringCrashReport = self.stringifiedCrashReport(crashData, error:&error)
             
-            if (error? != nil) {
+            if (error? == nil) {
                 internalCrashReporterInfo["ReporterDataAsString"] = self.stringCrashReport
 
                 if (self.reporterServiceUrl? != nil) {
@@ -139,6 +142,7 @@ class KZCrashReporter
             "VERSION" : self.version!,
             "BUILD" : self.build!,
             "BREADCRUMBS" : breadcrumbsArray!]
+        
         
         self.networkManager.strictSSL = false
         self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
