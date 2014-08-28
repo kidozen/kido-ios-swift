@@ -147,6 +147,7 @@ class KZCrashReporter
         self.networkManager.strictSSL = false
         self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
         self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.networkManager.addAuthorizationHeader(tokenController.kzToken)
         
         self.networkManager.POST(path: "",
                            parameters: parameters,
