@@ -240,20 +240,26 @@ extension KZApplication {
 
 // Crash reporting
 extension KZApplication {
-    func enableCrashReporter() {
+
+    // Will enable crash reporting and, in case there is a dump to be sent to the server, it'll do so and it'll call 
+    // the corresponding callbacks.
+    func enableCrashReporter(willStartCb:kzVoidCb?, didSendCrashReportCb:kzDidFinishCb?, didFailCrashReportCb:kzDidFailCb?)
+    {
         if (self.crashReporter? == nil || self.crashReporter?.isInitialized == false) {
             if (NSGetUncaughtExceptionHandler() != nil) {
                 println("Warning -- NSSetUncaughtExceptionHandler is not nil. Overriding will occur")
             }
 
             self.crashReporter = KZCrashReporter(urlString: self.applicationConfiguration.url, tokenController: self.applicationAuthentication.tokenController, strictSSL: self.strictSSL)
-                self.crashReporter?.enableCrashReporter(nil, didSendCrashReportCb: {(response, responseObject) in
-                                                                println("\(response)")
-                                                                println("\(responseObject)")
-                                                            }, didFailCrashReportCb: {(response, error) in
-                                                                println("\(response)")
-                                                                println("\(error)")
-})
+                self.crashReporter?.enableCrashReporter(willStartCb, didSendCrashReportCb:didSendCrashReportCb
+                                                            , didFailCrashReportCb:didFailCrashReportCb)
         }
+
+    }
+
+
+    // Will enable crash reporting and, in case a report has to be sent, it'll do so without any callbacks or anything.
+    func enableCrashReporter() {
+        self.enableCrashReporter(nil, didSendCrashReportCb:nil, didFailCrashReportCb:nil)
     }
 }
