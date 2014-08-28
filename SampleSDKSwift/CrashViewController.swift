@@ -9,43 +9,26 @@
 import Foundation
 
 class CrashViewController : UIViewController {
+    
     var kzApplication : KZApplication?
     
+    @IBOutlet weak var enableCrashReporterButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBAction func crashButtonPressed(sender: AnyObject) {
-        
-        kzApplication?.enableCrashReporter(nil, didSendCrashReportCb:{
-            
-            [weak self](response, responseObject) in
-            self!.enableView()
-            let array = []
-            println("\(array[1])")
-            
-            }, didFailCrashReportCb:{[weak self](response, error) in
-                self!.enableView()
-            }
-        )
-        
+        self.enableCrash()
+        let array = []
+        println("\(array[1])")
     }
     
     @IBAction func enableCrashReporterPressed(sender: AnyObject) {
-        self.disableView()
-        kzApplication?.enableCrashReporter(nil, didSendCrashReportCb:{
-            [weak self](response, responseObject) in
-            self!.enableView()
-            }, didFailCrashReportCb:{[weak self](response, error) in
-                self!.enableView()
-            }
-        )
+        self.enableCrash()
     }
     
-    private func enableView() {
-        self.activityIndicator.stopAnimating()
-        self.view.userInteractionEnabled = true
+    private func enableCrash() {
+        self.enableCrashReporterButton.enabled = false
+        kzApplication?.enableCrashReporter()
+        
     }
     
-    private func disableView() {
-        self.activityIndicator.startAnimating()
-        self.view.userInteractionEnabled = false
-    }
 }

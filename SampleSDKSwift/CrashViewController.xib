@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CrashViewController" customModule="SampleSDKSwift" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicator" destination="1em-sS-MVN" id="MGW-7I-fia"/>
+                <outlet property="enableCrashReporterButton" destination="gH4-y6-GAe" id="Pd7-NY-2Jz"/>
                 <outlet property="view" destination="epR-RX-yiA" id="VUZ-aI-7Wn"/>
             </connections>
         </placeholder>
@@ -33,10 +33,6 @@
                         <action selector="enableCrashReporterPressed:" destination="-1" eventType="touchUpInside" id="90e-r8-GDd"/>
                     </connections>
                 </button>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1em-sS-MVN">
-                    <rect key="frame" x="150" y="274" width="37" height="37"/>
-                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
