@@ -16,6 +16,12 @@ class CrashViewController : UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var logView: UITextView!
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Crash SDK Demo"
+    }
+    
     @IBAction func crashButtonPressed(sender: AnyObject) {
         self.enableCrash()
         let array = []
