@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CrashViewController" customModule="SampleSDKSwift" customModuleProvider="target">
             <connections>
                 <outlet property="enableCrashReporterButton" destination="gH4-y6-GAe" id="Pd7-NY-2Jz"/>
+                <outlet property="logView" destination="iBo-Nf-Fhc" id="EfR-O5-fUZ"/>
                 <outlet property="view" destination="epR-RX-yiA" id="VUZ-aI-7Wn"/>
             </connections>
         </placeholder>
@@ -16,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjk-Iw-xdd">
-                    <rect key="frame" x="99" y="269" width="123" height="30"/>
+                    <rect key="frame" x="99" y="307" width="123" height="30"/>
                     <state key="normal" title="Crash!">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -25,7 +26,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH4-y6-GAe">
-                    <rect key="frame" x="86" y="231" width="148" height="30"/>
+                    <rect key="frame" x="86" y="269" width="148" height="30"/>
                     <state key="normal" title="Enable crash reporter">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -33,6 +34,12 @@
                         <action selector="enableCrashReporterPressed:" destination="-1" eventType="touchUpInside" id="90e-r8-GDd"/>
                     </connections>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBo-Nf-Fhc">
+                    <rect key="frame" x="8" y="8" width="304" height="253"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>

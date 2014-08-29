@@ -14,6 +14,7 @@ class CrashViewController : UIViewController {
     
     @IBOutlet weak var enableCrashReporterButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var logView: UITextView!
     
     @IBAction func crashButtonPressed(sender: AnyObject) {
         self.enableCrash()
@@ -27,7 +28,14 @@ class CrashViewController : UIViewController {
     
     private func enableCrash() {
         self.enableCrashReporterButton.enabled = false
-        kzApplication?.enableCrashReporter()
+        
+        kzApplication?.enableCrashReporter(nil, didSendCrashReportCb: { [weak self](response, responseObject) -> () in
+            self!.logView.text = "\(responseObject)"
+            
+        }, didFailCrashReportCb: { [weak self] (response, error) -> () in
+            self!.logView.text = "\(error)"
+            
+        })
         
     }
     
