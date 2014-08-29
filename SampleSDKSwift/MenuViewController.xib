@@ -97,6 +97,15 @@
                                 <action selector="configurationPressed:" destination="-1" eventType="touchUpInside" id="kkx-2k-sFV"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFU-5H-NOx">
+                            <rect key="frame" x="117" y="274" width="86" height="30"/>
+                            <state key="normal" title="Notifications">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="notificationsPressed:" destination="-1" eventType="touchUpInside" id="nZu-7V-4gp"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </scrollView>
             </subviews>

@@ -13,7 +13,8 @@ class KZApplication : KZObject {
     var applicationAuthentication : KZApplicationAuthentication!
     var loggingService : KZLogging!
     var mailService : KZMail!
-    
+    var notificationService : KZNotification!
+
     var didFinishAuthenticationCb : kzDidFinishCb?
     var didFailAuthenticationCb : kzDidFailCb?
     
@@ -221,6 +222,8 @@ extension KZApplication {
         
         self.loggingService = self.applicationServices!.loggingService
         self.mailService = self.applicationServices!.mailService
+        self.notificationService = self.applicationServices!.notificationsService
+
     }
 }
 

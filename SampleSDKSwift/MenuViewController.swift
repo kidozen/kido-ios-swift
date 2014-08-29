@@ -15,6 +15,13 @@ class MenuViewController : UIViewController {
     
     weak var kzApplication : KZApplication?
     
+    var deviceToken : String? {
+        didSet {
+            self.notificationsVC?.deviceToken = deviceToken
+        }
+    }
+    var notificationsVC : NotificationViewController?
+    
     override func viewDidLoad() {
         self.title = "Kidozen Swift SDK Demo"
     }
@@ -104,6 +111,19 @@ class MenuViewController : UIViewController {
             UIAlertView(title: "Active login", message: "Authentication Fail", delegate: nil, cancelButtonTitle: "Ok").show()
         })
     }
+    
+    @IBAction func notificationsPressed(sender: AnyObject)
+    {
+        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+            notificationsVC = NotificationViewController(nibName: "NotificationViewController", bundle: nil)
+            notificationsVC?.kzApplication = kzApplication
+            notificationsVC?.deviceToken = deviceToken
+            self.navigationController.pushViewController(notificationsVC, animated: true)
+        } else {
+            self.showShouldBeConnected()
+        }
+    }
+    
     
     private func showShouldBeConnected()
     {

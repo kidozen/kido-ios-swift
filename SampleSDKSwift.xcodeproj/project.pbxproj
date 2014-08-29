@@ -14,6 +14,8 @@
 		6D226F1F19B0B041003C396D /* ConfigurationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D226F1E19B0B041003C396D /* ConfigurationViewController.xib */; };
 		6D226F2419B0FDB9003C396D /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D226F2319B0FDB9003C396D /* StorageViewController.swift */; };
 		6D226F2619B0FDCB003C396D /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D226F2519B0FDCB003C396D /* StorageViewController.xib */; };
+		6D226F2819B0FE67003C396D /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D226F2719B0FE67003C396D /* NotificationViewController.xib */; };
+		6D226F2A19B0FE77003C396D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D226F2919B0FE77003C396D /* NotificationViewController.swift */; };
 		6D2502681989C65100E738D0 /* KZApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2502671989C65100E738D0 /* KZApplicationServices.swift */; };
 		6D25026A1989C68C00E738D0 /* KZBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2502691989C68C00E738D0 /* KZBaseService.swift */; };
 		6D272F8E1987E7540098D8B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D272F8D1987E7540098D8B2 /* AppDelegate.swift */; };
@@ -96,6 +98,8 @@
 		6D226F1E19B0B041003C396D /* ConfigurationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigurationViewController.xib; sourceTree = "<group>"; };
 		6D226F2319B0FDB9003C396D /* StorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		6D226F2519B0FDCB003C396D /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
+		6D226F2719B0FE67003C396D /* NotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
+		6D226F2919B0FE77003C396D /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		6D2502671989C65100E738D0 /* KZApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZApplicationServices.swift; path = SampleSDKSwift/kidoSDKSwift/KZApplicationServices.swift; sourceTree = "<group>"; };
 		6D2502691989C68C00E738D0 /* KZBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZBaseService.swift; path = SampleSDKSwift/kidoSDKSwift/KZBaseService.swift; sourceTree = "<group>"; };
 		6D272F881987E7540098D8B2 /* SampleSDKSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSDKSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +237,8 @@
 				6D226F1E19B0B041003C396D /* ConfigurationViewController.xib */,
 				6D226F2319B0FDB9003C396D /* StorageViewController.swift */,
 				6D226F2519B0FDCB003C396D /* StorageViewController.xib */,
+				6D226F2719B0FE67003C396D /* NotificationViewController.xib */,
+				6D226F2919B0FE77003C396D /* NotificationViewController.swift */,
 				6D272FAA1987E7D20098D8B2 /* SampleSDKSwiftBridge.h */,
 				6D272F941987E7540098D8B2 /* Images.xcassets */,
 				6D272F8B1987E7540098D8B2 /* Supporting Files */,
@@ -452,6 +458,7 @@
 				6D226F2619B0FDCB003C396D /* StorageViewController.xib in Resources */,
 				6D8438B4198A7C0C005343B5 /* DataSourceViewController.xib in Resources */,
 				6D2EFE8E19AD211F00A51884 /* LogViewController.xib in Resources */,
+				6D226F2819B0FE67003C396D /* NotificationViewController.xib in Resources */,
 				6D8438BE198AC631005343B5 /* LoginViewController.xib in Resources */,
 				6D226F1419AF6EE9003C396D /* CrashViewController.xib in Resources */,
 				6D4D19B119A7E95A0047DC3F /* MenuViewController.xib in Resources */,
@@ -544,6 +551,7 @@
 				6D8438B6198A7C1C005343B5 /* DataSourceViewController.swift in Sources */,
 				6D4D19AD19A7E8B50047DC3F /* MenuViewController.swift in Sources */,
 				6DD8B91B199BC3C700353306 /* KZDatasource.swift in Sources */,
+				6D226F2A19B0FE77003C396D /* NotificationViewController.swift in Sources */,
 				6D3E8D7719A6317900BB007F /* KZPubSubChannel.swift in Sources */,
 				6D272FFA19880B710098D8B2 /* KZNetworkManager.swift in Sources */,
 				6D736F24198881B8002043B5 /* KZIdentityProviderProtocol.swift in Sources */,
