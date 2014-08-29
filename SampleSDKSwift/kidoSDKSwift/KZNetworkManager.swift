@@ -59,7 +59,7 @@ class KZNetworkManager {
                 
                 if let outerSuccess = success {
                     let kzResponse = KZResponse(fromSessionDataTask: afRequestOperation)
-                    outerSuccess(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
+                    outerSuccess(response: kzResponse, responseObject: self?.convertToStringIfData(responseObject))
                 }
                 
                 }, failure: {

@@ -33,7 +33,7 @@ class MenuViewController : UIViewController {
             
             self.navigationController.pushViewController(logVC, animated: true)
         } else {
-            UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
+            self.showShouldBeConnected()
         }
 
         
@@ -47,7 +47,7 @@ class MenuViewController : UIViewController {
             
             self.navigationController.pushViewController(serviceVC, animated: true)
         } else {
-            UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
+            self.showShouldBeConnected()
         }
         
     }
@@ -60,7 +60,7 @@ class MenuViewController : UIViewController {
             
             self.navigationController.pushViewController(dsVC, animated: true)
         } else {
-            UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
+            self.showShouldBeConnected()
         }
     }
     
@@ -72,6 +72,17 @@ class MenuViewController : UIViewController {
         
     }
     
+    @IBAction func configurationPressed(sender: AnyObject) {
+        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+            var configVC = ConfigurationViewController(nibName: "ConfigurationViewController", bundle: nil)
+            configVC.kzApplication = kzApplication
+            
+            self.navigationController.pushViewController(configVC, animated: true)
+            
+        } else {
+            self.showShouldBeConnected()
+        }
+    }
     
     @IBAction func activeLoginPressed(sender: AnyObject)
     {
@@ -92,6 +103,12 @@ class MenuViewController : UIViewController {
         }, failure: { (response, error) in
             UIAlertView(title: "Active login", message: "Authentication Fail", delegate: nil, cancelButtonTitle: "Ok").show()
         })
+    }
+    
+    private func showShouldBeConnected()
+    {
+        UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
+
     }
     
     

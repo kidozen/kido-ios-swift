@@ -6,6 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfigurationViewController" customModule="SampleSDKSwift" customModuleProvider="target">
             <connections>
+                <outlet property="acitivtyIndicator" destination="z1b-gA-e8N" id="Juh-wC-BfK"/>
+                <outlet property="nameTextFieldQuery" destination="vcR-lr-MCn" id="hYJ-kW-GeH"/>
+                <outlet property="nameTextFieldSave" destination="CVz-eJ-gAq" id="fvP-U0-Qr7"/>
+                <outlet property="responseTextField" destination="JRe-ee-zrP" id="QZI-AF-rXD"/>
+                <outlet property="valueTextFieldSave" destination="FUa-AD-aDI" id="EeD-bL-zbw"/>
                 <outlet property="view" destination="Rwv-wI-3jN" id="qJN-cy-RtR"/>
             </connections>
         </placeholder>
@@ -15,77 +20,87 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Vy-cm-JQm">
-                    <rect key="frame" x="261" y="160" width="34" height="30"/>
+                    <rect key="frame" x="261" y="175" width="34" height="30"/>
                     <state key="normal" title="Save">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="save:" destination="-1" eventType="touchUpInside" id="Zih-CB-B7Y"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xee-MD-AjD">
-                    <rect key="frame" x="238" y="260" width="57" height="30"/>
+                    <rect key="frame" x="238" y="275" width="57" height="30"/>
                     <state key="normal" title="Remove">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="removePressed:" destination="-1" eventType="touchUpInside" id="Q6h-pt-Ind"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-6s-Y04">
-                    <rect key="frame" x="265" y="447" width="30" height="30"/>
+                    <rect key="frame" x="265" y="462" width="30" height="30"/>
                     <state key="normal" title="All">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="queryAllPressed:" destination="-1" eventType="touchUpInside" id="7iR-uj-2SV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9T-Kb-lql">
-                    <rect key="frame" x="188" y="260" width="42" height="30"/>
+                    <rect key="frame" x="188" y="275" width="42" height="30"/>
                     <state key="normal" title="Query">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="queryPressed:" destination="-1" eventType="touchUpInside" id="Mut-wI-we8"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVz-eJ-gAq">
-                    <rect key="frame" x="100" y="63" width="195" height="30"/>
+                    <rect key="frame" x="100" y="78" width="195" height="30"/>
                     <color key="backgroundColor" white="0.87506300400000003" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrU-b9-1oV">
-                    <rect key="frame" x="14" y="64" width="78" height="27"/>
+                    <rect key="frame" x="14" y="79" width="78" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vcR-lr-MCn">
-                    <rect key="frame" x="100" y="222" width="195" height="30"/>
+                    <rect key="frame" x="100" y="237" width="195" height="30"/>
                     <color key="backgroundColor" white="0.87506300400000003" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLC-Je-v7P">
-                    <rect key="frame" x="14" y="223" width="78" height="27"/>
+                    <rect key="frame" x="14" y="238" width="78" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmf-bj-WZy">
-                    <rect key="frame" x="14" y="116" width="78" height="27"/>
+                    <rect key="frame" x="14" y="131" width="78" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-AD-aDI">
-                    <rect key="frame" x="100" y="113" width="195" height="30"/>
+                    <rect key="frame" x="100" y="128" width="195" height="30"/>
                     <color key="backgroundColor" white="0.87506300400000003" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRe-ee-zrP">
-                    <rect key="frame" x="14" y="314" width="281" height="126"/>
+                    <rect key="frame" x="14" y="329" width="281" height="126"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ls-7F-hdO">
-                    <rect key="frame" x="240" y="490" width="55" height="30"/>
-                    <state key="normal" title="Drop All">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="z1b-gA-e8N">
+                    <rect key="frame" x="150" y="242" width="37" height="37"/>
+                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>

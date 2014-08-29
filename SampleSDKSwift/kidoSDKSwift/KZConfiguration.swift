@@ -16,9 +16,12 @@ class KZConfiguration : KZBaseService {
     }
     
     
-    func save(object : AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func save(object: AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
+        
+        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.addAuthorizationHeader()
         
         self.networkManager.POST(path:self.name, parameters: object, success: success, failure: failure)
     }
@@ -26,14 +29,18 @@ class KZConfiguration : KZBaseService {
     func get(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
-        
+        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.addAuthorizationHeader()
+
         self.networkManager.GET(path:self.name, parameters: nil, success: success, failure: failure)
     }
     
     func remove(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
+        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
         
+        self.addAuthorizationHeader()
         self.networkManager.DELETE(path:self.name, parameters: nil, success: success, failure: failure)
     }
     
@@ -41,14 +48,16 @@ class KZConfiguration : KZBaseService {
     func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
+        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
         
+        self.addAuthorizationHeader()
         self.networkManager.GET(path:"", parameters: nil, success: success, failure: failure)
     }
     
     override func configureNetworkManager()
     {
         self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
         
         self.addAuthorizationHeader()
     }
