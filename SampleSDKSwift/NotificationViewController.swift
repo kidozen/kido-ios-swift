@@ -20,7 +20,7 @@ class NotificationViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Notifications Sample SDK"
     }
     
     @IBAction func subscribePressed(sender: AnyObject) {
