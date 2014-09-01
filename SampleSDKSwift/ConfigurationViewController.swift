@@ -28,26 +28,40 @@ class ConfigurationViewController : UIViewController {
     @IBAction func save(sender: UIButton) {
         let configService = kzApplication?.configuration(nameTextFieldSave.text)
         
-        configService?.save(valueTextFieldSave.text, willStartCb: nil, success: { (response, responseObject) -> () in
-            
-        }, failure: { (response, error) -> () in
-            
-            UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
-
-        })
+        var jsonData : NSData = valueTextFieldSave.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
         
+        let jsonDictionary = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as? Dictionary<String, String>
+        
+        if (jsonDictionary? != nil) {
+            
+            configService?.save(jsonDictionary, willStartCb: nil, success: { (response, responseObject) -> () in
+                UIAlertView(title: "Saved!", message: "Config Saved!", delegate: nil, cancelButtonTitle: "Ok").show()
+                }, failure: { (response, error) -> () in
+                    
+                    UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
+                    
+            })
+        }
+        else
+        {
+            UIAlertView(title: "Error", message: "Should be in json format", delegate: nil, cancelButtonTitle: "Ok").show()
+        }
     }
     
     @IBAction func queryPressed(sender: UIButton) {
         configService = kzApplication?.configuration(nameTextFieldQuery.text)
         
-        configService?.query(willStartCb: nil, success: { [weak self](response, responseObject) -> () in
+        configService?.get(willStartCb: nil, success: { [weak self](response, responseObject) -> () in
             self!.responseTextField.text = "\(responseObject?)"
-
-        }, failure: { (response, error) -> () in
-            UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
             
+            }, failure: { (response, error) -> () in
+                UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
+                
         })
+    }
+    
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        self.view.endEditing(true)
     }
     
     @IBAction func removePressed(sender: UIButton) {
@@ -67,11 +81,11 @@ class ConfigurationViewController : UIViewController {
         configService = kzApplication?.configuration(nameTextFieldQuery.text)
         configService?.all(nil, success: { [weak self] (response, responseObject) in
             self!.responseTextField.text = "\(responseObject?)"
-        }, failure: { (response, error) -> () in
-            
-            UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
+            }, failure: { (response, error) -> () in
+                
+                UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
         })
-
+        
     }
     
 }
