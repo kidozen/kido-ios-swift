@@ -12,17 +12,19 @@ let kUniqueIdentificationFilename = "kUniqueIdentificationFilename";
 
 class KZNotification : KZBaseService {
     private let uniqueIdentifier : String?
-    
+
     override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
+        self.tokenController = tokenController
+        
         self.configureNetworkManager()
+        
         self.uniqueIdentifier = self.uniqueIdentification()
     }
     
     func subscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         let path = "subscriptions/\(self.name!)/\(channel)"
@@ -38,7 +40,6 @@ class KZNotification : KZBaseService {
   
     func push(notification:Dictionary<String, AnyObject>, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         let path = "push/\(self.name!)/\(channel)"
@@ -50,8 +51,8 @@ class KZNotification : KZBaseService {
   
     func getSubscriptions(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
+        let string = tokenController.kzToken
         
         let path = "devices/\(self.uniqueIdentifier!)/\(self.name!)"
         networkManager.GET(  path: path,
@@ -63,7 +64,6 @@ class KZNotification : KZBaseService {
     
     func getApplicationChannels(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         let path = "channels/\(self.name!)"
@@ -76,7 +76,6 @@ class KZNotification : KZBaseService {
     
     func unsubscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
         let path = "subscriptions/\(self.name!)/\(channel)/\(deviceToken)"
@@ -90,7 +89,7 @@ class KZNotification : KZBaseService {
     override func configureNetworkManager()
     {
         self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
         
         self.addAuthorizationHeader()
     }

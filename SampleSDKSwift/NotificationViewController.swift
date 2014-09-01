@@ -21,8 +21,6 @@ class NotificationViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        
     }
     
     @IBAction func subscribePressed(sender: AnyObject) {

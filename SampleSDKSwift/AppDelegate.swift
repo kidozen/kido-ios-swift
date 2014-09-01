@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         kzApplication?.initializeServices(willStartCb:nil, success: { [weak self](response, responseObject) in
             self!.menuViewController!.enableView()
+            
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(.Badge | .Sound | .Alert)
+
+
         }, failure: { (response, error) in
             // Alertview
             // Something wrong happened.
@@ -73,6 +77,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication!) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+    {
+        println("My token is \(deviceToken)")
+        
+        self.menuViewController?.deviceToken = deviceToken.description;
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
+        UIAlertView(title: "Error", message: "\(error)", delegate: nil, cancelButtonTitle: "Ok").show()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        UIAlertView(title: "Push", message: "\(userInfo)", delegate: nil, cancelButtonTitle: "Ok").show()
     }
 
 
