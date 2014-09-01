@@ -54,7 +54,7 @@ class KZNetworkManager {
         self.updateTokenIfRequired({
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
-            self.manager.GET(path, parameters: parameters, success: {
+            self.manager.GET(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters, success: {
                 [weak self] (afRequestOperation, responseObject) in
                 
                 if let outerSuccess = success {
@@ -83,7 +83,7 @@ class KZNetworkManager {
         self.updateTokenIfRequired({
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
-            self.manager.POST(path, parameters: nil, constructingBodyWithBlock: {
+            self.manager.POST(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: nil, constructingBodyWithBlock: {
                 (form: AFMultipartFormData!) in
                 
                 for (name, theData) in attachments {
@@ -117,7 +117,7 @@ class KZNetworkManager {
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
 
-            self.manager.POST(path, parameters: parameters,
+            self.manager.POST(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self](operation, responseObject) in
                     if let outerSuccess = success {
@@ -144,7 +144,7 @@ class KZNetworkManager {
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
             
-            self.manager.DELETE(path, parameters: parameters,
+            self.manager.DELETE(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self](operation, responseObject) in
                     if let outerSuccess = success {
@@ -173,7 +173,7 @@ class KZNetworkManager {
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
             
-            self.manager.PUT(path, parameters: parameters,
+            self.manager.PUT(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self] (operation, responseObject) in
                     if let outerSuccess = success {
