@@ -55,7 +55,7 @@ class ConfigurationViewController : UIViewController {
             self!.responseTextField.text = "\(responseObject?)"
             
             }, failure: { (response, error) -> () in
-                UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
+                UIAlertView(title: "Error found", message: "error is \(error?)", delegate: nil, cancelButtonTitle: "Ok").show()
                 
         })
     }
@@ -71,7 +71,7 @@ class ConfigurationViewController : UIViewController {
             self!.responseTextField.text = "\(responseObject?)"
             
             }, failure: { (response, error) -> () in
-                UIAlertView(title: "Error found", message: "Message", delegate: nil, cancelButtonTitle: "Ok").show()
+                UIAlertView(title: "Error found", message: "error is \(error)", delegate: nil, cancelButtonTitle: "Ok").show()
                 
         })
         

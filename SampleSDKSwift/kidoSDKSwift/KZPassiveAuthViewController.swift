@@ -97,26 +97,26 @@ class KZPassiveAuthViewController : UIViewController, UIWebViewDelegate {
     {
         self.activityView.stopAnimating()
         self.view.userInteractionEnabled = true
-        let payload = webView.stringByEvaluatingJavaScriptFromString("document.title")
-        
-        if (payload.hasPrefix(kSuccessPayloadPrefix)) {
-            let b64 = payload.stringByReplacingOccurrencesOfString(kSuccessPayloadPrefix, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-            let b64Data = NSData(base64EncodedString: b64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-            let jsonString = NSString(data: b64Data, encoding: NSUTF8StringEncoding)
-            
-            let jsonDictionary = NSJSONSerialization.JSONObjectWithData(b64Data, options: nil, error: nil) as? Dictionary<String, String>
-            
-            let accessToken = jsonDictionary?["access_token"]
-            let refreshToken = jsonDictionary?["refresh_token"]
-            
-            self.success?(token: accessToken!, refreshToken: refreshToken!)
-            self.dismissViewControllerAnimated(true, completion: nil)
-
-            
-        } else if (payload.hasPrefix(kErrorPayloadPrefix)) {
-            let errorMessage = payload.stringByReplacingOccurrencesOfString(kErrorPayloadPrefix, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-            let error = NSError(domain: "KZPassiveAuthenticationError", code: 2, userInfo: ["error message":errorMessage])
-            self.handleError(error)
+        if let payload = webView.stringByEvaluatingJavaScriptFromString("document.title") {
+            if (payload.hasPrefix(kSuccessPayloadPrefix)) {
+                let b64 = payload.stringByReplacingOccurrencesOfString(kSuccessPayloadPrefix, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+                let b64Data = NSData(base64EncodedString: b64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                let jsonString = NSString(data: b64Data, encoding: NSUTF8StringEncoding)
+                
+                let jsonDictionary = NSJSONSerialization.JSONObjectWithData(b64Data, options: nil, error: nil) as? Dictionary<String, String>
+                
+                let accessToken = jsonDictionary?["access_token"]
+                let refreshToken = jsonDictionary?["refresh_token"]
+                
+                self.success?(token: accessToken!, refreshToken: refreshToken!)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+                
+            } else if (payload.hasPrefix(kErrorPayloadPrefix)) {
+                let errorMessage = payload.stringByReplacingOccurrencesOfString(kErrorPayloadPrefix, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+                let error = NSError(domain: "KZPassiveAuthenticationError", code: 2, userInfo: ["error message":errorMessage])
+                self.handleError(error)
+            }
         }
         
     }

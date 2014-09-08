@@ -111,7 +111,7 @@ class KZApplicationAuthentication : KZObject {
         self.didFinishAuthenticationCb = success
         self.didFailAuthenticationCb = failure
         
-        let rootController = UIApplication.sharedApplication().delegate.window??.rootViewController
+        let rootController = UIApplication.sharedApplication().delegate!.window??.rootViewController
         
         let passiveUrlString = self.applicationConfiguration!.authConfig!.signInUrl
         self.lastCredentials = KZCredentials(username: nil, password: nil, provider: "SOCIAL")

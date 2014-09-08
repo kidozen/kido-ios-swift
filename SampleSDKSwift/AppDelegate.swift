@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuViewController = MenuViewController(nibName: "MenuViewController", bundle: nil)
 
         menuViewController!.kzApplication = kzApplication
-        var navMenuVC = UINavigationController(rootViewController: menuViewController)
+        var navMenuVC = UINavigationController(rootViewController: menuViewController!)
         
         self.window!.rootViewController = navMenuVC
         self.window!.makeKeyAndVisible()

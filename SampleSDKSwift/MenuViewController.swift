@@ -38,7 +38,7 @@ class MenuViewController : UIViewController {
             var logVC = LogViewController(nibName: "LogViewController", bundle: nil)
             logVC.kzApplication = kzApplication
             
-            self.navigationController.pushViewController(logVC, animated: true)
+            self.navigationController?.pushViewController(logVC, animated: true)
         } else {
             self.showShouldBeConnected()
         }
@@ -52,7 +52,7 @@ class MenuViewController : UIViewController {
             var serviceVC = ServicesViewController(nibName: "ServicesViewController", bundle: nil)
             serviceVC.kzApplication = kzApplication
             
-            self.navigationController.pushViewController(serviceVC, animated: true)
+            self.navigationController?.pushViewController(serviceVC, animated: true)
         } else {
             self.showShouldBeConnected()
         }
@@ -65,7 +65,7 @@ class MenuViewController : UIViewController {
             var dsVC = DataSourceViewController(nibName: "DataSourceViewController", bundle: nil)
             dsVC.kzApplication = kzApplication
             
-            self.navigationController.pushViewController(dsVC, animated: true)
+            self.navigationController?.pushViewController(dsVC, animated: true)
         } else {
             self.showShouldBeConnected()
         }
@@ -74,7 +74,7 @@ class MenuViewController : UIViewController {
     @IBAction func crashPressed(sender: AnyObject) {
         var crashVC = CrashViewController(nibName: "CrashViewController", bundle: nil)
         crashVC.kzApplication = kzApplication
-        self.navigationController.pushViewController(crashVC, animated: true)
+        self.navigationController?.pushViewController(crashVC, animated: true)
         
         
     }
@@ -84,7 +84,7 @@ class MenuViewController : UIViewController {
             var configVC = ConfigurationViewController(nibName: "ConfigurationViewController", bundle: nil)
             configVC.kzApplication = kzApplication
             
-            self.navigationController.pushViewController(configVC, animated: true)
+            self.navigationController?.pushViewController(configVC, animated: true)
             
         } else {
             self.showShouldBeConnected()
@@ -97,10 +97,10 @@ class MenuViewController : UIViewController {
         loginVC.kzApplication = kzApplication
         loginVC.didLogin = {
             UIAlertView(title: "Active login", message: "Successfully Authenticated!", delegate: nil, cancelButtonTitle: "Ok").show()
-            self.navigationController.popToRootViewControllerAnimated(true)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
         
-        self.navigationController.pushViewController(loginVC, animated: true)
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @IBAction func passiveLoginPressed(sender: AnyObject)
@@ -118,7 +118,7 @@ class MenuViewController : UIViewController {
             notificationsVC = NotificationViewController(nibName: "NotificationViewController", bundle: nil)
             notificationsVC?.kzApplication = kzApplication
             notificationsVC?.deviceToken = deviceToken
-            self.navigationController.pushViewController(notificationsVC, animated: true)
+            self.navigationController?.pushViewController(notificationsVC!, animated: true)
         } else {
             self.showShouldBeConnected()
         }
