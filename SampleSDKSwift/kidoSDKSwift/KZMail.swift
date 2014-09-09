@@ -10,6 +10,10 @@ import Foundation
 
 class KZMail : KZBaseService {
 
+    /**
+     * @parameters is a required dictionary with the following keys:
+     *              from, to, subject, bodyHtml, bodyText
+     */
     func send(parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.send(parameters, attachments: nil, willStartCb: willStartCb, success: success, failure: failure)

@@ -232,6 +232,11 @@ extension KZApplication {
 /// Some handy methods to send emails without having to get the mailService property.
 extension KZApplication {
     
+    /**
+    * This method will send an email to the corresponding receipient. No attachments sent.
+    * @parameters is a required dictionary with the following keys:
+    *              from, to, subject, bodyHtml, bodyText
+    */
     func sendMail(parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.mailService.send(parameters, willStartCb: willStartCb, success: success, failure: failure)
     }
