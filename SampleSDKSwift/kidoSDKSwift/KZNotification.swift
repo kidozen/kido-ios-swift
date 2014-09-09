@@ -18,15 +18,15 @@ class KZNotification : KZBaseService {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.tokenController = tokenController
         
-        self.configureNetworkManager()
-        
         self.uniqueIdentifier = self.uniqueIdentification()
+        self.configureNetworkManager()
     }
     
     func subscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
-        
+        self.addAuthorizationHeader()
+
         let path = "subscriptions/\(self.name!)/\(channel)"
         let params = ["platform": "apns",
                     "subscriptionId": deviceToken,
@@ -41,7 +41,8 @@ class KZNotification : KZBaseService {
     func push(notification:Dictionary<String, AnyObject>, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
-        
+        self.addAuthorizationHeader()
+
         let path = "push/\(self.name!)/\(channel)"
         networkManager.POST(path: path,
             parameters: notification,
@@ -52,8 +53,8 @@ class KZNotification : KZBaseService {
     func getSubscriptions(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
-        let string = tokenController.kzToken
-        
+        self.addAuthorizationHeader()
+
         let path = "devices/\(self.uniqueIdentifier!)/\(self.name!)"
         networkManager.GET(  path: path,
                          parameters: nil,
@@ -65,7 +66,8 @@ class KZNotification : KZBaseService {
     func getApplicationChannels(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
-        
+        self.addAuthorizationHeader()
+
         let path = "channels/\(self.name!)"
         networkManager.GET(  path: path,
             parameters: nil,
@@ -77,7 +79,8 @@ class KZNotification : KZBaseService {
     func unsubscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
-        
+        self.addAuthorizationHeader()
+
         let path = "subscriptions/\(self.name!)/\(channel)/\(deviceToken)"
         
         networkManager.DELETE(path: path,
@@ -90,8 +93,6 @@ class KZNotification : KZBaseService {
     {
         self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
         self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
-        
-        self.addAuthorizationHeader()
     }
     
     private func uniqueIdentification() -> String
