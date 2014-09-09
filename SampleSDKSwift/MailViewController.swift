@@ -18,7 +18,10 @@ class MailViewController : UIViewController {
     
     
     var kzApplication : KZApplication?
-
+    override func viewDidLoad() {
+        self.title = "Email Sample SDK"
+    }
+    
     @IBAction func sendEmail(sender: AnyObject) {
         let to : String = toTextfield.text
         let from : String = fromTextField.text

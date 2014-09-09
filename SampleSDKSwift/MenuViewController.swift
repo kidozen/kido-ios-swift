@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MenuViewController : UIViewController {
- 
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     weak var kzApplication : KZApplication?
@@ -42,7 +42,7 @@ class MenuViewController : UIViewController {
         } else {
             self.showShouldBeConnected()
         }
-
+        
         
     }
     
@@ -107,8 +107,8 @@ class MenuViewController : UIViewController {
     {
         kzApplication?.doPassiveAuthentication(success: { (response, responseObject) in
             UIAlertView(title: "Passive Authentication", message: "Passive login success", delegate: nil, cancelButtonTitle: "Ok").show()
-        }, failure: { (response, error) in
-            UIAlertView(title: "Active login", message: "Authentication Fail", delegate: nil, cancelButtonTitle: "Ok").show()
+            }, failure: { (response, error) in
+                UIAlertView(title: "Active login", message: "Authentication Fail", delegate: nil, cancelButtonTitle: "Ok").show()
         })
     }
     
@@ -128,8 +128,19 @@ class MenuViewController : UIViewController {
     private func showShouldBeConnected()
     {
         UIAlertView(title: "Login first", message: "You have to authenticate first.", delegate: nil, cancelButtonTitle: "Ok").show()
-
+        
     }
     
+    @IBAction func mailPressed(sender: AnyObject) {
+        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+            
+            var mailVC = MailViewController(nibName: "MailViewController", bundle: nil)
+            mailVC.kzApplication = kzApplication
+            
+            self.navigationController?.pushViewController(mailVC, animated: true)
+        } else {
+            self.showShouldBeConnected()
+        }
+    }
     
 }
