@@ -8,9 +8,9 @@
 
 import Foundation
 
-let kUniqueIdentificationFilename = "kUniqueIdentificationFilename";
 
 class KZNotification : KZBaseService {
+    private let kUniqueIdentificationFilename = "kUniqueIdentificationFilename"
     private let uniqueIdentifier : String?
 
     override init(endPoint: String!, name: String?, tokenController: KZTokenController!)

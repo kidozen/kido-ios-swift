@@ -6,8 +6,15 @@
 //  Copyright (c) 2014 Kidozen. All rights reserved.
 //
 
-import UIKit
-
+/*!
+    This class handles all the flow for passive authentication. When the view
+    is loaded, it'll instance a webview and start the request for passive authentication.
+    
+    A handy way to use passive authentication is not to instance this class directly, but
+    to call KZApplicationAuthentication.doPassiveAuthentication() method, which 
+    will get your current navigationController and present this ViewController in a 
+    modal way.
+*/
 class KZPassiveAuthViewController : UIViewController, UIWebViewDelegate {
     private let kSuccessPayloadPrefix = "Success payload="
     private let kErrorPayloadPrefix = "Error message="

@@ -8,6 +8,14 @@
 
 import Foundation
 
+
+/*!
+    This class encapsulates all services such as Logging, Mail, Notifications,
+    DataSources, etc... as well as providing a convinient interface for the
+    developer to interact with KidoZen.
+
+    You must have and instance of this class in order to interact with KidoZen's services.
+ */
 class KZApplication : KZObject {
     
     var applicationAuthentication : KZApplicationAuthentication!
@@ -28,16 +36,16 @@ class KZApplication : KZObject {
     private var strictSSL : Bool!
     
     /**
-    *
-    * You should initialize your KZApplication class with this initializer.
-    *
-    * @param tenantMarketPlace The url of the KidoZen marketplace. (Required)
-    * @param applicationName The application name (Required)
-    * @param applicationKey Is the application key that gives you access to logging services (Required)
-    * without username/password authentication.
-    * @param strictSSL Whether we want SSL to be bypassed or not,  only use in development (Required)
-    *
-    */
+     *
+     * You should initialize your KZApplication class with this initializer.
+     *
+     * @param tenantMarketPlace The url of the KidoZen marketplace. (Required)
+     * @param applicationName The application name (Required)
+     * @param applicationKey Is the application key that gives you access to logging services (Required)
+     * without username/password authentication.
+     * @param strictSSL Whether we want SSL to be bypassed or not,  only use in development (Required)
+     *
+     */
     init(tenantMarketPlace:String,
         applicationName:String,
         applicationKey:String,
@@ -241,12 +249,21 @@ extension KZApplication {
         self.mailService.send(parameters, willStartCb: willStartCb, success: success, failure: failure)
     }
     
+    /**
+    *
+    * This method will send an email to the corresponding receipient with the attachments that are provided
+    * in the attachments parameter.
+    *
+    * @param parameters is a required dictionary with the following keys:
+    *              from, to, subject, bodyHtml, bodyText
+    * @param attachments is a dictionary where the key is the name of the attachment and the value is the NSData to be sent.
+    */
     func sendMail(parameters:Dictionary<String, String>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.mailService.send(parameters, attachments: attachments, willStartCb: willStartCb, success: success, failure: failure)
     }
 }
 
-// Crash reporting
+/// Crash reporting
 extension KZApplication {
 
     // Will enable crash reporting and, in case there is a dump to be sent to the server, it'll do so and it'll call 

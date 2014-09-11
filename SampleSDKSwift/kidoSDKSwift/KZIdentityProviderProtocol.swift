@@ -10,6 +10,9 @@ import Foundation
 
 typealias KZRequestTokenCompletionBlock = String? -> ()
 
+/*!
+    Defines a protocol for all identity providers.
+*/
 protocol KZIdentityProviderProtocol {
     
     var strictSSL: Bool? { get set }

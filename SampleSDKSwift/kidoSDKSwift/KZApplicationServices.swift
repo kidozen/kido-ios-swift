@@ -8,6 +8,20 @@
 
 import Foundation
 
+/*!
+    This class groups all services related code and classes.
+    It provides convinient methods to get new instances for the following services:
+
+        - Datasource
+        - Configuration
+        - Queue
+        - Storage
+        - SMS
+        - Service
+    
+    It also has Logging, Notification and Mail properties.
+
+*/
 class KZApplicationServices {
 
     private var applicationConfiguration : KZApplicationConfiguration?

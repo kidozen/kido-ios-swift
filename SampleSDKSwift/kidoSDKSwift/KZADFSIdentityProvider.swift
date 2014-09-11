@@ -8,6 +8,9 @@
 
 import Foundation
 
+/*!
+    The instance of this class requests the IPToken using ADFS.
+*/
 class KZADFSIdentityProvider : KZObject, KZIdentityProviderProtocol {
     var strictSSL : Bool?
     

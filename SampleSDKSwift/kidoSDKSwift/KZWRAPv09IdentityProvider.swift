@@ -8,6 +8,10 @@
 
 import Foundation
 
+/*!
+    The instance of this class requests the IPToken using the 
+    Web Resource Authorization Protocol v0.9.
+*/
 class KZWRAPv09IdentityProvider : KZObject, KZIdentityProviderProtocol {
  
     var strictSSL: Bool?

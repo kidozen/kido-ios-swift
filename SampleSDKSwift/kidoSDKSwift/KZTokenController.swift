@@ -17,6 +17,10 @@ enum KZCurrentAuthentication : Int {
 let kTimeOffset : Int = 10
 let kExpiresOnKey = "ExpiresOn"
 
+/*!
+    The KZTokenController is the class in charge of managing all tokens in the SDK.
+    It also knows, upon parsing the KZToken, which roles and claims the token has.
+*/
 class KZTokenController : KZObject {
     
     var rawAccessToken : String?

@@ -8,6 +8,11 @@
 
 import Foundation
 
+/*!
+    This class is a factory for identityProviders. It exposes a method that returns an 
+    instance of KZWRAPv09IdentityProvider or KZADFSIdentityProvider depending on 
+    the provider protocol.
+*/
 class KZIdentityProviderFactory
 {
     class func createProvider(providerProtocol:String?, strictSSL:Bool?) -> KZIdentityProviderProtocol?

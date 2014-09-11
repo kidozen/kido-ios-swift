@@ -8,6 +8,11 @@
 
 import Foundation
 
+/*!
+    This class contains the token to be refreshed and the callbacks 
+    that are used to do so.
+    It directly interacts with the KZTokenController.
+*/
 class KZTokenRefresher : KZObject {
     
     internal var refreshUsernameCb : kzRefreshTokenCb?

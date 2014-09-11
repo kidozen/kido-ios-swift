@@ -12,6 +12,10 @@ let kEndPointKey = "endpoint";
 let kProtocolKey = "protocol";
 
 
+/*!
+    This class models the response in the 'authConfig' key, that comes in 
+    configuration request which is obtained at https://TENANT_URL/publicapi/apps?name=APPNAME
+*/
 class KZAuthenticationConfig : KZObject {
     
     var applicationScope : String!

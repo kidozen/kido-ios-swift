@@ -14,6 +14,12 @@ struct KZCredentials {
     let provider : String
 }
 
+/*!
+    This class groups all authentication related code.
+    It provides methods for authentication with username and password (Active authentication), 
+    Passive authentication (using oAuth2 supported platforms), and it also handles authentication
+    when you only have your application's key.
+*/
 class KZApplicationAuthentication : KZObject {
     
     var applicationConfiguration : KZApplicationConfiguration?

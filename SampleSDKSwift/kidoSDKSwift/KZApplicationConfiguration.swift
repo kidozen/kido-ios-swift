@@ -8,11 +8,13 @@
 
 import Foundation
 
-private let kAppConfigPath = "/publicapi/apps"
-private let kApplicationNameKey = "name"
-
-
+/*!
+    This class models the configuration that comes in the json at the following URL
+    https://TENANT_URL/publicapi/apps?name=APPNAME
+*/
 class KZApplicationConfiguration : KZObject {
+    private let kAppConfigPath = "/publicapi/apps"
+    private let kApplicationNameKey = "name"
     
     var displayName : String?
     var customUrl : String?
