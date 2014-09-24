@@ -55,6 +55,8 @@
 		6DAD0EB719D353F800702A3B /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0EB519D353F800702A3B /* SRWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0EB819D353F800702A3B /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EB619D353F800702A3B /* SRWebSocket.m */; };
 		6DAD0EBA19D3542B00702A3B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAD0EB919D3542B00702A3B /* libicucore.dylib */; };
+		6DAD0EBE19D354A900702A3B /* AFNetworkActivityLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0EBC19D354A900702A3B /* AFNetworkActivityLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EBF19D354A900702A3B /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EBD19D354A900702A3B /* AFNetworkActivityLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,8 @@
 		6DAD0EB519D353F800702A3B /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRWebSocket.h; path = thirdParty/SocketRocket/SRWebSocket.h; sourceTree = "<group>"; };
 		6DAD0EB619D353F800702A3B /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRWebSocket.m; path = thirdParty/SocketRocket/SRWebSocket.m; sourceTree = "<group>"; };
 		6DAD0EB919D3542B00702A3B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		6DAD0EBC19D354A900702A3B /* AFNetworkActivityLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityLogger.h; path = thirdParty/AFNetworkActivityLogger/AFNetworkActivityLogger.h; sourceTree = "<group>"; };
+		6DAD0EBD19D354A900702A3B /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityLogger.m; path = thirdParty/AFNetworkActivityLogger/AFNetworkActivityLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +139,6 @@
 		6DAD0E2B19D34B5900702A3B = {
 			isa = PBXGroup;
 			children = (
-				6DAD0EB919D3542B00702A3B /* libicucore.dylib */,
 				6DAD0E3719D34B5900702A3B /* KidoZenSwiftSDK */,
 				6DAD0E4119D34B5900702A3B /* KidoZenSwiftSDKTests */,
 				6DAD0E4E19D34B8E00702A3B /* thidParty */,
@@ -190,9 +193,11 @@
 		6DAD0E4E19D34B8E00702A3B /* thidParty */ = {
 			isa = PBXGroup;
 			children = (
+				6DAD0EBB19D3549D00702A3B /* AFNetworkActivityLogger */,
 				6DAD0EB419D353DA00702A3B /* SocketRocket */,
 				6DAD0E7A19D34CB700702A3B /* CrashReporter */,
 				6DAD0E4F19D34B9B00702A3B /* AFNetworking */,
+				6DAD0EB919D3542B00702A3B /* libicucore.dylib */,
 			);
 			name = thidParty;
 			sourceTree = "<group>";
@@ -262,6 +267,15 @@
 			name = SocketRocket;
 			sourceTree = "<group>";
 		};
+		6DAD0EBB19D3549D00702A3B /* AFNetworkActivityLogger */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EBC19D354A900702A3B /* AFNetworkActivityLogger.h */,
+				6DAD0EBD19D354A900702A3B /* AFNetworkActivityLogger.m */,
+			);
+			name = AFNetworkActivityLogger;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -279,6 +293,7 @@
 				6DAD0E9219D34CCF00702A3B /* PLCrashAsyncSignalInfo.h in Headers */,
 				6DAD0E9E19D34CCF00702A3B /* PLCrashReportProcessInfo.h in Headers */,
 				6DAD0EB719D353F800702A3B /* SRWebSocket.h in Headers */,
+				6DAD0EBE19D354A900702A3B /* AFNetworkActivityLogger.h in Headers */,
 				6DAD0E6719D34BAE00702A3B /* AFHTTPSessionManager.h in Headers */,
 				6DAD0E9B19D34CCF00702A3B /* PLCrashReportFormatter.h in Headers */,
 				6DAD0E9919D34CCF00702A3B /* PLCrashReporterConfig.h in Headers */,
@@ -411,6 +426,7 @@
 				6DAD0E6F19D34BAE00702A3B /* AFURLConnectionOperation.m in Sources */,
 				6DAD0E7119D34BAE00702A3B /* AFURLRequestSerialization.m in Sources */,
 				6DAD0E7319D34BAE00702A3B /* AFURLResponseSerialization.m in Sources */,
+				6DAD0EBF19D354A900702A3B /* AFNetworkActivityLogger.m in Sources */,
 				6DAD0E6419D34BAE00702A3B /* AFHTTPRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

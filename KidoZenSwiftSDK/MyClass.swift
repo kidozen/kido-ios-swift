@@ -10,7 +10,7 @@ import Foundation
 
 public class MyClass {
     
-//    var crash : CrashReporter?
+    var crash : PLCrashReporter?
     
     public init() {
         
