@@ -9,6 +9,52 @@
 /* Begin PBXBuildFile section */
 		6DAD0E3B19D34B5900702A3B /* KidoZenSwiftSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E4519D34B5900702A3B /* KidoZenSwiftSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E4419D34B5900702A3B /* KidoZenSwiftSDKTests.swift */; };
+		6DAD0E6319D34BAE00702A3B /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5019D34BAE00702A3B /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6419D34BAE00702A3B /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5119D34BAE00702A3B /* AFHTTPRequestOperation.m */; };
+		6DAD0E6519D34BAE00702A3B /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5219D34BAE00702A3B /* AFHTTPRequestOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6619D34BAE00702A3B /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5319D34BAE00702A3B /* AFHTTPRequestOperationManager.m */; };
+		6DAD0E6719D34BAE00702A3B /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5419D34BAE00702A3B /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6819D34BAE00702A3B /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5519D34BAE00702A3B /* AFHTTPSessionManager.m */; };
+		6DAD0E6919D34BAE00702A3B /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5619D34BAE00702A3B /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6A19D34BAE00702A3B /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5719D34BAE00702A3B /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6B19D34BAE00702A3B /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5819D34BAE00702A3B /* AFNetworkReachabilityManager.m */; };
+		6DAD0E6C19D34BAE00702A3B /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5919D34BAE00702A3B /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6D19D34BAE00702A3B /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5A19D34BAE00702A3B /* AFSecurityPolicy.m */; };
+		6DAD0E6E19D34BAE00702A3B /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5B19D34BAE00702A3B /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E6F19D34BAE00702A3B /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5C19D34BAE00702A3B /* AFURLConnectionOperation.m */; };
+		6DAD0E7019D34BAE00702A3B /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5D19D34BAE00702A3B /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E7119D34BAE00702A3B /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5E19D34BAE00702A3B /* AFURLRequestSerialization.m */; };
+		6DAD0E7219D34BAE00702A3B /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5F19D34BAE00702A3B /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E7319D34BAE00702A3B /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E6019D34BAE00702A3B /* AFURLResponseSerialization.m */; };
+		6DAD0E7419D34BAE00702A3B /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E6119D34BAE00702A3B /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E7519D34BAE00702A3B /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E6219D34BAE00702A3B /* AFURLSessionManager.m */; };
+		6DAD0E7719D34C5600702A3B /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAD0E7619D34C5600702A3B /* CrashReporter.framework */; };
+		6DAD0E7919D34C8E00702A3B /* MyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E7819D34C8E00702A3B /* MyClass.swift */; };
+		6DAD0E9119D34CCF00702A3B /* CrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7B19D34CCF00702A3B /* CrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9219D34CCF00702A3B /* PLCrashAsyncSignalInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7C19D34CCF00702A3B /* PLCrashAsyncSignalInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9319D34CCF00702A3B /* PLCrashFeatureConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7D19D34CCF00702A3B /* PLCrashFeatureConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9419D34CCF00702A3B /* PLCrashNamespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7E19D34CCF00702A3B /* PLCrashNamespace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9519D34CCF00702A3B /* PLCrashReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7F19D34CCF00702A3B /* PLCrashReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9619D34CCF00702A3B /* PLCrashReportApplicationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8019D34CCF00702A3B /* PLCrashReportApplicationInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9719D34CCF00702A3B /* PLCrashReportBinaryImageInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8119D34CCF00702A3B /* PLCrashReportBinaryImageInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9819D34CCF00702A3B /* PLCrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8219D34CCF00702A3B /* PLCrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9919D34CCF00702A3B /* PLCrashReporterConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8319D34CCF00702A3B /* PLCrashReporterConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9A19D34CCF00702A3B /* PLCrashReportExceptionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8419D34CCF00702A3B /* PLCrashReportExceptionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9B19D34CCF00702A3B /* PLCrashReportFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8519D34CCF00702A3B /* PLCrashReportFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9C19D34CCF00702A3B /* PLCrashReportMachExceptionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8619D34CCF00702A3B /* PLCrashReportMachExceptionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9D19D34CCF00702A3B /* PLCrashReportMachineInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8719D34CCF00702A3B /* PLCrashReportMachineInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9E19D34CCF00702A3B /* PLCrashReportProcessInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8819D34CCF00702A3B /* PLCrashReportProcessInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E9F19D34CCF00702A3B /* PLCrashReportProcessorInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8919D34CCF00702A3B /* PLCrashReportProcessorInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA019D34CCF00702A3B /* PLCrashReportRegisterInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8A19D34CCF00702A3B /* PLCrashReportRegisterInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA119D34CCF00702A3B /* PLCrashReportSignalInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8B19D34CCF00702A3B /* PLCrashReportSignalInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA219D34CCF00702A3B /* PLCrashReportStackFrameInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8C19D34CCF00702A3B /* PLCrashReportStackFrameInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA319D34CCF00702A3B /* PLCrashReportSymbolInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8D19D34CCF00702A3B /* PLCrashReportSymbolInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA419D34CCF00702A3B /* PLCrashReportSystemInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8E19D34CCF00702A3B /* PLCrashReportSystemInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA519D34CCF00702A3B /* PLCrashReportTextFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E8F19D34CCF00702A3B /* PLCrashReportTextFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EA619D34CCF00702A3B /* PLCrashReportThreadInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E9019D34CCF00702A3B /* PLCrashReportThreadInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EB719D353F800702A3B /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0EB519D353F800702A3B /* SRWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0EB819D353F800702A3B /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EB619D353F800702A3B /* SRWebSocket.m */; };
+		6DAD0EBA19D3542B00702A3B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAD0EB919D3542B00702A3B /* libicucore.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +64,52 @@
 		6DAD0E4019D34B5900702A3B /* KidoZenSwiftSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KidoZenSwiftSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E4319D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAD0E4419D34B5900702A3B /* KidoZenSwiftSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidoZenSwiftSDKTests.swift; sourceTree = "<group>"; };
+		6DAD0E5019D34BAE00702A3B /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = thirdParty/AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		6DAD0E5119D34BAE00702A3B /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = thirdParty/AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		6DAD0E5219D34BAE00702A3B /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = thirdParty/AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		6DAD0E5319D34BAE00702A3B /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = thirdParty/AFNetworking/AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		6DAD0E5419D34BAE00702A3B /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = thirdParty/AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		6DAD0E5519D34BAE00702A3B /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = thirdParty/AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		6DAD0E5619D34BAE00702A3B /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = thirdParty/AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		6DAD0E5719D34BAE00702A3B /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = thirdParty/AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		6DAD0E5819D34BAE00702A3B /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = thirdParty/AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		6DAD0E5919D34BAE00702A3B /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = thirdParty/AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		6DAD0E5A19D34BAE00702A3B /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = thirdParty/AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		6DAD0E5B19D34BAE00702A3B /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = thirdParty/AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		6DAD0E5C19D34BAE00702A3B /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = thirdParty/AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		6DAD0E5D19D34BAE00702A3B /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = thirdParty/AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		6DAD0E5E19D34BAE00702A3B /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = thirdParty/AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		6DAD0E5F19D34BAE00702A3B /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = thirdParty/AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		6DAD0E6019D34BAE00702A3B /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = thirdParty/AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		6DAD0E6119D34BAE00702A3B /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = thirdParty/AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		6DAD0E6219D34BAE00702A3B /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = thirdParty/AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		6DAD0E7619D34C5600702A3B /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = thirdParty/PLCrashReporter/CrashReporter.framework; sourceTree = "<group>"; };
+		6DAD0E7819D34C8E00702A3B /* MyClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClass.swift; sourceTree = "<group>"; };
+		6DAD0E7B19D34CCF00702A3B /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrashReporter.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/CrashReporter.h; sourceTree = "<group>"; };
+		6DAD0E7C19D34CCF00702A3B /* PLCrashAsyncSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashAsyncSignalInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashAsyncSignalInfo.h; sourceTree = "<group>"; };
+		6DAD0E7D19D34CCF00702A3B /* PLCrashFeatureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashFeatureConfig.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashFeatureConfig.h; sourceTree = "<group>"; };
+		6DAD0E7E19D34CCF00702A3B /* PLCrashNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashNamespace.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashNamespace.h; sourceTree = "<group>"; };
+		6DAD0E7F19D34CCF00702A3B /* PLCrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReport.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReport.h; sourceTree = "<group>"; };
+		6DAD0E8019D34CCF00702A3B /* PLCrashReportApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportApplicationInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportApplicationInfo.h; sourceTree = "<group>"; };
+		6DAD0E8119D34CCF00702A3B /* PLCrashReportBinaryImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportBinaryImageInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportBinaryImageInfo.h; sourceTree = "<group>"; };
+		6DAD0E8219D34CCF00702A3B /* PLCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReporter.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReporter.h; sourceTree = "<group>"; };
+		6DAD0E8319D34CCF00702A3B /* PLCrashReporterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReporterConfig.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReporterConfig.h; sourceTree = "<group>"; };
+		6DAD0E8419D34CCF00702A3B /* PLCrashReportExceptionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportExceptionInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportExceptionInfo.h; sourceTree = "<group>"; };
+		6DAD0E8519D34CCF00702A3B /* PLCrashReportFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportFormatter.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportFormatter.h; sourceTree = "<group>"; };
+		6DAD0E8619D34CCF00702A3B /* PLCrashReportMachExceptionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportMachExceptionInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportMachExceptionInfo.h; sourceTree = "<group>"; };
+		6DAD0E8719D34CCF00702A3B /* PLCrashReportMachineInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportMachineInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportMachineInfo.h; sourceTree = "<group>"; };
+		6DAD0E8819D34CCF00702A3B /* PLCrashReportProcessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportProcessInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportProcessInfo.h; sourceTree = "<group>"; };
+		6DAD0E8919D34CCF00702A3B /* PLCrashReportProcessorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportProcessorInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportProcessorInfo.h; sourceTree = "<group>"; };
+		6DAD0E8A19D34CCF00702A3B /* PLCrashReportRegisterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportRegisterInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportRegisterInfo.h; sourceTree = "<group>"; };
+		6DAD0E8B19D34CCF00702A3B /* PLCrashReportSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportSignalInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportSignalInfo.h; sourceTree = "<group>"; };
+		6DAD0E8C19D34CCF00702A3B /* PLCrashReportStackFrameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportStackFrameInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportStackFrameInfo.h; sourceTree = "<group>"; };
+		6DAD0E8D19D34CCF00702A3B /* PLCrashReportSymbolInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportSymbolInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportSymbolInfo.h; sourceTree = "<group>"; };
+		6DAD0E8E19D34CCF00702A3B /* PLCrashReportSystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportSystemInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportSystemInfo.h; sourceTree = "<group>"; };
+		6DAD0E8F19D34CCF00702A3B /* PLCrashReportTextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportTextFormatter.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportTextFormatter.h; sourceTree = "<group>"; };
+		6DAD0E9019D34CCF00702A3B /* PLCrashReportThreadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashReportThreadInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashReportThreadInfo.h; sourceTree = "<group>"; };
+		6DAD0EB519D353F800702A3B /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRWebSocket.h; path = thirdParty/SocketRocket/SRWebSocket.h; sourceTree = "<group>"; };
+		6DAD0EB619D353F800702A3B /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRWebSocket.m; path = thirdParty/SocketRocket/SRWebSocket.m; sourceTree = "<group>"; };
+		6DAD0EB919D3542B00702A3B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DAD0EBA19D3542B00702A3B /* libicucore.dylib in Frameworks */,
+				6DAD0E7719D34C5600702A3B /* CrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +135,10 @@
 		6DAD0E2B19D34B5900702A3B = {
 			isa = PBXGroup;
 			children = (
+				6DAD0EB919D3542B00702A3B /* libicucore.dylib */,
 				6DAD0E3719D34B5900702A3B /* KidoZenSwiftSDK */,
 				6DAD0E4119D34B5900702A3B /* KidoZenSwiftSDKTests */,
+				6DAD0E4E19D34B8E00702A3B /* thidParty */,
 				6DAD0E3619D34B5900702A3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +157,7 @@
 			children = (
 				6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */,
 				6DAD0E3819D34B5900702A3B /* Supporting Files */,
+				6DAD0E7819D34C8E00702A3B /* MyClass.swift */,
 			);
 			path = KidoZenSwiftSDK;
 			sourceTree = "<group>";
@@ -90,6 +187,81 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6DAD0E4E19D34B8E00702A3B /* thidParty */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EB419D353DA00702A3B /* SocketRocket */,
+				6DAD0E7A19D34CB700702A3B /* CrashReporter */,
+				6DAD0E4F19D34B9B00702A3B /* AFNetworking */,
+			);
+			name = thidParty;
+			sourceTree = "<group>";
+		};
+		6DAD0E4F19D34B9B00702A3B /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0E5019D34BAE00702A3B /* AFHTTPRequestOperation.h */,
+				6DAD0E5119D34BAE00702A3B /* AFHTTPRequestOperation.m */,
+				6DAD0E5219D34BAE00702A3B /* AFHTTPRequestOperationManager.h */,
+				6DAD0E5319D34BAE00702A3B /* AFHTTPRequestOperationManager.m */,
+				6DAD0E5419D34BAE00702A3B /* AFHTTPSessionManager.h */,
+				6DAD0E5519D34BAE00702A3B /* AFHTTPSessionManager.m */,
+				6DAD0E5619D34BAE00702A3B /* AFNetworking.h */,
+				6DAD0E5719D34BAE00702A3B /* AFNetworkReachabilityManager.h */,
+				6DAD0E5819D34BAE00702A3B /* AFNetworkReachabilityManager.m */,
+				6DAD0E5919D34BAE00702A3B /* AFSecurityPolicy.h */,
+				6DAD0E5A19D34BAE00702A3B /* AFSecurityPolicy.m */,
+				6DAD0E5B19D34BAE00702A3B /* AFURLConnectionOperation.h */,
+				6DAD0E5C19D34BAE00702A3B /* AFURLConnectionOperation.m */,
+				6DAD0E5D19D34BAE00702A3B /* AFURLRequestSerialization.h */,
+				6DAD0E5E19D34BAE00702A3B /* AFURLRequestSerialization.m */,
+				6DAD0E5F19D34BAE00702A3B /* AFURLResponseSerialization.h */,
+				6DAD0E6019D34BAE00702A3B /* AFURLResponseSerialization.m */,
+				6DAD0E6119D34BAE00702A3B /* AFURLSessionManager.h */,
+				6DAD0E6219D34BAE00702A3B /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		6DAD0E7A19D34CB700702A3B /* CrashReporter */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0E7619D34C5600702A3B /* CrashReporter.framework */,
+				6DAD0E7B19D34CCF00702A3B /* CrashReporter.h */,
+				6DAD0E7C19D34CCF00702A3B /* PLCrashAsyncSignalInfo.h */,
+				6DAD0E7D19D34CCF00702A3B /* PLCrashFeatureConfig.h */,
+				6DAD0E7E19D34CCF00702A3B /* PLCrashNamespace.h */,
+				6DAD0E7F19D34CCF00702A3B /* PLCrashReport.h */,
+				6DAD0E8019D34CCF00702A3B /* PLCrashReportApplicationInfo.h */,
+				6DAD0E8119D34CCF00702A3B /* PLCrashReportBinaryImageInfo.h */,
+				6DAD0E8219D34CCF00702A3B /* PLCrashReporter.h */,
+				6DAD0E8319D34CCF00702A3B /* PLCrashReporterConfig.h */,
+				6DAD0E8419D34CCF00702A3B /* PLCrashReportExceptionInfo.h */,
+				6DAD0E8519D34CCF00702A3B /* PLCrashReportFormatter.h */,
+				6DAD0E8619D34CCF00702A3B /* PLCrashReportMachExceptionInfo.h */,
+				6DAD0E8719D34CCF00702A3B /* PLCrashReportMachineInfo.h */,
+				6DAD0E8819D34CCF00702A3B /* PLCrashReportProcessInfo.h */,
+				6DAD0E8919D34CCF00702A3B /* PLCrashReportProcessorInfo.h */,
+				6DAD0E8A19D34CCF00702A3B /* PLCrashReportRegisterInfo.h */,
+				6DAD0E8B19D34CCF00702A3B /* PLCrashReportSignalInfo.h */,
+				6DAD0E8C19D34CCF00702A3B /* PLCrashReportStackFrameInfo.h */,
+				6DAD0E8D19D34CCF00702A3B /* PLCrashReportSymbolInfo.h */,
+				6DAD0E8E19D34CCF00702A3B /* PLCrashReportSystemInfo.h */,
+				6DAD0E8F19D34CCF00702A3B /* PLCrashReportTextFormatter.h */,
+				6DAD0E9019D34CCF00702A3B /* PLCrashReportThreadInfo.h */,
+			);
+			name = CrashReporter;
+			sourceTree = "<group>";
+		};
+		6DAD0EB419D353DA00702A3B /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EB519D353F800702A3B /* SRWebSocket.h */,
+				6DAD0EB619D353F800702A3B /* SRWebSocket.m */,
+			);
+			name = SocketRocket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -97,7 +269,40 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DAD0E9C19D34CCF00702A3B /* PLCrashReportMachExceptionInfo.h in Headers */,
+				6DAD0E7419D34BAE00702A3B /* AFURLSessionManager.h in Headers */,
+				6DAD0E9319D34CCF00702A3B /* PLCrashFeatureConfig.h in Headers */,
+				6DAD0E7019D34BAE00702A3B /* AFURLRequestSerialization.h in Headers */,
+				6DAD0EA019D34CCF00702A3B /* PLCrashReportRegisterInfo.h in Headers */,
 				6DAD0E3B19D34B5900702A3B /* KidoZenSwiftSDK.h in Headers */,
+				6DAD0E6319D34BAE00702A3B /* AFHTTPRequestOperation.h in Headers */,
+				6DAD0E9219D34CCF00702A3B /* PLCrashAsyncSignalInfo.h in Headers */,
+				6DAD0E9E19D34CCF00702A3B /* PLCrashReportProcessInfo.h in Headers */,
+				6DAD0EB719D353F800702A3B /* SRWebSocket.h in Headers */,
+				6DAD0E6719D34BAE00702A3B /* AFHTTPSessionManager.h in Headers */,
+				6DAD0E9B19D34CCF00702A3B /* PLCrashReportFormatter.h in Headers */,
+				6DAD0E9919D34CCF00702A3B /* PLCrashReporterConfig.h in Headers */,
+				6DAD0E9D19D34CCF00702A3B /* PLCrashReportMachineInfo.h in Headers */,
+				6DAD0E6E19D34BAE00702A3B /* AFURLConnectionOperation.h in Headers */,
+				6DAD0E6A19D34BAE00702A3B /* AFNetworkReachabilityManager.h in Headers */,
+				6DAD0E9419D34CCF00702A3B /* PLCrashNamespace.h in Headers */,
+				6DAD0E9819D34CCF00702A3B /* PLCrashReporter.h in Headers */,
+				6DAD0E6C19D34BAE00702A3B /* AFSecurityPolicy.h in Headers */,
+				6DAD0EA319D34CCF00702A3B /* PLCrashReportSymbolInfo.h in Headers */,
+				6DAD0EA119D34CCF00702A3B /* PLCrashReportSignalInfo.h in Headers */,
+				6DAD0EA519D34CCF00702A3B /* PLCrashReportTextFormatter.h in Headers */,
+				6DAD0EA219D34CCF00702A3B /* PLCrashReportStackFrameInfo.h in Headers */,
+				6DAD0E9A19D34CCF00702A3B /* PLCrashReportExceptionInfo.h in Headers */,
+				6DAD0E9719D34CCF00702A3B /* PLCrashReportBinaryImageInfo.h in Headers */,
+				6DAD0E9F19D34CCF00702A3B /* PLCrashReportProcessorInfo.h in Headers */,
+				6DAD0EA619D34CCF00702A3B /* PLCrashReportThreadInfo.h in Headers */,
+				6DAD0E6519D34BAE00702A3B /* AFHTTPRequestOperationManager.h in Headers */,
+				6DAD0E9119D34CCF00702A3B /* CrashReporter.h in Headers */,
+				6DAD0E6919D34BAE00702A3B /* AFNetworking.h in Headers */,
+				6DAD0E9519D34CCF00702A3B /* PLCrashReport.h in Headers */,
+				6DAD0E7219D34BAE00702A3B /* AFURLResponseSerialization.h in Headers */,
+				6DAD0EA419D34CCF00702A3B /* PLCrashReportSystemInfo.h in Headers */,
+				6DAD0E9619D34CCF00702A3B /* PLCrashReportApplicationInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +401,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DAD0E7519D34BAE00702A3B /* AFURLSessionManager.m in Sources */,
+				6DAD0E6819D34BAE00702A3B /* AFHTTPSessionManager.m in Sources */,
+				6DAD0E7919D34C8E00702A3B /* MyClass.swift in Sources */,
+				6DAD0E6D19D34BAE00702A3B /* AFSecurityPolicy.m in Sources */,
+				6DAD0E6619D34BAE00702A3B /* AFHTTPRequestOperationManager.m in Sources */,
+				6DAD0EB819D353F800702A3B /* SRWebSocket.m in Sources */,
+				6DAD0E6B19D34BAE00702A3B /* AFNetworkReachabilityManager.m in Sources */,
+				6DAD0E6F19D34BAE00702A3B /* AFURLConnectionOperation.m in Sources */,
+				6DAD0E7119D34BAE00702A3B /* AFURLRequestSerialization.m in Sources */,
+				6DAD0E7319D34BAE00702A3B /* AFURLResponseSerialization.m in Sources */,
+				6DAD0E6419D34BAE00702A3B /* AFHTTPRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,25 +514,48 @@
 		6DAD0E4919D34B5900702A3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/thirdParty/PLCrashReporter,
+					"$(PROJECT_DIR)/thirdParty/PLCrashReporter",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					$SRCROOT/thirdParty/PLCrashReporter/CrashReporter.framework/Headers,
+				);
 				INFOPLIST_FILE = KidoZenSwiftSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		6DAD0E4A19D34B5900702A3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/thirdParty/PLCrashReporter,
+					"$(PROJECT_DIR)/thirdParty/PLCrashReporter",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					$SRCROOT/thirdParty/PLCrashReporter/CrashReporter.framework/Headers,
+				);
 				INFOPLIST_FILE = KidoZenSwiftSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -374,6 +613,7 @@
 				6DAD0E4A19D34B5900702A3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DAD0E4B19D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenSwiftSDKTests" */ = {
 			isa = XCConfigurationList;
@@ -382,6 +622,7 @@
 				6DAD0E4D19D34B5900702A3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
