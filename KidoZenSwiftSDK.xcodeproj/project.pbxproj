@@ -29,7 +29,6 @@
 		6DAD0E7419D34BAE00702A3B /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E6119D34BAE00702A3B /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E7519D34BAE00702A3B /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E6219D34BAE00702A3B /* AFURLSessionManager.m */; };
 		6DAD0E7719D34C5600702A3B /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAD0E7619D34C5600702A3B /* CrashReporter.framework */; };
-		6DAD0E7919D34C8E00702A3B /* MyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E7819D34C8E00702A3B /* MyClass.swift */; };
 		6DAD0E9119D34CCF00702A3B /* CrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7B19D34CCF00702A3B /* CrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E9219D34CCF00702A3B /* PLCrashAsyncSignalInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7C19D34CCF00702A3B /* PLCrashAsyncSignalInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E9319D34CCF00702A3B /* PLCrashFeatureConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E7D19D34CCF00702A3B /* PLCrashFeatureConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,7 +56,63 @@
 		6DAD0EBA19D3542B00702A3B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAD0EB919D3542B00702A3B /* libicucore.dylib */; };
 		6DAD0EBE19D354A900702A3B /* AFNetworkActivityLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0EBC19D354A900702A3B /* AFNetworkActivityLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0EBF19D354A900702A3B /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EBD19D354A900702A3B /* AFNetworkActivityLogger.m */; };
+		6DAD0EC119D3573800702A3B /* KZObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC019D3573800702A3B /* KZObject.swift */; };
+		6DAD0EC419D3576F00702A3B /* KZApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC319D3576F00702A3B /* KZApplication.swift */; };
+		6DAD0EE319D357B900702A3B /* KZADFSIdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC519D357B900702A3B /* KZADFSIdentityProvider.swift */; };
+		6DAD0EE419D357B900702A3B /* KZApplicationAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC619D357B900702A3B /* KZApplicationAuthentication.swift */; };
+		6DAD0EE519D357B900702A3B /* KZApplicationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC719D357B900702A3B /* KZApplicationConfiguration.swift */; };
+		6DAD0EE619D357B900702A3B /* KZApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC819D357B900702A3B /* KZApplicationServices.swift */; };
+		6DAD0EE719D357B900702A3B /* KZAuthenticationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EC919D357B900702A3B /* KZAuthenticationConfig.swift */; };
+		6DAD0EE819D357B900702A3B /* KZBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ECA19D357B900702A3B /* KZBaseService.swift */; };
+		6DAD0EE919D357B900702A3B /* KZConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ECB19D357B900702A3B /* KZConfiguration.swift */; };
+		6DAD0EEA19D357B900702A3B /* KZCrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ECC19D357B900702A3B /* KZCrashReporter.swift */; };
+		6DAD0EEB19D357B900702A3B /* KZDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ECD19D357B900702A3B /* KZDatasource.swift */; };
+		6DAD0EEC19D357B900702A3B /* KZDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ECE19D357B900702A3B /* KZDictionaryExtensions.swift */; };
+		6DAD0EED19D357B900702A3B /* KZIdentityProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ECF19D357B900702A3B /* KZIdentityProviderFactory.swift */; };
+		6DAD0EEE19D357B900702A3B /* KZIdentityProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED019D357B900702A3B /* KZIdentityProviderProtocol.swift */; };
+		6DAD0EEF19D357B900702A3B /* KZLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED119D357B900702A3B /* KZLogging.swift */; };
+		6DAD0EF019D357B900702A3B /* KZMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED219D357B900702A3B /* KZMail.swift */; };
+		6DAD0EF119D357B900702A3B /* KZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED319D357B900702A3B /* KZNetworkManager.swift */; };
+		6DAD0EF219D357B900702A3B /* KZNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED419D357B900702A3B /* KZNotification.swift */; };
+		6DAD0EF319D357B900702A3B /* KZNSDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED519D357B900702A3B /* KZNSDataExtensions.swift */; };
+		6DAD0EF419D357B900702A3B /* KZPassiveAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED619D357B900702A3B /* KZPassiveAuthViewController.swift */; };
+		6DAD0EF519D357B900702A3B /* KZPubSubChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED719D357B900702A3B /* KZPubSubChannel.swift */; };
+		6DAD0EF619D357B900702A3B /* KZQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED819D357B900702A3B /* KZQueue.swift */; };
+		6DAD0EF719D357B900702A3B /* KZResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0ED919D357B900702A3B /* KZResponse.swift */; };
+		6DAD0EF819D357B900702A3B /* KZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EDA19D357B900702A3B /* KZService.swift */; };
+		6DAD0EF919D357B900702A3B /* KZSMSSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EDB19D357B900702A3B /* KZSMSSender.swift */; };
+		6DAD0EFA19D357B900702A3B /* KZStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EDC19D357B900702A3B /* KZStorage.swift */; };
+		6DAD0EFB19D357B900702A3B /* KZStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EDD19D357B900702A3B /* KZStringExtensions.swift */; };
+		6DAD0EFC19D357B900702A3B /* KZTokenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EDE19D357B900702A3B /* KZTokenController.swift */; };
+		6DAD0EFD19D357B900702A3B /* KZTokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EDF19D357B900702A3B /* KZTokenRefresher.swift */; };
+		6DAD0EFE19D357B900702A3B /* KZTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */; };
+		6DAD0EFF19D357B900702A3B /* KZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE119D357B900702A3B /* KZUser.swift */; };
+		6DAD0F0019D357B900702A3B /* KZWRAPv09IdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DAD0F4419D366F000702A3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		6DAD0F4619D366F000702A3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
+		6DAD0F4819D366FD00702A3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6DAD0E3519D34B5900702A3B /* KidoZenSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KidoZenSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +141,6 @@
 		6DAD0E6119D34BAE00702A3B /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = thirdParty/AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		6DAD0E6219D34BAE00702A3B /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = thirdParty/AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		6DAD0E7619D34C5600702A3B /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = thirdParty/PLCrashReporter/CrashReporter.framework; sourceTree = "<group>"; };
-		6DAD0E7819D34C8E00702A3B /* MyClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClass.swift; sourceTree = "<group>"; };
 		6DAD0E7B19D34CCF00702A3B /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrashReporter.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/CrashReporter.h; sourceTree = "<group>"; };
 		6DAD0E7C19D34CCF00702A3B /* PLCrashAsyncSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashAsyncSignalInfo.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashAsyncSignalInfo.h; sourceTree = "<group>"; };
 		6DAD0E7D19D34CCF00702A3B /* PLCrashFeatureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLCrashFeatureConfig.h; path = thirdParty/PLCrashReporter/CrashReporter.framework/Headers/PLCrashFeatureConfig.h; sourceTree = "<group>"; };
@@ -114,6 +168,39 @@
 		6DAD0EB919D3542B00702A3B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		6DAD0EBC19D354A900702A3B /* AFNetworkActivityLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityLogger.h; path = thirdParty/AFNetworkActivityLogger/AFNetworkActivityLogger.h; sourceTree = "<group>"; };
 		6DAD0EBD19D354A900702A3B /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityLogger.m; path = thirdParty/AFNetworkActivityLogger/AFNetworkActivityLogger.m; sourceTree = "<group>"; };
+		6DAD0EC019D3573800702A3B /* KZObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZObject.swift; sourceTree = "<group>"; };
+		6DAD0EC319D3576F00702A3B /* KZApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZApplication.swift; sourceTree = "<group>"; };
+		6DAD0EC519D357B900702A3B /* KZADFSIdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZADFSIdentityProvider.swift; sourceTree = "<group>"; };
+		6DAD0EC619D357B900702A3B /* KZApplicationAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZApplicationAuthentication.swift; sourceTree = "<group>"; };
+		6DAD0EC719D357B900702A3B /* KZApplicationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZApplicationConfiguration.swift; sourceTree = "<group>"; };
+		6DAD0EC819D357B900702A3B /* KZApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZApplicationServices.swift; sourceTree = "<group>"; };
+		6DAD0EC919D357B900702A3B /* KZAuthenticationConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZAuthenticationConfig.swift; sourceTree = "<group>"; };
+		6DAD0ECA19D357B900702A3B /* KZBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZBaseService.swift; sourceTree = "<group>"; };
+		6DAD0ECB19D357B900702A3B /* KZConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZConfiguration.swift; sourceTree = "<group>"; };
+		6DAD0ECC19D357B900702A3B /* KZCrashReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZCrashReporter.swift; sourceTree = "<group>"; };
+		6DAD0ECD19D357B900702A3B /* KZDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZDatasource.swift; sourceTree = "<group>"; };
+		6DAD0ECE19D357B900702A3B /* KZDictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZDictionaryExtensions.swift; sourceTree = "<group>"; };
+		6DAD0ECF19D357B900702A3B /* KZIdentityProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZIdentityProviderFactory.swift; sourceTree = "<group>"; };
+		6DAD0ED019D357B900702A3B /* KZIdentityProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZIdentityProviderProtocol.swift; sourceTree = "<group>"; };
+		6DAD0ED119D357B900702A3B /* KZLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZLogging.swift; sourceTree = "<group>"; };
+		6DAD0ED219D357B900702A3B /* KZMail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZMail.swift; sourceTree = "<group>"; };
+		6DAD0ED319D357B900702A3B /* KZNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZNetworkManager.swift; sourceTree = "<group>"; };
+		6DAD0ED419D357B900702A3B /* KZNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZNotification.swift; sourceTree = "<group>"; };
+		6DAD0ED519D357B900702A3B /* KZNSDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZNSDataExtensions.swift; sourceTree = "<group>"; };
+		6DAD0ED619D357B900702A3B /* KZPassiveAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZPassiveAuthViewController.swift; sourceTree = "<group>"; };
+		6DAD0ED719D357B900702A3B /* KZPubSubChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZPubSubChannel.swift; sourceTree = "<group>"; };
+		6DAD0ED819D357B900702A3B /* KZQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZQueue.swift; sourceTree = "<group>"; };
+		6DAD0ED919D357B900702A3B /* KZResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZResponse.swift; sourceTree = "<group>"; };
+		6DAD0EDA19D357B900702A3B /* KZService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZService.swift; sourceTree = "<group>"; };
+		6DAD0EDB19D357B900702A3B /* KZSMSSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZSMSSender.swift; sourceTree = "<group>"; };
+		6DAD0EDC19D357B900702A3B /* KZStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZStorage.swift; sourceTree = "<group>"; };
+		6DAD0EDD19D357B900702A3B /* KZStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZStringExtensions.swift; sourceTree = "<group>"; };
+		6DAD0EDE19D357B900702A3B /* KZTokenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZTokenController.swift; sourceTree = "<group>"; };
+		6DAD0EDF19D357B900702A3B /* KZTokenRefresher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZTokenRefresher.swift; sourceTree = "<group>"; };
+		6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZTypeAliases.swift; sourceTree = "<group>"; };
+		6DAD0EE119D357B900702A3B /* KZUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZUser.swift; sourceTree = "<group>"; };
+		6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWRAPv09IdentityProvider.swift; sourceTree = "<group>"; };
+		6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = thirdParty/CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +245,17 @@
 		6DAD0E3719D34B5900702A3B /* KidoZenSwiftSDK */ = {
 			isa = PBXGroup;
 			children = (
+				6DAD0EC019D3573800702A3B /* KZObject.swift */,
+				6DAD0EC219D3575900702A3B /* Application */,
+				6DAD0F4A19D367C700702A3B /* Authentication */,
+				6DAD0F4B19D367E300702A3B /* IdentityProviders */,
+				6DAD0F4C19D3681C00702A3B /* Services */,
+				6DAD0F4D19D3682700702A3B /* Networking */,
+				6DAD0F4E19D3683300702A3B /* Extensions */,
+				6DAD0EE119D357B900702A3B /* KZUser.swift */,
+				6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */,
 				6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */,
 				6DAD0E3819D34B5900702A3B /* Supporting Files */,
-				6DAD0E7819D34C8E00702A3B /* MyClass.swift */,
 			);
 			path = KidoZenSwiftSDK;
 			sourceTree = "<group>";
@@ -193,6 +288,7 @@
 		6DAD0E4E19D34B8E00702A3B /* thidParty */ = {
 			isa = PBXGroup;
 			children = (
+				6DAD0F0E19D3632F00702A3B /* Crypto */,
 				6DAD0EBB19D3549D00702A3B /* AFNetworkActivityLogger */,
 				6DAD0EB419D353DA00702A3B /* SocketRocket */,
 				6DAD0E7A19D34CB700702A3B /* CrashReporter */,
@@ -276,6 +372,94 @@
 			name = AFNetworkActivityLogger;
 			sourceTree = "<group>";
 		};
+		6DAD0EC219D3575900702A3B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EC319D3576F00702A3B /* KZApplication.swift */,
+				6DAD0EC719D357B900702A3B /* KZApplicationConfiguration.swift */,
+				6DAD0EC819D357B900702A3B /* KZApplicationServices.swift */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		6DAD0F0E19D3632F00702A3B /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */,
+			);
+			name = Crypto;
+			sourceTree = "<group>";
+		};
+		6DAD0F4019D366EF00702A3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0F4519D366F000702A3B /* CryptoSwift.framework */,
+				6DAD0F4719D366F000702A3B /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DAD0F4A19D367C700702A3B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EC619D357B900702A3B /* KZApplicationAuthentication.swift */,
+				6DAD0EC919D357B900702A3B /* KZAuthenticationConfig.swift */,
+				6DAD0ED619D357B900702A3B /* KZPassiveAuthViewController.swift */,
+				6DAD0EDE19D357B900702A3B /* KZTokenController.swift */,
+				6DAD0EDF19D357B900702A3B /* KZTokenRefresher.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		6DAD0F4B19D367E300702A3B /* IdentityProviders */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EC519D357B900702A3B /* KZADFSIdentityProvider.swift */,
+				6DAD0ECF19D357B900702A3B /* KZIdentityProviderFactory.swift */,
+				6DAD0ED019D357B900702A3B /* KZIdentityProviderProtocol.swift */,
+				6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */,
+			);
+			name = IdentityProviders;
+			sourceTree = "<group>";
+		};
+		6DAD0F4C19D3681C00702A3B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0EDB19D357B900702A3B /* KZSMSSender.swift */,
+				6DAD0ECA19D357B900702A3B /* KZBaseService.swift */,
+				6DAD0ECB19D357B900702A3B /* KZConfiguration.swift */,
+				6DAD0ECC19D357B900702A3B /* KZCrashReporter.swift */,
+				6DAD0ECD19D357B900702A3B /* KZDatasource.swift */,
+				6DAD0ED119D357B900702A3B /* KZLogging.swift */,
+				6DAD0ED219D357B900702A3B /* KZMail.swift */,
+				6DAD0ED419D357B900702A3B /* KZNotification.swift */,
+				6DAD0ED719D357B900702A3B /* KZPubSubChannel.swift */,
+				6DAD0ED819D357B900702A3B /* KZQueue.swift */,
+				6DAD0EDA19D357B900702A3B /* KZService.swift */,
+				6DAD0EDC19D357B900702A3B /* KZStorage.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		6DAD0F4D19D3682700702A3B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0ED319D357B900702A3B /* KZNetworkManager.swift */,
+				6DAD0ED919D357B900702A3B /* KZResponse.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		6DAD0F4E19D3683300702A3B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD0ECE19D357B900702A3B /* KZDictionaryExtensions.swift */,
+				6DAD0ED519D357B900702A3B /* KZNSDataExtensions.swift */,
+				6DAD0EDD19D357B900702A3B /* KZStringExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -336,6 +520,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6DAD0F4919D366FD00702A3B /* PBXTargetDependency */,
 			);
 			name = KidoZenSwiftSDK;
 			productName = KidoZenSwiftSDK;
@@ -386,6 +571,12 @@
 			mainGroup = 6DAD0E2B19D34B5900702A3B;
 			productRefGroup = 6DAD0E3619D34B5900702A3B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6DAD0F4019D366EF00702A3B /* Products */;
+					ProjectRef = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6DAD0E3419D34B5900702A3B /* KidoZenSwiftSDK */,
@@ -393,6 +584,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6DAD0F4519D366F000702A3B /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 6DAD0F4419D366F000702A3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6DAD0F4719D366F000702A3B /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = 6DAD0F4619D366F000702A3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6DAD0E3319D34B5900702A3B /* Resources */ = {
@@ -418,16 +626,47 @@
 			files = (
 				6DAD0E7519D34BAE00702A3B /* AFURLSessionManager.m in Sources */,
 				6DAD0E6819D34BAE00702A3B /* AFHTTPSessionManager.m in Sources */,
-				6DAD0E7919D34C8E00702A3B /* MyClass.swift in Sources */,
+				6DAD0EFA19D357B900702A3B /* KZStorage.swift in Sources */,
 				6DAD0E6D19D34BAE00702A3B /* AFSecurityPolicy.m in Sources */,
+				6DAD0EF119D357B900702A3B /* KZNetworkManager.swift in Sources */,
 				6DAD0E6619D34BAE00702A3B /* AFHTTPRequestOperationManager.m in Sources */,
 				6DAD0EB819D353F800702A3B /* SRWebSocket.m in Sources */,
 				6DAD0E6B19D34BAE00702A3B /* AFNetworkReachabilityManager.m in Sources */,
+				6DAD0EEF19D357B900702A3B /* KZLogging.swift in Sources */,
 				6DAD0E6F19D34BAE00702A3B /* AFURLConnectionOperation.m in Sources */,
+				6DAD0EC419D3576F00702A3B /* KZApplication.swift in Sources */,
+				6DAD0EF019D357B900702A3B /* KZMail.swift in Sources */,
+				6DAD0EF619D357B900702A3B /* KZQueue.swift in Sources */,
+				6DAD0EE719D357B900702A3B /* KZAuthenticationConfig.swift in Sources */,
+				6DAD0F0019D357B900702A3B /* KZWRAPv09IdentityProvider.swift in Sources */,
+				6DAD0EEE19D357B900702A3B /* KZIdentityProviderProtocol.swift in Sources */,
+				6DAD0EE919D357B900702A3B /* KZConfiguration.swift in Sources */,
+				6DAD0EF719D357B900702A3B /* KZResponse.swift in Sources */,
+				6DAD0EFE19D357B900702A3B /* KZTypeAliases.swift in Sources */,
+				6DAD0EE519D357B900702A3B /* KZApplicationConfiguration.swift in Sources */,
 				6DAD0E7119D34BAE00702A3B /* AFURLRequestSerialization.m in Sources */,
+				6DAD0EED19D357B900702A3B /* KZIdentityProviderFactory.swift in Sources */,
+				6DAD0EEC19D357B900702A3B /* KZDictionaryExtensions.swift in Sources */,
+				6DAD0EE819D357B900702A3B /* KZBaseService.swift in Sources */,
+				6DAD0EFF19D357B900702A3B /* KZUser.swift in Sources */,
+				6DAD0EEB19D357B900702A3B /* KZDatasource.swift in Sources */,
+				6DAD0EF219D357B900702A3B /* KZNotification.swift in Sources */,
+				6DAD0EFC19D357B900702A3B /* KZTokenController.swift in Sources */,
+				6DAD0EF419D357B900702A3B /* KZPassiveAuthViewController.swift in Sources */,
+				6DAD0EF819D357B900702A3B /* KZService.swift in Sources */,
+				6DAD0EE419D357B900702A3B /* KZApplicationAuthentication.swift in Sources */,
+				6DAD0EE319D357B900702A3B /* KZADFSIdentityProvider.swift in Sources */,
+				6DAD0EFD19D357B900702A3B /* KZTokenRefresher.swift in Sources */,
+				6DAD0EF319D357B900702A3B /* KZNSDataExtensions.swift in Sources */,
+				6DAD0EC119D3573800702A3B /* KZObject.swift in Sources */,
+				6DAD0EF919D357B900702A3B /* KZSMSSender.swift in Sources */,
+				6DAD0EEA19D357B900702A3B /* KZCrashReporter.swift in Sources */,
 				6DAD0E7319D34BAE00702A3B /* AFURLResponseSerialization.m in Sources */,
 				6DAD0EBF19D354A900702A3B /* AFNetworkActivityLogger.m in Sources */,
 				6DAD0E6419D34BAE00702A3B /* AFHTTPRequestOperation.m in Sources */,
+				6DAD0EE619D357B900702A3B /* KZApplicationServices.swift in Sources */,
+				6DAD0EF519D357B900702A3B /* KZPubSubChannel.swift in Sources */,
+				6DAD0EFB19D357B900702A3B /* KZStringExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +679,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DAD0F4919D366FD00702A3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = 6DAD0F4819D366FD00702A3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6DAD0E4619D34B5900702A3B /* Debug */ = {

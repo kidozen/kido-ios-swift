@@ -5,31 +5,27 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D1B8DF5E-ADE6-4A61-81CF-F5F34650D8A9</string>
+	<string>7266B6DF-1CD3-4383-821A-42E5BE4580E8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>KidoZenSwiftSDK</string>
+	<string>CryptoSwift</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
-		<string>bitbucket.org:nmiyasato/kidozenswiftsdk.git</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
-		<string>https://github.com/krzyzanowskim/CryptoSwift.git</string>
+		<string>github.com:krzyzanowskim/CryptoSwift.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>KidoZenSwiftSDK.xcodeproj</string>
+	<string>CryptoSwift.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
-		<string>../..</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
-		<string>../..thirdParty/CryptoSwift/</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>bitbucket.org:nmiyasato/kidozenswiftsdk.git</string>
+	<string>github.com:krzyzanowskim/CryptoSwift.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1C5983FB79D617BF5E7ABFA1993B687136C278BE</string>
+	<string>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -39,14 +35,6 @@
 			<string>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CryptoSwift</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1C5983FB79D617BF5E7ABFA1993B687136C278BE</string>
-			<key>IDESourceControlWCCName</key>
-			<string>KidoZenSwiftSDK</string>
 		</dict>
 	</array>
 </dict>
