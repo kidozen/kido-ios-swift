@@ -90,30 +90,6 @@
 		6DAD0F0019D357B900702A3B /* KZWRAPv09IdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6DAD0F4419D366F000702A3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE45519693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
-		6DAD0F4619D366F000702A3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE46019693E190098E6F3;
-			remoteInfo = CryptoSwiftTests;
-		};
-		6DAD0F4819D366FD00702A3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 754BE45419693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		6DAD0E3519D34B5900702A3B /* KidoZenSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KidoZenSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E3919D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -200,7 +176,6 @@
 		6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZTypeAliases.swift; sourceTree = "<group>"; };
 		6DAD0EE119D357B900702A3B /* KZUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZUser.swift; sourceTree = "<group>"; };
 		6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWRAPv09IdentityProvider.swift; sourceTree = "<group>"; };
-		6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = thirdParty/CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +263,6 @@
 		6DAD0E4E19D34B8E00702A3B /* thidParty */ = {
 			isa = PBXGroup;
 			children = (
-				6DAD0F0E19D3632F00702A3B /* Crypto */,
 				6DAD0EBB19D3549D00702A3B /* AFNetworkActivityLogger */,
 				6DAD0EB419D353DA00702A3B /* SocketRocket */,
 				6DAD0E7A19D34CB700702A3B /* CrashReporter */,
@@ -380,23 +354,6 @@
 				6DAD0EC819D357B900702A3B /* KZApplicationServices.swift */,
 			);
 			name = Application;
-			sourceTree = "<group>";
-		};
-		6DAD0F0E19D3632F00702A3B /* Crypto */ = {
-			isa = PBXGroup;
-			children = (
-				6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */,
-			);
-			name = Crypto;
-			sourceTree = "<group>";
-		};
-		6DAD0F4019D366EF00702A3B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6DAD0F4519D366F000702A3B /* CryptoSwift.framework */,
-				6DAD0F4719D366F000702A3B /* CryptoSwiftTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		6DAD0F4A19D367C700702A3B /* Authentication */ = {
@@ -520,7 +477,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				6DAD0F4919D366FD00702A3B /* PBXTargetDependency */,
 			);
 			name = KidoZenSwiftSDK;
 			productName = KidoZenSwiftSDK;
@@ -571,12 +527,6 @@
 			mainGroup = 6DAD0E2B19D34B5900702A3B;
 			productRefGroup = 6DAD0E3619D34B5900702A3B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 6DAD0F4019D366EF00702A3B /* Products */;
-					ProjectRef = 6DAD0F3F19D366EF00702A3B /* CryptoSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				6DAD0E3419D34B5900702A3B /* KidoZenSwiftSDK */,
@@ -584,23 +534,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		6DAD0F4519D366F000702A3B /* CryptoSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CryptoSwift.framework;
-			remoteRef = 6DAD0F4419D366F000702A3B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6DAD0F4719D366F000702A3B /* CryptoSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CryptoSwiftTests.xctest;
-			remoteRef = 6DAD0F4619D366F000702A3B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6DAD0E3319D34B5900702A3B /* Resources */ = {
@@ -679,14 +612,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6DAD0F4919D366FD00702A3B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CryptoSwift;
-			targetProxy = 6DAD0F4819D366FD00702A3B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6DAD0E4619D34B5900702A3B /* Debug */ = {

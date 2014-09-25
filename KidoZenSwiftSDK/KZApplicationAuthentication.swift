@@ -266,12 +266,12 @@ public class KZApplicationAuthentication : KZObject {
     
     private func ipTokenCacheKey() -> String!
     {
-        return "\(self.tenantMarketPlace!)\(self.lastCredentials?.provider)\(self.lastCredentials?.username)\(self.lastCredentials?.password)-ipToken".md5()
+        return "\(self.tenantMarketPlace!)\(self.lastCredentials?.provider)\(self.lastCredentials?.username)\(self.lastCredentials?.password)-ipToken"
     }
     
     private func accessTokenCacheKey() -> String!
     {
-        return "\(self.tenantMarketPlace!)\(self.lastCredentials?.provider)\(self.lastCredentials?.username)\(self.lastCredentials?.password)".md5()
+        return "\(self.tenantMarketPlace!)\(self.lastCredentials?.provider)\(self.lastCredentials?.username)\(self.lastCredentials?.password)"
     }
     
     private func completeAuthenticationFlow()

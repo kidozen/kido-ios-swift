@@ -1,0 +1,10 @@
+framework module KidoZenSwiftSDK {
+  umbrella header "KidoZenSwiftSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module KidoZenSwiftSDK.Swift {
+    header "KidoZenSwiftSDK-Swift.h"
+}

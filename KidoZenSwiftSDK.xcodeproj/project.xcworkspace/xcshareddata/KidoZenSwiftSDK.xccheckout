@@ -22,7 +22,7 @@
 		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
 		<string>../..</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
-		<string>../..thirdParty/CryptoSwift/</string>
+		<string>../..thirdParty/CryptoSwift</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>bitbucket.org:nmiyasato/kidozenswiftsdk.git</string>

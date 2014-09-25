@@ -10,6 +10,8 @@
 	<string>CryptoSwift</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
+		<string>bitbucket.org:nmiyasato/kidozenswiftsdk.git</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
 		<string>github.com:krzyzanowskim/CryptoSwift.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>CryptoSwift.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
+		<string>../../../..</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1C5983FB79D617BF5E7ABFA1993B687136C278BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
