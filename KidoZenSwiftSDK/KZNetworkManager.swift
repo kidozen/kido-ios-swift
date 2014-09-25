@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KZNetworkManager {
+public class KZNetworkManager {
     private let manager : AFHTTPSessionManager!
     private let baseURLString: String?
     

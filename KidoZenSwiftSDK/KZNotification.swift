@@ -9,7 +9,7 @@
 import Foundation
 
 
-class KZNotification : KZBaseService {
+public class KZNotification : KZBaseService {
     private let kUniqueIdentificationFilename = "kUniqueIdentificationFilename"
     private let uniqueIdentifier : String?
 

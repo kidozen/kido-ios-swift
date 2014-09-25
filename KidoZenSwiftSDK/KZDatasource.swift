@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KZDatasource : KZBaseService {
+public class KZDatasource : KZBaseService {
 
     override init (endPoint:String!, name:String!, tokenController:KZTokenController!)
     {

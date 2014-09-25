@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KZQueue : KZBaseService
+public class KZQueue : KZBaseService
 {
     override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
     {

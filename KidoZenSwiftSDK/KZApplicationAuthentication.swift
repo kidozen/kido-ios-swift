@@ -21,7 +21,7 @@ struct KZCredentials {
     Passive authentication (using oAuth2 supported platforms), and it also handles authentication
     when you only have your application's key.
 */
-class KZApplicationAuthentication : KZObject {
+public class KZApplicationAuthentication : KZObject {
     
     var applicationConfiguration : KZApplicationConfiguration?
     var tenantMarketPlace : String?
@@ -41,7 +41,7 @@ class KZApplicationAuthentication : KZObject {
     
     var lastCredentials : KZCredentials?
     
-    init(applicationConfiguration:KZApplicationConfiguration?, tenantMarketPlace:String?, strictSSL:Bool?)
+    public init(applicationConfiguration:KZApplicationConfiguration?, tenantMarketPlace:String?, strictSSL:Bool?)
     {
         
         self.applicationConfiguration = applicationConfiguration
@@ -60,7 +60,7 @@ class KZApplicationAuthentication : KZObject {
         self.configureTokenRefresh()
     }
     
-    func authenticate(#user : String,
+    public func authenticate(#user : String,
         provider : String,
         password : String,
         success : kzDidFinishCb?,
@@ -75,7 +75,7 @@ class KZApplicationAuthentication : KZObject {
     }
     
     /// Authentication using application Key
-    func handleAuthentication(#applicationKey:String?,
+    public func handleAuthentication(#applicationKey:String?,
                                   willStartCb:kzVoidCb?,
                                       success:kzDidFinishCb?,
                                       failure:kzDidFailCb?)
@@ -113,7 +113,7 @@ class KZApplicationAuthentication : KZObject {
                                 })
     }
     
-    func doPassiveAuthentication(success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func doPassiveAuthentication(success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.didFinishAuthenticationCb = success
         self.didFailAuthenticationCb = failure

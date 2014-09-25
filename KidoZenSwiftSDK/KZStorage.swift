@@ -11,7 +11,7 @@ import Foundation
 let kStorageErrorDomain = "KZStorageErrorDomain";
 let ENULLMETADATA = 2
 
-class KZStorage : KZBaseService
+public class KZStorage : KZBaseService
 {
     override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
     {

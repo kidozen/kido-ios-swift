@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum  LogLevel : Int {
+public enum  LogLevel : Int {
     case LogLevelVerbose = 0,
     LogLevelInfo,
     LogLevelWarning,
@@ -17,7 +17,7 @@ enum  LogLevel : Int {
     
 }
 
-class KZLogging : KZBaseService {
+public class KZLogging : KZBaseService {
     
     enum LogType : Int {
         case Query = 0,
@@ -38,7 +38,7 @@ class KZLogging : KZBaseService {
         super.init(endPoint: endPoint, name: nil, tokenController: tokenController)
     }
 
-    func write(object:Dictionary<String, AnyObject>?,
+    public func write(object:Dictionary<String, AnyObject>?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,
         success:kzDidFinishCb?,
@@ -47,7 +47,7 @@ class KZLogging : KZBaseService {
         self.write(object, message: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    func write(object:Dictionary<String, AnyObject>?,
+    public func write(object:Dictionary<String, AnyObject>?,
               message:String?,
                 level:LogLevel!,
           willStartCb:kzVoidCb?,
@@ -74,7 +74,7 @@ class KZLogging : KZBaseService {
         })
     }
     
-    func query(query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Query
 
@@ -87,7 +87,7 @@ class KZLogging : KZBaseService {
     }
 
     
-    func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Query
         
@@ -97,7 +97,7 @@ class KZLogging : KZBaseService {
         
     }
     
-    func clear(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func clear(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Clear
         

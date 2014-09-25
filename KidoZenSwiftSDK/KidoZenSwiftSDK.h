@@ -15,8 +15,7 @@ FOUNDATION_EXPORT double KidoZenSwiftSDKVersionNumber;
 //! Project version string for KidoZenSwiftSDK.
 FOUNDATION_EXPORT const unsigned char KidoZenSwiftSDKVersionString[];
 
-#import "AFNetworking.h"
 #import "AFNetworkActivityLogger.h"
 #import "CrashReporter.h"
 #import "SRWebSocket.h"
-
+#import "AFNetworking.h"

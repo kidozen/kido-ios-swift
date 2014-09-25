@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KZBaseService {
+public class KZBaseService {
     
     internal let networkManager : KZNetworkManager!
     internal let endPoint : String!

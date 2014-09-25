@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct KZResponse {
-    let urlRequestOperation : NSURLSessionDataTask?
-    let response : AnyObject?
-    let error : NSError?
+public struct KZResponse {
+    public let urlRequestOperation : NSURLSessionDataTask?
+    public let response : AnyObject?
+    public let error : NSError?
     
-    init(urlRequestOperation:NSURLSessionDataTask?, response:AnyObject?, error:NSError?) {
+    public init(urlRequestOperation:NSURLSessionDataTask?, response:AnyObject?, error:NSError?) {
         self.urlRequestOperation = urlRequestOperation
         self.response = response
         self.error = error
     }
     
-    init(fromSessionDataTask operation:NSURLSessionDataTask!) {
+    public init(fromSessionDataTask operation:NSURLSessionDataTask!) {
         self.urlRequestOperation = operation
         self.response = operation.response
         self.error = operation.error

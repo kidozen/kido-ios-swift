@@ -8,17 +8,17 @@
 
 import Foundation
 
-typealias kzDidFinishCb = (response: KZResponse?, responseObject: AnyObject?) -> ()
-typealias kzDidFailCb = (response: KZResponse?, error: NSError?) -> ()
+public typealias kzDidFinishCb = (response: KZResponse?, responseObject: AnyObject?) -> ()
+public typealias kzDidFailCb = (response: KZResponse?, error: NSError?) -> ()
 
-typealias kzVoidCb = () -> ()
-typealias kzAnyObjectCb = AnyObject? -> ()
+public typealias kzVoidCb = () -> ()
+public typealias kzAnyObjectCb = AnyObject? -> ()
 
-typealias kzErrorCb = NSError? -> ()
+public typealias kzErrorCb = NSError? -> ()
 
-typealias kzRefreshTokenCb = (kzDidFinishCb?, kzDidFailCb?) -> ()
+public typealias kzRefreshTokenCb = (kzDidFinishCb?, kzDidFailCb?) -> ()
 
-typealias kzDidFinishPassiveTokenCb = (token : String?, refreshToken:String?) -> ()
-typealias kzDidFailPassiveTokenCb = (error: NSError?) -> ()
+public typealias kzDidFinishPassiveTokenCb = (token : String?, refreshToken:String?) -> ()
+public typealias kzDidFailPassiveTokenCb = (error: NSError?) -> ()
 
-typealias kzDidFinishWebSocketCb = Dictionary<String, AnyObject> -> ()
+public typealias kzDidFinishWebSocketCb = Dictionary<String, AnyObject> -> ()

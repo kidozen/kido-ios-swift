@@ -791,6 +791,9 @@
 					"$(inherited)",
 					/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					$SRCROOT/thirdParty/PLCrashReporter/CrashReporter.framework/Headers,
+					$SRCROOT/thirdParty/AFNetworking,
+					$SRCROOT/thirdParty/SocketRocket,
+					$SRCROOT/thirdParty/AFNetworkActivityLogger,
 				);
 				INFOPLIST_FILE = KidoZenSwiftSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -818,6 +821,9 @@
 					"$(inherited)",
 					/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					$SRCROOT/thirdParty/PLCrashReporter/CrashReporter.framework/Headers,
+					$SRCROOT/thirdParty/AFNetworking,
+					$SRCROOT/thirdParty/SocketRocket,
+					$SRCROOT/thirdParty/AFNetworkActivityLogger,
 				);
 				INFOPLIST_FILE = KidoZenSwiftSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
