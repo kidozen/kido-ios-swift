@@ -24,18 +24,18 @@ import Foundation
 */
 class KZApplicationServices {
 
-    private var applicationConfiguration : KZApplicationConfiguration?
-    private weak var tokenController : KZTokenController!
-    private var strictSSL : Bool?
+    private var applicationConfiguration : KZApplicationConfiguration
+    private weak var tokenController : KZTokenController?
+    private var strictSSL : Bool
     
     
     var loggingService : KZLogging!
     var notificationsService : KZNotification!
     var mailService : KZMail!
     
-    init( applicationConfiguration:KZApplicationConfiguration?,
-                   tokenController:KZTokenController?,
-                         strictSSL:Bool?)
+    init( applicationConfiguration:KZApplicationConfiguration,
+                   tokenController:KZTokenController,
+                         strictSSL:Bool)
     {
         self.applicationConfiguration = applicationConfiguration
         self.tokenController = tokenController
@@ -47,49 +47,49 @@ class KZApplicationServices {
         
     }
     
-    func datasource(name:String?) -> KZDatasource
+    func datasource(#name:String) -> KZDatasource
     {
-        var endPoint = applicationConfiguration?.datasource?.stringByAppendingString("/")
+        var endPoint = applicationConfiguration.datasource!.stringByAppendingString("/") // validate it ends with '/'
         var service = KZDatasource(endPoint: endPoint, name: name, tokenController:tokenController)
         service.strictSSL = strictSSL
         return service
     }
     
-    func configuration(name:String?) -> KZConfiguration
+    func configuration(#name:String) -> KZConfiguration
     {
-        var endPoint = applicationConfiguration?.config
+        var endPoint = applicationConfiguration.config
         var service = KZConfiguration(endPoint: endPoint, name: name, tokenController: tokenController)
         service.strictSSL = strictSSL
         return service
     }
     
-    func queue(name:String?) -> KZQueue
+    func queue(#name:String) -> KZQueue
     {
-        var endPoint = applicationConfiguration?.queue
+        var endPoint = applicationConfiguration.queue
         var service = KZQueue(endPoint: endPoint, name: name, tokenController: tokenController)
         service.strictSSL = strictSSL
         return service
     }
     
-    func storage(name:String?) -> KZStorage
+    func storage(#name:String) -> KZStorage
     {
-        var endPoint = applicationConfiguration?.storage
+        var endPoint = applicationConfiguration.storage
         var service = KZStorage(endPoint: endPoint, name: name, tokenController: tokenController)
         service.strictSSL = strictSSL
         return service
     }
     
-    func SMSSender(number:String?) -> KZSMSSender
+    func SMSSender(#number:String) -> KZSMSSender
     {
-        var endPoint = applicationConfiguration?.sms
+        var endPoint = applicationConfiguration.sms
         var sender = KZSMSSender(endPoint: endPoint, name: number, tokenController: tokenController)
         sender.strictSSL = strictSSL
         return sender
     }
     
-    func LOBServiceWithName(name:String?) -> KZService
+    func LOBServiceWithName(#name:String) -> KZService
     {
-        var endPoint = "\(self.applicationConfiguration!.url!)api/services/\(name!)/"
+        var endPoint = "\(self.applicationConfiguration.url)api/services/\(name)/"
             
         var service = KZService(endPoint: endPoint, name: name, tokenController: tokenController)
         service.strictSSL = strictSSL
@@ -98,7 +98,7 @@ class KZApplicationServices {
     
     private func initializeLogging()
     {
-        self.loggingService = KZLogging(endPoint: self.applicationConfiguration?.loggingV3,
+        self.loggingService = KZLogging(endPoint: self.applicationConfiguration.loggingV3,
                                             name: nil,
                                  tokenController: tokenController)
         self.loggingService.strictSSL = self.strictSSL
@@ -106,14 +106,14 @@ class KZApplicationServices {
     
     private func initializeMail()
     {
-        self.mailService = KZMail(endPoint: self.applicationConfiguration?.email, name: nil, tokenController: tokenController)
+        self.mailService = KZMail(endPoint: self.applicationConfiguration.email, name: nil, tokenController: tokenController)
         self.mailService.strictSSL = self.strictSSL
     }
     
     private func initializePushNotifications()
     {
-        self.notificationsService = KZNotification(endPoint: self.applicationConfiguration?.notification,
-            name: self.applicationConfiguration?.name,
+        self.notificationsService = KZNotification(endPoint: self.applicationConfiguration.notification,
+            name: self.applicationConfiguration.name,
             tokenController: tokenController)
         self.notificationsService.strictSSL = self.strictSSL
     }

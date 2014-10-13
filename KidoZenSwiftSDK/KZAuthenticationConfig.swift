@@ -18,35 +18,35 @@ let kProtocolKey = "protocol";
 */
 public class KZAuthenticationConfig : KZObject {
     
-    var applicationScope : String!
-    var authServiceScope : String!
-    var authServiceEndpoint : String!
-    var oauthTokenEndpoint : String!
-    var signInUrl : String!
+    var applicationScope : String
+    var authServiceScope : String
+    var authServiceEndpoint : String
+    var oauthTokenEndpoint : String
+    var signInUrl : String
     
-    private var identityProviders : Dictionary<String,Dictionary<String, String>>?
+    private var identityProviders : Dictionary<String,Dictionary<String, String>>
     
     
     init(fromDictionary dictionary: Dictionary<String, AnyObject>) {
-        applicationScope = (dictionary["applicationScope"] as AnyObject?) as? String
-        authServiceScope = (dictionary["authServiceScope"] as AnyObject?) as? String
-        authServiceEndpoint = (dictionary["authServiceEndpoint"] as AnyObject?) as? String
-        oauthTokenEndpoint = (dictionary["oauthTokenEndpoint"] as AnyObject?) as? String
-        signInUrl = (dictionary["signInUrl"] as AnyObject?) as? String
-        identityProviders = (dictionary["identityProviders"] as AnyObject?) as? Dictionary<String,Dictionary<String, String>>
+        applicationScope = (dictionary["applicationScope"] as AnyObject?) as String
+        authServiceScope = (dictionary["authServiceScope"] as AnyObject?) as String
+        authServiceEndpoint = (dictionary["authServiceEndpoint"] as AnyObject?) as String
+        oauthTokenEndpoint = (dictionary["oauthTokenEndpoint"] as AnyObject?) as String
+        signInUrl = (dictionary["signInUrl"] as AnyObject?) as String
+        identityProviders = (dictionary["identityProviders"] as AnyObject?) as Dictionary<String,Dictionary<String, String>>
         super.init()
     }
     
-    func protocolFor(provider: String?) -> String? {
+    func protocolFor(provider: String) -> String? {
         
-        let protocolDictionary = identityProviders?[provider!]
+        let protocolDictionary = identityProviders[provider]
         
         return protocolDictionary?[kProtocolKey] as String?
 
     }
     
-    func endPointFor(provider:String?) -> String? {
-        let protocolDictionary = identityProviders?[provider!]
+    func endPointFor(provider:String) -> String? {
+        let protocolDictionary = identityProviders[provider]
         return protocolDictionary?[kEndPointKey] as String?
     }
     

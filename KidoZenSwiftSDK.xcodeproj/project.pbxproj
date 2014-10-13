@@ -198,6 +198,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D7A281B19E85F61005D0F5B /* DataViz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataViz;
+			sourceTree = "<group>";
+		};
 		6DAD0E2B19D34B5900702A3B = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +229,7 @@
 			children = (
 				6DAD0EC019D3573800702A3B /* KZObject.swift */,
 				6DAD0EC219D3575900702A3B /* Application */,
+				6D7A281B19E85F61005D0F5B /* DataViz */,
 				6DAD0F4A19D367C700702A3B /* Authentication */,
 				6DAD0F4B19D367E300702A3B /* IdentityProviders */,
 				6DAD0F4C19D3681C00702A3B /* Services */,

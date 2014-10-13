@@ -27,13 +27,14 @@ public class KZApplication : KZObject {
     internal var applicationAuthentication : KZApplicationAuthentication!
     
     private var applicationConfiguration = KZApplicationConfiguration()
-    private var applicationServices : KZApplicationServices?
+    private var applicationServices : KZApplicationServices!
     private var crashReporter : KZCrashReporter?
 
-    private var tenantMarketPlace : String!
-    private var applicationKey : String!
-    private var applicationName : String!
-    private var strictSSL : Bool!
+    private var tenantMarketPlace : String
+    private var applicationKey : String
+    private var applicationName : String
+    private var strictSSL : Bool
+    
     
     /**
      *
@@ -47,16 +48,21 @@ public class KZApplication : KZObject {
      *
      */
     public init(tenantMarketPlace:String,
-        applicationName:String,
-        applicationKey:String,
-        strictSSL:Bool)
+                  applicationName:String,
+                   applicationKey:String,
+                        strictSSL:Bool)
     {
-        super.init()
 
         self.applicationKey = applicationKey
-        self.tenantMarketPlace = self.sanitizeTennantMarketPlace(tenantMarketPlace)
+        
+        // Sanitize the tenantMarketPlace.
+        var characterSet = NSMutableCharacterSet.whitespaceCharacterSet()
+        characterSet.addCharactersInString("/")
+        self.tenantMarketPlace = tenantMarketPlace.stringByTrimmingCharactersInSet(characterSet)
+        
         self.applicationName = applicationName
         self.strictSSL = strictSSL
+        super.init()
 
     }
     
@@ -79,24 +85,17 @@ public class KZApplication : KZObject {
                                             success:
             {
                 [weak self] (response, responseObject) -> () in
-                    self?.configureAuthentication()
+                    self!.configureAuthentication()
                 
-                    self?.configureApplicationServices()
+                    self!.configureApplicationServices()
                 
-                    self?.applicationAuthentication?.handleAuthentication(applicationKey: self?.applicationKey,
+                    self!.applicationAuthentication.handleAuthentication(applicationKey: self!.applicationKey,
                                                                              willStartCb: nil,
                                                                                  success: initializeServicesSuccessCb,
                                                                                  failure: initializeServicesFailureCb)
 
         }, failure:initializeServicesFailureCb)
     }
-    private func sanitizeTennantMarketPlace(tenantMarketPlace:String?) -> String?
-    {
-        var characterSet = NSMutableCharacterSet.whitespaceCharacterSet()
-        characterSet.addCharactersInString("/")
-        return tenantMarketPlace?.stringByTrimmingCharactersInSet(characterSet)
-    }
-    
 }
 
 
@@ -104,27 +103,27 @@ public class KZApplication : KZObject {
 // Authentication
 extension KZApplication {
     
-    public func authenticate(  user : NSString,
-        provider : NSString,
-        password : NSString,
-        success : kzDidFinishCb?,
-        failure : kzDidFailCb?)
+    public func authenticate(  #user : NSString,
+                            provider : NSString,
+                            password : NSString,
+                             success : kzDidFinishCb?,
+                             failure : kzDidFailCb?)
     {
         self.didFinishAuthenticationCb = success
         self.didFailAuthenticationCb = failure
         
         // If configuration has been downloaded, then call authentication, otherwise
         // call initServices and then authenticate.
-        if (self.applicationAuthentication? != nil && self.applicationServices? != nil) {
+        if ( self.isConfigured() ) {
             
-            self.authenticate(user, provider: provider, password: password)
+            self.authenticate(user: user, provider: provider, password: password)
             
         } else {
             
-            self.initializeServices(willStartCb: nil,
-                success: {
+            self.initializeServices(willStartCb: nil, success:
+                {
                     [weak self](response, responseObject) in
-                    self!.authenticate(user, provider: provider, password: password)
+                    self!.authenticate(user:user, provider: provider, password: password)
                 }, failure: {
                     (response, error) in
                     
@@ -140,11 +139,16 @@ extension KZApplication {
         self.applicationAuthentication.doPassiveAuthentication(success, failure: failure)
     }
     
-    private func authenticate(  user : NSString,
-        provider : NSString,
-        password : NSString)
+    private func isConfigured() -> Bool
     {
-        self.applicationAuthentication?.authenticate(   user:user,
+        return self.applicationAuthentication? != nil && self.applicationServices? != nil
+    }
+    
+    private func authenticate(  #user : NSString,
+                             provider : NSString,
+                             password : NSString)
+    {
+        self.applicationAuthentication.authenticate(   user:user,
             provider:provider,
             password:password,
             success:self.didFinishAuthenticationCb,
@@ -161,7 +165,7 @@ extension KZApplication {
     
     func isAuthenticated() -> Bool
     {
-        return self.applicationAuthentication?.authenticated? == true
+        return self.applicationAuthentication.authenticated == true
     }
     
 }
@@ -169,74 +173,75 @@ extension KZApplication {
 /// Services, Datasource, Configuration, Queue, etc...
 extension KZApplication {
     
-    public func datasource(name:String?) -> KZDatasource?
+    public func datasource(#name:String) -> KZDatasource
     {
-        return self.applicationServices?.datasource(name)
+        return self.applicationServices.datasource(name: name)
     }
     
-    public func configuration(name:String?) -> KZConfiguration?
+    public func configuration(#name:String) -> KZConfiguration
     {
-        return self.applicationServices?.configuration(name)
+        return self.applicationServices.configuration(name: name)
     }
     
-    public func queue(name:String?) -> KZQueue?
+    public func queue(name:String) -> KZQueue
     {
-        return self.applicationServices?.queue(name)
+        return self.applicationServices.queue(name:name)
     }
 
-    public func storage(name:String?) -> KZStorage?
+    public func storage(name:String) -> KZStorage
     {
-        return self.applicationServices?.storage(name)
+        return self.applicationServices.storage(name: name)
     }
     
-    public func SMSSender(number:String?) -> KZSMSSender?
+    public func SMSSender(number:String) -> KZSMSSender
     {
-        return self.applicationServices?.SMSSender(number)
+        return self.applicationServices.SMSSender(number:number)
     }
 
-    public func LOBServiceWithName(name:String?) -> KZService?
+    public func LOBServiceWithName(name:String) -> KZService
     {
-        return self.applicationServices?.LOBServiceWithName(name)
+        return self.applicationServices.LOBServiceWithName(name:name)
     }
 }
 
 // Services - Logging
 extension KZApplication {
     
-    public func write(object:Dictionary<String, AnyObject>?,
+    public func write(#object:Dictionary<String, AnyObject>?,
         message:String?,
-        level:LogLevel!,
+        level:LogLevel,
         willStartCb:kzVoidCb?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
     {
-        self.loggingService?.write(object, message:message,
+        self.loggingService.write(object, message:message,
                                              level: level,
                                        willStartCb: willStartCb,
                                            success: success,
                                            failure: failure)
     }
     
-    public func allLogMessages(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func allLogMessages(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.loggingService?.all(willStartCb, success: success, failure: failure)
+        self.loggingService.all(willStartCb, success: success, failure: failure)
     }
     
-    public func clear(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func clear(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.loggingService?.clear(willStartCb, success: success, failure: failure)
+        self.loggingService.clear(willStartCb, success: success, failure: failure)
     }
     
     private func configureApplicationServices()
     {
         self.applicationServices = KZApplicationServices(applicationConfiguration: self.applicationConfiguration,
-                                                                  tokenController: self.applicationAuthentication?.tokenController,
+                                                                  tokenController: self.applicationAuthentication.tokenController,
                                                                         strictSSL: self.strictSSL)
         
-        self.loggingService = self.applicationServices!.loggingService
-        self.mailService = self.applicationServices!.mailService
-        self.notificationService = self.applicationServices!.notificationsService
-
+        self.loggingService = self.applicationServices.loggingService
+        self.mailService = self.applicationServices.mailService
+        self.notificationService = self.applicationServices.notificationsService
+        // TODO: Data visualization
+        // TODO: Analytics service.
     }
 }
 
@@ -250,7 +255,7 @@ extension KZApplication {
     * @parameters is a required dictionary with the following keys:
     *              from, to, subject, bodyHtml, bodyText
     */
-    public func sendMail(parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
+    public func sendMail(#parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.mailService.send(parameters, willStartCb: willStartCb, success: success, failure: failure)
     }
     
@@ -263,7 +268,7 @@ extension KZApplication {
     *              from, to, subject, bodyHtml, bodyText
     * @param attachments is a dictionary where the key is the name of the attachment and the value is the NSData to be sent.
     */
-    public func sendMail(parameters:Dictionary<String, String>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
+    public func sendMail(#parameters:Dictionary<String, String>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.mailService.send(parameters, attachments: attachments, willStartCb: willStartCb, success: success, failure: failure)
     }
 }
@@ -273,7 +278,7 @@ extension KZApplication {
 
     // Will enable crash reporting and, in case there is a dump to be sent to the server, it'll do so and it'll call 
     // the corresponding callbacks.
-    public func enableCrashReporter(willStartCb:kzVoidCb?, didSendCrashReportCb:kzDidFinishCb?, didFailCrashReportCb:kzDidFailCb?)
+    public func enableCrashReporter(#willStartCb:kzVoidCb?, didSendCrashReportCb:kzDidFinishCb?, didFailCrashReportCb:kzDidFailCb?)
     {
         if (self.crashReporter? == nil || self.crashReporter?.isInitialized == false) {
             if (NSGetUncaughtExceptionHandler() != nil) {
