@@ -91,6 +91,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D7AA28419EDC12000E0701C /* KidoZenPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KidoZenPlayground.playground; sourceTree = "<group>"; };
 		6DAD0E3519D34B5900702A3B /* KidoZenSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KidoZenSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E3919D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KidoZenSwiftSDK.h; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		6DAD0E2B19D34B5900702A3B = {
 			isa = PBXGroup;
 			children = (
+				6D7AA28419EDC12000E0701C /* KidoZenPlayground.playground */,
 				6DAD0E3719D34B5900702A3B /* KidoZenSwiftSDK */,
 				6DAD0E4119D34B5900702A3B /* KidoZenSwiftSDKTests */,
 				6DAD0E4E19D34B8E00702A3B /* thidParty */,
