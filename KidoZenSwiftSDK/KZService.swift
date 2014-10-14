@@ -10,7 +10,7 @@ import Foundation
 
 public class KZService : KZBaseService {
     
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
+    override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.configureNetworkManager()

@@ -14,27 +14,28 @@ import Foundation
 */
 class KZWRAPv09IdentityProvider : KZObject, KZIdentityProviderProtocol {
  
-    var strictSSL: Bool?
+    var strictSSL: Bool!
     
-    var wrapName : String?
-    var wrapPassword : String?
-    var wrapScope : String?
+    var wrapName : String!
+    var wrapPassword : String!
+    var wrapScope : String!
     
     private var networkManager : KZNetworkManager?
+    
     
     func configure(configuration:AnyObject?) {
         
     }
     
-    func initialize(user:String?, password:String?, scope:String?) {
-        wrapName = user
+    func initialize(#username:String, password:String, scope:String) {
+        wrapName = username
         wrapPassword = password
         wrapScope = scope
     }
     
-    func requestToken(identityProviderUrl:String?, willStartCb:kzVoidCb?, success:KZRequestTokenCompletionBlock?, failure:kzDidFailCb?) {
+    func requestToken(#identityProviderUrl:String, willStartCb:kzVoidCb?, success:KZRequestTokenCompletionBlock?, failure:kzDidFailCb?) {
             
-        networkManager = KZNetworkManager(baseURLString: identityProviderUrl!, strictSSL: strictSSL!, tokenController:nil)
+        networkManager = KZNetworkManager(baseURLString: identityProviderUrl, strictSSL: strictSSL, tokenController:nil)
         networkManager?.configureResponseSerializer(AFHTTPResponseSerializer())
 
         let parameters = [  "wrap_name" : wrapName!,

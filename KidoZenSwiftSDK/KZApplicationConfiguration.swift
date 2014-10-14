@@ -49,9 +49,9 @@ public class KZApplicationConfiguration : KZObject {
     public var img: String?
     public var rating : String?
     public var html5Url : String?
-    public var authConfig : KZAuthenticationConfig?
+    public var authConfig : KZAuthenticationConfig!
     
-    private var networkManager : KZNetworkManager?
+    private var networkManager : KZNetworkManager!
     
     internal func setup(#tenant: String,
         applicationName: String,

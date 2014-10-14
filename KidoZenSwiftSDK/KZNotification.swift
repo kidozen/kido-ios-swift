@@ -13,7 +13,7 @@ public class KZNotification : KZBaseService {
     private let kUniqueIdentificationFilename = "kUniqueIdentificationFilename"
     private let uniqueIdentifier : String?
 
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
+    override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.tokenController = tokenController
@@ -27,7 +27,7 @@ public class KZNotification : KZBaseService {
         willStartCb?()
         self.addAuthorizationHeader()
 
-        let path = "subscriptions/\(self.name!)/\(channel)"
+        let path = "subscriptions/\(self.name)/\(channel)"
         let params = ["platform": "apns",
                     "subscriptionId": deviceToken,
                     "deviceId" :self.uniqueIdentifier!]
@@ -43,7 +43,7 @@ public class KZNotification : KZBaseService {
         willStartCb?()
         self.addAuthorizationHeader()
 
-        let path = "push/\(self.name!)/\(channel)"
+        let path = "push/\(self.name)/\(channel)"
         networkManager.POST(path: path,
             parameters: notification,
             success: success,
@@ -55,7 +55,7 @@ public class KZNotification : KZBaseService {
         willStartCb?()
         self.addAuthorizationHeader()
 
-        let path = "devices/\(self.uniqueIdentifier!)/\(self.name!)"
+        let path = "devices/\(self.uniqueIdentifier)/\(self.name)"
         networkManager.GET(  path: path,
                          parameters: nil,
                             success: success,
@@ -68,7 +68,7 @@ public class KZNotification : KZBaseService {
         willStartCb?()
         self.addAuthorizationHeader()
 
-        let path = "channels/\(self.name!)"
+        let path = "channels/\(self.name)"
         networkManager.GET(  path: path,
             parameters: nil,
             success: success,
@@ -81,7 +81,7 @@ public class KZNotification : KZBaseService {
         willStartCb?()
         self.addAuthorizationHeader()
 
-        let path = "subscriptions/\(self.name!)/\(channel)/\(deviceToken)"
+        let path = "subscriptions/\(self.name)/\(channel)/\(deviceToken)"
         
         networkManager.DELETE(path: path,
                             parameters: nil,

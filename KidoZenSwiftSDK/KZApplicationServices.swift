@@ -57,32 +57,32 @@ class KZApplicationServices {
     
     func configuration(#name:String) -> KZConfiguration
     {
-        var endPoint = applicationConfiguration.config
-        var service = KZConfiguration(endPoint: endPoint, name: name, tokenController: tokenController)
+        var endPoint = applicationConfiguration.config!
+        var service = KZConfiguration(endPoint: endPoint, name: name, tokenController: tokenController!)
         service.strictSSL = strictSSL
         return service
     }
     
     func queue(#name:String) -> KZQueue
     {
-        var endPoint = applicationConfiguration.queue
-        var service = KZQueue(endPoint: endPoint, name: name, tokenController: tokenController)
+        var endPoint = applicationConfiguration.queue!
+        var service = KZQueue(endPoint: endPoint, name: name, tokenController: tokenController!)
         service.strictSSL = strictSSL
         return service
     }
     
     func storage(#name:String) -> KZStorage
     {
-        var endPoint = applicationConfiguration.storage
-        var service = KZStorage(endPoint: endPoint, name: name, tokenController: tokenController)
+        var endPoint = applicationConfiguration.storage!
+        var service = KZStorage(endPoint: endPoint, name: name, tokenController: tokenController!)
         service.strictSSL = strictSSL
         return service
     }
     
     func SMSSender(#number:String) -> KZSMSSender
     {
-        var endPoint = applicationConfiguration.sms
-        var sender = KZSMSSender(endPoint: endPoint, name: number, tokenController: tokenController)
+        var endPoint = applicationConfiguration.sms!
+        var sender = KZSMSSender(endPoint: endPoint, name: number, tokenController: tokenController!)
         sender.strictSSL = strictSSL
         return sender
     }
@@ -91,14 +91,14 @@ class KZApplicationServices {
     {
         var endPoint = "\(self.applicationConfiguration.url)api/services/\(name)/"
             
-        var service = KZService(endPoint: endPoint, name: name, tokenController: tokenController)
+        var service = KZService(endPoint: endPoint, name: name, tokenController: tokenController!)
         service.strictSSL = strictSSL
         return service
     }
     
     private func initializeLogging()
     {
-        self.loggingService = KZLogging(endPoint: self.applicationConfiguration.loggingV3,
+        self.loggingService = KZLogging(endPoint: self.applicationConfiguration.loggingV3!,
                                             name: nil,
                                  tokenController: tokenController)
         self.loggingService.strictSSL = self.strictSSL
@@ -106,15 +106,15 @@ class KZApplicationServices {
     
     private func initializeMail()
     {
-        self.mailService = KZMail(endPoint: self.applicationConfiguration.email, name: nil, tokenController: tokenController)
+        self.mailService = KZMail(endPoint: self.applicationConfiguration.email!, name: "", tokenController: tokenController!)
         self.mailService.strictSSL = self.strictSSL
     }
     
     private func initializePushNotifications()
     {
-        self.notificationsService = KZNotification(endPoint: self.applicationConfiguration.notification,
-            name: self.applicationConfiguration.name,
-            tokenController: tokenController)
+        self.notificationsService = KZNotification(endPoint: self.applicationConfiguration.notification!,
+            name: self.applicationConfiguration.name!,
+            tokenController: tokenController!)
         self.notificationsService.strictSSL = self.strictSSL
     }
 }

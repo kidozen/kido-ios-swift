@@ -15,7 +15,7 @@ typealias KZRequestTokenCompletionBlock = String? -> ()
 */
 protocol KZIdentityProviderProtocol {
     
-    var strictSSL: Bool? { get set }
+    var strictSSL: Bool! { get set }
 
     
     /**
@@ -32,10 +32,10 @@ protocol KZIdentityProviderProtocol {
     * @param password The password for the user
     * @param scope The identity scope
     */
-    func initialize(username:String?, password:String?, scope:String?)
+    func initialize(#username:String, password:String, scope:String)
     
     /**
     * This method executes a request to the Identity Provider
     */
-    func requestToken(identityProviderUrl:String?, willStartCb:kzVoidCb?, success:KZRequestTokenCompletionBlock?, failure:kzDidFailCb?)
+    func requestToken(#identityProviderUrl:String, willStartCb:kzVoidCb?, success:KZRequestTokenCompletionBlock?, failure:kzDidFailCb?)
 }

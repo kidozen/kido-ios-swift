@@ -23,11 +23,11 @@ let kExpiresOnKey = "ExpiresOn"
 */
 public class KZTokenController : KZObject {
     
-    var rawAccessToken : String?
-    var kzToken : String?
-    var ipToken : String?
-    var refreshToken : String?
-    var tokenRefresher : KZTokenRefresher?
+    var rawAccessToken : String!
+    var kzToken : String!
+    var ipToken : String!
+    var refreshToken : String!
+    var tokenRefresher : KZTokenRefresher!
     var currentRoles : Array<String>!
     var currentClaims : Dictionary<String, String>!
     
@@ -41,14 +41,17 @@ public class KZTokenController : KZObject {
     }
     
     var currentAuthentication : KZCurrentAuthentication! {
+        
+        // We need to observe changes for the currentAuthentication, as the refresh function
+        // differs on whether you were authenticated using user/pass, appKey and passiveCb.
         didSet {
             switch self.currentAuthentication! {
             case .KZUsernamePassword:
-                self.tokenRefresher?.refreshCurrentToken = self.tokenRefresher?.refreshUsernameCb
+                self.tokenRefresher.refreshCurrentToken = self.tokenRefresher.refreshUsernameCb
             case .KZApplicationKey:
-                self.tokenRefresher?.refreshCurrentToken = self.tokenRefresher?.refreshApplicationKeyCb
+                self.tokenRefresher.refreshCurrentToken = self.tokenRefresher.refreshApplicationKeyCb
             case .KZPassiveAuthentication:
-                self.tokenRefresher?.refreshCurrentToken = self.tokenRefresher?.refreshPassiveCb
+                self.tokenRefresher.refreshCurrentToken = self.tokenRefresher.refreshPassiveCb
             default:
                 assert(false, "Error")
             }
@@ -56,24 +59,24 @@ public class KZTokenController : KZObject {
         
     }
     
-    private var futureTimestamp : Int?
+    private var futureTimestamp : Int!
     
-    func updateAccessToken(token:String?, accessTokenKey:String!) {
+    func updateAccessToken(#token:String, accessTokenKey:String) {
         self.rawAccessToken = token
         self.kzToken = self.kzTokenFromRawAccessToken()
         self.tokenCache[accessTokenKey] = token
     }
 
-    func updateIPToken(token:String?, ipTokenKey: String!) {
+    func updateIPToken(#token:String, ipTokenKey: String) {
         self.ipToken = token
         self.tokenCache[ipTokenKey] = token
     }
     
-    func updateRefreshToken(refreshToken:String!) {
+    func updateRefreshToken(refreshToken:String) {
         self.refreshToken = refreshToken
     }
     
-    func loadTokensFromCache(forIpKey ipkey:String!, accessTokenKey:String!)
+    func loadTokensFromCache(forIpKey ipkey:String, accessTokenKey:String)
     {
         self.rawAccessToken = self.tokenCache[accessTokenKey]
         self.kzToken = self.kzTokenFromRawAccessToken()
@@ -88,17 +91,13 @@ public class KZTokenController : KZObject {
     
     func hasToRefreshToken() -> Bool {
         let rightNowTimestamp : Int = Int(NSDate().timeIntervalSince1970)
-        return (self.futureTimestamp! - rightNowTimestamp - kTimeOffset) < 0
+        return (self.futureTimestamp - rightNowTimestamp - kTimeOffset) < 0
     }
     
     
-    private func kzTokenFromRawAccessToken() -> String?
+    private func kzTokenFromRawAccessToken() -> String
     {
-        if (self.rawAccessToken? != nil) {
-            return "WRAP access_token=\"" + self.rawAccessToken! + "\""
-        } else {
-            return nil
-        }
+        return "WRAP access_token=\"" + self.rawAccessToken + "\""
     }
     
     func parseAndUpdateClaimsAndRoles()
@@ -106,7 +105,7 @@ public class KZTokenController : KZObject {
         self.currentClaims = Dictionary<String, String>()
         self.currentRoles = Array<String>()
         
-        let parts : Array<String> = kzToken!.componentsSeparatedByString("&")
+        let parts : Array<String> = kzToken.componentsSeparatedByString("&")
         for obj in parts {
             
             let components = obj.componentsSeparatedByString("=")
@@ -120,8 +119,8 @@ public class KZTokenController : KZObject {
                 self.currentRoles = components[1].stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)?.componentsSeparatedByString(",")
             }
             
-            if (currentClaims[kExpiresOnKey]? != nil) {
-                self.futureTimestamp = self.currentClaims[kExpiresOnKey]!.toInt()!
+            if let expiresTimeStamp = currentClaims[kExpiresOnKey] {
+                self.futureTimestamp = expiresTimeStamp.toInt()
             }
             
         }

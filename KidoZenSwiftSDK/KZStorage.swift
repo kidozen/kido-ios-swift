@@ -13,7 +13,7 @@ let ENULLMETADATA = 2
 
 public class KZStorage : KZBaseService
 {
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
+    override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.configureNetworkManager()
@@ -25,7 +25,7 @@ public class KZStorage : KZBaseService
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
 
-        var path = self.name!
+        var path = self.name
         if let queryString = options?.asQueryString() {
            path += "?" + queryString
         }
@@ -58,7 +58,7 @@ public class KZStorage : KZBaseService
         let dictionaryObject = object as Dictionary<String, Dictionary<String, AnyObject>>
         let updatedMetadata = self.updateMetadataDates(dictionaryObject)
         
-        self.networkManager.PUT(path: self.name! + "/" + objectId,
+        self.networkManager.PUT(path: self.name + "/" + objectId,
                             parameters: updatedMetadata,
                                success: success,
                                failure: failure)
@@ -69,7 +69,7 @@ public class KZStorage : KZBaseService
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        self.networkManager.GET(path: self.name! + "/" + objectId,
+        self.networkManager.GET(path: self.name + "/" + objectId,
                             parameters: nil,
                                success: success,
                                failure: failure)
@@ -81,7 +81,7 @@ public class KZStorage : KZBaseService
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        self.networkManager.DELETE(path: self.name! + "/" + objectId,
+        self.networkManager.DELETE(path: self.name + "/" + objectId,
                                parameters: nil,
                                   success: success,
                                   failure: failure)
@@ -121,7 +121,7 @@ public class KZStorage : KZBaseService
         
         let path = self.path(queryString, options: options, fields: fields)
         
-        self.networkManager.GET(path:path,
+        self.networkManager.GET(path:path!,
                             parameters: nil,
                                success: success,
                                failure: failure)
@@ -160,7 +160,7 @@ public class KZStorage : KZBaseService
     
     private func path(queryString:String?, options:String?, fields:String?) -> String?
     {
-        var path = self.name!
+        var path = self.name
         
         if (queryString? != nil) {
             path += "?query=" + queryString!

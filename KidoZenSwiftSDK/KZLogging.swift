@@ -35,7 +35,7 @@ public class KZLogging : KZBaseService {
     
     override init(endPoint: String!, name: String?, tokenController: KZTokenController!) {
         self.logType = .Query
-        super.init(endPoint: endPoint, name: nil, tokenController: tokenController)
+        super.init(endPoint: endPoint, name: "", tokenController: tokenController)
     }
 
     public func write(object:Dictionary<String, AnyObject>?,

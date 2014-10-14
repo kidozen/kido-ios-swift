@@ -10,7 +10,7 @@ import Foundation
 
 public class KZQueue : KZBaseService
 {
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
+    override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.configureNetworkManager()
@@ -30,7 +30,7 @@ public class KZQueue : KZBaseService
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        self.networkManager.DELETE(path:self.name! + "/next", parameters: object, success: success, failure: failure)
+        self.networkManager.DELETE(path:self.name + "/next", parameters: object, success: success, failure: failure)
     }
     
     override func configureNetworkManager()

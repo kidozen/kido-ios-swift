@@ -28,26 +28,25 @@ public class KZAuthenticationConfig : KZObject {
     
     
     init(fromDictionary dictionary: Dictionary<String, AnyObject>) {
-        applicationScope = (dictionary["applicationScope"] as AnyObject?) as String
-        authServiceScope = (dictionary["authServiceScope"] as AnyObject?) as String
-        authServiceEndpoint = (dictionary["authServiceEndpoint"] as AnyObject?) as String
-        oauthTokenEndpoint = (dictionary["oauthTokenEndpoint"] as AnyObject?) as String
-        signInUrl = (dictionary["signInUrl"] as AnyObject?) as String
-        identityProviders = (dictionary["identityProviders"] as AnyObject?) as Dictionary<String,Dictionary<String, String>>
+        applicationScope = (dictionary["applicationScope"] as AnyObject!) as String
+        authServiceScope = (dictionary["authServiceScope"] as AnyObject!) as String
+        authServiceEndpoint = (dictionary["authServiceEndpoint"] as AnyObject!) as String
+        oauthTokenEndpoint = (dictionary["oauthTokenEndpoint"] as AnyObject!) as String
+        signInUrl = (dictionary["signInUrl"] as AnyObject!) as String
+        identityProviders = (dictionary["identityProviders"] as AnyObject!) as Dictionary<String,Dictionary<String, String>>
         super.init()
     }
     
-    func protocolFor(provider: String) -> String? {
+    func protocolFor(provider: String) -> String {
         
-        let protocolDictionary = identityProviders[provider]
-        
-        return protocolDictionary?[kProtocolKey] as String?
+        let protocolDictionary : Dictionary<String, String> = identityProviders[provider]!
+        return protocolDictionary[kProtocolKey] as String!
 
     }
     
-    func endPointFor(provider:String) -> String? {
-        let protocolDictionary = identityProviders[provider]
-        return protocolDictionary?[kEndPointKey] as String?
+    func endPointFor(provider:String) -> String {
+        let protocolDictionary : Dictionary<String, String> = identityProviders[provider]!
+        return protocolDictionary[kEndPointKey] as String!
     }
     
 }

@@ -95,7 +95,7 @@ public class KZApplicationAuthentication : KZObject {
                                     let responseDictionary = responseObject as? Dictionary<String, AnyObject>
                                     let accessToken = (responseDictionary!["access_token"] as AnyObject?) as? String
                             
-                                    self!.tokenController.updateAccessToken(accessToken, accessTokenKey:self!.accessTokenCacheKey())
+                                    self!.tokenController.updateAccessToken(token: accessToken!, accessTokenKey:self!.accessTokenCacheKey())
                             
                                     self!.tokenController.parseAndUpdateClaimsAndRoles()
                             
@@ -145,9 +145,9 @@ public class KZApplicationAuthentication : KZObject {
     {
         authenticated = true
         self.tokenController.currentAuthentication = currentAuthentication
-        self.tokenController.updateAccessToken(accessToken, accessTokenKey: self.accessTokenCacheKey())
+        self.tokenController.updateAccessToken(token: accessToken, accessTokenKey: self.accessTokenCacheKey())
         self.tokenController.updateRefreshToken(refreshToken)
-        self.tokenController.updateIPToken(ipToken, ipTokenKey: self.ipTokenCacheKey())
+        self.tokenController.updateIPToken(token: ipToken, ipTokenKey: self.ipTokenCacheKey())
         self.tokenController.parseAndUpdateClaimsAndRoles()
         self.kzUser = KZUser(claims:self.tokenController.currentClaims, roles:self.tokenController.currentRoles)
     }
@@ -155,7 +155,7 @@ public class KZApplicationAuthentication : KZObject {
     private func refreshPassiveToken(#success:kzDidFinishCb?,
                                      failure:kzDidFailCb?)
     {
-        networkManager.POST(   path: self.applicationConfiguration.authConfig?.oauthTokenEndpoint,
+        networkManager.POST(   path: self.applicationConfiguration.authConfig.oauthTokenEndpoint,
                          parameters: self.dictionaryForPassiveToken(),
                             success: success,
                             failure: failure)
@@ -193,26 +193,26 @@ public class KZApplicationAuthentication : KZObject {
     
     private func invokeAuthServices(#credentials:KZCredentials)
     {
-        let authServiceScope = applicationConfiguration.authConfig?.authServiceScope
-        let authServiceEndPoint = applicationConfiguration.authConfig?.authServiceEndpoint
-        let applicationScope = applicationConfiguration.authConfig?.applicationScope
+        let authServiceScope = applicationConfiguration.authConfig.authServiceScope
+        let authServiceEndPoint = applicationConfiguration.authConfig.authServiceEndpoint
+        let applicationScope = applicationConfiguration.authConfig.applicationScope
         
         let provider = credentials.provider
-        let providerProtocol = applicationConfiguration.authConfig?.protocolFor(provider)
-        let providerIPEndpoint = applicationConfiguration.authConfig?.endPointFor(provider)
+        let providerProtocol = applicationConfiguration.authConfig.protocolFor(provider)
+        let providerIPEndpoint = applicationConfiguration.authConfig.endPointFor(provider)
         
-        if (identityProvider? == nil) {
+        if (identityProvider == nil) {
             identityProvider = KZIdentityProviderFactory.createProvider(providerProtocol, strictSSL: self.strictSSL)
         }
         
-        identityProvider!.initialize(credentials.username, password: credentials.password, scope: authServiceScope)
-        networkManager = KZNetworkManager(baseURLString: authServiceEndPoint!, strictSSL: self.strictSSL, tokenController:nil)
+        identityProvider.initialize(username: credentials.username!, password: credentials.password!, scope: authServiceScope)
+        networkManager = KZNetworkManager(baseURLString: authServiceEndPoint, strictSSL: self.strictSSL, tokenController:nil)
         networkManager.configureResponseSerializer(AFJSONResponseSerializer())
         networkManager.configureRequestSerializer(AFJSONRequestSerializer())
         
-        identityProvider!.requestToken(providerIPEndpoint, willStartCb: nil, success: {
+        identityProvider.requestToken(identityProviderUrl: providerIPEndpoint, willStartCb: nil, success: {
             [weak self] ipToken in
-            let parameters = [  "wrap_scope" : applicationScope!,
+            let parameters = [  "wrap_scope" : applicationScope,
                                 "wrap_assertion_format" : "SAML",
                                 "wrap_assertion" : ipToken!]
             

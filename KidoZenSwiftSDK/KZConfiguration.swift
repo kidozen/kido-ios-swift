@@ -9,7 +9,7 @@
 import Foundation
 
 public class KZConfiguration : KZBaseService {
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
+    override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.configureNetworkManager()
@@ -18,7 +18,7 @@ public class KZConfiguration : KZBaseService {
     /**
     *
     */
-    func save(object: Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func save(#object: Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         
@@ -37,7 +37,7 @@ public class KZConfiguration : KZBaseService {
         self.networkManager.GET(path:self.name, parameters: nil, success: success, failure: failure)
     }
     
-    func remove(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func remove(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
@@ -47,7 +47,7 @@ public class KZConfiguration : KZBaseService {
     }
     
     
-    func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func all(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())

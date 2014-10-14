@@ -10,9 +10,9 @@ import Foundation
 
 public class KZBaseService {
     
-    internal let networkManager : KZNetworkManager!
-    internal let endPoint : String!
-    internal let name : String?
+    internal let networkManager : KZNetworkManager
+    internal let endPoint : String
+    internal let name : String
     internal weak var tokenController : KZTokenController!
     var strictSSL : Bool? {
         didSet {
@@ -22,9 +22,9 @@ public class KZBaseService {
 
     /// Always implement init in base classes.
     /// There was a bug with the KZTokenController.
-    init (endPoint:String!, name:String?, tokenController:KZTokenController!) {
+    init (endPoint:String, name:String, tokenController:KZTokenController) {
         self.endPoint = endPoint
-        self.name = name != nil ? name : ""
+        self.name = name
         self.tokenController = tokenController
         self.networkManager = KZNetworkManager(baseURLString: endPoint, strictSSL: true, tokenController:tokenController)
     }
@@ -32,7 +32,7 @@ public class KZBaseService {
     internal func addAuthorizationHeader()
     {
         // TODO: Must check if we have to add another header.
-        networkManager.addAuthorizationHeader(tokenController?.kzToken?)
+        networkManager.addAuthorizationHeader(tokenController.kzToken)
     }
     
     internal func configureNetworkManager()

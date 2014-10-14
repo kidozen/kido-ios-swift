@@ -12,7 +12,7 @@ import Foundation
     The instance of this class requests the IPToken using ADFS.
 */
 class KZADFSIdentityProvider : KZObject, KZIdentityProviderProtocol {
-    var strictSSL : Bool?
+    var strictSSL : Bool!
     
     private var wrapName : String!
     private var wrapPassword : String!
@@ -26,13 +26,13 @@ class KZADFSIdentityProvider : KZObject, KZIdentityProviderProtocol {
         
     }
     
-    func initialize(username:String?, password:String?, scope:String?) {
+    func initialize(#username:String, password:String, scope:String) {
         self.wrapName = username
         self.wrapPassword = password
         self.wrapScope = scope
     }
 
-    func requestToken(identityProviderUrl:String?, willStartCb:kzVoidCb?, success:KZRequestTokenCompletionBlock?, failure:kzDidFailCb?) {
+    func requestToken(#identityProviderUrl:String, willStartCb:kzVoidCb?, success:KZRequestTokenCompletionBlock?, failure:kzDidFailCb?) {
         
         willStartCb?()
         
@@ -41,7 +41,7 @@ class KZADFSIdentityProvider : KZObject, KZIdentityProviderProtocol {
         
         self.endPoint = identityProviderUrl
 
-        let request = NSMutableURLRequest(URL: NSURL(string: identityProviderUrl!))
+        let request = NSMutableURLRequest(URL: NSURL(string: identityProviderUrl))
         let msg = self.requestMessage()
         let length = "\(countElements(msg!))"
         

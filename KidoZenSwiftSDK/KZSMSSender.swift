@@ -10,18 +10,18 @@ import Foundation
 
 public class KZSMSSender : KZBaseService {
     
-    override init(endPoint: String!, name: String?, tokenController: KZTokenController!)
+    override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.configureNetworkManager()
     }
     
-    func send(message:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func send(#message:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        var numbersOnlyString = self.name!.filterNumbers()
+        var numbersOnlyString = self.name.filterNumbers()
         
         let path = "?to=" + numbersOnlyString + "&message=" + message.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
@@ -29,7 +29,7 @@ public class KZSMSSender : KZBaseService {
         
     }
     
-    func status(messageId:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func status(#messageId:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()

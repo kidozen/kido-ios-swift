@@ -46,7 +46,7 @@ public class KZNetworkManager {
     }
     
     /// Perform GET operation on the corresponding endpoint.
-    func GET(#path:String?,
+    func GET(#path:String,
         parameters:AnyObject?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
@@ -54,7 +54,7 @@ public class KZNetworkManager {
         self.updateTokenIfRequired({
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
-            self.manager.GET(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters, success: {
+            self.manager.GET(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters, success: {
                 [weak self] (afRequestOperation, responseObject) in
                 
                 if let outerSuccess = success {
@@ -108,7 +108,7 @@ public class KZNetworkManager {
     
     
     /// Perform POST operation on the corresponding endpoint.
-    func POST(#path:String?,
+    func POST(#path:String,
         parameters:AnyObject?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
@@ -117,7 +117,7 @@ public class KZNetworkManager {
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
 
-            self.manager.POST(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
+            self.manager.POST(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self](operation, responseObject) in
                     if let outerSuccess = success {
@@ -135,7 +135,7 @@ public class KZNetworkManager {
         
     }
     
-    func DELETE(#path:String?,
+    func DELETE(#path:String,
         parameters:AnyObject?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
@@ -144,7 +144,7 @@ public class KZNetworkManager {
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
             
-            self.manager.DELETE(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
+            self.manager.DELETE(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self](operation, responseObject) in
                     if let outerSuccess = success {
@@ -164,7 +164,7 @@ public class KZNetworkManager {
     
     
     /// Perform PUT operation on the corresponding endpoint.
-    func PUT(#path:String?,
+    func PUT(#path:String,
         parameters:AnyObject?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
@@ -173,7 +173,7 @@ public class KZNetworkManager {
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
             
-            self.manager.PUT(path!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
+            self.manager.PUT(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self] (operation, responseObject) in
                     if let outerSuccess = success {
@@ -201,7 +201,7 @@ public class KZNetworkManager {
         }
     }
     
-    private func updateTokenIfRequired(cb:kzVoidCb, failure:kzDidFailCb?) {
+    private func updateTokenIfRequired(#cb:kzVoidCb, failure:kzDidFailCb?) {
         
         if let tc = self.tokenController {
             
@@ -219,10 +219,8 @@ public class KZNetworkManager {
         }
     }
     
-    internal func addAuthorizationHeader(token:String?) {
-        if let theToken = token {
-            manager.requestSerializer.setValue(theToken, forHTTPHeaderField: "Authorization")
-        }
+    internal func addAuthorizationHeader(token:String) {
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "Authorization")
     }
     
 }
