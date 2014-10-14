@@ -41,24 +41,24 @@ public class KZBaseService {
     }
 
 
-    func query(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         fatalError("Subclasses should override this method")
     }
     
-    func query(#data:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(#data:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         fatalError("Subclasses should override this method")
     }
     
     
     
-    func invoke(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func invoke(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         fatalError("Subclasses should override this method")
     }
     
-    func invoke(#data:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func invoke(#data:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         fatalError("Subclasses should override this method")
     }

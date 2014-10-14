@@ -17,8 +17,13 @@ public enum  LogLevel : Int {
     
 }
 
+// Logging service implementation.
+
 public class KZLogging : KZBaseService {
-    
+
+    // Needed to configure the network manager, as depending on 
+    // the logtype, request and response should be configured as 
+    // json/non-json.
     enum LogType : Int {
         case Query = 0,
             Clear,
@@ -38,16 +43,16 @@ public class KZLogging : KZBaseService {
         super.init(endPoint: endPoint, name: "", tokenController: tokenController)
     }
 
-    public func write(object:Dictionary<String, AnyObject>?,
+    public func write(#object:Dictionary<String, AnyObject>?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
     {
-        self.write(object, message: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
+        self.write(object: object, message: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    public func write(object:Dictionary<String, AnyObject>?,
+    public func write(#object:Dictionary<String, AnyObject>?,
               message:String?,
                 level:LogLevel!,
           willStartCb:kzVoidCb?,
@@ -74,7 +79,7 @@ public class KZLogging : KZBaseService {
         })
     }
     
-    public func query(query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(#query:String!, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Query
 
@@ -87,7 +92,7 @@ public class KZLogging : KZBaseService {
     }
 
     
-    public func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func all(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Query
         
@@ -97,7 +102,7 @@ public class KZLogging : KZBaseService {
         
     }
     
-    public func clear(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func clear(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Clear
         

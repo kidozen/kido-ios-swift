@@ -214,7 +214,7 @@ extension KZApplication {
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
     {
-        self.loggingService.write(object, message:message,
+        self.loggingService.write(object: object, message:message,
                                              level: level,
                                        willStartCb: willStartCb,
                                            success: success,
@@ -256,7 +256,7 @@ extension KZApplication {
     *              from, to, subject, bodyHtml, bodyText
     */
     public func sendMail(#parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
-        self.mailService.send(parameters, willStartCb: willStartCb, success: success, failure: failure)
+        self.mailService.send(parameters: parameters, willStartCb: willStartCb, success: success, failure: failure)
     }
     
     /**
@@ -269,7 +269,7 @@ extension KZApplication {
     * @param attachments is a dictionary where the key is the name of the attachment and the value is the NSData to be sent.
     */
     public func sendMail(#parameters:Dictionary<String, String>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
-        self.mailService.send(parameters, attachments: attachments, willStartCb: willStartCb, success: success, failure: failure)
+        self.mailService.send(parameters: parameters, attachments: attachments, willStartCb: willStartCb, success: success, failure: failure)
     }
 }
 
@@ -285,7 +285,7 @@ extension KZApplication {
                 println("Warning -- NSSetUncaughtExceptionHandler is not nil. Overriding will occur")
             }
 
-            self.crashReporter = KZCrashReporter(urlString: self.applicationConfiguration.url, tokenController: self.applicationAuthentication.tokenController, strictSSL: self.strictSSL)
+            self.crashReporter = KZCrashReporter(urlString: self.applicationConfiguration.url!, tokenController: self.applicationAuthentication.tokenController, strictSSL: self.strictSSL)
                 self.crashReporter?.enableCrashReporter(willStartCb, didSendCrashReportCb:didSendCrashReportCb
                                                             , didFailCrashReportCb:didFailCrashReportCb)
         }

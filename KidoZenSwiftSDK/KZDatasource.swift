@@ -8,9 +8,11 @@
 
 import Foundation
 
+
+// Implementation of the datasource service. 
 public class KZDatasource : KZBaseService {
 
-    override init (endPoint:String!, name:String!, tokenController:KZTokenController!)
+    override init (endPoint:String, name:String, tokenController:KZTokenController)
     {
         super.init(endPoint: endPoint, name: name, tokenController: tokenController)
         self.configureNetworkManager()
@@ -27,12 +29,12 @@ public class KZDatasource : KZBaseService {
     }
     
     // Convinience query without data.
-    override func query(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    override public func query(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.query(data:nil, willStartCb:willStartCb, success:success, failure:failure)
     }
     
-    override func query(  #data:Dictionary<String, AnyObject>?,
+    override public func query(  #data:Dictionary<String, AnyObject>?,
                     willStartCb:kzVoidCb?,
                         success:kzDidFinishCb?,
                         failure:kzDidFailCb?)
@@ -46,13 +48,13 @@ public class KZDatasource : KZBaseService {
     }
     
     
-    override func invoke(#willStartCb: kzVoidCb?, success: kzDidFinishCb?, failure: kzDidFailCb?) {
+    override public func invoke(#willStartCb: kzVoidCb?, success: kzDidFinishCb?, failure: kzDidFailCb?) {
         self.invoke(data: nil, willStartCb: willStartCb, success: success, failure: failure)
     }
     
     
     
-    override func invoke( #data: Dictionary<String, AnyObject>?,
+    override public func invoke( #data: Dictionary<String, AnyObject>?,
                     willStartCb: kzVoidCb?,
                         success: kzDidFinishCb?,
                         failure: kzDidFailCb?)

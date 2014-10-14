@@ -14,10 +14,10 @@ class KZCrashReporter
     private var success:kzDidFinishCb?
     private var failure:kzDidFailCb?
     
-    private var version : String?
-    private var build : String?
+    private var version : String!
+    private var build : String!
     
-    private let tokenController : KZTokenController!
+    private let tokenController : KZTokenController
     private let networkManager : KZNetworkManager!
     private var internalCrashReporterInfo : Dictionary<String, AnyObject>
     
@@ -28,7 +28,7 @@ class KZCrashReporter
     
     var isInitialized : Bool
     
-    init(urlString:String!, tokenController:KZTokenController!, strictSSL:Bool!)
+    init(urlString:String, tokenController:KZTokenController, strictSSL:Bool!)
     {
         self.isInitialized = false
         self.internalCrashReporterInfo = Dictionary<String, AnyObject>()
@@ -40,7 +40,7 @@ class KZCrashReporter
         
     }
     
-    func enableCrashReporter(willStartCb:kzVoidCb?, didSendCrashReportCb:kzDidFinishCb?, didFailCrashReportCb:kzDidFailCb?)
+    func enableCrashReporter(#willStartCb:kzVoidCb?, didSendCrashReportCb:kzDidFinishCb?, didFailCrashReportCb:kzDidFailCb?)
     {
         willStartCb?()
         self.success = didSendCrashReportCb
@@ -48,13 +48,13 @@ class KZCrashReporter
         
         self.crashReporter = PLCrashReporter.sharedReporter()
         
-        if (self.crashReporter?.hasPendingCrashReport() == true) {
+        if (self.crashReporter!.hasPendingCrashReport() == true) {
             self.manageCrashReport()
         }
         
         var error : NSError?
         
-        if (self.crashReporter?.enableCrashReporterAndReturnError(&error) == false) {
+        if (self.crashReporter!.enableCrashReporterAndReturnError(&error) == false) {
             failure?(response: nil, error: error)
             NSLog("Could not enable crash reporter. Error is \(error)")
         }
@@ -63,7 +63,7 @@ class KZCrashReporter
         
     }
     
-    private func stringifiedCrashReport(theData:NSData!, inout error:NSError?) -> String?
+    private func stringifiedCrashReport(#theData:NSData, inout error:NSError?) -> String?
     {
         
         var report = PLCrashReport(data: theData, error: &error)
@@ -87,22 +87,24 @@ class KZCrashReporter
     {
         var error : NSError?
         
-        if let crashData = self.crashReporter?.loadPendingCrashReportDataAndReturnError(&error)
+        if let crashData = self.crashReporter!.loadPendingCrashReportDataAndReturnError(&error)
         {
             
-            self.stringCrashReport = self.stringifiedCrashReport(crashData, error:&error)
+            self.stringCrashReport = self.stringifiedCrashReport(theData: crashData, error:&error)
             
-            if (error? == nil) {
+            if let theError = error {
+                
+                failure?(response: nil, error: theError)
+                
+            } else {
+                
                 internalCrashReporterInfo["ReporterDataAsString"] = self.stringCrashReport
-
-                if (self.reporterServiceUrl? != nil) {
+                
+                if let reporterServiceUrl = reporterServiceUrl {
                     self.postReport()
                 } else {
                     self.saveReport()
                 }
-                
-            } else {
-                failure?(response: nil, error: error)
             }
             
         } else {
@@ -115,7 +117,7 @@ class KZCrashReporter
         let outputPath = self.pathForFilename("KidozenCrashReport.crash")
         var error : NSError?
         
-        if (!self.stringCrashReport.writeToFile(outputPath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)) {
+        if ( !self.stringCrashReport.writeToFile(outputPath, atomically: true, encoding: NSUTF8StringEncoding, error: &error) ) {
             println("Failed to write crash report")
             failure?(response: nil, error: error)
         } else {
@@ -131,17 +133,14 @@ class KZCrashReporter
 
         var breadcrumbs = String.stringWithContentsOfFile(self.breadcrumbFilename(), encoding: NSUTF8StringEncoding, error: nil)
         
+        breadcrumbs = breadcrumbs? != nil ?  breadcrumbs! : ""
         
-        if (breadcrumbs? == nil) {
-            breadcrumbs = ""
-        }
-        
-        let breadcrumbsArray = breadcrumbs?.componentsSeparatedByString("\n")
+        let breadcrumbsArray = breadcrumbs!.componentsSeparatedByString("\n")
         
         let parameters : Dictionary<String, AnyObject> = ["REPORT" : self.stringCrashReport,
-            "VERSION" : self.version!,
-            "BUILD" : self.build!,
-            "BREADCRUMBS" : breadcrumbsArray!]
+            "VERSION" : self.version,
+            "BUILD" : self.build,
+            "BREADCRUMBS" : breadcrumbsArray]
         
         
         self.networkManager.strictSSL = false
@@ -182,7 +181,8 @@ class KZCrashReporter
         let fm = NSFileManager.defaultManager()
         let breadcrumbFilePath = self.breadcrumbFilename()
         
-        if (fm.fileExistsAtPath(breadcrumbFilePath)) {
+        if ( fm.fileExistsAtPath(breadcrumbFilePath) ) {
+            
             var error : NSError?
             fm.removeItemAtPath(breadcrumbFilePath, error: &error)
             
@@ -193,12 +193,12 @@ class KZCrashReporter
         }
     }
     
-    private func breadcrumbFilename() -> String!
+    private func breadcrumbFilename() -> String
     {
         return self.pathForFilename("CrashUserLogs.log")
     }
     
-    private func pathForFilename(filename:String!) -> String!
+    private func pathForFilename(filename:String) -> String
     {
         let pathArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, false)
         let documentsDirectory : String = pathArray[0] as String
@@ -206,7 +206,7 @@ class KZCrashReporter
     }
     
     
-    private func sanitize(urlString:String!) -> String!
+    private func sanitize(urlString:String) -> String
     {
         var characterSet = NSMutableCharacterSet.whitespaceCharacterSet()
         characterSet.addCharactersInString("/")

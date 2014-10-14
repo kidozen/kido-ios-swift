@@ -14,12 +14,12 @@ public class KZMail : KZBaseService {
      * @param parameters is a required dictionary with the following keys:
      *              from, to, subject, bodyHtml, bodyText
      */
-    func send(parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func send(#parameters:Dictionary<String, String>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.send(parameters, attachments: nil, willStartCb: willStartCb, success: success, failure: failure)
+        self.send(parameters: parameters, attachments: nil, willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    func send(parameters:Dictionary<String, AnyObject>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func send(#parameters:Dictionary<String, AnyObject>, attachments:Dictionary<String, AnyObject>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
 
@@ -34,7 +34,7 @@ public class KZMail : KZBaseService {
                     var updatedParams = parameters
                     updatedParams["attachments"] = responseObject!
                 
-                    self!.sendEmail("", parameters: updatedParams, willStartCb: nil, success: success, failure: failure)
+                self!.sendEmail(path : "", parameters: updatedParams, willStartCb: nil, success: success, failure: failure)
                 
                 
             }, failure: { (response, error) in
@@ -44,11 +44,11 @@ public class KZMail : KZBaseService {
             })
             
         } else {
-            self.sendEmail("", parameters: parameters, willStartCb: nil, success: success, failure: failure)
+            self.sendEmail(path : "", parameters: parameters, willStartCb: nil, success: success, failure: failure)
         }
     }
     
-    private func sendEmail(path:String, parameters:Dictionary<String, AnyObject>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    private func sendEmail(#path:String, parameters:Dictionary<String, AnyObject>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
         networkManager.strictSSL = self.strictSSL!

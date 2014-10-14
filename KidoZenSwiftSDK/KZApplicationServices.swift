@@ -50,7 +50,7 @@ class KZApplicationServices {
     func datasource(#name:String) -> KZDatasource
     {
         var endPoint = applicationConfiguration.datasource!.stringByAppendingString("/") // validate it ends with '/'
-        var service = KZDatasource(endPoint: endPoint, name: name, tokenController:tokenController)
+        var service = KZDatasource(endPoint: endPoint, name: name, tokenController:tokenController!)
         service.strictSSL = strictSSL
         return service
     }
