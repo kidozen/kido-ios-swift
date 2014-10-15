@@ -1,7 +1,7 @@
 // Playground - noun: a place where people can play
 
 import UIKit
-import KidoZenSwiftSDK
+import KidoZen
 
 var str = "Hello, playground"
 

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:KidoZenSwiftSDK.xcodeproj">
+      location = "container:KidoZen.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SampleApplication/SampleApp/SampleApp.xcodeproj">

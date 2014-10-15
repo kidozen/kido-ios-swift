@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import KidoZenSwiftSDK
+import KidoZen
 
 class MailViewController : UIViewController {
  

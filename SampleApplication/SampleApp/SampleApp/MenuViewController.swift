@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import KidoZenSwiftSDK
+import KidoZen
 
 class MenuViewController : UIViewController {
     

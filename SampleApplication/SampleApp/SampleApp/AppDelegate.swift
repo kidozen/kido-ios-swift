@@ -8,7 +8,8 @@
 
 import UIKit
 
-import KidoZenSwiftSDK
+import KidoZen
+
 
 let kTenant = "https://tests.qa.kidozen.com"
 let kApplicationName = "swiftsdk"
