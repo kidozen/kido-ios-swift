@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CryptoSwift
 
 struct KZCredentials {
     let username : String?
@@ -82,6 +81,8 @@ public class KZApplicationAuthentication : KZObject {
     {
         self.applicationKey = applicationKey
         let applicationKeyParameters = self.dictionaryForTokenUsingApplicationKey()
+        self.lastCredentials = KZCredentials(username: "APPLICATION_KEY", password: "APPLICATION_KEY", provider: "APPLICATION_KEY")
+
         
         networkManager.configureResponseSerializer(AFJSONResponseSerializer())
         networkManager.configureRequestSerializer(AFJSONRequestSerializer())
@@ -121,27 +122,32 @@ public class KZApplicationAuthentication : KZObject {
         // Double unwrapping... still wondering why...
         let rootController = UIApplication.sharedApplication().delegate!.window??.rootViewController
         
-        let passiveUrlString = self.applicationConfiguration.authConfig!.signInUrl
-        self.lastCredentials = KZCredentials(username: nil, password: nil, provider: "SOCIAL")
-        
-        let passiveAuthVC = KZPassiveAuthViewController(urlString: passiveUrlString,
+        // We only do this is there is a SignInUrl.
+        if let passiveUrlString = self.applicationConfiguration.authConfig!.signInUrl {
+            
+            self.lastCredentials = KZCredentials(username: "PASSIVE", password: "PASSIVE", provider: "PASSIVE")
+            
+            let passiveAuthVC = KZPassiveAuthViewController(urlString: passiveUrlString,
                 success: {
                     [weak self] (token:String?, refreshToken:String?) -> () in
-                        self!.updateTokens(accessToken: token, refreshToken: refreshToken, ipToken:nil, currentAuthentication: .KZPassiveAuthentication)
-                        self!.didFinishAuthenticationCb?(response: nil, responseObject: self!.kzUser)
+                    self!.updateTokens(accessToken: token, refreshToken: refreshToken, ipToken:nil, currentAuthentication: .KZPassiveAuthentication)
+                    self!.didFinishAuthenticationCb?(response: nil, responseObject: self!.kzUser)
                     
                 }, failure: { (error:NSError?) in
                     if let outerFailure = failure {
                         outerFailure(response:nil, error: error)
                     }
-                })
-        
-        let webNavigation = UINavigationController(rootViewController: passiveAuthVC)
-        rootController?.presentViewController(webNavigation, animated: true, completion: nil)
+            })
+            
+            let webNavigation = UINavigationController(rootViewController: passiveAuthVC)
+            rootController?.presentViewController(webNavigation, animated: true, completion: nil)
+        } else {
+            UIAlertView(title: "Error", message: "Server does not support passive Authentication", delegate: nil, cancelButtonTitle: "Ok").show()
+        }
         
     }
 
-    private func updateTokens(#accessToken : String!, refreshToken:String!, ipToken:String!, currentAuthentication : KZCurrentAuthentication)
+    private func updateTokens(#accessToken : String!, refreshToken:String?, ipToken:String!, currentAuthentication : KZCurrentAuthentication)
     {
         authenticated = true
         self.tokenController.currentAuthentication = currentAuthentication

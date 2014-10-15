@@ -89,7 +89,7 @@ class KZApplicationServices {
     
     func LOBServiceWithName(#name:String) -> KZService
     {
-        var endPoint = "\(self.applicationConfiguration.url)api/services/\(name)/"
+        var endPoint = "\(self.applicationConfiguration.url!)api/services/\(name)/"
             
         var service = KZService(endPoint: endPoint, name: name, tokenController: tokenController!)
         service.strictSSL = strictSSL

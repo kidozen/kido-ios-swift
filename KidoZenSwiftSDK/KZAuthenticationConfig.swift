@@ -22,7 +22,7 @@ public class KZAuthenticationConfig : KZObject {
     var authServiceScope : String
     var authServiceEndpoint : String
     var oauthTokenEndpoint : String
-    var signInUrl : String
+    var signInUrl : String?
     
     private var identityProviders : Dictionary<String,Dictionary<String, String>>
     
@@ -32,7 +32,7 @@ public class KZAuthenticationConfig : KZObject {
         authServiceScope = (dictionary["authServiceScope"] as AnyObject!) as String
         authServiceEndpoint = (dictionary["authServiceEndpoint"] as AnyObject!) as String
         oauthTokenEndpoint = (dictionary["oauthTokenEndpoint"] as AnyObject!) as String
-        signInUrl = (dictionary["signInUrl"] as AnyObject!) as String
+        signInUrl = (dictionary["signInUrl"] as AnyObject?) as String?
         identityProviders = (dictionary["identityProviders"] as AnyObject!) as Dictionary<String,Dictionary<String, String>>
         super.init()
     }

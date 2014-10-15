@@ -26,7 +26,7 @@ public class KZTokenController : KZObject {
     var rawAccessToken : String!
     var kzToken : String!
     var ipToken : String!
-    var refreshToken : String!
+    var refreshToken : String?
     var tokenRefresher : KZTokenRefresher!
     var currentRoles : Array<String>!
     var currentClaims : Dictionary<String, String>!
@@ -72,15 +72,18 @@ public class KZTokenController : KZObject {
         self.tokenCache[ipTokenKey] = token
     }
     
-    func updateRefreshToken(refreshToken:String) {
+    func updateRefreshToken(refreshToken:String?) {
         self.refreshToken = refreshToken
     }
     
     func loadTokensFromCache(forIpKey ipkey:String, accessTokenKey:String)
     {
         self.rawAccessToken = self.tokenCache[accessTokenKey]
-        self.kzToken = self.kzTokenFromRawAccessToken()
-        self.ipToken = self.tokenCache[ipkey]
+        
+        if (self.rawAccessToken != nil) {
+            self.kzToken = self.kzTokenFromRawAccessToken()
+            self.ipToken = self.tokenCache[ipkey]
+        }
     }
     
     func reset() {
