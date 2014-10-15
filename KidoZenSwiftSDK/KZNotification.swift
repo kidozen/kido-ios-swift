@@ -11,7 +11,7 @@ import Foundation
 
 public class KZNotification : KZBaseService {
     private let kUniqueIdentificationFilename = "kUniqueIdentificationFilename"
-    private let uniqueIdentifier : String?
+    private let uniqueIdentifier : String!
 
     override init(endPoint: String, name: String, tokenController: KZTokenController)
     {
@@ -22,7 +22,7 @@ public class KZNotification : KZBaseService {
         self.configureNetworkManager()
     }
     
-    func subscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func subscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.addAuthorizationHeader()
@@ -38,7 +38,7 @@ public class KZNotification : KZBaseService {
                            failure: failure)
     }
   
-    func push(notification:Dictionary<String, AnyObject>, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func push(#notification:Dictionary<String, AnyObject>, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.addAuthorizationHeader()
@@ -50,7 +50,7 @@ public class KZNotification : KZBaseService {
             failure: failure)
     }
   
-    func getSubscriptions(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func getSubscriptions(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.addAuthorizationHeader()
@@ -63,7 +63,7 @@ public class KZNotification : KZBaseService {
     }
 
     
-    func getApplicationChannels(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func getApplicationChannels(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.addAuthorizationHeader()
@@ -76,7 +76,7 @@ public class KZNotification : KZBaseService {
     }
     
     
-    func unsubscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func unsubscribe(deviceWithToken deviceToken:String, channel:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.addAuthorizationHeader()

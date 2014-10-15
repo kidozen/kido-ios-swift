@@ -10,17 +10,17 @@ import Foundation
 
 class KZPubSubChannel : NSObject, SRWebSocketDelegate {
     
-    private var wsEndPoint : String!
-    private var endPoint : String!
+    private var wsEndPoint : String
+    private var endPoint : String
     private var webSocket : SRWebSocket?
-    private var tokenController : KZTokenController!
-    private var name : String!
-    private var networkManager : KZNetworkManager!
+    private weak var tokenController : KZTokenController?
+    private var name : String
+    private var networkManager : KZNetworkManager
     
     private var success : kzDidFinishWebSocketCb?
     private var failure : kzDidFailCb?
     
-    init(endPoint:String!, wsEndPoint:String!, name:String!, tokenController:KZTokenController!, strictSSL:Bool!)
+    init(endPoint:String, wsEndPoint:String, name:String, tokenController:KZTokenController, strictSSL:Bool)
     {
         self.endPoint = endPoint
         self.wsEndPoint = wsEndPoint
@@ -36,7 +36,7 @@ class KZPubSubChannel : NSObject, SRWebSocketDelegate {
         
     }
 
-    func subscribe(willStartCb:kzVoidCb?, success:kzDidFinishWebSocketCb?, failure:kzDidFailCb?)
+    func subscribe(#willStartCb:kzVoidCb?, success:kzDidFinishWebSocketCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.success = success
@@ -48,7 +48,7 @@ class KZPubSubChannel : NSObject, SRWebSocketDelegate {
         self.webSocket?.open()
     }
     
-    func unsubscribe(willStartCb:kzVoidCb?, success:kzDidFinishWebSocketCb?, failure:kzDidFailCb?)
+    func unsubscribe(#willStartCb:kzVoidCb?, success:kzDidFinishWebSocketCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.success = success
@@ -57,7 +57,7 @@ class KZPubSubChannel : NSObject, SRWebSocketDelegate {
         self.webSocket?.close()
     }
     
-    func publish(object:Dictionary<String, AnyObject>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func publish(#object:Dictionary<String, AnyObject>, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.networkManager.POST(path: self.name, parameters: object, success: success, failure: failure)
     }

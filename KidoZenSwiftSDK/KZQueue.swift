@@ -16,7 +16,7 @@ public class KZQueue : KZBaseService
         self.configureNetworkManager()
     }
     
-    func enqueue(object:AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func enqueue(#object:AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
@@ -25,7 +25,7 @@ public class KZQueue : KZBaseService
     }
     
     
-    func dequeue(object:AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    func dequeue(#object:AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()

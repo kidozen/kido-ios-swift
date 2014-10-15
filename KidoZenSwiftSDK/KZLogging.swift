@@ -91,7 +91,7 @@ public class KZLogging : KZBaseService {
         
     }
 
-    
+
     public func all(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         self.logType = .Query

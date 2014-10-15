@@ -20,7 +20,7 @@ public class KZStorage : KZBaseService
     }
 
     
-    func create(object : AnyObject?, options:Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func create(#object : AnyObject?, options:Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
@@ -34,17 +34,17 @@ public class KZStorage : KZBaseService
         
     }
 
-    func createPrivate(object : AnyObject?, options:Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func createPrivate(#object : AnyObject?, options:Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.create(object, options: ["isPrivate":"true"], willStartCb: willStartCb, success: success, failure: failure)
+        self.create(object: object, options: ["isPrivate":"true"], willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    func update(usingId objectId:String, object:AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func update(usingId objectId:String, objectToUpdate:AnyObject?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        if let dictionaryObject = object as? Dictionary<String, AnyObject> {
+        if let dictionaryObject = objectToUpdate as? Dictionary<String, AnyObject> {
             
             if (contains(dictionaryObject.keys, "_metadata") == false) {
                 if let outerFailure = failure {
@@ -55,8 +55,8 @@ public class KZStorage : KZBaseService
             }
         }
         
-        let dictionaryObject = object as Dictionary<String, Dictionary<String, AnyObject>>
-        let updatedMetadata = self.updateMetadataDates(dictionaryObject)
+        let dictionaryObject = objectToUpdate as Dictionary<String, Dictionary<String, AnyObject>>
+        let updatedMetadata = self.updateMetadataDates(objectToUpdate: dictionaryObject)
         
         self.networkManager.PUT(path: self.name + "/" + objectId,
                             parameters: updatedMetadata,
@@ -64,7 +64,7 @@ public class KZStorage : KZBaseService
                                failure: failure)
     }
 
-    func get(usingId objectId:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func get(usingId objectId:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
@@ -76,7 +76,7 @@ public class KZStorage : KZBaseService
     }
 
     
-    func delete(usingId objectId:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func delete(usingId objectId:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
@@ -87,7 +87,7 @@ public class KZStorage : KZBaseService
                                   failure: failure)
     }
 
-    func drop(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func drop(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
@@ -98,28 +98,28 @@ public class KZStorage : KZBaseService
                                   failure: failure)
     }
 
-    func all(willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func all(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.query(nil, options: nil, fields:nil, willStartCb: willStartCb, success: success, failure: failure)
+        self.query(queryString: nil, options: nil, fields:nil, willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    func query(queryString:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(#queryString:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.query(queryString, options: nil, fields:nil, willStartCb: willStartCb, success: success, failure: failure)
+        self.query(queryString: queryString, options: nil, fields:nil, willStartCb: willStartCb, success: success, failure: failure)
     }
 
-    func query(queryString:String, options:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(#queryString:String, options:String, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
-        self.query(queryString, options: options, fields:nil, willStartCb: willStartCb, success: success, failure: failure)
+        self.query(queryString: queryString, options: options, fields:nil, willStartCb: willStartCb, success: success, failure: failure)
     }
 
     
-    func query(queryString:String?, options:String?, fields:String?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func query(#queryString:String?, options:String?, fields:String?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        let path = self.path(queryString, options: options, fields: fields)
+        let path = self.path(queryString: queryString, options: options, fields: fields)
         
         self.networkManager.GET(path:path!,
                             parameters: nil,
@@ -127,8 +127,8 @@ public class KZStorage : KZBaseService
                                failure: failure)
     }
     
-    private func updateMetadataDates(object: Dictionary<String, Dictionary<String, AnyObject>>) -> Dictionary<String, Dictionary<String, AnyObject>> {
-        let metadataDictionary = object["_metadata"]! as Dictionary<String, AnyObject>
+    private func updateMetadataDates(#objectToUpdate: Dictionary<String, Dictionary<String, AnyObject>>) -> Dictionary<String, Dictionary<String, AnyObject>> {
+        let metadataDictionary = objectToUpdate["_metadata"]! as Dictionary<String, AnyObject>
         
         let createdOn = metadataDictionary["createdOn"]! as? NSDate
         let updatedOn = metadataDictionary["updatedOn"]! as? NSDate
@@ -151,14 +151,14 @@ public class KZStorage : KZBaseService
         }
         
         // copying dictinary
-        var updatedObject = object
+        var updatedObject = objectToUpdate
         
         updatedObject["_metadata"] = updatedMetadataDictionary
         
         return updatedObject
     }
     
-    private func path(queryString:String?, options:String?, fields:String?) -> String?
+    private func path(#queryString:String?, options:String?, fields:String?) -> String?
     {
         var path = self.name
         

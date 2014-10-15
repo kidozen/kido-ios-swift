@@ -37,12 +37,12 @@ public class KZNetworkManager {
         }
     }
     
-    func configureResponseSerializer(serializer:AFHTTPResponseSerializer?) {
-        manager.responseSerializer = serializer?
+    func configureResponseSerializer(serializer:AFHTTPResponseSerializer) {
+        manager.responseSerializer = serializer
     }
     
-    func configureRequestSerializer(serializer:AFHTTPRequestSerializer?) {
-        manager.requestSerializer = serializer?
+    func configureRequestSerializer(serializer:AFHTTPRequestSerializer) {
+        manager.requestSerializer = serializer
     }
     
     /// Perform GET operation on the corresponding endpoint.
