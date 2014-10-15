@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-//! Project version number for KidoZenSwiftSDK.
-FOUNDATION_EXPORT double KidoZenSwiftSDKVersionNumber;
+//! Project version number for KidoZen
+FOUNDATION_EXPORT double KidoZenVersionNumber;
 
-//! Project version string for KidoZenSwiftSDK.
-FOUNDATION_EXPORT const unsigned char KidoZenSwiftSDKVersionString[];
+//! Project version string for KidoZen
+FOUNDATION_EXPORT const unsigned char KidoZenVersionString[];
 
 #import "AFNetworkActivityLogger.h"
 #import "CrashReporter.h"

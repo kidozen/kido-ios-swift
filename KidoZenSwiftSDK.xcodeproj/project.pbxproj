@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6DAD0E3B19D34B5900702A3B /* KidoZenSwiftSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DAD0E3B19D34B5900702A3B /* KidoZen.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E3A19D34B5900702A3B /* KidoZen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E4519D34B5900702A3B /* KidoZenSwiftSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E4419D34B5900702A3B /* KidoZenSwiftSDKTests.swift */; };
 		6DAD0E6319D34BAE00702A3B /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5019D34BAE00702A3B /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E6419D34BAE00702A3B /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E5119D34BAE00702A3B /* AFHTTPRequestOperation.m */; };
@@ -92,10 +92,10 @@
 
 /* Begin PBXFileReference section */
 		6D7AA28419EDC12000E0701C /* KidoZenPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KidoZenPlayground.playground; sourceTree = "<group>"; };
-		6DAD0E3519D34B5900702A3B /* KidoZenSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KidoZenSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DAD0E3519D34B5900702A3B /* KidoZenSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KidoZenSwiftSDK.framework; path = KidoZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E3919D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KidoZenSwiftSDK.h; sourceTree = "<group>"; };
-		6DAD0E4019D34B5900702A3B /* KidoZenSwiftSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KidoZenSwiftSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DAD0E3A19D34B5900702A3B /* KidoZen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KidoZen.h; sourceTree = "<group>"; };
+		6DAD0E4019D34B5900702A3B /* KidoZenSwiftSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = KidoZenSwiftSDKTests.xctest; path = KidoZenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E4319D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAD0E4419D34B5900702A3B /* KidoZenSwiftSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidoZenSwiftSDKTests.swift; sourceTree = "<group>"; };
 		6DAD0E5019D34BAE00702A3B /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = thirdParty/AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				6DAD0F4E19D3683300702A3B /* Extensions */,
 				6DAD0EE119D357B900702A3B /* KZUser.swift */,
 				6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */,
-				6DAD0E3A19D34B5900702A3B /* KidoZenSwiftSDK.h */,
+				6DAD0E3A19D34B5900702A3B /* KidoZen.h */,
 				6DAD0E3819D34B5900702A3B /* Supporting Files */,
 			);
 			path = KidoZenSwiftSDK;
@@ -439,7 +439,7 @@
 				6DAD0E9319D34CCF00702A3B /* PLCrashFeatureConfig.h in Headers */,
 				6DAD0E7019D34BAE00702A3B /* AFURLRequestSerialization.h in Headers */,
 				6DAD0EA019D34CCF00702A3B /* PLCrashReportRegisterInfo.h in Headers */,
-				6DAD0E3B19D34B5900702A3B /* KidoZenSwiftSDK.h in Headers */,
+				6DAD0E3B19D34B5900702A3B /* KidoZen.h in Headers */,
 				6DAD0E6319D34BAE00702A3B /* AFHTTPRequestOperation.h in Headers */,
 				6DAD0E9219D34CCF00702A3B /* PLCrashAsyncSignalInfo.h in Headers */,
 				6DAD0E9E19D34CCF00702A3B /* PLCrashReportProcessInfo.h in Headers */,
@@ -475,9 +475,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6DAD0E3419D34B5900702A3B /* KidoZenSwiftSDK */ = {
+		6DAD0E3419D34B5900702A3B /* KidoZen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DAD0E4819D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenSwiftSDK" */;
+			buildConfigurationList = 6DAD0E4819D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZen" */;
 			buildPhases = (
 				6DAD0E3019D34B5900702A3B /* Sources */,
 				6DAD0E3119D34B5900702A3B /* Frameworks */,
@@ -488,14 +488,14 @@
 			);
 			dependencies = (
 			);
-			name = KidoZenSwiftSDK;
+			name = KidoZen;
 			productName = KidoZenSwiftSDK;
 			productReference = 6DAD0E3519D34B5900702A3B /* KidoZenSwiftSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6DAD0E3F19D34B5900702A3B /* KidoZenSwiftSDKTests */ = {
+		6DAD0E3F19D34B5900702A3B /* KidoZenTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DAD0E4B19D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenSwiftSDKTests" */;
+			buildConfigurationList = 6DAD0E4B19D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenTests" */;
 			buildPhases = (
 				6DAD0E3C19D34B5900702A3B /* Sources */,
 				6DAD0E3D19D34B5900702A3B /* Frameworks */,
@@ -505,7 +505,7 @@
 			);
 			dependencies = (
 			);
-			name = KidoZenSwiftSDKTests;
+			name = KidoZenTests;
 			productName = KidoZenSwiftSDKTests;
 			productReference = 6DAD0E4019D34B5900702A3B /* KidoZenSwiftSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -539,8 +539,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6DAD0E3419D34B5900702A3B /* KidoZenSwiftSDK */,
-				6DAD0E3F19D34B5900702A3B /* KidoZenSwiftSDKTests */,
+				6DAD0E3419D34B5900702A3B /* KidoZen */,
+				6DAD0E3F19D34B5900702A3B /* KidoZenTests */,
 			);
 		};
 /* End PBXProject section */
@@ -732,6 +732,7 @@
 				);
 				INFOPLIST_FILE = KidoZenSwiftSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -762,6 +763,7 @@
 				);
 				INFOPLIST_FILE = KidoZenSwiftSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -810,7 +812,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DAD0E4819D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenSwiftSDK" */ = {
+		6DAD0E4819D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DAD0E4919D34B5900702A3B /* Debug */,
@@ -819,7 +821,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DAD0E4B19D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenSwiftSDKTests" */ = {
+		6DAD0E4B19D34B5900702A3B /* Build configuration list for PBXNativeTarget "KidoZenTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DAD0E4C19D34B5900702A3B /* Debug */,
