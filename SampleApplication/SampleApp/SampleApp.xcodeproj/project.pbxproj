@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D89A53319EEB398006C4040 /* KidoZenSwiftSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D89A53219EEB398006C4040 /* KidoZenSwiftSDK.framework */; };
 		6DAD0F6119D46CB600702A3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0F6019D46CB600702A3B /* AppDelegate.swift */; };
 		6DAD0F6A19D46CB600702A3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD0F6919D46CB600702A3B /* Images.xcassets */; };
 		6DAD0F7919D46CB600702A3B /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0F7819D46CB600702A3B /* SampleAppTests.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D89A53219EEB398006C4040 /* KidoZenSwiftSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KidoZenSwiftSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/KidoZenSwiftSDK-hicjwljrvodvspekuysvucgipbsg/Build/Products/Debug-iphoneos/KidoZenSwiftSDK.framework"; sourceTree = "<group>"; };
 		6DAD0F5B19D46CB600702A3B /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0F5F19D46CB600702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAD0F6019D46CB600702A3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D89A53319EEB398006C4040 /* KidoZenSwiftSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 		6DAD0F5219D46CB500702A3B = {
 			isa = PBXGroup;
 			children = (
+				6D89A53219EEB398006C4040 /* KidoZenSwiftSDK.framework */,
 				6DAD0F5D19D46CB600702A3B /* SampleApp */,
 				6DAD0F7519D46CB600702A3B /* SampleAppTests */,
 				6DAD0F5C19D46CB600702A3B /* Products */,
@@ -389,6 +393,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/kidoFramework",
 					"$(PROJECT_DIR)/kidoFramework/KidoZenSwiftSDK.framework",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/KidoZenSwiftSDK-hicjwljrvodvspekuysvucgipbsg/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -404,6 +409,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/kidoFramework",
 					"$(PROJECT_DIR)/kidoFramework/KidoZenSwiftSDK.framework",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/KidoZenSwiftSDK-hicjwljrvodvspekuysvucgipbsg/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

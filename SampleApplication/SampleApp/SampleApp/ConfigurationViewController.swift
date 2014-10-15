@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Kidozen. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import KidoZenSwiftSDK
 
 class ConfigurationViewController : UIViewController {
     
@@ -26,7 +27,7 @@ class ConfigurationViewController : UIViewController {
     }
     
     @IBAction func save(sender: UIButton) {
-        let configService = kzApplication?.configuration(nameTextFieldSave.text)
+        let configService = kzApplication?.configuration(name: nameTextFieldSave.text)
         
         var jsonData : NSData = valueTextFieldSave.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
         
@@ -34,7 +35,7 @@ class ConfigurationViewController : UIViewController {
         
         if (jsonDictionary? != nil) {
             
-            configService?.save(jsonDictionary, willStartCb: nil, success: { (response, responseObject) -> () in
+            configService?.save(object: jsonDictionary, willStartCb: nil, success: { (response, responseObject) -> () in
                 UIAlertView(title: "Saved!", message: "Config Saved!", delegate: nil, cancelButtonTitle: "Ok").show()
                 }, failure: { (response, error) -> () in
                     
@@ -49,7 +50,7 @@ class ConfigurationViewController : UIViewController {
     }
     
     @IBAction func queryPressed(sender: UIButton) {
-        configService = kzApplication?.configuration(nameTextFieldQuery.text)
+        configService = kzApplication?.configuration(name: nameTextFieldQuery.text)
         
         configService?.get(willStartCb: nil, success: { [weak self](response, responseObject) -> () in
             self!.responseTextField.text = "\(responseObject?)"
@@ -65,7 +66,7 @@ class ConfigurationViewController : UIViewController {
     }
     
     @IBAction func removePressed(sender: UIButton) {
-        configService = kzApplication?.configuration(nameTextFieldQuery.text)
+        configService = kzApplication?.configuration(name: nameTextFieldQuery.text)
         
         configService?.remove(nil, success: { [weak self](response, responseObject) -> () in
             self!.responseTextField.text = "\(responseObject?)"
@@ -78,7 +79,7 @@ class ConfigurationViewController : UIViewController {
     }
     
     @IBAction func queryAllPressed(sender: AnyObject) {
-        configService = kzApplication?.configuration(nameTextFieldQuery.text)
+        configService = kzApplication?.configuration(name: nameTextFieldQuery.text)
         configService?.all(nil, success: { [weak self] (response, responseObject) in
             self!.responseTextField.text = "\(responseObject?)"
             }, failure: { (response, error) -> () in

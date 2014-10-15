@@ -15,10 +15,7 @@ public class KZConfiguration : KZBaseService {
         self.configureNetworkManager()
     }
     
-    /**
-    *
-    */
-    func save(#object: Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func save(#object: Dictionary<String, String>?, willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         
@@ -28,7 +25,7 @@ public class KZConfiguration : KZBaseService {
         self.networkManager.POST(path:self.name, parameters: object, success: success, failure: failure)
     }
     
-    func get(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func get(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
@@ -37,7 +34,7 @@ public class KZConfiguration : KZBaseService {
         self.networkManager.GET(path:self.name, parameters: nil, success: success, failure: failure)
     }
     
-    func remove(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func remove(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
@@ -47,7 +44,7 @@ public class KZConfiguration : KZBaseService {
     }
     
     
-    func all(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
+    public func all(#willStartCb:kzVoidCb?, success:kzDidFinishCb?, failure:kzDidFailCb?)
     {
         willStartCb?()
         self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())

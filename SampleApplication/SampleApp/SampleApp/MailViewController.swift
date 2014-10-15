@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KidoZenSwiftSDK
 
 class MailViewController : UIViewController {
  
@@ -32,7 +33,7 @@ class MailViewController : UIViewController {
         
         activityIndicator.startAnimating()
         
-        self.kzApplication?.sendMail(mailDictionary, willStartCb: nil,
+        self.kzApplication?.sendMail(parameters: mailDictionary, willStartCb: nil,
             success: { [weak self](response, responseObject) -> () in
                 self!.activityIndicator.stopAnimating()
                 UIAlertView(title: "Email Sent", message: "The email has been sent", delegate: nil, cancelButtonTitle: "Ok").show()

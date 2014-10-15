@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Kidozen. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import KidoZenSwiftSDK
 
 class NotificationViewController : UIViewController {
     
@@ -48,7 +49,7 @@ class NotificationViewController : UIViewController {
         parameters["title"] = "iOS Title"
         parameters["type"] = "raw"
         
-        kzApplication.notificationService.push(parameters, channel: self.channelField.text, willStartCb: nil, success: { [weak self] (response, responseObject) in
+        kzApplication.notificationService.push(notification: parameters, channel: self.channelField.text, willStartCb: nil, success: { [weak self] (response, responseObject) in
 
             self!.show("Push Action Send!", message:"Sent push action to server")
             

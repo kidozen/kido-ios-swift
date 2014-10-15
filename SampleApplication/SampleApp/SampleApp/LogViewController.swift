@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Kidozen. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import KidoZenSwiftSDK
 
 class LogViewController : UIViewController {
  
@@ -46,7 +47,7 @@ class LogViewController : UIViewController {
         
         let dictionary = [key:value]
         
-        kzApplication?.write(dictionary, message: title, level: LogLevel.LogLevelError, willStartCb: { () -> () in
+        kzApplication?.write(object: dictionary, message: title, level: LogLevel.LogLevelError, willStartCb: { () -> () in
             
         }, success: {[weak self] (response, responseObject) -> () in
             self!.reponseTextView.text = "\(responseObject?)"

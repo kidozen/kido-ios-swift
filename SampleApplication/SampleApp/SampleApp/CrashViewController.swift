@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Kidozen. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import KidoZenSwiftSDK
 
 class CrashViewController : UIViewController {
     

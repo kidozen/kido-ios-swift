@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Kidozen. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import KidoZenSwiftSDK
 
 class ServicesViewController : UIViewController {
     
@@ -29,7 +30,7 @@ class ServicesViewController : UIViewController {
 
         service = kzApplication?.LOBServiceWithName(serviceTextField.text)
         
-        service!.invokeMethod("get", data:parameters, willStartCb: { () -> () in
+        service!.invokeMethod(method: "get", data:parameters, willStartCb: { () -> () in
             
             }, success: { [weak self](response, responseObject) -> () in
                 self!.responseTextView.text = "response is \(responseObject!)"
@@ -45,7 +46,7 @@ class ServicesViewController : UIViewController {
         
         service = kzApplication?.LOBServiceWithName(serviceTextField.text)
         
-        service!.invokeMethod("post", data:parameters, willStartCb: { () -> () in
+        service!.invokeMethod(method: "post", data:parameters, willStartCb: { () -> () in
             
             }, success: { [weak self](response, responseObject) -> () in
                 self!.responseTextView.text = "response is \(responseObject!)"

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KidoZenSwiftSDK
 
 class LoginViewController : UIViewController {
     
@@ -31,7 +32,7 @@ class LoginViewController : UIViewController {
     @IBAction func loginPressed(sender: AnyObject)
     {
         activityIndicator.startAnimating()
-        kzApplication!.authenticate(username.text,
+        kzApplication!.authenticate(user: username.text,
                                     provider: "Kidozen",
                                     password: password.text,
                                     success :

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import KidoZenSwiftSDK
 
 class DataSourceViewController : UIViewController {
 
@@ -36,7 +36,7 @@ class DataSourceViewController : UIViewController {
     {
         activityIndicator.startAnimating()
         
-        ds = kzApplication?.datasource(dataSourceName.text)
+        ds = kzApplication?.datasource(name: dataSourceName.text)
         
         ds!.query(willStartCb: nil, success: {
             [weak self] (response, responseObject) -> () in
@@ -54,7 +54,7 @@ class DataSourceViewController : UIViewController {
 
         var parameters = self.getCurrentParameters()
 
-        ds = kzApplication?.datasource(dataSourceName.text)
+        ds = kzApplication?.datasource(name: dataSourceName.text)
         
         ds!.query(      data: parameters,
                  willStartCb: nil,
@@ -76,7 +76,7 @@ class DataSourceViewController : UIViewController {
         
         var parameters = self.getCurrentParameters()
         
-        ds = kzApplication?.datasource(dataSourceName.text)
+        ds = kzApplication?.datasource(name: dataSourceName.text)
         
         ds!.invoke(data: parameters,
             willStartCb: nil,
@@ -96,7 +96,7 @@ class DataSourceViewController : UIViewController {
     @IBAction func invokeWithoutParameters(sender: AnyObject) {
         activityIndicator.startAnimating()
         
-        ds = kzApplication?.datasource(dataSourceName.text)
+        ds = kzApplication?.datasource(name: dataSourceName.text)
         
         ds!.invoke(willStartCb: nil, success: {
             [weak self] (response, responseObject) -> () in

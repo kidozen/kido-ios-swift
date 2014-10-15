@@ -163,7 +163,7 @@ extension KZApplication {
         
     }
     
-    func isAuthenticated() -> Bool
+    public func isAuthenticated() -> Bool
     {
         return self.applicationAuthentication.authenticated == true
     }

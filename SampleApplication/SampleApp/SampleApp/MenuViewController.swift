@@ -35,7 +35,7 @@ class MenuViewController : UIViewController {
     
     @IBAction func loggingPressed(sender: AnyObject) {
         
-        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+        if (self.kzApplication!.isAuthenticated()) {
             var logVC = LogViewController(nibName: "LogViewController", bundle: nil)
             logVC.kzApplication = kzApplication
             
@@ -49,7 +49,7 @@ class MenuViewController : UIViewController {
     
     @IBAction func servicesPressed(sender: AnyObject)
     {
-        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+        if (self.kzApplication!.isAuthenticated()) {
             var serviceVC = ServicesViewController(nibName: "ServicesViewController", bundle: nil)
             serviceVC.kzApplication = kzApplication
             
@@ -62,7 +62,7 @@ class MenuViewController : UIViewController {
     
     @IBAction func dataSourcesPressed(sender: AnyObject)
     {
-        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+        if (self.kzApplication!.isAuthenticated()) {
             var dsVC = DataSourceViewController(nibName: "DataSourceViewController", bundle: nil)
             dsVC.kzApplication = kzApplication
             
@@ -81,7 +81,7 @@ class MenuViewController : UIViewController {
     }
     
     @IBAction func configurationPressed(sender: AnyObject) {
-        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+        if (self.kzApplication!.isAuthenticated()) {
             var configVC = ConfigurationViewController(nibName: "ConfigurationViewController", bundle: nil)
             configVC.kzApplication = kzApplication
             
@@ -115,7 +115,7 @@ class MenuViewController : UIViewController {
     
     @IBAction func notificationsPressed(sender: AnyObject)
     {
-        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+        if (self.kzApplication!.isAuthenticated()) {
             notificationsVC = NotificationViewController(nibName: "NotificationViewController", bundle: nil)
             notificationsVC?.kzApplication = kzApplication
             notificationsVC?.deviceToken = deviceToken
@@ -133,7 +133,7 @@ class MenuViewController : UIViewController {
     }
     
     @IBAction func mailPressed(sender: AnyObject) {
-        if (self.kzApplication!.applicationAuthentication.authenticated! == true) {
+        if (self.kzApplication!.isAuthenticated()) {
             
             var mailVC = MailViewController(nibName: "MailViewController", bundle: nil)
             mailVC.kzApplication = kzApplication
