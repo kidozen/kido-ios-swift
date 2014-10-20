@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D8CEE0319F0181600259796 /* KZDataVisualizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CEE0219F0181600259796 /* KZDataVisualizationViewController.swift */; };
 		6DAD0E3B19D34B5900702A3B /* KidoZen.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E3A19D34B5900702A3B /* KidoZen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E4519D34B5900702A3B /* KidoZenSwiftSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E4419D34B5900702A3B /* KidoZenSwiftSDKTests.swift */; };
 		6DAD0E6319D34BAE00702A3B /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E5019D34BAE00702A3B /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +92,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D8CEE0219F0181600259796 /* KZDataVisualizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZDataVisualizationViewController.swift; sourceTree = "<group>"; };
 		6DAD0E3519D34B5900702A3B /* KidoZen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KidoZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E3919D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAD0E3A19D34B5900702A3B /* KidoZen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KidoZen.h; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		6D7A281B19E85F61005D0F5B /* DataViz */ = {
 			isa = PBXGroup;
 			children = (
+				6D8CEE0219F0181600259796 /* KZDataVisualizationViewController.swift */,
 			);
 			name = DataViz;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				6DAD0EE519D357B900702A3B /* KZApplicationConfiguration.swift in Sources */,
 				6DAD0E7119D34BAE00702A3B /* AFURLRequestSerialization.m in Sources */,
 				6DAD0EED19D357B900702A3B /* KZIdentityProviderFactory.swift in Sources */,
+				6D8CEE0319F0181600259796 /* KZDataVisualizationViewController.swift in Sources */,
 				6DAD0EEC19D357B900702A3B /* KZDictionaryExtensions.swift in Sources */,
 				6DAD0EE819D357B900702A3B /* KZBaseService.swift in Sources */,
 				6DAD0EFF19D357B900702A3B /* KZUser.swift in Sources */,

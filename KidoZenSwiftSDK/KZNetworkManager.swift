@@ -191,6 +191,30 @@ public class KZNetworkManager {
         
     }
     
+    func download(#url:NSURL, destination:String, successCb:kzDidFinishCb, failureCb: kzDidFailCb) {
+        
+        var request = NSMutableURLRequest(URL: url)
+        request.addValue(self.tokenController?.kzToken, forHTTPHeaderField: "Authorization")
+        
+        var progress : NSProgress?
+
+        let downloadTask = self.manager.downloadTaskWithRequest(request, progress: &progress, destination: { (url, urlResponse) in
+                return NSURL(string: destination)
+            
+            }, completionHandler: { (urlResponse, url, error) in
+                
+                let response = KZResponse(urlRequestOperation: nil, response: urlResponse, error: error)
+                if error != nil {
+                    failureCb(response:response, error: error)
+                } else {
+                    successCb(response: response, responseObject: urlResponse)
+                }
+        })
+        
+        downloadTask.resume()
+
+    }
+    
     private func convertToStringIfData(data: AnyObject) -> AnyObject! {
         let theData = data as? NSData
         
