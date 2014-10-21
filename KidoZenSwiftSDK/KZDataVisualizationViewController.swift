@@ -11,12 +11,6 @@ import Foundation
 
 class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
 
-//
-//    @property (nonatomic, strong) UIWebView *webView;
-//    @property (nonatomic, strong) UIActivityIndicatorView *activityView;
-//    @property (nonatomic, strong) UIProgressView *progressView;
-//    
-
     
     var successCb : kzVoidCb?
     var errorCb : kzErrorCb?
@@ -42,13 +36,13 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
            tokenController:KZTokenController,
                dataVizName:String)
     {
-        self.downloadURLString = "api/v2/visualizations/\(dataVizName)/app/download?type=mobile"
+        self.downloadURLString = "/api/v2/visualizations/\(dataVizName)/app/download?type=mobile"
         self.tokenController = tokenController
         self.dataVizName = dataVizName
         self.tenantName = tenant
         self.applicationName = applicationConfig.name
 
-        self.networkManager = KZNetworkManager(baseURLString: applicationConfig.html5Url!,
+        self.networkManager = KZNetworkManager(baseURLString: "https://\(applicationConfig.name!).\(applicationConfig.domain!)",
                                                    strictSSL: strictSSL,
                                              tokenController: tokenController)
         self.progressView = UIProgressView(progressViewStyle: .Default)
@@ -79,6 +73,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         let url = NSURL(string: self.downloadURLString)
         
         self.networkManager.download(url: url, destination: path, successCb: { (response, responseObject) -> () in
+            
             //    [safeMe unzipFileAtPath:path folderName:[self dataVizDirectory]];
             //    [safeMe.progressView removeFromSuperview];
             
