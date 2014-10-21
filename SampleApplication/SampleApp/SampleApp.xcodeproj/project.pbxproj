@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D52AE4719F5AAA200DFD9DF /* DataVisualizationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D52AE4619F5AAA200DFD9DF /* DataVisualizationController.xib */; };
+		6D52AE4919F5ABA200DFD9DF /* DataVisualizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D52AE4819F5ABA200DFD9DF /* DataVisualizationController.swift */; };
 		6D66177119EF039F007EAEE2 /* KidoZen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D66177019EF039F007EAEE2 /* KidoZen.framework */; };
 		6DAD0F6119D46CB600702A3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0F6019D46CB600702A3B /* AppDelegate.swift */; };
 		6DAD0F6A19D46CB600702A3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD0F6919D46CB600702A3B /* Images.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D52AE4619F5AAA200DFD9DF /* DataVisualizationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataVisualizationController.xib; sourceTree = "<group>"; };
+		6D52AE4819F5ABA200DFD9DF /* DataVisualizationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataVisualizationController.swift; sourceTree = "<group>"; };
 		6D66177019EF039F007EAEE2 /* KidoZen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KidoZen.framework; path = "../../../../Library/Developer/Xcode/DerivedData/KidoZen-eddavnbctmjkbmbfndwbafjtftac/Build/Products/Debug-iphoneos/KidoZen.framework"; sourceTree = "<group>"; };
 		6DAD0F5B19D46CB600702A3B /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0F5F19D46CB600702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				6DAD0F9319D4707E00702A3B /* ServicesViewController.xib */,
 				6DAD0F9419D4707E00702A3B /* StorageViewController.swift */,
 				6DAD0F9519D4707E00702A3B /* StorageViewController.xib */,
+				6D52AE4819F5ABA200DFD9DF /* DataVisualizationController.swift */,
+				6D52AE4619F5AAA200DFD9DF /* DataVisualizationController.xib */,
 				6DAD0F6919D46CB600702A3B /* Images.xcassets */,
 				6DAD0F5E19D46CB600702A3B /* Supporting Files */,
 			);
@@ -255,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D52AE4719F5AAA200DFD9DF /* DataVisualizationController.xib in Resources */,
 				6DAD0FA719D4707E00702A3B /* ServicesViewController.xib in Resources */,
 				6DAD0F9D19D4707E00702A3B /* LoginViewController.xib in Resources */,
 				6DAD0FA119D4707E00702A3B /* MailViewController.xib in Resources */,
@@ -283,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D52AE4919F5ABA200DFD9DF /* DataVisualizationController.swift in Sources */,
 				6DAD0F6119D46CB600702A3B /* AppDelegate.swift in Sources */,
 				6DAD0FA019D4707E00702A3B /* MailViewController.swift in Sources */,
 				6DAD0F9819D4707E00702A3B /* CrashViewController.swift in Sources */,
