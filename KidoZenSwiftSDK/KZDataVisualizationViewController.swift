@@ -68,8 +68,10 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     
     private func downloadZipFile()
     {
-        let path = self.tempDirectory() + self.dataVizName + ".zip"
         let url = NSURL(string: self.downloadURLString)
+        let path = self.tempDirectory() + self.dataVizName + ".zip"
+        
+        let urlPath = NSURL(fileURLWithPath: path)
         
         self.networkManager.download(url: url!, destination: path, successCb: { (response, responseObject) -> () in
             
@@ -82,6 +84,22 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         
     }
 
+    private func unzipFile(#urlPath:NSURL) {
+        var error : NSError?
+        let zipFile = ZZArchive(URL: urlPath, error: &error)
+        
+        
+        if (error != nil) {
+            for nextEntry in zipFile.entries {
+                let path = self.tempDirectory() + self.dataVizName + nextEntry.fileName
+                print("path is \(path)")
+                
+//                nextEntry.data.writeToFile(path, atomically: true)
+            }
+        }
+        
+    }
+    
     private func tempDirectory() -> String
     {
         let paths  = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)

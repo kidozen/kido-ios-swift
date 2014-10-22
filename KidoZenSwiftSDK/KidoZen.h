@@ -19,3 +19,4 @@ FOUNDATION_EXPORT const unsigned char KidoZenVersionString[];
 #import "CrashReporter.h"
 #import "SRWebSocket.h"
 #import "AFNetworking.h"
+#import "zipzap.h"
