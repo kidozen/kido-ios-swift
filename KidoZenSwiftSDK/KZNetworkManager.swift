@@ -197,9 +197,10 @@ public class KZNetworkManager {
         request.addValue(self.tokenController?.kzToken, forHTTPHeaderField: "Authorization")
         
         var progress : NSProgress?
+        self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
 
         let downloadTask = self.manager.downloadTaskWithRequest(request, progress: &progress, destination: { (url, urlResponse) in
-                return NSURL(string: destination)
+                return NSURL(fileURLWithPath: destination)
             
             }, completionHandler: { (urlResponse, url, error) in
                 

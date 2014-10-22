@@ -50,7 +50,7 @@
 		6D741CC219F735E200BA39E6 /* ZZAESDecryptInputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6D741C9619F735E200BA39E6 /* ZZAESDecryptInputStream.mm */; };
 		6D741CC319F735E200BA39E6 /* ZZAESDecryptInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D741C9719F735E200BA39E6 /* ZZAESDecryptInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D741CC419F735E200BA39E6 /* zipzap.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D741C9819F735E200BA39E6 /* zipzap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6D741CC919F736FE00BA39E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D741CC819F736FE00BA39E6 /* libz.dylib */; };
+		6D741CCE19F7DFF200BA39E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D741CCD19F7DFF200BA39E6 /* libz.dylib */; };
 		6D8CEE0319F0181600259796 /* KZDataVisualizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8CEE0219F0181600259796 /* KZDataVisualizationViewController.swift */; };
 		6DAD0E3B19D34B5900702A3B /* KidoZen.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAD0E3A19D34B5900702A3B /* KidoZen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DAD0E4519D34B5900702A3B /* KidoZenSwiftSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0E4419D34B5900702A3B /* KidoZenSwiftSDKTests.swift */; };
@@ -179,7 +179,7 @@
 		6D741C9619F735E200BA39E6 /* ZZAESDecryptInputStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZZAESDecryptInputStream.mm; path = thirdParty/zipzap/ZZAESDecryptInputStream.mm; sourceTree = "<group>"; };
 		6D741C9719F735E200BA39E6 /* ZZAESDecryptInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZAESDecryptInputStream.h; path = thirdParty/zipzap/ZZAESDecryptInputStream.h; sourceTree = "<group>"; };
 		6D741C9819F735E200BA39E6 /* zipzap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zipzap.h; path = thirdParty/zipzap/zipzap.h; sourceTree = "<group>"; };
-		6D741CC819F736FE00BA39E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		6D741CCD19F7DFF200BA39E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6D8CEE0219F0181600259796 /* KZDataVisualizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZDataVisualizationViewController.swift; sourceTree = "<group>"; };
 		6DAD0E3519D34B5900702A3B /* KidoZen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KidoZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAD0E3919D34B5900702A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D741CC919F736FE00BA39E6 /* libz.dylib in Frameworks */,
+				6D741CCE19F7DFF200BA39E6 /* libz.dylib in Frameworks */,
 				6DAD0EBA19D3542B00702A3B /* libicucore.dylib in Frameworks */,
 				6DAD0E7719D34C5600702A3B /* CrashReporter.framework in Frameworks */,
 			);
@@ -292,6 +292,7 @@
 		6D741C6D19F735CA00BA39E6 /* ZipZap */ = {
 			isa = PBXGroup;
 			children = (
+				6D741CCD19F7DFF200BA39E6 /* libz.dylib */,
 				6D741C6E19F735E200BA39E6 /* ZZStoreOutputStream.m */,
 				6D741C6F19F735E200BA39E6 /* ZZStoreOutputStream.h */,
 				6D741C7019F735E200BA39E6 /* ZZStandardDecryptInputStream.mm */,
@@ -350,7 +351,6 @@
 		6DAD0E2B19D34B5900702A3B = {
 			isa = PBXGroup;
 			children = (
-				6D741CC819F736FE00BA39E6 /* libz.dylib */,
 				6DAD0E3719D34B5900702A3B /* KidoZen */,
 				6DAD0E4119D34B5900702A3B /* KidoZenTests */,
 				6DAD0E4E19D34B8E00702A3B /* thidParty */,

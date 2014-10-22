@@ -132,6 +132,19 @@ class MenuViewController : UIViewController {
         
     }
     
+    @IBAction func dataVizPressed(sender: AnyObject) {
+        if (self.kzApplication!.isAuthenticated()) {
+            
+            var mailVC = DataVisualizationController(nibName: "DataVisualizationController", bundle: nil)
+            mailVC.kzApplication = kzApplication
+            
+            self.navigationController?.pushViewController(mailVC, animated: true)
+        } else {
+            self.showShouldBeConnected()
+        }
+
+    }
+    
     @IBAction func mailPressed(sender: AnyObject) {
         if (self.kzApplication!.isAuthenticated()) {
             

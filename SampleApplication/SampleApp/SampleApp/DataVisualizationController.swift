@@ -11,8 +11,6 @@ import KidoZen
 
 class DataVisualizationController: UIViewController {
     
-    var applicationConfig: KZApplicationConfiguration!
-    var applicationAuth : KZApplicationAuthentication!
     var kzApplication : KZApplication!
     
     @IBOutlet weak var dataVizName: UITextField!
@@ -26,7 +24,12 @@ class DataVisualizationController: UIViewController {
     @IBAction func showDataViz(sender: AnyObject) {
         
         if (countElements(dataVizName.text) > 0) {
-//            KZApplication showDataVisualization(name:dataVizName.text, success:)
+            kzApplication.showDataVisualization(name: dataVizName.text, success: { () -> () in
+                print("Success")
+            }, failure: { (error) -> () in
+                print("error")
+                
+            })
         }
     }
     

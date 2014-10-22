@@ -36,16 +36,16 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
                  strictSSL:Bool,
                dataVizName:String)
     {
-        self.downloadURLString = "/api/v2/visualizations/\(dataVizName)/app/download?type=mobile"
         self.dataVizName = dataVizName
         self.tenantName = tenant
         self.applicationName = applicationConfig.name
+        self.downloadURLString = "https://\(applicationConfig.name!).\(applicationConfig.domain!)/api/v2/visualizations/\(dataVizName)/app/download?type=mobile"
 
-        self.networkManager = KZNetworkManager(baseURLString: "https://\(applicationConfig.name!).\(applicationConfig.domain!)",
+        self.networkManager = KZNetworkManager(baseURLString: "",
                                                    strictSSL: strictSSL,
                                              tokenController: appAuth.tokenController)
         self.progressView = UIProgressView(progressViewStyle: .Default)
-        super.init()
+        super.init(nibName: nil, bundle: nil)
         
     }
     
@@ -69,17 +69,16 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     private func downloadZipFile()
     {
         let url = NSURL(string: self.downloadURLString)
-        let path = self.tempDirectory() + self.dataVizName + ".zip"
+        let path = self.tempDirectory() + "/" + self.dataVizName + ".zip"
         
         let urlPath = NSURL(fileURLWithPath: path)
         
-        self.networkManager.download(url: url!, destination: path, successCb: { (response, responseObject) -> () in
-            
-            //    [safeMe unzipFileAtPath:path folderName:[self dataVizDirectory]];
+        self.networkManager.download(url: url!, destination: path, successCb: { [weak self](response, responseObject) -> () in
+            self!.unzipFile(urlPath: urlPath!)
             //    [safeMe.progressView removeFromSuperview];
             
             }, failureCb : {(response, error) -> () in
-                // handleError
+                print("Error is \(error), \(response)")
         })
         
     }
@@ -88,16 +87,50 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         var error : NSError?
         let zipFile = ZZArchive(URL: urlPath, error: &error)
         
-        
-        if (error != nil) {
-            for nextEntry in zipFile.entries {
-                let path = self.tempDirectory() + self.dataVizName + nextEntry.fileName
-                print("path is \(path)")
+        if (error == nil) {
+            
+            let fm = NSFileManager.defaultManager()
+            let destination = NSURL(fileURLWithPath: self.tempDirectory() + "/" + self.dataVizName)
+            fm.createDirectoryAtURL(destination!, withIntermediateDirectories: true, attributes: nil, error: nil)
+
+            for nextEntry  in zipFile.entries {
+                let targetPath : NSURL = destination!.URLByAppendingPathComponent(nextEntry.fileName)
+                println("targetPath is \(targetPath)")
+                println("S_IFDIR \(S_IFDIR)")
+                println("nextEntry.fileMode is \(nextEntry.fileMode)")
                 
-//                nextEntry.data.writeToFile(path, atomically: true)
+                if ((nextEntry.fileMode & S_IFDIR) != 0) {
+                    println("entry is directory")
+                    
+                    var dirError : NSError?
+                    fm.createDirectoryAtURL(targetPath, withIntermediateDirectories: true, attributes: nil, error: &dirError)
+                    
+                    if (dirError != nil) {
+                        println("ERror while creating directory is \(dirError)")
+                    }
+                    
+                } else {
+                    var dirError : NSError?
+
+                    fm.createDirectoryAtURL(targetPath,
+                                    withIntermediateDirectories: true,
+                                                     attributes: nil,
+                                                          error: &dirError)
+                    
+                    if (dirError != nil) {
+                        println("ERror while creating is \(dirError)")
+                    }
+
+                    var data = nextEntry.newDataWithError(&error)
+                    var writeError : NSError?
+                    
+                    if (data.writeToURL(targetPath, options:nil, error: &writeError) == false) {
+                        println("Error while creating targetPath \(targetPath), error is \(writeError)")
+                    }
+                    
+                }
             }
         }
-        
     }
     
     private func tempDirectory() -> String
@@ -135,6 +168,11 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     private func closeButton() -> UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "closeDataVisualization")
     }
+    
+    func closeDataVisualization() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 //    
 //    optional func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool
 //    optional func webViewDidStartLoad(webView: UIWebView)
