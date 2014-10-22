@@ -116,7 +116,7 @@ public class KZLogging : KZBaseService {
     }
     
     private func path(forLevel level:LogLevel, message:String?) -> String {
-        var path = "?level=" + String(level.toRaw())
+        var path = "?level=" + String(level.rawValue)
         
         if let m = message {
             let percentString = m.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!

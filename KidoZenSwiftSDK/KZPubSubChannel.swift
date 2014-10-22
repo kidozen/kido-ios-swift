@@ -42,7 +42,7 @@ class KZPubSubChannel : NSObject, SRWebSocketDelegate {
         self.success = success
         self.failure = failure
         
-        let url = NSURLRequest(URL: NSURL(string: self.wsEndPoint))
+        let url = NSURLRequest(URL: NSURL(string: self.wsEndPoint)!)
         self.webSocket = SRWebSocket(URLRequest: url)
         self.webSocket?.delegate = self
         self.webSocket?.open()

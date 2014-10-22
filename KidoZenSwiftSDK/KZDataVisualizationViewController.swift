@@ -9,11 +9,14 @@
 import Foundation
 
 
+/**
+
+*/
 class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
 
     
     var successCb : kzVoidCb?
-    var errorCb : kzErrorCb?
+    var failureCb : kzErrorCb?
     
     private var downloadURLString : String!
     private var dataVizName : String!
@@ -21,8 +24,6 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     private var applicationName : String!
     
     private var networkManager : KZNetworkManager!
-    private weak var tokenController : KZTokenController?
-    
     
     private var webView : UIWebView!
     private var activityView : UIActivityIndicatorView!
@@ -33,18 +34,16 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
                    appAuth:KZApplicationAuthentication,
                     tenant:String,
                  strictSSL:Bool,
-           tokenController:KZTokenController,
                dataVizName:String)
     {
         self.downloadURLString = "/api/v2/visualizations/\(dataVizName)/app/download?type=mobile"
-        self.tokenController = tokenController
         self.dataVizName = dataVizName
         self.tenantName = tenant
         self.applicationName = applicationConfig.name
 
         self.networkManager = KZNetworkManager(baseURLString: "https://\(applicationConfig.name!).\(applicationConfig.domain!)",
                                                    strictSSL: strictSSL,
-                                             tokenController: tokenController)
+                                             tokenController: appAuth.tokenController)
         self.progressView = UIProgressView(progressViewStyle: .Default)
         super.init()
         
@@ -72,7 +71,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         let path = self.tempDirectory() + self.dataVizName + ".zip"
         let url = NSURL(string: self.downloadURLString)
         
-        self.networkManager.download(url: url, destination: path, successCb: { (response, responseObject) -> () in
+        self.networkManager.download(url: url!, destination: path, successCb: { (response, responseObject) -> () in
             
             //    [safeMe unzipFileAtPath:path folderName:[self dataVizDirectory]];
             //    [safeMe.progressView removeFromSuperview];

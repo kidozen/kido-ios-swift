@@ -41,7 +41,7 @@ class KZADFSIdentityProvider : KZObject, KZIdentityProviderProtocol {
         
         self.endPoint = identityProviderUrl
 
-        let request = NSMutableURLRequest(URL: NSURL(string: identityProviderUrl))
+        let request = NSMutableURLRequest(URL: NSURL(string: identityProviderUrl)!)
         let msg = self.requestMessage()
         let length = "\(countElements(msg!))"
         
@@ -51,7 +51,7 @@ class KZADFSIdentityProvider : KZObject, KZIdentityProviderProtocol {
         request.HTTPBody = msg.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         
         let connection = NSURLConnection(request: request, delegate: self)
-        connection.start()
+        connection?.start()
         
     }
     

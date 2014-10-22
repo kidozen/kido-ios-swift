@@ -49,7 +49,7 @@ public class KZService : KZBaseService {
     {
         let bearerHeaderString = (tokenController.ipToken! as NSString)
         let bearerHeaderData = bearerHeaderString.dataUsingEncoding(NSUTF8StringEncoding)
-        let bearerHeaderBase64 = bearerHeaderData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.fromRaw(0)!)
+        let bearerHeaderBase64 = bearerHeaderData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
         
         return "Bearer \(bearerHeaderBase64)"
     }

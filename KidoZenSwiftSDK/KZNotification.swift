@@ -102,7 +102,7 @@ public class KZNotification : KZBaseService {
         var uniqueId = userDefaults.valueForKey(kUniqueIdentificationFilename) as? String
         
         if (uniqueId == nil) {
-            uniqueId = NSUUID.UUID().UUIDString
+            uniqueId = NSUUID().UUIDString
             userDefaults.setValue(uniqueId, forKey: kUniqueIdentificationFilename)
             userDefaults.synchronize()
         }

@@ -131,7 +131,7 @@ class KZCrashReporter
         self.version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
         self.build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as NSString) as? String
 
-        var breadcrumbs = String.stringWithContentsOfFile(self.breadcrumbFilename(), encoding: NSUTF8StringEncoding, error: nil)
+        var breadcrumbs = String(contentsOfFile:self.breadcrumbFilename(), encoding: NSUTF8StringEncoding, error: nil)
         
         breadcrumbs = breadcrumbs? != nil ?  breadcrumbs! : ""
         

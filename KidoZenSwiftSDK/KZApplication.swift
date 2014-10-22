@@ -298,3 +298,23 @@ extension KZApplication {
         self.enableCrashReporter(nil, didSendCrashReportCb:nil, didFailCrashReportCb:nil)
     }
 }
+
+// DataVisualization
+extension KZApplication {
+    
+    public func showDataVisualization(#name:String, success:kzVoidCb?, failure:(error: NSError?) -> () ) {
+        let vc = KZDataVisualizationViewController(applicationConfig: applicationConfiguration,
+                                                             appAuth: applicationAuthentication,
+                                                              tenant: tenantMarketPlace,
+                                                           strictSSL: strictSSL,
+                                                         dataVizName: name)
+        vc.successCb = success
+        vc.failureCb = failure
+        
+        let rootController = UIApplication.sharedApplication().delegate!.window??.rootViewController
+        let webNavigation = UINavigationController(rootViewController: vc)
+        rootController?.presentViewController(webNavigation, animated: true, completion: nil)
+        
+    }
+    
+}
