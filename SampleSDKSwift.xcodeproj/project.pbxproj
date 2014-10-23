@@ -108,8 +108,6 @@
 		6D272F8C1987E7540098D8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D272F8D1987E7540098D8B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D272F941987E7540098D8B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6D272F9F1987E7540098D8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D272FA01987E7540098D8B2 /* SampleSDKSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSDKSwiftTests.swift; sourceTree = "<group>"; };
 		6D272FAA1987E7D20098D8B2 /* SampleSDKSwiftBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSDKSwiftBridge.h; sourceTree = "<group>"; };
 		6D272FDF1987EB120098D8B2 /* KZObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZObject.swift; path = SampleSDKSwift/kidoSDKSwift/KZObject.swift; sourceTree = "<group>"; };
 		6D272FE21987EB530098D8B2 /* KZApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KZApplication.swift; path = SampleSDKSwift/kidoSDKSwift/KZApplication.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				6D272FAB1987E8310098D8B2 /* kidoSDKSwift */,
 				6D272F8A1987E7540098D8B2 /* SampleSDKSwift */,
-				6D272F9D1987E7540098D8B2 /* SampleSDKSwiftTests */,
 				6DD8B921199C045B00353306 /* SampleSDKSwiftTests */,
 				6D272F891987E7540098D8B2 /* Products */,
 				74F18DED6372400D8537D868 /* Pods.xcconfig */,
@@ -256,23 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				6D272F8C1987E7540098D8B2 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6D272F9D1987E7540098D8B2 /* SampleSDKSwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				6D272FA01987E7540098D8B2 /* SampleSDKSwiftTests.swift */,
-				6D272F9E1987E7540098D8B2 /* Supporting Files */,
-			);
-			path = SampleSDKSwiftTests;
-			sourceTree = "<group>";
-		};
-		6D272F9E1987E7540098D8B2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6D272F9F1987E7540098D8B2 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -423,7 +403,7 @@
 		6D272F801987E7530098D8B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Kidozen;
 				TargetAttributes = {
 					6D272F871987E7540098D8B2 = {
@@ -683,10 +663,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F18DED6372400D8537D868 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ben Elliott (T9QH59YU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: KidoZen, Inc";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SampleSDKSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -696,7 +675,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1cf0a028-7434-423f-adb4-5859bee1782f";
+				PROVISIONING_PROFILE = "d1115f31-72cc-46b0-b767-4311907279fe";
 				SWIFT_OBJC_BRIDGING_HEADER = SampleSDKSwift/SampleSDKSwiftBridge.h;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
@@ -707,10 +686,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F18DED6372400D8537D868 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ben Elliott (T9QH59YU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: KidoZen, Inc";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SampleSDKSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -720,7 +698,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1cf0a028-7434-423f-adb4-5859bee1782f";
+				PROVISIONING_PROFILE = "d1115f31-72cc-46b0-b767-4311907279fe";
 				SWIFT_OBJC_BRIDGING_HEADER = SampleSDKSwift/SampleSDKSwiftBridge.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
