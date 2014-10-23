@@ -50,33 +50,33 @@ class KZApplicationServices {
     func datasource(name:String?) -> KZDatasource
     {
         var endPoint = applicationConfiguration?.datasource?.stringByAppendingString("/")
-        var service = KZDatasource(endPoint: endPoint, name: name, tokenController:tokenController)
-        service.strictSSL = strictSSL
-        return service
+        var datasource = KZDatasource(endPoint: endPoint, name: name, tokenController:tokenController)
+        datasource.strictSSL = strictSSL
+        return datasource
     }
     
     func configuration(name:String?) -> KZConfiguration
     {
         var endPoint = applicationConfiguration?.config
-        var service = KZConfiguration(endPoint: endPoint, name: name, tokenController: tokenController)
-        service.strictSSL = strictSSL
-        return service
+        var configuration = KZConfiguration(endPoint: endPoint, name: name, tokenController: tokenController)
+        configuration.strictSSL = strictSSL
+        return configuration
     }
     
     func queue(name:String?) -> KZQueue
     {
         var endPoint = applicationConfiguration?.queue
-        var service = KZQueue(endPoint: endPoint, name: name, tokenController: tokenController)
-        service.strictSSL = strictSSL
-        return service
+        var queue = KZQueue(endPoint: endPoint, name: name, tokenController: tokenController)
+        queue.strictSSL = strictSSL
+        return queue
     }
     
     func storage(name:String?) -> KZStorage
     {
         var endPoint = applicationConfiguration?.storage
-        var service = KZStorage(endPoint: endPoint, name: name, tokenController: tokenController)
-        service.strictSSL = strictSSL
-        return service
+        var storage = KZStorage(endPoint: endPoint, name: name, tokenController: tokenController)
+        storage.strictSSL = strictSSL
+        return storage
     }
     
     func SMSSender(number:String?) -> KZSMSSender
