@@ -49,15 +49,15 @@ class KZService : KZBaseService {
     {
         let bearerHeaderString = (tokenController.ipToken! as NSString)
         let bearerHeaderData = bearerHeaderString.dataUsingEncoding(NSUTF8StringEncoding)
-        let bearerHeaderBase64 = bearerHeaderData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.fromRaw(0)!)
+        let bearerHeaderBase64 = bearerHeaderData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
         
         return "Bearer \(bearerHeaderBase64)"
     }
 
     override func configureNetworkManager()
     {
-        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        self.networkManager.configureResponseSerializer(AFImageResponseSerializer() as AFHTTPResponseSerializer)
         self.addAuthorizationHeader()
     }
     

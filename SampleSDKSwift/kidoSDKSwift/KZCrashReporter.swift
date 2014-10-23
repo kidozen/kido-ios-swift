@@ -129,8 +129,7 @@ class KZCrashReporter
         self.version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
         self.build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as NSString) as? String
 
-        var breadcrumbs = String.stringWithContentsOfFile(self.breadcrumbFilename(), encoding: NSUTF8StringEncoding, error: nil)
-        
+        var breadcrumbs = String(contentsOfFile: self.breadcrumbFilename(), encoding: NSUTF8StringEncoding, error: nil)
         
         if (breadcrumbs? == nil) {
             breadcrumbs = ""
@@ -145,8 +144,8 @@ class KZCrashReporter
         
         
         self.networkManager.strictSSL = false
-        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer() as AFHTTPResponseSerializer)
         self.networkManager.addAuthorizationHeader(tokenController.kzToken)
         
         // We have to override the Content-Type to only be application/json, dropping the charset, because

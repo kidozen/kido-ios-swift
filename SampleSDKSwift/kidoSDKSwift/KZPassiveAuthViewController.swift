@@ -108,9 +108,9 @@ class KZPassiveAuthViewController : UIViewController, UIWebViewDelegate {
             if (payload.hasPrefix(kSuccessPayloadPrefix)) {
                 let b64 = payload.stringByReplacingOccurrencesOfString(kSuccessPayloadPrefix, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
                 let b64Data = NSData(base64EncodedString: b64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-                let jsonString = NSString(data: b64Data, encoding: NSUTF8StringEncoding)
+                let jsonString = NSString(data: b64Data!, encoding: NSUTF8StringEncoding)
                 
-                let jsonDictionary = NSJSONSerialization.JSONObjectWithData(b64Data, options: nil, error: nil) as? Dictionary<String, String>
+                let jsonDictionary = NSJSONSerialization.JSONObjectWithData(b64Data!, options: nil, error: nil) as? Dictionary<String, String>
                 
                 let accessToken = jsonDictionary?["access_token"]
                 let refreshToken = jsonDictionary?["refresh_token"]

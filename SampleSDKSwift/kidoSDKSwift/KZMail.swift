@@ -25,8 +25,8 @@ class KZMail : KZBaseService {
 
         if let theAttachment = attachments {
             networkManager.strictSSL = self.strictSSL!
-            self.networkManager.configureRequestSerializer(AFHTTPRequestSerializer())
-            self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+            self.networkManager.configureRequestSerializer(AFHTTPRequestSerializer() as AFHTTPRequestSerializer)
+            self.networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
             self.addAuthorizationHeader()
 
             self.networkManager.multipartPOST(path: "attachments", parameters: parameters, attachments:theAttachment, success: {

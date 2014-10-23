@@ -35,8 +35,8 @@ class KZQueue : KZBaseService
     
     override func configureNetworkManager()
     {
-        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer() as AFHTTPResponseSerializer)
         
         self.addAuthorizationHeader()
     }

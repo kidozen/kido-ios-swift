@@ -111,7 +111,7 @@ class KZLogging : KZBaseService {
     }
     
     private func path(forLevel level:LogLevel, message:String?) -> String {
-        var path = "?level=" + String(level.toRaw())
+        var path = "?level=" + String(level.rawValue)
         
         if let m = message {
             let percentString = m.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
@@ -127,17 +127,17 @@ class KZLogging : KZBaseService {
         switch (logType) {
             
         case .Query, .Clear:
-            networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+            networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
             
         case .Write:
             // Response is not JSON, but text/plain
-            networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+            networkManager.configureResponseSerializer(AFHTTPResponseSerializer() as AFHTTPResponseSerializer)
         default:
-            networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+            networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
             
         }
         
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
         addAuthorizationHeader()
     }
 

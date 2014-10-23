@@ -180,8 +180,8 @@ class KZStorage : KZBaseService
     
     override func configureNetworkManager()
     {
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
         
         self.addAuthorizationHeader()
     }

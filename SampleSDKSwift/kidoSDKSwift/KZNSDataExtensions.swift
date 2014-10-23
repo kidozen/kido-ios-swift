@@ -20,12 +20,12 @@ extension NSData {
         
         let datastring = NSString(data: self, encoding: NSUTF8StringEncoding)
         
-        let startRange : NSRange = datastring.rangeOfString(startTag)
-        let endRange : NSRange = datastring.rangeOfString(endTag)
+        let startRange : NSRange = datastring!.rangeOfString(startTag)
+        let endRange : NSRange = datastring!.rangeOfString(endTag)
         
         let length = (endRange.location + countElements(endTag)) - startRange.location
         let range : NSRange = NSRange(location:startRange.location,length:length)
-        let substring = datastring.substringWithRange(range)
+        let substring = datastring!.substringWithRange(range)
         
         return substring
     }

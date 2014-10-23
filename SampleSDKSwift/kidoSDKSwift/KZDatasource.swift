@@ -19,8 +19,8 @@ class KZDatasource : KZBaseService {
     override func configureNetworkManager()
     {
         // Datasources request and response will always be in json.
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
         
         // Whenever you change the serializer, you should set the authorizationHeader.
         self.addAuthorizationHeader()

@@ -51,8 +51,8 @@ class KZApplicationAuthentication : KZObject {
         
         self.networkManager = KZNetworkManager(baseURLString:applicationConfiguration!.authConfig!.oauthTokenEndpoint!,
                 strictSSL: strictSSL!, tokenController:nil)
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
         
         super.init()
         
@@ -82,8 +82,8 @@ class KZApplicationAuthentication : KZObject {
         self.applicationKey = applicationKey
         let applicationKeyParameters = self.dictionaryForTokenUsingApplicationKey()
         
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
         
         networkManager.POST(path:"",
                         parameters: applicationKeyParameters,
@@ -205,8 +205,8 @@ class KZApplicationAuthentication : KZObject {
         
         identityProvider?.initialize(credentials.username, password: credentials.password, scope: authServiceScope)
         networkManager = KZNetworkManager(baseURLString: authServiceEndPoint!, strictSSL: self.strictSSL!, tokenController:nil)
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
         
         identityProvider?.requestToken(providerIPEndpoint, willStartCb: nil, success: {
             [weak self] ipToken in

@@ -91,8 +91,8 @@ class KZNotification : KZBaseService {
     
     override func configureNetworkManager()
     {
-        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer() as AFHTTPResponseSerializer)
     }
     
     private func uniqueIdentification() -> String
@@ -102,7 +102,7 @@ class KZNotification : KZBaseService {
         var uniqueId = userDefaults.valueForKey(kUniqueIdentificationFilename) as? String
         
         if (uniqueId == nil) {
-            uniqueId = NSUUID.UUID().UUIDString
+            uniqueId = NSUUID().UUIDString
             userDefaults.setValue(uniqueId, forKey: kUniqueIdentificationFilename)
             userDefaults.synchronize()
         }

@@ -40,8 +40,8 @@ class KZSMSSender : KZBaseService {
     
     override func configureNetworkManager()
     {
-        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.networkManager.configureRequestSerializer(AFJSONRequestSerializer() as AFHTTPRequestSerializer)
+        self.networkManager.configureResponseSerializer(AFJSONResponseSerializer() as AFHTTPResponseSerializer)
         
         self.addAuthorizationHeader()
     }
