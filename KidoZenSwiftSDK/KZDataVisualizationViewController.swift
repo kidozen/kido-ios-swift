@@ -82,6 +82,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
             self!.unzipFile(urlPath: urlPath!)
             
             self!.replacePlaceHolders()
+            self!.loadWebView()
             
             //    [safeMe.progressView removeFromSuperview];
             
@@ -117,6 +118,9 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         
     }
 
+    private func loadWebView() {
+        self.webView.loadRequest(NSURLRequest(URL: self.indexFileURL()))
+    }
 
     private func unzipFile(#urlPath:NSURL) {
         var error : NSError?
@@ -262,11 +266,26 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         return NSString(data: jsonData!, encoding: NSUTF8StringEncoding)!
     }
 
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        return true;
+    }
     
-//    optional func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool
-//    optional func webViewDidStartLoad(webView: UIWebView)
-//    optional func webViewDidFinishLoad(webView: UIWebView)
-//    optional func webView(webView: UIWebView, didFailLoadWithError error: NSError)
+    func webViewDidStartLoad(webView: UIWebView) {
+        self.activityView.startAnimating()
+        self.view.userInteractionEnabled = false
+    }
     
-
+    func webViewDidFinishLoad(webView: UIWebView) {
+        
+        self.activityView.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.successCb?()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        self.activityView.stopAnimating()
+        self.view.userInteractionEnabled = false
+        self.handleError(error)
+    }
+    
 }
