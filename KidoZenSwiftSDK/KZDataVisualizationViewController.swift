@@ -93,14 +93,14 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
             let destination = NSURL(fileURLWithPath: self.tempDirectory() + "/" + self.dataVizName)
             fm.createDirectoryAtURL(destination!, withIntermediateDirectories: true, attributes: nil, error: nil)
 
-            for nextEntry  in zipFile.entries {
+            for nextEntry in zipFile.entries {
                 let targetPath : NSURL = destination!.URLByAppendingPathComponent(nextEntry.fileName)
                 println("targetPath is \(targetPath)")
-                println("S_IFDIR \(S_IFDIR)")
-                println("nextEntry.fileMode is \(nextEntry.fileMode)")
+//                println("S_IFDIR \(S_IFDIR)")
+//                println("nextEntry.fileMode is \(nextEntry.fileMode)")
                 
                 if ((nextEntry.fileMode & S_IFDIR) != 0) {
-                    println("entry is directory")
+//                    println("entry is directory")
                     
                     var dirError : NSError?
                     fm.createDirectoryAtURL(targetPath, withIntermediateDirectories: true, attributes: nil, error: &dirError)
@@ -112,7 +112,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
                 } else {
                     var dirError : NSError?
 
-                    fm.createDirectoryAtURL(targetPath,
+                    fm.createDirectoryAtURL(targetPath.URLByDeletingLastPathComponent!,
                                     withIntermediateDirectories: true,
                                                      attributes: nil,
                                                           error: &dirError)

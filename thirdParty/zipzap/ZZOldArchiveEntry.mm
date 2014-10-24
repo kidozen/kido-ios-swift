@@ -155,15 +155,16 @@
 	uint32_t externalFileAttributes = _centralFileHeader->externalFileAttributes;
 	switch (_centralFileHeader->fileAttributeCompatibility)
 	{
+        case ZZFileAttributeCompatibility::unix:
+            // if we have UNIX file attributes, they are in the high 16 bits
+            return externalFileAttributes >> 16;
 		case ZZFileAttributeCompatibility::msdos:
 		case ZZFileAttributeCompatibility::ntfs:
 			// if we have MS-DOS or NTFS file attributes, synthesize UNIX ones from them
 			return S_IRUSR | S_IRGRP | S_IROTH
 				| (externalFileAttributes & static_cast<uint32_t>(ZZMSDOSAttributes::readonly) ? 0 : S_IWUSR)
             | (externalFileAttributes & (static_cast<uint32_t>(ZZMSDOSAttributes::subdirectory) | static_cast<uint32_t>(ZZMSDOSAttributes::volume)) ? S_IFDIR | S_IXUSR | S_IXGRP | S_IXOTH : S_IFREG);
-		case ZZFileAttributeCompatibility::unix:
-			// if we have UNIX file attributes, they are in the high 16 bits
-			return externalFileAttributes >> 16;
+
 		default:
 			return 0;
 	}
