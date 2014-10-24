@@ -30,6 +30,7 @@ public class KZTokenController : KZObject {
     var tokenRefresher : KZTokenRefresher!
     var currentRoles : Array<String>!
     var currentClaims : Dictionary<String, String>!
+    var authenticationResponse : Dictionary<String, AnyObject>!
     
     // Memory cache. we should set this to userDefaults or use keychain
     private var tokenCache : Dictionary<String, String>

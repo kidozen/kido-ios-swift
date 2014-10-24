@@ -29,6 +29,8 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     private var activityView : UIActivityIndicatorView!
     private var progressView : UIProgressView!
     
+    private var credentials : KZCredentials!
+    private weak var tokenController : KZTokenController?
     
     init(applicationConfig:KZApplicationConfiguration,
                    appAuth:KZApplicationAuthentication,
@@ -40,10 +42,13 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         self.tenantName = tenant
         self.applicationName = applicationConfig.name
         self.downloadURLString = "https://\(applicationConfig.name!).\(applicationConfig.domain!)/api/v2/visualizations/\(dataVizName)/app/download?type=mobile"
-
+        self.credentials = appAuth.lastCredentials
+        
         self.networkManager = KZNetworkManager(baseURLString: "",
                                                    strictSSL: strictSSL,
                                              tokenController: appAuth.tokenController)
+        self.tokenController = appAuth.tokenController
+        
         self.progressView = UIProgressView(progressViewStyle: .Default)
         super.init(nibName: nil, bundle: nil)
         
@@ -75,6 +80,9 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         
         self.networkManager.download(url: url!, destination: path, successCb: { [weak self](response, responseObject) -> () in
             self!.unzipFile(urlPath: urlPath!)
+            
+            self!.replacePlaceHolders()
+            
             //    [safeMe.progressView removeFromSuperview];
             
             }, failureCb : {(response, error) -> () in
@@ -82,6 +90,33 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         })
         
     }
+    
+    private func replacePlaceHolders() {
+        let indexUrl = self.indexFileURL()
+        
+        var error : NSError?
+        var indexString = String(contentsOfURL: indexUrl, encoding: NSUTF8StringEncoding, error: &error)
+        if (error != nil) {
+            self.handleError(error)
+        }
+        
+        let options = self.stringOptionsForTokenRefresh()
+        let marketPlace = "\"\(self.tenantName)\""
+        let appName = "\"\(self.applicationName)\""
+        
+        indexString = indexString?.stringByReplacingOccurrencesOfString("{{:options}}", withString: options, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        indexString = indexString?.stringByReplacingOccurrencesOfString("{{:marketplace}}", withString: marketPlace, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        indexString = indexString?.stringByReplacingOccurrencesOfString("{{:name}}", withString: applicationName, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        
+        var writeError: NSError?
+        
+        indexString?.writeToURL(indexUrl, atomically: false, encoding: NSUTF8StringEncoding, error: &writeError)
+        if (writeError != nil) {
+            self.handleError(writeError)
+        }
+        
+    }
+
 
     private func unzipFile(#urlPath:NSURL) {
         var error : NSError?
@@ -95,41 +130,47 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
 
             for nextEntry in zipFile.entries {
                 let targetPath : NSURL = destination!.URLByAppendingPathComponent(nextEntry.fileName)
-                println("targetPath is \(targetPath)")
-//                println("S_IFDIR \(S_IFDIR)")
-//                println("nextEntry.fileMode is \(nextEntry.fileMode)")
+
+                let name : String = nextEntry.fileName
+
+                let isDirectory = name.substringFromIndex(name.endIndex.predecessor()) == "/"
                 
-                if ((nextEntry.fileMode & S_IFDIR) != 0) {
-//                    println("entry is directory")
+                if (( (nextEntry.fileMode & S_IFDIR) > 0) || isDirectory ) {
                     
-                    var dirError : NSError?
-                    fm.createDirectoryAtURL(targetPath, withIntermediateDirectories: true, attributes: nil, error: &dirError)
-                    
-                    if (dirError != nil) {
-                        println("ERror while creating directory is \(dirError)")
-                    }
+                    self.createIfDoesNotExist(targetPath)
                     
                 } else {
-                    var dirError : NSError?
-
-                    fm.createDirectoryAtURL(targetPath.URLByDeletingLastPathComponent!,
-                                    withIntermediateDirectories: true,
-                                                     attributes: nil,
-                                                          error: &dirError)
                     
-                    if (dirError != nil) {
-                        println("ERror while creating is \(dirError)")
-                    }
-
+                    // Just in case, we check whether we need to
+                    self.createIfDoesNotExist(targetPath.URLByDeletingLastPathComponent!)
+                    
                     var data = nextEntry.newDataWithError(&error)
                     var writeError : NSError?
                     
                     if (data.writeToURL(targetPath, options:nil, error: &writeError) == false) {
-                        println("Error while creating targetPath \(targetPath), error is \(writeError)")
+                        println("Error while creating targetPath \(targetPath), error is \(writeError?)")
                     }
                     
                 }
             }
+        }
+    }
+    
+    private func createIfDoesNotExist(targetPath:NSURL) {
+        let fm = NSFileManager.defaultManager()
+
+        if (!fm.fileExistsAtPath(targetPath.path!)) {
+            
+            var dirError : NSError?
+            fm.createDirectoryAtURL(targetPath,
+                    withIntermediateDirectories: true,
+                                     attributes: nil,
+                                          error: &dirError)
+            
+            if (dirError != nil) {
+                println("Error while creating is \(dirError)")
+            }
+            
         }
     }
     
@@ -138,6 +179,20 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         let paths  = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)
         return paths[0] as String
         
+    }
+    
+    private func dataVizDirectory() -> String {
+        return self.tempDirectory() + self.dataVizName
+    }
+    
+    private func dataVizFileNamePath() -> String {
+        return self.tempDirectory() + "/" + self.dataVizName + ".zip"
+    }
+    
+    
+    private func indexFileURL() -> NSURL {
+        let indexFileString = self.dataVizDirectory() + "/index.html"
+        return NSURL(string: indexFileString)!
     }
     
     private func configureProgressView()
@@ -173,7 +228,41 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    
+    private func handleError(error:NSError?) {
+        var message : String?
+        
+        if (error != nil) {
+            message = "Error while loading visualization. Please try again later. Error is \(error!)"
+        } else {
+            message = "Error while loading visualization. Please try again later."
+        }
+        
+        UIAlertView(title: "Could not load visualization", message: message, delegate: nil, cancelButtonTitle: "OK").show()
+        
+        if (self.failureCb != nil) {
+            self.failureCb?(error)
+        }
+    }
+    
+    private func stringOptionsForTokenRefresh() -> String {
+        
+        var obj : Dictionary<String, AnyObject> = Dictionary()
+        obj["token"] = self.tokenController?.authenticationResponse
+
+        if (self.credentials.username != nil && self.credentials.password != nil) {
+            
+            obj["username"] = self.credentials.username!
+            obj["password"] = self.credentials.password!
+            obj["provider"] = self.credentials.provider
+            
+        }
+        
+        let jsonData = NSJSONSerialization.dataWithJSONObject(obj, options: nil, error: nil)
+        
+        return NSString(data: jsonData!, encoding: NSUTF8StringEncoding)!
+    }
+
+    
 //    optional func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool
 //    optional func webViewDidStartLoad(webView: UIWebView)
 //    optional func webViewDidFinishLoad(webView: UIWebView)
