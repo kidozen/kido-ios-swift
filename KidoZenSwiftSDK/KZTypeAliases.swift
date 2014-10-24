@@ -18,7 +18,7 @@ public typealias kzErrorCb = NSError? -> ()
 
 public typealias kzRefreshTokenCb = (kzDidFinishCb?, kzDidFailCb?) -> ()
 
-public typealias kzDidFinishPassiveTokenCb = (token : String?, refreshToken:String?) -> ()
+public typealias kzDidFinishPassiveTokenCb = (fullResponse : Dictionary<String, AnyObject> , token : String, refreshToken:String) -> ()
 public typealias kzDidFailPassiveTokenCb = (error: NSError?) -> ()
 
 public typealias kzDidFinishWebSocketCb = Dictionary<String, AnyObject> -> ()

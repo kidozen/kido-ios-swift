@@ -110,12 +110,12 @@ class KZPassiveAuthViewController : UIViewController, UIWebViewDelegate {
                 let b64Data = NSData(base64EncodedString: b64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
                 let jsonString = NSString(data: b64Data!, encoding: NSUTF8StringEncoding)
                 
-                let jsonDictionary = NSJSONSerialization.JSONObjectWithData(b64Data!, options: nil, error: nil) as? Dictionary<String, String>
+                let jsonDictionary = NSJSONSerialization.JSONObjectWithData(b64Data!, options: nil, error: nil) as? Dictionary<String, AnyObject>
                 
-                let accessToken = jsonDictionary?["access_token"]
-                let refreshToken = jsonDictionary?["refresh_token"]
+                let accessToken: String? = (jsonDictionary?["access_token"] as AnyObject?) as String?
+                let refreshToken: String? = (jsonDictionary?["refresh_token"] as AnyObject?) as String?
                 
-                self.success?(token: accessToken!, refreshToken: refreshToken!)
+                self.success?(fullResponse: jsonDictionary!, token: accessToken!, refreshToken: refreshToken!)
                 self.dismissViewControllerAnimated(true, completion: nil)
                 
                 

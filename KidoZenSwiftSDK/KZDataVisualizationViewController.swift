@@ -73,6 +73,8 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     
     private func downloadZipFile()
     {
+
+        
         let url = NSURL(string: self.downloadURLString)
         let path = self.tempDirectory() + "/" + self.dataVizName + ".zip"
         
@@ -96,7 +98,11 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         let indexUrl = self.indexFileURL()
         
         var error : NSError?
+
+        var data = NSData(contentsOfURL: indexUrl)
+        
         var indexString = String(contentsOfURL: indexUrl, encoding: NSUTF8StringEncoding, error: &error)
+        
         if (error != nil) {
             self.handleError(error)
         }
@@ -108,7 +114,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         indexString = indexString?.stringByReplacingOccurrencesOfString("{{:options}}", withString: options, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         indexString = indexString?.stringByReplacingOccurrencesOfString("{{:marketplace}}", withString: marketPlace, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         indexString = indexString?.stringByReplacingOccurrencesOfString("{{:name}}", withString: applicationName, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-        
+
         var writeError: NSError?
         
         indexString?.writeToURL(indexUrl, atomically: false, encoding: NSUTF8StringEncoding, error: &writeError)
@@ -119,7 +125,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     }
 
     private func loadWebView() {
-        self.webView.loadRequest(NSURLRequest(URL: self.indexFileURL()))
+//        self.webView.loadRequest(NSURLRequest(URL: self.indexFileURL()))
     }
 
     private func unzipFile(#urlPath:NSURL) {
@@ -129,7 +135,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         if (error == nil) {
             
             let fm = NSFileManager.defaultManager()
-            let destination = NSURL(fileURLWithPath: self.tempDirectory() + "/" + self.dataVizName)
+            let destination = NSURL(fileURLWithPath: self.dataVizDirectory())
             fm.createDirectoryAtURL(destination!, withIntermediateDirectories: true, attributes: nil, error: nil)
 
             for nextEntry in zipFile.entries {
@@ -186,7 +192,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     }
     
     private func dataVizDirectory() -> String {
-        return self.tempDirectory() + self.dataVizName
+        return self.tempDirectory() + "/" + self.dataVizName
     }
     
     private func dataVizFileNamePath() -> String {
@@ -196,7 +202,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     
     private func indexFileURL() -> NSURL {
         let indexFileString = self.dataVizDirectory() + "/index.html"
-        return NSURL(string: indexFileString)!
+        return NSURL(fileURLWithPath: indexFileString)!
     }
     
     private func configureProgressView()
@@ -229,6 +235,12 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     }
     
     func closeDataVisualization() {
+        
+        self.networkManager.cancelAllRequests()
+        let fm = NSFileManager.defaultManager()
+//        fm.removeItemAtPath(self.dataVizDirectory(), error: nil)
+//        fm.removeItemAtPath(self.dataVizFileNamePath(), error: nil)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

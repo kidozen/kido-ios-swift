@@ -45,6 +45,10 @@ public class KZNetworkManager {
         manager.requestSerializer = serializer
     }
     
+    func cancelAllRequests() {
+        self.manager.invalidateSessionCancelingTasks(true)
+    }
+    
     /// Perform GET operation on the corresponding endpoint.
     func GET(#path:String,
         parameters:AnyObject?,

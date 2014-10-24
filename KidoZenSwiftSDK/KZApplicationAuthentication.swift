@@ -96,6 +96,8 @@ public class KZApplicationAuthentication : KZObject {
                                     let responseDictionary = responseObject as? Dictionary<String, AnyObject>
                                     let accessToken = (responseDictionary!["access_token"] as AnyObject?) as? String
                             
+                                    self!.tokenController.authenticationResponse = responseDictionary
+                            
                                     self!.tokenController.updateAccessToken(token: accessToken!, accessTokenKey:self!.accessTokenCacheKey())
                             
                                     self!.tokenController.parseAndUpdateClaimsAndRoles()
@@ -129,7 +131,10 @@ public class KZApplicationAuthentication : KZObject {
             
             let passiveAuthVC = KZPassiveAuthViewController(urlString: passiveUrlString,
                 success: {
-                    [weak self] (token:String?, refreshToken:String?) -> () in
+                    [weak self] (fullResponse:Dictionary<String,AnyObject>, token:String?, refreshToken:String?) -> () in
+                    
+                    self!.tokenController.authenticationResponse = fullResponse
+                    
                     self!.updateTokens(accessToken: token, refreshToken: refreshToken, ipToken:nil, currentAuthentication: .KZPassiveAuthentication)
                     self!.didFinishAuthenticationCb?(response: nil, responseObject: self!.kzUser)
                     
@@ -231,7 +236,7 @@ public class KZApplicationAuthentication : KZObject {
                     
                     // For now, we don't use the refresh token for username/password authentication, but we just
                     // reauthenticate.
-                    
+                    self!.tokenController.authenticationResponse = responseDictionary
                     self!.updateTokens(accessToken: rawToken, refreshToken: nil, ipToken:ipToken, currentAuthentication: .KZUsernamePassword)
                     self!.didFinishAuthenticationCb?(response: nil, responseObject: self!.kzUser)
 
