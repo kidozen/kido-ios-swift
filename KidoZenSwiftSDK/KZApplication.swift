@@ -240,7 +240,6 @@ extension KZApplication {
         self.loggingService = self.applicationServices.loggingService
         self.mailService = self.applicationServices.mailService
         self.notificationService = self.applicationServices.notificationsService
-        // TODO: Data visualization
         // TODO: Analytics service.
     }
 }
