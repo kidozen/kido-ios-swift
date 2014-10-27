@@ -90,8 +90,6 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     
     private func downloadZipFile()
     {
-
-        
         let url = NSURL(string: self.downloadURLString)
         let path = self.tempDirectory() + "/" + self.dataVizName + ".zip"
         
@@ -122,9 +120,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
 
             }, failureCb : { [weak self] (response, error) -> () in
                 
-                // show alertView
-                print("Error is \(error), \(response)")
-                
+                self!.handleError(error)
                 self!.bytesWritten.removeFromSuperview()
                 self!.activityView.stopAnimating()
         })
@@ -195,7 +191,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
                     var writeError : NSError?
                     
                     if (data.writeToURL(targetPath, options:nil, error: &writeError) == false) {
-                        println("Error while creating targetPath \(targetPath), error is \(writeError?)")
+                        self.handleError(writeError)
                     }
                     
                 }
@@ -215,7 +211,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
                                           error: &dirError)
             
             if (dirError != nil) {
-                println("Error while creating is \(dirError)")
+                self.handleError(dirError)
             }
             
         }
