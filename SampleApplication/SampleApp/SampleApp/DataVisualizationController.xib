@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type here your dataviz name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tAz-1E-Twt">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="carSales" placeholder="Type here your dataviz name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tAz-1E-Twt">
                     <rect key="frame" x="8" y="131" width="304" height="30"/>
                     <color key="backgroundColor" white="0.87506300400000003" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

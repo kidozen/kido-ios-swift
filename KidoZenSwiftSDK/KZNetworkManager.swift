@@ -195,16 +195,17 @@ public class KZNetworkManager {
         
     }
     
-    func download(#url:NSURL, destination:String, successCb:kzDidFinishCb, failureCb: kzDidFailCb) {
+    func download(#url:NSURL, destination:String, progressCb:(Int64) -> Void, successCb:kzDidFinishCb, failureCb: kzDidFailCb) {
         
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://168.192.1.140:8000/stockinfoviz.zip")!)
+//        var request = NSMutableURLRequest(URL: NSURL(string: "http://168.192.1.140:8000/stockinfoviz.zip")!)
+        var request = NSMutableURLRequest(URL:url)
         
         request.addValue(self.tokenController?.kzToken, forHTTPHeaderField: "Authorization")
         
-        var progress : NSProgress?
+        var p : NSProgress?
         self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
 
-        let downloadTask = self.manager.downloadTaskWithRequest(request, progress: &progress, destination: { (url, urlResponse) in
+        let downloadTask = self.manager.downloadTaskWithRequest(request, progress: &p, destination: { (url, urlResponse) in
                 return NSURL(fileURLWithPath: destination)
             
             }, completionHandler: { (urlResponse, url, error) in
@@ -216,8 +217,13 @@ public class KZNetworkManager {
                     successCb(response: response, responseObject: urlResponse)
                 }
         })
+
+        self.manager.setDownloadTaskDidWriteDataBlock { (session, downloadTask, bWritten, totalBytesWritten, expectedToWrite) -> Void in
+            progressCb(totalBytesWritten)
+        }
         
         downloadTask.resume()
+        
 
     }
     
