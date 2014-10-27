@@ -27,7 +27,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     
     private var webView : UIWebView!
     private var activityView : UIActivityIndicatorView!
-    private var progressView : UIProgressView!
+    private var bytesWritten : UILabel!
     
     private var credentials : KZCredentials!
     private weak var tokenController : KZTokenController?
@@ -48,8 +48,8 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
                                                    strictSSL: strictSSL,
                                              tokenController: appAuth.tokenController)
         self.tokenController = appAuth.tokenController
-        
-        self.progressView = UIProgressView(progressViewStyle: .Default)
+        self.bytesWritten = UILabel()
+
         super.init(nibName: nil, bundle: nil)
         
     }
@@ -66,9 +66,26 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         self.loadBarButtonItem()
         self.configureWebView()
         self.configureActivityView()
-        self.configureProgressView()
         self.downloadZipFile()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.configureBytesWritten()
+    }
+    
+    private func configureBytesWritten() {
+        self.bytesWritten.frame = CGRectMake(0, 0, self.view.frame.size.width, 40)
+
+        self.view.addSubview(self.bytesWritten)
+        self.bytesWritten.center = self.view.center;
+        self.bytesWritten.font = UIFont(name: "Helvetica", size: 14)
+        self.bytesWritten.textColor = UIColor.grayColor()
+        self.bytesWritten.textAlignment = .Center
         
+        var fr = self.bytesWritten.frame
+        fr.origin.y = self.activityView.frame.origin.y + self.activityView.frame.size.height + 5.0
+        self.bytesWritten.frame = fr;
+
     }
     
     private func downloadZipFile()
@@ -79,17 +96,37 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         let path = self.tempDirectory() + "/" + self.dataVizName + ".zip"
         
         let urlPath = NSURL(fileURLWithPath: path)
+        var progress : Int64 = 0
+        self.activityView.startAnimating()
         
-        self.networkManager.download(url: url!, destination: path, successCb: { [weak self](response, responseObject) -> () in
-            self!.unzipFile(urlPath: urlPath!)
-            
-            self!.replacePlaceHolders()
-            self!.loadWebView()
-            
-            //    [safeMe.progressView removeFromSuperview];
-            
-            }, failureCb : {(response, error) -> () in
+        self.networkManager.download(url: url!,
+                             destination: path,
+                                progressCb: { [weak self] (progress) in
+                                    
+                                    if (self!.bytesWritten.superview == nil) {
+                                        self!.configureBytesWritten()
+                                    }
+                                    
+                                    let value = progress / 1024
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        self!.bytesWritten.text = NSString(format: "%d kBytes", value)
+                                    })
+
+                            },
+                                 successCb: { [weak self](response, responseObject) -> () in
+                                    
+                                        self!.unzipFile(urlPath: urlPath!)
+                                        self!.replacePlaceHolders()
+                                        self!.loadWebView()
+                                        self!.bytesWritten.removeFromSuperview()
+
+            }, failureCb : { [weak self] (response, error) -> () in
+                
+                // show alertView
                 print("Error is \(error), \(response)")
+                
+                self!.bytesWritten.removeFromSuperview()
+                self!.activityView.stopAnimating()
         })
         
     }
@@ -113,7 +150,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         
         indexString = indexString?.stringByReplacingOccurrencesOfString("{{:options}}", withString: options, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         indexString = indexString?.stringByReplacingOccurrencesOfString("{{:marketplace}}", withString: marketPlace, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-        indexString = indexString?.stringByReplacingOccurrencesOfString("{{:name}}", withString: applicationName, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        indexString = indexString?.stringByReplacingOccurrencesOfString("{{:name}}", withString: appName, options:NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
 
         var writeError: NSError?
         
@@ -125,7 +162,7 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
     }
 
     private func loadWebView() {
-//        self.webView.loadRequest(NSURLRequest(URL: self.indexFileURL()))
+        self.webView.loadRequest(NSURLRequest(URL: self.indexFileURL()))
     }
 
     private func unzipFile(#urlPath:NSURL) {
@@ -205,15 +242,10 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         return NSURL(fileURLWithPath: indexFileString)!
     }
     
-    private func configureProgressView()
-    {
-        self.view.addSubview(self.progressView)
-        self.progressView.center = self.view.center
-    }
-    
     private func configureActivityView()
     {
         self.activityView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        self.view.addSubview(self.activityView)
         self.activityView.color = UIColor.darkGrayColor()
         self.activityView.center = self.webView.center
         self.activityView.stopAnimating()
@@ -238,8 +270,8 @@ class KZDataVisualizationViewController : UIViewController, UIWebViewDelegate {
         
         self.networkManager.cancelAllRequests()
         let fm = NSFileManager.defaultManager()
-//        fm.removeItemAtPath(self.dataVizDirectory(), error: nil)
-//        fm.removeItemAtPath(self.dataVizFileNamePath(), error: nil)
+        fm.removeItemAtPath(self.dataVizDirectory(), error: nil)
+        fm.removeItemAtPath(self.dataVizFileNamePath(), error: nil)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
