@@ -11,9 +11,23 @@ import UIKit
 import KidoZen
 
 
-let kTenant = "https://tests.qa.kidozen.com"
-let kApplicationName = "swiftsdk"
-let kApplicationKey = "dD3C0bDYmyOwbtj8uK5tmqyA61hU7GwUtxysD1fMGR8="
+let kTenant = "https://loadtests.qa.kidozen.com"
+let kApplicationName = "tasks"
+let kApplicationKey = "NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo="
+
+
+//NSString * const kzAppCenterUrl = @"https://tests.qa.kidozen.com"; //URL of the tenant's marketplece
+//NSString * const kzAppName = @"tasks"; // app name
+//NSString * const kzUser = @"tests@kidozen.com"; //kidozen user
+//NSString * const kzPassword = @"pass"; //kidozen password
+//NSString * const kzProvider = @"Kidozen";
+//NSString * const kzApplicationKey = @"GZJQetc+VH9JLWoHnLEwlk7tw+XPSniMUSuIzK9kDxE=";
+
+
+//let kTenant = "https://tests.qa.kidozen.com"
+//let kApplicationName = "tasks"
+//let kApplicationKey = "F1/fnldvMTyG0DcljmZB1EHJRg+7KbJA2gISl11FNDE="
+//let kApplicationKey = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,8 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         }, failure: { (response, error) in
-            // Alertview
-            // Something wrong happened.
+            print("Error found. Response is \(response), error is \(error)")
         })
         
         return true
@@ -96,7 +109,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         UIAlertView(title: "Push", message: "\(userInfo)", delegate: nil, cancelButtonTitle: "Ok").show()
     }
+    
+    
 
 
 }
 
+
+extension NSURLRequest {
+    class func allowsAnyHTTPSCertificateForHost(host:String?) -> Bool {
+        return true
+    }
+    
+}
