@@ -289,6 +289,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D54B67919FE8CF100DC6B49 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
 		6D741C6D19F735CA00BA39E6 /* ZipZap */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +379,7 @@
 			children = (
 				6DAD0EC019D3573800702A3B /* KZObject.swift */,
 				6DAD0EC219D3575900702A3B /* Application */,
+				6D54B67919FE8CF100DC6B49 /* Analytics */,
 				6D7A281B19E85F61005D0F5B /* DataViz */,
 				6DAD0F4A19D367C700702A3B /* Authentication */,
 				6DAD0F4B19D367E300702A3B /* IdentityProviders */,
