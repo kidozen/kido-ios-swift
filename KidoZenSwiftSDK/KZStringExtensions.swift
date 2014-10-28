@@ -42,3 +42,15 @@ extension String {
 
     }
 }
+
+// Path related
+
+extension String {
+    
+    func documentsPath() -> String {
+        let pathArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory : String = pathArray[0] as String
+        return documentsDirectory.stringByAppendingPathComponent(self)
+    }
+    
+}
