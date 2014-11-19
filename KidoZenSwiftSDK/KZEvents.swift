@@ -8,8 +8,10 @@
 
 import Foundation
 
+let kEventsFilename = "kEventsFilename";
+
 class KZEvents {
-    let kEventsFilename = "kEventsFilename";
+    
 
     var events : [KZEvent]?
 
@@ -24,9 +26,10 @@ class KZEvents {
     }
     
     class func eventsFromDisk() -> KZEvents {
-        // Read from disk.
-        // TODO:
-        return KZEvents()
+        
+        let fromDisk  = NSArray(contentsOfFile: kEventsFilename.documentsPath())
+        return KZEvents(events: fromDisk as [KZEvent])
+        
     }
     
     func removeSavedEvents() {
@@ -45,6 +48,8 @@ class KZEvents {
     
     func save() {
         let eventsPathFilename = kEventsFilename.documentsPath()
+        
+        // Necessary to persist events to disk.
         let arrayEvents = self.events! as NSArray
         if (!arrayEvents.writeToFile(eventsPathFilename, atomically: true)) {
             println("An error occured while saving the events. Could not write to %@", eventsPathFilename);
