@@ -24,6 +24,8 @@ class KZEvents {
     }
     
     class func eventsFromDisk() -> KZEvents {
+        // Read from disk.
+        // TODO:
         return KZEvents()
     }
     

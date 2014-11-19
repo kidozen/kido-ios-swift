@@ -9,11 +9,21 @@
 import Foundation
 
 class KZPredefinedEvent : KZEvent {
-    var eventValue : String!
+    var eventValue : String
     
     init(eventName:String, value:String, sessionUUID:String) {
-        super.init(eventName: eventName, sessionUUID: sessionUUID)
         self.eventValue = value
+        super.init(eventName: eventName, sessionUUID: sessionUUID)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        self.eventValue = aDecoder.decodeObjectForKey("eventValue") as String
+        super.init(coder: aDecoder)
+    }
+    
+    override func encodeWithCoder(aCoder: NSCoder) {
+        super.encodeWithCoder(aCoder)
+        aCoder.encodeObject(self.eventValue, forKey: "eventValue")
     }
     
     override func serializedEvent() -> Dictionary<String, AnyObject> {

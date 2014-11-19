@@ -14,4 +14,7 @@ class KZViewEvent : KZPredefinedEvent {
         super.init(eventName:"View", value: value, sessionUUID: sessionUUID)
     }
 
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }

@@ -8,9 +8,20 @@
 
 import Foundation
 
-class KZEvent {
-    var eventName : String!
-    var sessionUUID : String!
+class KZEvent : NSObject, NSCoding {
+    var eventName : String
+    var sessionUUID : String
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.eventName, forKey: "eventName")
+        aCoder.encodeObject(self.sessionUUID, forKey: "sessionUUID")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.eventName = aDecoder.decodeObjectForKey("eventName") as String
+        self.sessionUUID = aDecoder.decodeObjectForKey("sessionUUID") as String
+    }
+
     
     init(eventName:String, sessionUUID:String) {
         

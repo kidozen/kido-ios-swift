@@ -13,6 +13,9 @@ class KZClickEvent : KZPredefinedEvent {
     override init(eventName: String, value: String, sessionUUID: String) {
         super.init(eventName:"Click", value: value, sessionUUID: sessionUUID)
     }
-    
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
 }

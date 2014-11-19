@@ -17,7 +17,18 @@ class KZCustomEvent : KZEvent {
         super.init(eventName: eventName, sessionUUID: sessionUUID)
 
     }
+
+    required init(coder aDecoder: NSCoder) {
+        self.attributes = aDecoder.decodeObjectForKey("attributes") as Dictionary<String, AnyObject>
+        super.init(coder: aDecoder)
+    }
     
+    
+    override func encodeWithCoder(aCoder: NSCoder) {
+        super.encodeWithCoder(aCoder)
+        aCoder.encodeObject(self.attributes, forKey: "attributes")
+    }
+
     override func serializedEvent() -> Dictionary<String, AnyObject> {
     
         var params : Dictionary<String, AnyObject>?

@@ -19,4 +19,9 @@ class KZSessionEvent : KZCustomEvent {
         super.init(eventName: "user-session", attributes: attr, sessionUUID: sessionUUID)
     
     }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
 }
