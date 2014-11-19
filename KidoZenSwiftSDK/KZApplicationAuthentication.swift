@@ -131,11 +131,11 @@ public class KZApplicationAuthentication : KZObject {
             
             let passiveAuthVC = KZPassiveAuthViewController(urlString: passiveUrlString,
                 success: {
-                    [weak self] (fullResponse:Dictionary<String,AnyObject>, token:String?, refreshToken:String?) -> () in
+                    [weak self] (fullResponse:Dictionary<String,AnyObject>, token:String, refreshToken:String) -> () in
                     
                     self!.tokenController.authenticationResponse = fullResponse
-                    
-                    self!.updateTokens(accessToken: token, refreshToken: refreshToken, ipToken:nil, currentAuthentication: .KZPassiveAuthentication)
+
+                    self!.updateTokens(accessToken: token, refreshToken: refreshToken, ipToken:"PASSIVE", currentAuthentication: .KZPassiveAuthentication)
                     self!.didFinishAuthenticationCb?(response: nil, responseObject: self!.kzUser)
                     
                 }, failure: { (error:NSError?) in
