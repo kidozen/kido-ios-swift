@@ -10,7 +10,7 @@ import Foundation
 
 class KZClickEvent : KZPredefinedEvent {
     
-    override init(eventName: String, value: String, sessionUUID: String) {
+    init(value: String, sessionUUID: String) {
         super.init(eventName:"Click", value: value, sessionUUID: sessionUUID)
     }
 

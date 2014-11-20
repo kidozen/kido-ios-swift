@@ -15,6 +15,7 @@
 		6D54B68519FEE6E800DC6B49 /* KZCustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D54B68419FEE6E800DC6B49 /* KZCustomEvent.swift */; };
 		6D6CC9181A1D3E8B00FFFC5A /* KZAnalyticsSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6CC9171A1D3E8B00FFFC5A /* KZAnalyticsSession.swift */; };
 		6D6CC91A1A1E251600FFFC5A /* KZDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6CC9191A1E251600FFFC5A /* KZDeviceInfo.swift */; };
+		6D6CC91C1A1E2B0D00FFFC5A /* KZAnalyticsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6CC91B1A1E2B0D00FFFC5A /* KZAnalyticsUploader.swift */; };
 		6D741C9A19F735E200BA39E6 /* ZZStoreOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D741C6E19F735E200BA39E6 /* ZZStoreOutputStream.m */; };
 		6D741C9B19F735E200BA39E6 /* ZZStoreOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D741C6F19F735E200BA39E6 /* ZZStoreOutputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D741C9C19F735E200BA39E6 /* ZZStandardDecryptInputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6D741C7019F735E200BA39E6 /* ZZStandardDecryptInputStream.mm */; };
@@ -154,6 +155,7 @@
 		6D54B68419FEE6E800DC6B49 /* KZCustomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZCustomEvent.swift; sourceTree = "<group>"; };
 		6D6CC9171A1D3E8B00FFFC5A /* KZAnalyticsSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZAnalyticsSession.swift; sourceTree = "<group>"; };
 		6D6CC9191A1E251600FFFC5A /* KZDeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZDeviceInfo.swift; sourceTree = "<group>"; };
+		6D6CC91B1A1E2B0D00FFFC5A /* KZAnalyticsUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZAnalyticsUploader.swift; sourceTree = "<group>"; };
 		6D741C6E19F735E200BA39E6 /* ZZStoreOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZStoreOutputStream.m; path = thirdParty/zipzap/ZZStoreOutputStream.m; sourceTree = "<group>"; };
 		6D741C6F19F735E200BA39E6 /* ZZStoreOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZStoreOutputStream.h; path = thirdParty/zipzap/ZZStoreOutputStream.h; sourceTree = "<group>"; };
 		6D741C7019F735E200BA39E6 /* ZZStandardDecryptInputStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZZStandardDecryptInputStream.mm; path = thirdParty/zipzap/ZZStandardDecryptInputStream.mm; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				6DEA75C819FF4CBC007D7C7D /* KZSessionEvent.swift */,
 				6D6CC9171A1D3E8B00FFFC5A /* KZAnalyticsSession.swift */,
 				6D6CC9191A1E251600FFFC5A /* KZDeviceInfo.swift */,
+				6D6CC91B1A1E2B0D00FFFC5A /* KZAnalyticsUploader.swift */,
 			);
 			name = Analytics;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				6D741CAC19F735E200BA39E6 /* ZZFileChannelOutput.m in Sources */,
 				6D6CC9181A1D3E8B00FFFC5A /* KZAnalyticsSession.swift in Sources */,
 				6DAD0EE319D357B900702A3B /* KZADFSIdentityProvider.swift in Sources */,
+				6D6CC91C1A1E2B0D00FFFC5A /* KZAnalyticsUploader.swift in Sources */,
 				6D54B68519FEE6E800DC6B49 /* KZCustomEvent.swift in Sources */,
 				6DAD0EFD19D357B900702A3B /* KZTokenRefresher.swift in Sources */,
 				6DAD0EF319D357B900702A3B /* KZNSDataExtensions.swift in Sources */,

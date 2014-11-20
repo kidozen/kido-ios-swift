@@ -10,7 +10,7 @@ import Foundation
 
 class KZViewEvent : KZPredefinedEvent {
 
-    override init(eventName: String, value: String, sessionUUID: String) {
+    init(value: String, sessionUUID: String) {
         super.init(eventName:"View", value: value, sessionUUID: sessionUUID)
     }
 
