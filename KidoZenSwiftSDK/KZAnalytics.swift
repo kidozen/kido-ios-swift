@@ -9,5 +9,10 @@
 import Foundation
 
 class KZAnalytics {
+    private var loggingService : KZLogging
     
+    init(loggingService:KZLogging) {
+        self.loggingService = loggingService
+        
+    }
 }
