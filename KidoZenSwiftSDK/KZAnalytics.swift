@@ -10,9 +10,10 @@ import Foundation
 
 class KZAnalytics {
     private var loggingService : KZLogging
+    private var session : KZAnalyticsSession
     
     init(loggingService:KZLogging) {
         self.loggingService = loggingService
-        
+        self.session = KZAnalyticsSession()
     }
 }

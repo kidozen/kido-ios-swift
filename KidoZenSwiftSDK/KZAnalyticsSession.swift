@@ -13,12 +13,20 @@ let kDefaultSessionTimeout : NSTimeInterval = 5;
 class KZAnalyticsSession {
 
     var sessionUUID : String!
-    var sessionTimeOut : NSTimeInterval = kDefaultSessionTimeout
+    var sessionTimeOut : NSTimeInterval!
     var events : [KZEvents]!
     var startSessionDate : NSDate!
     var deviceInfo : KZDeviceInfo!
     
     private var allEvents : KZEvents!
+    
+    init () {
+        self.allEvents = KZEvents()
+        self.sessionUUID = NSUUID().UUIDString
+        self.startSessionDate = NSDate()
+        self.sessionTimeOut = kDefaultSessionTimeout
+//        self.deviceInfo = KZDeviceInfo.sharedDeviceInfo
+    }
     
     /**
         Will return whether the session events should be uploaded to the cloud, which
