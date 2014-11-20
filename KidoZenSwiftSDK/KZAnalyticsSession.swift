@@ -16,7 +16,7 @@ class KZAnalyticsSession {
     var sessionTimeOut : NSTimeInterval = kDefaultSessionTimeout
     var events : [KZEvents]!
     var startSessionDate : NSDate!
-//    var deviceInfo : KZDeviceInfo
+    var deviceInfo : KZDeviceInfo!
     
     private var allEvents : KZEvents!
     
