@@ -25,7 +25,7 @@ class KZAnalyticsSession {
         self.sessionUUID = NSUUID().UUIDString
         self.startSessionDate = NSDate()
         self.sessionTimeOut = kDefaultSessionTimeout
-//        self.deviceInfo = KZDeviceInfo.sharedDeviceInfo
+        self.deviceInfo = KZDeviceInfo.sharedInstance
     }
     
     /**
@@ -93,6 +93,16 @@ class KZAnalyticsSession {
     */
     func hasEvents() -> Bool {
         return countElements(self.allEvents.events!) > 0
+    }
+    
+    
+    private func eventForCurrentSessionWithLength(length:Int) -> KZEvent {
+        var sessionEvent = KZSessionEvent(attributes: self.deviceInfo.properties(), sessionLength: length, sessionUUID: self.sessionUUID)
+        return sessionEvent   
+    }
+    
+    func logSession(length:Int) {
+        self.logEvent(event:self.eventForCurrentSessionWithLength(length))
     }
     
 }

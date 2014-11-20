@@ -43,7 +43,7 @@ public class KZLogging : KZBaseService {
         super.init(endPoint: endPoint, name: "", tokenController: tokenController)
     }
 
-    public func write(#object:Dictionary<String, AnyObject>?,
+    public func write(#object:AnyObject?,
         level:LogLevel!,
         willStartCb:kzVoidCb?,
         success:kzDidFinishCb?,
@@ -52,7 +52,7 @@ public class KZLogging : KZBaseService {
         self.write(object: object, message: "", level: level, willStartCb: willStartCb, success: success, failure: failure)
     }
     
-    public func write(#object:Dictionary<String, AnyObject>?,
+    public func write(#object:AnyObject?,
               message:String?,
                 level:LogLevel!,
           willStartCb:kzVoidCb?,
