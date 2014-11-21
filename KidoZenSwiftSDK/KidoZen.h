@@ -20,3 +20,4 @@ FOUNDATION_EXPORT const unsigned char KidoZenVersionString[];
 #import "SRWebSocket.h"
 #import "AFNetworking.h"
 #import "zipzap.h"
+#import "Reachability.h"
