@@ -99,6 +99,12 @@ class KZApplicationServices {
         return service
     }
     
+    func fileService() -> KZFileStorage {
+        var fs = KZFileStorage(endPoint:applicationConfiguration.files!, name:"", tokenController:tokenController!)
+        fs.strictSSL = strictSSL
+        return fs
+    }
+    
     private func initializeLogging()
     {
         self.loggingService = KZLogging(endPoint: self.applicationConfiguration.loggingV3!,
