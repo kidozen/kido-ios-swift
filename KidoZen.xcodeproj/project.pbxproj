@@ -10,6 +10,7 @@
 		6D1A209B1A1E7C11009D0944 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1A209A1A1E7C11009D0944 /* CoreTelephony.framework */; };
 		6D1A209F1A1E7DCD009D0944 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D1A209D1A1E7DCD009D0944 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D1A20A01A1E7DCD009D0944 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A209E1A1E7DCD009D0944 /* Reachability.m */; };
+		6D40C55B1A238C160045B12E /* KZFileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40C55A1A238C160045B12E /* KZFileStorage.swift */; };
 		6D4708951A1F9DE300AF3837 /* KZLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4708941A1F9DE300AF3837 /* KZLocationManager.swift */; };
 		6D54B67B19FED6AA00DC6B49 /* KZAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D54B67A19FED6AA00DC6B49 /* KZAnalytics.swift */; };
 		6D54B67D19FED6E900DC6B49 /* KZEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D54B67C19FED6E900DC6B49 /* KZEvent.swift */; };
@@ -154,6 +155,7 @@
 		6D1A209A1A1E7C11009D0944 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6D1A209D1A1E7DCD009D0944 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = thirdParty/Reachability/Reachability.h; sourceTree = "<group>"; };
 		6D1A209E1A1E7DCD009D0944 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = thirdParty/Reachability/Reachability.m; sourceTree = "<group>"; };
+		6D40C55A1A238C160045B12E /* KZFileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZFileStorage.swift; sourceTree = "<group>"; };
 		6D4708941A1F9DE300AF3837 /* KZLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZLocationManager.swift; sourceTree = "<group>"; };
 		6D54B67A19FED6AA00DC6B49 /* KZAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZAnalytics.swift; sourceTree = "<group>"; };
 		6D54B67C19FED6E900DC6B49 /* KZEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZEvent.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				6DAD0ED819D357B900702A3B /* KZQueue.swift */,
 				6DAD0EDA19D357B900702A3B /* KZService.swift */,
 				6DAD0EDC19D357B900702A3B /* KZStorage.swift */,
+				6D40C55A1A238C160045B12E /* KZFileStorage.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				6DAD0EC419D3576F00702A3B /* KZApplication.swift in Sources */,
 				6DAD0EF019D357B900702A3B /* KZMail.swift in Sources */,
 				6DAD0EF619D357B900702A3B /* KZQueue.swift in Sources */,
+				6D40C55B1A238C160045B12E /* KZFileStorage.swift in Sources */,
 				6DAD0EE719D357B900702A3B /* KZAuthenticationConfig.swift in Sources */,
 				6D741CB219F735E200BA39E6 /* ZZDeflateOutputStream.m in Sources */,
 				6DAD0F0019D357B900702A3B /* KZWRAPv09IdentityProvider.swift in Sources */,
