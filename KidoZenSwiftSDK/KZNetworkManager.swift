@@ -197,7 +197,6 @@ public class KZNetworkManager {
     
     func download(#url:NSURL, destination:String, progressCb:(Int64) -> Void, successCb:kzDidFinishCb, failureCb: kzDidFailCb) {
         
-//        var request = NSMutableURLRequest(URL: NSURL(string: "http://168.192.1.140:8000/stockinfoviz.zip")!)
         var request = NSMutableURLRequest(URL:url)
         
         request.addValue(self.tokenController?.kzToken, forHTTPHeaderField: "Authorization")

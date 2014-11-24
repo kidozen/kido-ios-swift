@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreTelephony
+import CoreLocation
 
 private let _singletonInstance = KZDeviceInfo()
 
@@ -26,24 +27,41 @@ class KZDeviceInfo {
     /// e.g. @"4.0"
     var systemVersion : String!
     
+    var isoCountryCode : String!
+    
     private var reachability : Reachability!
     
     private var networkInfo : CTTelephonyNetworkInfo
     
     private var carrier : CTCarrier!
     
-//    var locationManager : KZLocationManager
+    var locationManager : KZLocationManager
     
     init() {
         self.networkInfo = CTTelephonyNetworkInfo()
         self.reachability = Reachability.reachabilityForInternetConnection()
         self.carrier = self.networkInfo.subscriberCellularProvider
+        self.locationManager = KZLocationManager()
+        
         self.appVersion = self.configureAppVersion()
         
+        self.configureDeviceInfo()
     }
     
     class var sharedInstance : KZDeviceInfo {
         return _singletonInstance
+    }
+    
+    private func configureDeviceInfo() {
+        let currentDevice = UIDevice.currentDevice()
+        self.deviceModel = currentDevice.model
+        self.systemVersion = currentDevice.systemVersion
+        
+        self.isoCountryCode = "Unknown"
+        
+        self.locationManager.didUpdateLocationCb = { [weak self] (placeMark) in
+            self!.isoCountryCode = placeMark.ISOcountryCode
+        }
     }
     
     private func configureAppVersion() -> String {
@@ -85,7 +103,12 @@ class KZDeviceInfo {
     }
     
     func properties() -> Dictionary<String, AnyObject> {
-        return ["test":"value"]
+        return ["carrierName": self.carrierName(),
+                "networkAccess" : self.currentRadioAccessTechnology(),
+                "isoCountryCode" : "ar",
+                "deviceModel" : self.deviceModel,
+                "systemVersion" : self.systemVersion,
+                "uniqueID" : self.getUniqueIdentification()]
     }
     
     func currentRadioAccessTechnology() -> String {

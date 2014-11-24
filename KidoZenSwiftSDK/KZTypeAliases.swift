@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 public typealias kzDidFinishCb = (response: KZResponse?, responseObject: AnyObject?) -> ()
 public typealias kzDidFailCb = (response: KZResponse?, error: NSError?) -> ()
@@ -22,3 +23,5 @@ public typealias kzDidFinishPassiveTokenCb = (fullResponse : Dictionary<String, 
 public typealias kzDidFailPassiveTokenCb = (error: NSError?) -> ()
 
 public typealias kzDidFinishWebSocketCb = Dictionary<String, AnyObject> -> ()
+
+public typealias kzDidFinishUpdateLocationCb = (placemark:CLPlacemark) -> ()
