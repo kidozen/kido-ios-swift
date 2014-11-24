@@ -11,23 +11,9 @@ import UIKit
 import KidoZen
 
 
-let kTenant = "https://loadtests.qa.kidozen.com"
-let kApplicationName = "tasks"
-let kApplicationKey = "NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo="
-
-
-//NSString * const kzAppCenterUrl = @"https://tests.qa.kidozen.com"; //URL of the tenant's marketplece
-//NSString * const kzAppName = @"tasks"; // app name
-//NSString * const kzUser = @"tests@kidozen.com"; //kidozen user
-//NSString * const kzPassword = @"pass"; //kidozen password
-//NSString * const kzProvider = @"Kidozen";
-//NSString * const kzApplicationKey = @"GZJQetc+VH9JLWoHnLEwlk7tw+XPSniMUSuIzK9kDxE=";
-
-
-//let kTenant = "https://tests.qa.kidozen.com"
-//let kApplicationName = "tasks"
-//let kApplicationKey = "F1/fnldvMTyG0DcljmZB1EHJRg+7KbJA2gISl11FNDE="
-//let kApplicationKey = ""
+let kTenant = ""
+let kApplicationName = ""
+let kApplicationKey = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
