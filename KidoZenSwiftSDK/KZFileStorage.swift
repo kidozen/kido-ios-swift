@@ -25,10 +25,11 @@ public class KZFileStorage : KZBaseService {
     :param: didFailCb   is the failure block
     */
     public func download(#filePath:String,
-                       willStartCb:kzVoidCb,
-                       didFinishCb:kzDidFinishCb,
-                         didFailCb:kzDidFailCb)
+                       willStartCb:kzVoidCb?,
+                       didFinishCb:kzDidFinishCb?,
+                         didFailCb:kzDidFailCb?)
     {
+        willStartCb?()
         var path = self.sanitize(filePath, isDirectory: false)
         
         self.networkManager.addHeaders(["Pragma" : "no-cache",
@@ -39,7 +40,7 @@ public class KZFileStorage : KZBaseService {
 
         // Datasources request and response will always be in json.
         networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
 
         self.networkManager.GET(path: filePath,
                           parameters: nil,
