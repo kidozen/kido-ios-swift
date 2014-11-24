@@ -21,7 +21,7 @@ public class KZFileStorage : KZBaseService {
     It should not end with a '/', as it's a file
     :param: willStartCb is a block that will get called upon starting to download the file.
     :param: didFinishCb is a success block that will get called. If the file is found, it'll be an 
-                        NSData in the finish parameter.
+                        NSData in the response parameter
     :param: didFailCb   is the failure block
     */
     public func download(#filePath:String,
@@ -31,6 +31,9 @@ public class KZFileStorage : KZBaseService {
     {
         willStartCb?()
         var path = self.sanitize(filePath, isDirectory: false)
+
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
         
         self.networkManager.addHeaders(["Pragma" : "no-cache",
                                  "Cache-Control" : "no-cache"])
@@ -38,11 +41,8 @@ public class KZFileStorage : KZBaseService {
         
         self.addAuthorizationHeader()
 
-        // Datasources request and response will always be in json.
-        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
-        networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
 
-        self.networkManager.GET(path: filePath,
+        self.networkManager.GET(path: path,
                           parameters: nil,
                              success: didFinishCb,
                              failure: didFailCb)
@@ -50,21 +50,17 @@ public class KZFileStorage : KZBaseService {
 
 
     // This method will sanitize the filePath for this particular use case.
-    // If it's a directory, it should start with a '/' and end with a '/'
-    // Otherwise, it should start with '/' and NOT end with '/'
+    // If it's a directory, end with a '/', otherwise not
     private func sanitize(filePath:String, isDirectory:Bool) -> String {
         if (filePath.isEmpty) {
             NSException.raise(NSInvalidArgumentException, format: "Filepath must not be empty", arguments:getVaList([]))
         }
         
+        var charSet : NSMutableCharacterSet = NSMutableCharacterSet.whitespaceAndNewlineCharacterSet()
+        charSet.addCharactersInString("/")
         
-        var path = filePath.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        var path = filePath.stringByTrimmingCharactersInSet(charSet)
 
-        
-        if (!filePath.hasPrefix("/")) {
-            path = "/" + filePath
-        }
-        
         if (isDirectory == true) {
             if (!filePath.hasSuffix("/")) {
                 path = path + "/"
