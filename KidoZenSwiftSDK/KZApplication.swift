@@ -202,6 +202,10 @@ extension KZApplication {
     {
         return self.applicationServices.LOBServiceWithName(name:name)
     }
+    
+    public func fileService() -> KZFileStorage {
+        return self.applicationServices.fileService()
+    }
 }
 
 // Services - Logging
@@ -328,21 +332,21 @@ extension KZApplication {
         }
     }
     
-    func tagClick(buttonName:String) {
+    public func tagClick(buttonName:String) {
         self.analytics.tagClick(buttonName: buttonName)
     }
     
     
-    func tagView(viewName:String) {
+    public func tagView(viewName:String) {
         self.analytics.tagView(viewName: viewName)
     }
     
     
-    func tagEvent(customEventName:String, attributes:Dictionary<String, AnyObject>) {
+    public func tagEvent(customEventName:String, attributes:Dictionary<String, AnyObject>) {
         self.analytics.tagEvent(customEventName: customEventName, attributes: attributes)
     }
     
-    func enableAnalytics() {
+    public func enableAnalytics() {
         self.analytics.enableAnalytics()
     }
 
