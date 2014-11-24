@@ -30,8 +30,10 @@ class KZApplicationServices {
     
     
     var loggingService : KZLogging!
+    var eventsLoggerService : KZLogging!
     var notificationsService : KZNotification!
     var mailService : KZMail!
+    var analytics : KZAnalytics!
     
     init( applicationConfiguration:KZApplicationConfiguration,
                    tokenController:KZTokenController,
@@ -44,6 +46,7 @@ class KZApplicationServices {
         self.initializeLogging()
         self.initializeMail()
         self.initializePushNotifications()
+        self.initializeAnalytics()
         
     }
     
@@ -102,6 +105,15 @@ class KZApplicationServices {
                                             name: nil,
                                  tokenController: tokenController)
         self.loggingService.strictSSL = self.strictSSL
+        
+        var eventsLoggerEndPoint = self.applicationConfiguration.url!
+        
+        if (!eventsLoggerEndPoint.hasSuffix("/")) {
+            eventsLoggerEndPoint = eventsLoggerEndPoint + "/"
+        }
+
+        self.eventsLoggerService = KZLogging(endPoint: eventsLoggerEndPoint, name: nil, tokenController: tokenController)
+        self.eventsLoggerService.strictSSL = self.strictSSL
     }
     
     private func initializeMail()
@@ -117,4 +129,27 @@ class KZApplicationServices {
             tokenController: tokenController!)
         self.notificationsService.strictSSL = self.strictSSL
     }
+    
+    private func initializeAnalytics() {
+        self.analytics = KZAnalytics(loggingService: self.eventsLoggerService)
+    }
+    
+    func tagClick(buttonName:String) {
+        self.analytics.tagClick(buttonName: buttonName)
+    }
+    
+    
+    func tagView(viewName:String) {
+        self.analytics.tagView(viewName: viewName)
+    }
+    
+    
+    func tagEvent(customEventName:String, attributes:Dictionary<String, AnyObject>) {
+        self.analytics.tagEvent(customEventName: customEventName, attributes: attributes)
+    }
+    
+    func enableAnalytics() {
+        self.analytics.enableAnalytics()
+    }
+
 }

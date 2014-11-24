@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KZAnalytics {
+public class KZAnalytics {
     
     private var loggingService : KZLogging
     private var session : KZAnalyticsSession
