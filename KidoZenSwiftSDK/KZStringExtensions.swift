@@ -44,7 +44,6 @@ extension String {
 }
 
 // Path related
-
 extension String {
     
     func documentsPath() -> String {
@@ -53,4 +52,9 @@ extension String {
         return documentsDirectory.stringByAppendingPathComponent(self)
     }
     
+    // Just returns the last string component.
+    func onlyFilename() -> String? {
+        let components = self.componentsSeparatedByString("/")
+        return components.last
+    }
 }
