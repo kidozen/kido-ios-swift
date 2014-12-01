@@ -13,6 +13,8 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
     private let baseURLString: String?
     
     private weak var tokenController : KZTokenController?
+    private var successUploadCb : kzDidFinishCb?
+    private var failureUploadCb : kzDidFailCb?
     
     // You can change whether we want to allow invalid SSL certificates.
     var strictSSL = true
@@ -115,6 +117,8 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
     
     func uploadFile(#path:String, data:NSData, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.updateTokenIfRequired( {
+            self.successUploadCb = success
+            self.failureUploadCb = failure
             
             // Manually uploding the file... 
             // Dunno why it doesn't work with AF
@@ -135,7 +139,14 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
     }
     
     public func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-        println("Response is \(response)")
+        let httpResponse = response as NSHTTPURLResponse
+        let kzResponse = KZResponse(urlRequestOperation: nil, response: response, error: nil)
+
+        if (httpResponse.statusCode == 200 &&  self.successUploadCb != nil) {
+            self.successUploadCb!(response: kzResponse, responseObject: nil)
+        } else if (httpResponse.statusCode > 300 && self.failureUploadCb != nil) {
+            self.failureUploadCb!(response:kzResponse, error:nil)
+        }
     }
     
 
