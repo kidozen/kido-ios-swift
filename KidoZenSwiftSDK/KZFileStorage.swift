@@ -48,6 +48,36 @@ public class KZFileStorage : KZBaseService {
                              failure: didFailCb)
     }
 
+    /**
+        This method will upload the data provided in the corresponding filePath.
+    
+        :param: data        It's the data representation of what you want to upload
+        :param: filePath    This is the full filepath you want the data to be uploaded
+        :param: willStartCb Callback that will get called just before executing the request.
+        :param: didFinishCb Successfully finished the upload call callback.
+        :param: didFailCb   Failure block.
+    */
+    public func uploadFile(data:NSData,
+                       filePath:String,
+                    willStartCb:kzVoidCb?,
+                    didFinishCb:kzDidFinishCb?,
+                      didFailCb:kzDidFailCb?)
+    {
+        willStartCb?()
+        var path = self.sanitize(filePath, isDirectory: false)
+        
+
+        let attachments = [path.onlyFilename()! : data]
+        
+        let params = ["x-file-name" : path.onlyFilename()!]
+        
+        self.networkManager.uploadFile(path: path, data: data, success: { (response, responseObject) -> () in
+            println("response is \(response), responseObject is \(responseObject)")
+        }) { (response, error) -> () in
+            println("Error is \(error)")
+            
+        }
+    }
 
     // This method will sanitize the filePath for this particular use case.
     // If it's a directory, end with a '/', otherwise not

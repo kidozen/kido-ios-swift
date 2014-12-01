@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class KZNetworkManager {
+public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate {
     private let manager : AFHTTPSessionManager!
     private let baseURLString: String?
     
@@ -79,26 +79,29 @@ public class KZNetworkManager {
     
     /// Multipart POST
     func multipartPOST(#path:String,
-        parameters:Dictionary<String, AnyObject>,
-        attachments:Dictionary<String, AnyObject>,
+        parameters:Dictionary<String, AnyObject>?,
+        attachments:Dictionary<String, AnyObject>?,
         success:kzDidFinishCb?,
         failure:kzDidFailCb?)
     {
         self.updateTokenIfRequired({
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
-            self.manager.POST(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: nil, constructingBodyWithBlock: {
+            self.manager.POST(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters, constructingBodyWithBlock: {
                 (form: AFMultipartFormData!) in
-                
-                for (name, theData) in attachments {
-                    form.appendPartWithFileData(theData as NSData, name: name, fileName: name, mimeType: "application/octet-stream")
+                if let params = attachments {
+                    for (name, theData) in params {
+                        let d : NSData = theData as NSData
+                        form.appendPartWithFileData(d, name: path, fileName: path, mimeType: "application/octet-stream")
+                    }
                 }
-                
                 }, success: {
                     [weak self](sessionDataTask, responseObject) in
                     if let outerSuccess = success {
                         let kzResponse = KZResponse(fromSessionDataTask: sessionDataTask)
-                        outerSuccess(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
+                        if (responseObject != nil) {
+                            outerSuccess(response: kzResponse, responseObject: self?.convertToStringIfData(responseObject))
+                        }
                     }
                 }, failure: {
                     (sessionDataTask, error) in
@@ -110,7 +113,45 @@ public class KZNetworkManager {
             }, failure: failure)
     }
     
+    func uploadFile(#path:String, data:NSData, success:kzDidFinishCb?, failure:kzDidFailCb?) {
+        self.updateTokenIfRequired( {
+            
+            // Manually uploding the file... 
+            // Dunno why it doesn't work with AF
+            let url = NSURL(string: path.stringByDeletingLastPathComponent, relativeToURL: self.manager.baseURL)
+            var request = NSMutableURLRequest(URL: url!)
+            
+            request.HTTPBodyStream = NSInputStream(data: data)
+            request.HTTPMethod = "POST"
+            request.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
+            request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+            request.setValue(path.onlyFilename()!, forHTTPHeaderField: "x-file-name")
+            request.setValue(self.tokenController?.kzToken, forHTTPHeaderField: "Authorization")
+            
+            var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
+            connection.start()
+
+            }, failure: failure)
+    }
     
+    public func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+        println("Response is \(response)")
+    }
+    
+
+    public func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+            if (challenge.protectionSpace.authenticationMethod! == NSURLAuthenticationMethodServerTrust) {
+                if (self.strictSSL) {
+                    let protectionSpace = challenge.protectionSpace
+                    let credential = NSURLCredential(forTrust: protectionSpace.serverTrust)
+                    challenge.sender.useCredential(credential, forAuthenticationChallenge: challenge)
+                } else {
+                    challenge.sender.continueWithoutCredentialForAuthenticationChallenge(challenge)
+                }
+            }
+    }
+
+
     /// Perform POST operation on the corresponding endpoint.
     func POST(#path:String,
         parameters:AnyObject?,
