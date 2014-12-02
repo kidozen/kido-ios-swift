@@ -290,7 +290,7 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
 
     }
     
-    private func convertToStringIfData(data: AnyObject) -> AnyObject! {
+    private func convertToStringIfData(data: AnyObject?) -> AnyObject! {
         let theData = data as? NSData
         
         if (theData != nil) {
