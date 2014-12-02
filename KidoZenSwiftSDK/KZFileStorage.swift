@@ -61,22 +61,23 @@ public class KZFileStorage : KZBaseService {
                        filePath:String,
                     willStartCb:kzVoidCb?,
                     didFinishCb:kzDidFinishCb?,
-                      didFailCb:kzDidFailCb?)
+                      didFailCb:kzDidFailCb?,
+                 bytesWrittenCb:kzWrittenCb?)
     {
+        
         willStartCb?()
         var path = self.sanitize(filePath, isDirectory: false)
         
-
         let attachments = [path.onlyFilename()! : data]
         
         let params = ["x-file-name" : path.onlyFilename()!]
         
-        self.networkManager.uploadFile(path: path, data: data, success: { (response, responseObject) -> () in
-            println("response is \(response), responseObject is \(responseObject)")
-        }) { (response, error) -> () in
-            println("Error is \(error)")
-            
-        }
+        self.networkManager.uploadFile(path: path,
+                                       data: data,
+                                  writtenCb: bytesWrittenCb,
+                                    success: didFinishCb,
+                                    failure: didFailCb)
+        
     }
 
     // This method will sanitize the filePath for this particular use case.

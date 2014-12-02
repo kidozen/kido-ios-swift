@@ -9,12 +9,14 @@
 import Foundation
 
 public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate {
+
     private let manager : AFHTTPSessionManager!
     private let baseURLString: String?
     
     private weak var tokenController : KZTokenController?
     private var successUploadCb : kzDidFinishCb?
     private var failureUploadCb : kzDidFailCb?
+    private var writtenCb : kzWrittenCb?
     
     // You can change whether we want to allow invalid SSL certificates.
     var strictSSL = true
@@ -115,10 +117,11 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
             }, failure: failure)
     }
     
-    func uploadFile(#path:String, data:NSData, success:kzDidFinishCb?, failure:kzDidFailCb?) {
+    func uploadFile(#path:String, data:NSData, writtenCb:kzWrittenCb?, success:kzDidFinishCb?, failure:kzDidFailCb?) {
         self.updateTokenIfRequired( {
             self.successUploadCb = success
             self.failureUploadCb = failure
+            self.writtenCb = writtenCb
             
             // Manually uploding the file... 
             // Dunno why it doesn't work with AF
@@ -149,18 +152,31 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
         }
     }
     
-
-    public func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
-            if (challenge.protectionSpace.authenticationMethod! == NSURLAuthenticationMethodServerTrust) {
-                if (self.strictSSL) {
-                    let protectionSpace = challenge.protectionSpace
-                    let credential = NSURLCredential(forTrust: protectionSpace.serverTrust)
-                    challenge.sender.useCredential(credential, forAuthenticationChallenge: challenge)
-                } else {
-                    challenge.sender.continueWithoutCredentialForAuthenticationChallenge(challenge)
-                }
-            }
+    
+    public func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        if (self.failureUploadCb != nil)  {
+            self.failureUploadCb!(response:nil, error:error)
+        }
     }
+
+    func connection(connection: NSURLConnection, didSendBodyData bytesWritten: Int, totalBytesWritten: Int, totalBytesExpectedToWrite: Int) {
+        if (self.writtenCb != nil) {
+            self.writtenCb!(bytesWritten: bytesWritten)
+        }
+    }
+    
+    public func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+        if (challenge.protectionSpace.authenticationMethod! == NSURLAuthenticationMethodServerTrust) {
+            if (self.strictSSL) {
+                let protectionSpace = challenge.protectionSpace
+                let credential = NSURLCredential(forTrust: protectionSpace.serverTrust)
+                challenge.sender.useCredential(credential, forAuthenticationChallenge: challenge)
+            } else {
+                challenge.sender.continueWithoutCredentialForAuthenticationChallenge(challenge)
+            }
+        }
+    }
+    
 
 
     /// Perform POST operation on the corresponding endpoint.
