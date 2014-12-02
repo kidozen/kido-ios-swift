@@ -25,3 +25,5 @@ public typealias kzDidFailPassiveTokenCb = (error: NSError?) -> ()
 public typealias kzDidFinishWebSocketCb = Dictionary<String, AnyObject> -> ()
 
 public typealias kzDidFinishUpdateLocationCb = (placemark:CLPlacemark) -> ()
+
+public typealias kzWrittenCb = (bytesWritten:Int) -> ()
