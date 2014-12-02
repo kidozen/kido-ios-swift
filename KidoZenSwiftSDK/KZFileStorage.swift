@@ -111,7 +111,35 @@ public class KZFileStorage : KZBaseService {
                              success: didFinishCb,
                              failure: didFailCb)
     }
+
+    /**
+    This method will delete the file/directory that is located at the filePath provided.
     
+    :param: path        This is the full path to the file/directory you want to download. If you wish
+                        to delete a directory, filePath should end with '/'
+    :param: willStartCb callback that will get called when starting the operation.
+    :param: didFinishCb finish callback.
+    :param: didFailCb   failure callback
+    */
+    public func delete(#path:String, willStartCb:kzVoidCb?, didFinishCb:kzDidFinishCb?, didFailCb:kzDidFailCb?) {
+        willStartCb?()
+        
+        let sanitizedPath = self.sanitize(path, isDirectory:true)
+        
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        
+        self.networkManager.addHeaders([PRAGMA_HEADER : NO_CACHE_VALUE_HEADER,
+                                 CACHE_CONTROL_HEADER : NO_CACHE_VALUE_HEADER])
+        
+        self.addAuthorizationHeader()
+        
+        self.networkManager.DELETE(path: sanitizedPath,
+                             parameters: nil,
+                                success: didFinishCb,
+                                failure: didFailCb)
+        
+    }
     // This method will sanitize the filePath for this particular use case.
     // If it's a directory, end with a '/', otherwise not
     private func sanitize(filePath:String, isDirectory:Bool) -> String {
