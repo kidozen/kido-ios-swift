@@ -8,6 +8,10 @@
 
 import Foundation
 
+let PRAGMA_HEADER = "Pragma"
+let CACHE_CONTROL_HEADER = "Cache-Control"
+let NO_CACHE_VALUE_HEADER = "no-cache"
+
 /**
 * This is the File Service, which will let you perform some operations such as
 * uploading, deleting, getting files from the cloud.
@@ -35,8 +39,8 @@ public class KZFileStorage : KZBaseService {
         networkManager.configureRequestSerializer(AFJSONRequestSerializer())
         networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
         
-        self.networkManager.addHeaders(["Pragma" : "no-cache",
-                                 "Cache-Control" : "no-cache"])
+        self.networkManager.addHeaders([PRAGMA_HEADER : NO_CACHE_VALUE_HEADER,
+                                  CACHE_CONTROL_HEADER : NO_CACHE_VALUE_HEADER])
         
         
         self.addAuthorizationHeader()
@@ -80,6 +84,14 @@ public class KZFileStorage : KZBaseService {
         
     }
 
+    /**
+        This method will let you browse through what you have uploaded.
+    
+    :param: path        is the folder you wish to browse.
+    :param: willStartCb callback that will get called when starting the operation.
+    :param: didFinishCb finish callback.
+    :param: didFailCb   failure callback
+    */
     public func browse(#path:String, willStartCb:kzVoidCb?, didFinishCb:kzDidFinishCb?, didFailCb:kzDidFailCb?) {
         
         willStartCb?()
@@ -89,8 +101,8 @@ public class KZFileStorage : KZBaseService {
         networkManager.configureRequestSerializer(AFJSONRequestSerializer())
         networkManager.configureResponseSerializer(AFJSONResponseSerializer())
         
-        self.networkManager.addHeaders(["Pragma" : "no-cache",
-                                 "Cache-Control" : "no-cache"])
+        self.networkManager.addHeaders([PRAGMA_HEADER : NO_CACHE_VALUE_HEADER,
+                                 CACHE_CONTROL_HEADER : NO_CACHE_VALUE_HEADER])
         
         self.addAuthorizationHeader()
         
@@ -98,7 +110,7 @@ public class KZFileStorage : KZBaseService {
                           parameters: nil,
                              success: didFinishCb,
                              failure: didFailCb)
-        }
+    }
     
     // This method will sanitize the filePath for this particular use case.
     // If it's a directory, end with a '/', otherwise not
