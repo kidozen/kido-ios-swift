@@ -141,31 +141,27 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
             }, failure: failure)
     }
     
-    public func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
         let httpResponse = response as NSHTTPURLResponse
         let kzResponse = KZResponse(urlRequestOperation: nil, response: response, error: nil)
 
-        if (httpResponse.statusCode == 200 &&  self.successUploadCb != nil) {
-            self.successUploadCb!(response: kzResponse, responseObject: nil)
-        } else if (httpResponse.statusCode > 300 && self.failureUploadCb != nil) {
-            self.failureUploadCb!(response:kzResponse, error:nil)
+        if (httpResponse.statusCode == 200) {
+            self.successUploadCb?(response: kzResponse, responseObject: nil)
+        } else if (httpResponse.statusCode > 300) {
+            self.failureUploadCb?(response:kzResponse, error:nil)
         }
     }
     
     
-    public func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        if (self.failureUploadCb != nil)  {
-            self.failureUploadCb!(response:nil, error:error)
-        }
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        self.failureUploadCb?(response:nil, error:error)
     }
 
     func connection(connection: NSURLConnection, didSendBodyData bytesWritten: Int, totalBytesWritten: Int, totalBytesExpectedToWrite: Int) {
-        if (self.writtenCb != nil) {
-            self.writtenCb!(bytesWritten: bytesWritten)
-        }
+        self.writtenCb?(bytesWritten: bytesWritten)
     }
     
-    public func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+    func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
         if (challenge.protectionSpace.authenticationMethod! == NSURLAuthenticationMethodServerTrust) {
             if (self.strictSSL) {
                 let protectionSpace = challenge.protectionSpace
