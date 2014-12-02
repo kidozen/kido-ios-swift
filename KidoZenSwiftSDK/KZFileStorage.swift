@@ -80,6 +80,26 @@ public class KZFileStorage : KZBaseService {
         
     }
 
+    public func browse(#path:String, willStartCb:kzVoidCb?, didFinishCb:kzDidFinishCb?, didFailCb:kzDidFailCb?) {
+        
+        willStartCb?()
+        
+        let sanitizedPath = self.sanitize(path, isDirectory:true)
+        
+        networkManager.configureRequestSerializer(AFJSONRequestSerializer())
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        
+        self.networkManager.addHeaders(["Pragma" : "no-cache",
+                                 "Cache-Control" : "no-cache"])
+        
+        self.addAuthorizationHeader()
+        
+        self.networkManager.GET(path: sanitizedPath,
+                          parameters: nil,
+                             success: didFinishCb,
+                             failure: didFailCb)
+        }
+    
     // This method will sanitize the filePath for this particular use case.
     // If it's a directory, end with a '/', otherwise not
     private func sanitize(filePath:String, isDirectory:Bool) -> String {
