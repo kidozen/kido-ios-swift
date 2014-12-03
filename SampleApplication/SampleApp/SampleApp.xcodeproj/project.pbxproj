@@ -34,6 +34,8 @@
 		6DAD0FA719D4707E00702A3B /* ServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD0F9319D4707E00702A3B /* ServicesViewController.xib */; };
 		6DAD0FA819D4707E00702A3B /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0F9419D4707E00702A3B /* StorageViewController.swift */; };
 		6DAD0FA919D4707E00702A3B /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD0F9519D4707E00702A3B /* StorageViewController.xib */; };
+		6DC2AFA81A2F9BF500FE3097 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2AFA71A2F9BF500FE3097 /* TasksViewController.swift */; };
+		6DC2AFAA1A2F9E3F00FE3097 /* TasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2AFA91A2F9E3F00FE3097 /* TasksViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		6DAD0F9319D4707E00702A3B /* ServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesViewController.xib; sourceTree = "<group>"; };
 		6DAD0F9419D4707E00702A3B /* StorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		6DAD0F9519D4707E00702A3B /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
+		6DC2AFA71A2F9BF500FE3097 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		6DC2AFA91A2F9E3F00FE3097 /* TasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 		6DAD0F5D19D46CB600702A3B /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				6DC2AFA61A2F9BD600FE3097 /* Tasks */,
 				6DAD0F6019D46CB600702A3B /* AppDelegate.swift */,
 				6DAD0F8219D4707E00702A3B /* ConfigurationViewController.swift */,
 				6DAD0F8319D4707E00702A3B /* ConfigurationViewController.xib */,
@@ -186,6 +191,15 @@
 				6DAD0F7719D46CB600702A3B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DC2AFA61A2F9BD600FE3097 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				6DC2AFA71A2F9BF500FE3097 /* TasksViewController.swift */,
+				6DC2AFA91A2F9E3F00FE3097 /* TasksViewController.xib */,
+			);
+			name = Tasks;
 			sourceTree = "<group>";
 		};
 		6DCA823219EF03F1005D7131 /* Frameworks */ = {
@@ -284,6 +298,7 @@
 				6DAD0F6A19D46CB600702A3B /* Images.xcassets in Resources */,
 				6DAD0FA319D4707E00702A3B /* MenuViewController.xib in Resources */,
 				6DAD0F9719D4707E00702A3B /* ConfigurationViewController.xib in Resources */,
+				6DC2AFAA1A2F9E3F00FE3097 /* TasksViewController.xib in Resources */,
 				6DAD0F9F19D4707E00702A3B /* LogViewController.xib in Resources */,
 				6DAD0FA519D4707E00702A3B /* NotificationViewController.xib in Resources */,
 				6DAD0F9919D4707E00702A3B /* CrashViewController.xib in Resources */,
@@ -311,6 +326,7 @@
 				6DAD0FA019D4707E00702A3B /* MailViewController.swift in Sources */,
 				6DAD0F9819D4707E00702A3B /* CrashViewController.swift in Sources */,
 				6DAD0FA819D4707E00702A3B /* StorageViewController.swift in Sources */,
+				6DC2AFA81A2F9BF500FE3097 /* TasksViewController.swift in Sources */,
 				6DAD0F9619D4707E00702A3B /* ConfigurationViewController.swift in Sources */,
 				6DAD0F9E19D4707E00702A3B /* LogViewController.swift in Sources */,
 				6DAD0FA419D4707E00702A3B /* NotificationViewController.swift in Sources */,
