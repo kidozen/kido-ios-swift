@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate {
 
@@ -17,6 +18,9 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
     private var successUploadCb : kzDidFinishCb?
     private var failureUploadCb : kzDidFailCb?
     private var writtenCb : kzWrittenCb?
+    
+    
+    private let afManager = Alamofire.Manager.sharedInstance
     
     // You can change whether we want to allow invalid SSL certificates.
     var strictSSL = true

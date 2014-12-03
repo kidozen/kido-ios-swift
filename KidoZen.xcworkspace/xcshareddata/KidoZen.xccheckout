@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B9EF754A-CBFD-4EB9-84FF-B609560FAD5A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KidoZen</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
+		<string>bitbucket.org:nmiyasato/kidozenswiftsdk.git</string>
+		<key>65E71B0513DBFB09F39CEEF3A8B769CB93E66994</key>
+		<string>https://github.com/soffes/ssziparchive.git</string>
+		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
+		<string>https://github.com/Alamofire/Alamofire.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KidoZen.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1C5983FB79D617BF5E7ABFA1993B687136C278BE</key>
+		<string>..</string>
+		<key>65E71B0513DBFB09F39CEEF3A8B769CB93E66994</key>
+		<string>../../ssziparchive</string>
+		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
+		<string>../Alamofire/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>bitbucket.org:nmiyasato/kidozenswiftsdk.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1C5983FB79D617BF5E7ABFA1993B687136C278BE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>67620B5EFA902936DF04070AF595B76AB0333747</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Alamofire</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1C5983FB79D617BF5E7ABFA1993B687136C278BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KidoZenSwiftSDK</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>65E71B0513DBFB09F39CEEF3A8B769CB93E66994</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ssziparchive</string>
+		</dict>
+	</array>
+</dict>
+</plist>

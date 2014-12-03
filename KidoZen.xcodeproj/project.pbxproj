@@ -147,9 +147,42 @@
 		6DAD0EFE19D357B900702A3B /* KZTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */; };
 		6DAD0EFF19D357B900702A3B /* KZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE119D357B900702A3B /* KZUser.swift */; };
 		6DAD0F0019D357B900702A3B /* KZWRAPv09IdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */; };
+		6DC2AFA31A2F65EF00FE3097 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC2AFA01A2F65AC00FE3097 /* Alamofire.framework */; };
+		6DC2AFA51A2F662B00FE3097 /* Alamofire.framework in Copy AlamoFire */ = {isa = PBXBuildFile; fileRef = 6DC2AFA01A2F65AC00FE3097 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6DEA75C719FF18F2007D7C7D /* KZEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA75C619FF18F2007D7C7D /* KZEvents.swift */; };
 		6DEA75C919FF4CBC007D7C7D /* KZSessionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA75C819FF4CBC007D7C7D /* KZSessionEvent.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DC2AF9F1A2F65AC00FE3097 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DC2AF9A1A2F65AB00FE3097 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		6DC2AFA11A2F65AC00FE3097 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DC2AF9A1A2F65AB00FE3097 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6DC2AFA41A2F660100FE3097 /* Copy AlamoFire */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6DC2AFA51A2F662B00FE3097 /* Alamofire.framework in Copy AlamoFire */,
+			);
+			name = "Copy AlamoFire";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6D1A209A1A1E7C11009D0944 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -296,6 +329,7 @@
 		6DAD0EE019D357B900702A3B /* KZTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZTypeAliases.swift; sourceTree = "<group>"; };
 		6DAD0EE119D357B900702A3B /* KZUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZUser.swift; sourceTree = "<group>"; };
 		6DAD0EE219D357B900702A3B /* KZWRAPv09IdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWRAPv09IdentityProvider.swift; sourceTree = "<group>"; };
+		6DC2AF9A1A2F65AB00FE3097 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		6DEA75C619FF18F2007D7C7D /* KZEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZEvents.swift; sourceTree = "<group>"; };
 		6DEA75C819FF4CBC007D7C7D /* KZSessionEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZSessionEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DC2AFA31A2F65EF00FE3097 /* Alamofire.framework in Frameworks */,
 				6D1A209B1A1E7C11009D0944 /* CoreTelephony.framework in Frameworks */,
 				6D741CCE19F7DFF200BA39E6 /* libz.dylib in Frameworks */,
 				6DAD0EBA19D3542B00702A3B /* libicucore.dylib in Frameworks */,
@@ -478,6 +513,7 @@
 		6DAD0E4E19D34B8E00702A3B /* thidParty */ = {
 			isa = PBXGroup;
 			children = (
+				6DC2AF9A1A2F65AB00FE3097 /* Alamofire.xcodeproj */,
 				6D1A209C1A1E7DBB009D0944 /* Reachability */,
 				6D1A209A1A1E7C11009D0944 /* CoreTelephony.framework */,
 				6D741C6D19F735CA00BA39E6 /* ZipZap */,
@@ -636,6 +672,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		6DC2AF9B1A2F65AB00FE3097 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DC2AFA01A2F65AC00FE3097 /* Alamofire.framework */,
+				6DC2AFA21A2F65AC00FE3097 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -718,6 +763,7 @@
 				6DAD0E3119D34B5900702A3B /* Frameworks */,
 				6DAD0E3219D34B5900702A3B /* Headers */,
 				6DAD0E3319D34B5900702A3B /* Resources */,
+				6DC2AFA41A2F660100FE3097 /* Copy AlamoFire */,
 			);
 			buildRules = (
 			);
@@ -772,6 +818,12 @@
 			mainGroup = 6DAD0E2B19D34B5900702A3B;
 			productRefGroup = 6DAD0E3619D34B5900702A3B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6DC2AF9B1A2F65AB00FE3097 /* Products */;
+					ProjectRef = 6DC2AF9A1A2F65AB00FE3097 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6DAD0E3419D34B5900702A3B /* KidoZen */,
@@ -779,6 +831,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6DC2AFA01A2F65AC00FE3097 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 6DC2AF9F1A2F65AC00FE3097 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6DC2AFA21A2F65AC00FE3097 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 6DC2AFA11A2F65AC00FE3097 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6DAD0E3319D34B5900702A3B /* Resources */ = {
