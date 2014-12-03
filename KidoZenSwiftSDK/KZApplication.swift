@@ -34,7 +34,8 @@ public class KZApplication : KZObject {
     private var applicationKey : String
     private var applicationName : String
     private var strictSSL : Bool
-    
+    private var dataVizVC : KZDataVisualizationViewController?
+
     
     /**
      *
@@ -305,18 +306,59 @@ extension KZApplication {
 // DataVisualization
 extension KZApplication {
     
+    /**
+        This method will display a modal view controller which contains a webView that will load
+        the corresponding data visualization.
+        The visualization should exist in the server.
+    
+    
+    :param: name    is the name of the visualization. It should be exactly the same as what appears
+    in the web.
+    :param: success is the block that will be called when the datavisualization has been loaded
+    :param: failure is the block that will be called when an error occurs
+    */
     public func showDataVisualization(#name:String, success:kzVoidCb?, failure:(error: NSError?) -> () ) {
-        let vc = KZDataVisualizationViewController(applicationConfig: applicationConfiguration,
-                                                             appAuth: applicationAuthentication,
-                                                              tenant: tenantMarketPlace,
-                                                           strictSSL: strictSSL,
-                                                         dataVizName: name)
-        vc.successCb = success
-        vc.failureCb = failure
+        self.configureDataviz(name: name, success: success, failure: failure)
         
         let rootController = UIApplication.sharedApplication().delegate!.window??.rootViewController
-        let webNavigation = UINavigationController(rootViewController: vc)
+        let webNavigation = UINavigationController(rootViewController: self.dataVizVC!)
         rootController?.presentViewController(webNavigation, animated: true, completion: nil)
+        
+    }
+    
+    /**
+        This method returns the view containing the uiwebview, progress and loading indicator.
+    
+    :param: name
+    :param: success
+    :param: failure
+    
+    :returns: the view that will contain the webview displaying the data visualization, as well as the
+              progress indicator
+    */
+    public func dataVisualization(#name:String, success:kzVoidCb?, failure:(error:NSError?) -> ()) -> UIView {
+    
+        self.configureDataviz(name: name, success: success, failure: failure)
+        
+        return self.dataVizVC!.view
+        
+    }
+    
+     /**
+        Will configure the dataViz property.
+    
+    :param: name    is the name of the visualization. It should be exactly the same as what appears in the web.
+    :param: success is the block that will be called when the datavisualization has been loaded.
+    :param: failure is the block that will be called when an error occurs.
+    */
+    private func configureDataviz(#name:String, success:kzVoidCb?, failure:(error:NSError?) -> ()) {
+        self.dataVizVC = KZDataVisualizationViewController(applicationConfig: applicationConfiguration,
+                                                                     appAuth: applicationAuthentication,
+                                                                      tenant: tenantMarketPlace,
+                                                                   strictSSL: strictSSL,
+                                                                 dataVizName: name)
+        self.dataVizVC!.successCb = success
+        self.dataVizVC!.failureCb = failure
         
     }
     
