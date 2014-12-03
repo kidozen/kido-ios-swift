@@ -42,6 +42,7 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
     func addHeaders(headers:Dictionary<String, String>) {
         for (key, value) in headers {
             manager.requestSerializer.setValue(value, forHTTPHeaderField: key)
+            afManager.session.configuration.HTTPAdditionalHeaders?[key] = value
         }
     }
     
@@ -303,6 +304,8 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
     
     internal func addAuthorizationHeader(token:String) {
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "Authorization")
+        afManager.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
+
     }
     
 }
