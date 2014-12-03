@@ -63,20 +63,15 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
             
             self.manager.securityPolicy.allowInvalidCertificates = !self.strictSSL
             self.manager.GET(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters, success: {
+                
                 [weak self] (afRequestOperation, responseObject) in
+                let kzResponse = KZResponse(fromSessionDataTask: afRequestOperation)
+                success?(response: kzResponse, responseObject: self?.convertToStringIfData(responseObject))
                 
-                if let outerSuccess = success {
-                    let kzResponse = KZResponse(fromSessionDataTask: afRequestOperation)
-                    outerSuccess(response: kzResponse, responseObject: self?.convertToStringIfData(responseObject))
-                }
-                
-                }, failure: {
-                    (afRequestOperation, error) in
+                }, failure: { (afRequestOperation, error) in
                     
-                    if let outerFailure = failure {
                         let kzResponse = KZResponse(fromSessionDataTask: afRequestOperation)
-                        outerFailure(response: kzResponse, error: error)
-                    }
+                        failure?(response: kzResponse, error: error)
                   })
             }, failure: failure)
     }
@@ -101,18 +96,14 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
                 }
                 }, success: {
                     [weak self](sessionDataTask, responseObject) in
-                    if let outerSuccess = success {
-                        let kzResponse = KZResponse(fromSessionDataTask: sessionDataTask)
-                        if (responseObject != nil) {
-                            outerSuccess(response: kzResponse, responseObject: self?.convertToStringIfData(responseObject))
-                        }
+                    let kzResponse = KZResponse(fromSessionDataTask: sessionDataTask)
+                    if (responseObject != nil) {
+                        success?(response: kzResponse, responseObject: self?.convertToStringIfData(responseObject))
                     }
                 }, failure: {
                     (sessionDataTask, error) in
-                    if let outerFailure = failure {
-                        let kzResponse = KZResponse(fromSessionDataTask: sessionDataTask)
-                        outerFailure(response: kzResponse, error:error)
-                    }
+                    let kzResponse = KZResponse(fromSessionDataTask: sessionDataTask)
+                    failure?(response: kzResponse, error:error)
             })
             }, failure: failure)
     }
@@ -188,16 +179,12 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
             self.manager.POST(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self](operation, responseObject) in
-                    if let outerSuccess = success {
-                        let kzResponse = KZResponse(fromSessionDataTask: operation)
-                        outerSuccess(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
-                    }
+                    let kzResponse = KZResponse(fromSessionDataTask: operation)
+                    success?(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
                 }, failure: {
                     (operation, error) in
-                    if let outerFailure = failure {
-                        let kzResponse = KZResponse(fromSessionDataTask: operation)
-                        outerFailure(response: kzResponse, error:error)
-                    }
+                    let kzResponse = KZResponse(fromSessionDataTask: operation)
+                    failure?(response: kzResponse, error:error)
                    })
             }, failure: failure)
         
@@ -215,16 +202,12 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
             self.manager.DELETE(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self](operation, responseObject) in
-                    if let outerSuccess = success {
                         let kzResponse = KZResponse(fromSessionDataTask: operation)
-                        outerSuccess(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
-                    }
+                        success?(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
                 }, failure: {
                     (operation, error) in
-                    if let outerFailure = failure {
                         let kzResponse = KZResponse(fromSessionDataTask: operation)
-                        outerFailure(response: kzResponse, error:error)
-                    }
+                        failure?(response: kzResponse, error:error)
                    })
             }, failure: failure)
         
@@ -244,16 +227,12 @@ public class KZNetworkManager : NSObject, NSURLSessionDelegate, NSURLSessionTask
             self.manager.PUT(path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding), parameters: parameters,
                 success: {
                     [weak self] (operation, responseObject) in
-                    if let outerSuccess = success {
                         let kzResponse = KZResponse(fromSessionDataTask: operation)
-                        outerSuccess(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
-                    }
+                        success?(response: kzResponse, responseObject: self!.convertToStringIfData(responseObject))
                 }, failure: {
                     (operation, error) in
-                    if let outerFailure = failure {
                         let kzResponse = KZResponse(fromSessionDataTask: operation)
-                        outerFailure(response: kzResponse, error:error)
-                    }
+                        failure?(response: kzResponse, error:error)
                    })
             }, failure: failure)
         
