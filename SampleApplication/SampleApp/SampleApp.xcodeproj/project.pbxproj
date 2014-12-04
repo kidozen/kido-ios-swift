@@ -38,6 +38,8 @@
 		6DC2AFAA1A2F9E3F00FE3097 /* TasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2AFA91A2F9E3F00FE3097 /* TasksViewController.xib */; };
 		6DC2AFAC1A2FE30600FE3097 /* TasksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2AFAB1A2FE30600FE3097 /* TasksDetailViewController.swift */; };
 		6DC2AFAE1A2FE32A00FE3097 /* TasksDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2AFAD1A2FE32A00FE3097 /* TasksDetailViewController.xib */; };
+		6DC2AFB01A30CF0900FE3097 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2AFAF1A30CF0900FE3097 /* AddTaskViewController.swift */; };
+		6DC2AFB21A30CF2A00FE3097 /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2AFB11A30CF2A00FE3097 /* AddTaskViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		6DC2AFA91A2F9E3F00FE3097 /* TasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksViewController.xib; sourceTree = "<group>"; };
 		6DC2AFAB1A2FE30600FE3097 /* TasksDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDetailViewController.swift; sourceTree = "<group>"; };
 		6DC2AFAD1A2FE32A00FE3097 /* TasksDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksDetailViewController.xib; sourceTree = "<group>"; };
+		6DC2AFAF1A30CF0900FE3097 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		6DC2AFB11A30CF2A00FE3097 /* AddTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,8 @@
 				6DC2AFA91A2F9E3F00FE3097 /* TasksViewController.xib */,
 				6DC2AFAB1A2FE30600FE3097 /* TasksDetailViewController.swift */,
 				6DC2AFAD1A2FE32A00FE3097 /* TasksDetailViewController.xib */,
+				6DC2AFAF1A30CF0900FE3097 /* AddTaskViewController.swift */,
+				6DC2AFB11A30CF2A00FE3097 /* AddTaskViewController.xib */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				6DAD0FA519D4707E00702A3B /* NotificationViewController.xib in Resources */,
 				6DAD0F9919D4707E00702A3B /* CrashViewController.xib in Resources */,
 				6DAD0F9B19D4707E00702A3B /* DataSourceViewController.xib in Resources */,
+				6DC2AFB21A30CF2A00FE3097 /* AddTaskViewController.xib in Resources */,
 				6DAD0FA919D4707E00702A3B /* StorageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +339,7 @@
 				6DAD0F6119D46CB600702A3B /* AppDelegate.swift in Sources */,
 				6DC2AFAC1A2FE30600FE3097 /* TasksDetailViewController.swift in Sources */,
 				6DAD0FA019D4707E00702A3B /* MailViewController.swift in Sources */,
+				6DC2AFB01A30CF0900FE3097 /* AddTaskViewController.swift in Sources */,
 				6DAD0F9819D4707E00702A3B /* CrashViewController.swift in Sources */,
 				6DAD0FA819D4707E00702A3B /* StorageViewController.swift in Sources */,
 				6DC2AFA81A2F9BF500FE3097 /* TasksViewController.swift in Sources */,
