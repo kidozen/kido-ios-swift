@@ -113,6 +113,15 @@
                                 <action selector="dataVizPressed:" destination="-1" eventType="touchUpInside" id="rrc-VH-S8g"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFB-Jb-epX">
+                            <rect key="frame" x="52" y="388" width="201" height="30"/>
+                            <state key="normal" title="Tasks Application - Analytics.">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tasksPressed:" destination="-1" eventType="touchUpInside" id="5zO-bw-t3i"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="SE3-IJ-ERj" firstAttribute="top" secondItem="fuT-6k-r5v" secondAttribute="bottom" constant="8" id="1eE-KK-N7M"/>

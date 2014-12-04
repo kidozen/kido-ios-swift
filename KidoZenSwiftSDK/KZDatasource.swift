@@ -34,7 +34,7 @@ public class KZDatasource : KZBaseService {
         self.query(data:nil, willStartCb:willStartCb, success:success, failure:failure)
     }
     
-    override public func query(  #data:Dictionary<String, AnyObject>?,
+    public func query(  #data:Dictionary<String, AnyObject>?,
                     willStartCb:kzVoidCb?,
                         success:kzDidFinishCb?,
                         failure:kzDidFailCb?)
@@ -54,7 +54,7 @@ public class KZDatasource : KZBaseService {
     
     
     
-    override public func invoke( #data: Dictionary<String, AnyObject>?,
+    public func invoke( #data: Dictionary<String, AnyObject>?,
                     willStartCb: kzVoidCb?,
                         success: kzDidFinishCb?,
                         failure: kzDidFailCb?)

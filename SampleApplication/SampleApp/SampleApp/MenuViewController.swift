@@ -23,7 +23,8 @@ class MenuViewController : UIViewController {
     }
     var notificationsVC : NotificationViewController?
     
-    override func viewDidLoad() {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.title = "Kidozen Swift SDK Demo"
     }
     
@@ -157,4 +158,17 @@ class MenuViewController : UIViewController {
         }
     }
     
+    @IBAction func tasksPressed(sender: AnyObject) {
+        if (self.kzApplication!.isAuthenticated()) {
+            self.navigationItem.title = ""
+
+            var tasksVC = TasksViewController(nibName: "TasksViewController", bundle: nil)
+            tasksVC.kzApplication = kzApplication
+            
+            self.navigationController?.pushViewController(tasksVC, animated: true)
+        } else {
+            self.showShouldBeConnected()
+        }
+        
+    }
 }
