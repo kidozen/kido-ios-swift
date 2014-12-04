@@ -25,10 +25,11 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
     private var tasks : Array<AnyObject>?
     
     override func viewDidLoad() {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addTask")
 
         self.navigationItem.titleView = segmentedControl
         segmentedControl.selectedSegmentIndex = 0
+        
         self.loadTask(taskType: "Completed")
 
     }
@@ -49,18 +50,26 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func addTask() {
+        let addTaskVC = AddTaskViewController(nibName:"AddTaskViewController", bundle:nil)
+        let navVC = UINavigationController(rootViewController: addTaskVC)
+        self.navigationController?.presentViewController(navVC, animated: true, completion: { () -> Void in
+            
+        })
+    }
+    
     private func loadAllTasks() {
         storageService.all(willStartCb: { [weak self] in
-            self!.activityIndicator.startAnimating()
+            self!.startLoading()
             
             
             }, success: { [weak self](response, responseObject) in
-                self!.activityIndicator.stopAnimating()
+                self!.stopLoading()
                 self!.tasks = responseObject as? Array<AnyObject>
                 self!.tableView.reloadData()
                 
             }, failure: { [weak self] (response, error) in
-                self!.activityIndicator.stopAnimating()
+                self!.stopLoading()
         })
     }
     
@@ -76,15 +85,25 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
             
         }, success: { [weak self] (response, responseObject) in
             
-            self!.activityIndicator.stopAnimating()
+            self!.stopLoading()
             self!.tasks = responseObject as? Array<AnyObject>
             self!.tableView.reloadData()
 
         }) { [weak self] (response, error) in
             
-            self!.activityIndicator.stopAnimating()
+            self!.stopLoading()
         }
         
+    }
+    
+    private func startLoading() {
+        self.activityIndicator.startAnimating()
+        self.view.userInteractionEnabled = false
+    }
+    
+    private func stopLoading() {
+        self.activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
     }
     
     
@@ -113,6 +132,19 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
         cell!.detailTextLabel!.text = dictionary["desc"] as? String
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        var vc = TasksDetailViewController(nibName:"TasksDetailViewController", bundle:nil)
+        vc.loadView()
+        let dictionary : NSDictionary = tasks![indexPath.row] as NSDictionary
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        vc.configure(dictionary)
+        
     }
 
 
