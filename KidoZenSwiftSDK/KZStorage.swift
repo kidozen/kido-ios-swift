@@ -81,6 +81,9 @@ public class KZStorage : KZBaseService
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
+        self.networkManager.configureResponseSerializer(AFHTTPResponseSerializer())
+        self.addAuthorizationHeader()
+
         self.networkManager.DELETE(path: self.name + "/" + objectId,
                                parameters: nil,
                                   success: success,
@@ -118,7 +121,9 @@ public class KZStorage : KZBaseService
     {
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
-        
+        networkManager.configureResponseSerializer(AFJSONResponseSerializer())
+        self.addAuthorizationHeader()
+
         let path = self.path(queryString: queryString, options: options, fields: fields)
         
         self.networkManager.GET(path:path!,
