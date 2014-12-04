@@ -24,30 +24,36 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
     private var storageService : KZStorage!
     private var tasks : Array<AnyObject>?
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadTasks(segmentedControl.selectedSegmentIndex)
+
+    }
+    
+    private func reloadTasks(index:Int) {
+        switch(index) {
+        case 0:
+            self.loadTask(taskType: "Completed")
+        case 1:
+            self.loadTask(taskType: "Pending")
+        case 2:
+            self.loadAllTasks()
+        default:
+            self.loadAllTasks()
+        }    }
+    
+    
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addTask")
-
         self.navigationItem.titleView = segmentedControl
-        segmentedControl.selectedSegmentIndex = 0
-        
-        self.loadTask(taskType: "Completed")
 
     }
     
     
     @IBAction func tabChangedValue(sender: UISegmentedControl) {
         
+        self.reloadTasks(sender.selectedSegmentIndex)
         
-        switch(sender.selectedSegmentIndex) {
-            case 0:
-                self.loadTask(taskType: "Completed")
-            case 1:
-                self.loadTask(taskType: "Pending")
-            case 2:
-                self.loadAllTasks()
-            default:
-                self.loadAllTasks()
-        }
     }
     
     func addTask() {
@@ -143,7 +149,7 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
         
         self.navigationController?.pushViewController(vc, animated: true)
         
-        vc.configure(dictionary)
+        vc.configure(dictionary, kzApplication: kzApplication!, storage: storageService)
         
     }
 

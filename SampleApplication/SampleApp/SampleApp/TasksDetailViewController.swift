@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kidozen
+import KidoZen
 
 class TasksDetailViewController : UIViewController {
  
@@ -15,13 +15,20 @@ class TasksDetailViewController : UIViewController {
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    private var taskId : String?
+    private var details : NSDictionary?
+    
+    var kzApplication : KZApplication?
+    var storage : KZStorage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    func configure(dictionary:NSDictionary) {
+    func configure(dictionary:NSDictionary, kzApplication:KZApplication, storage:KZStorage) {
+        self.details = dictionary
+        
         let title = dictionary["title"] as String
         let desc = dictionary["desc"] as String
         
@@ -31,15 +38,32 @@ class TasksDetailViewController : UIViewController {
         
         self.titleLabel.text = title
         self.descriptionTextView.text = desc
+        taskId = dictionary["_id"] as? String
+        self.kzApplication = kzApplication
+        self.storage = storage
         
     }
     
 
     @IBAction func completeTask(sender:UIButton) {
+        var updatedDictionary = NSMutableDictionary(dictionary: details!, copyItems: true)
+        updatedDictionary["completed"] = 1
         
+        self.storage?.update(usingId: taskId!, objectToUpdate: updatedDictionary, willStartCb: { () -> () in
+            
+        }, success: { (response, responseObject) -> () in
+            
+        }, failure: { (response, error) -> () in
+            
+        })
     }
     
     @IBAction func deleteTask(sender:UIButton) {
+        self.storage?.delete(usingId: taskId!, willStartCb: nil, success: { (response, responseObject) -> () in
+            
+            }, failure: { (response, error) -> () in
+                
+        })
         
     }
     
