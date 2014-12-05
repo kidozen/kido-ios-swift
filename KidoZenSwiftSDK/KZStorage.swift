@@ -44,7 +44,7 @@ public class KZStorage : KZBaseService
         networkManager.strictSSL = self.strictSSL!
         willStartCb?()
         
-        if let dictionaryObject = objectToUpdate as? Dictionary<String, AnyObject> {
+        if let dictionaryObject = objectToUpdate as? Dictionary<NSObject, AnyObject> {
             
             if (contains(dictionaryObject.keys, "_metadata") == false) {
                 if let outerFailure = failure {
@@ -55,7 +55,7 @@ public class KZStorage : KZBaseService
             }
         }
         
-        let dictionaryObject = objectToUpdate as Dictionary<String, Dictionary<String, AnyObject>>
+        let dictionaryObject = objectToUpdate as Dictionary<NSObject, AnyObject>
         let updatedMetadata = self.updateMetadataDates(objectToUpdate: dictionaryObject)
         
         self.networkManager.PUT(path: self.name + "/" + objectId,
@@ -132,7 +132,7 @@ public class KZStorage : KZBaseService
                                failure: failure)
     }
     
-    private func updateMetadataDates(#objectToUpdate: Dictionary<String, Dictionary<String, AnyObject>>) -> Dictionary<String, Dictionary<String, AnyObject>> {
+    private func updateMetadataDates(#objectToUpdate: Dictionary<NSObject, AnyObject>) -> Dictionary<NSObject, AnyObject> {
         let metadataDictionary = objectToUpdate["_metadata"]! as Dictionary<String, AnyObject>
         
         let createdOn = metadataDictionary["createdOn"]! as? NSDate

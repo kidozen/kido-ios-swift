@@ -16,7 +16,7 @@ class TasksDetailViewController : UIViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     private var taskId : String?
-    private var details : NSDictionary?
+    private var details : Dictionary<NSObject, AnyObject>?
     
     var kzApplication : KZApplication?
     var storage : KZStorage?
@@ -46,23 +46,27 @@ class TasksDetailViewController : UIViewController {
     
 
     @IBAction func completeTask(sender:UIButton) {
-        var updatedDictionary = NSMutableDictionary(dictionary: details!, copyItems: true)
+        var updatedDictionary = Dictionary<NSObject, AnyObject>()
+        updatedDictionary = details!
         updatedDictionary["completed"] = 1
         
         self.storage?.update(usingId: taskId!, objectToUpdate: updatedDictionary, willStartCb: { () -> () in
             
         }, success: { (response, responseObject) -> () in
-            
+            UIAlertView(title: "", message: "Task Completed!", delegate: nil, cancelButtonTitle: "Ok").show()
+
         }, failure: { (response, error) -> () in
-            
+            UIAlertView(title: "Error", message: "\(error)", delegate: nil, cancelButtonTitle: "Ok").show()
         })
     }
     
     @IBAction func deleteTask(sender:UIButton) {
         self.storage?.delete(usingId: taskId!, willStartCb: nil, success: { (response, responseObject) -> () in
-            
+            UIAlertView(title: "", message: "Task Deleted!", delegate: nil, cancelButtonTitle: "Ok").show()
+
             }, failure: { (response, error) -> () in
-                
+                UIAlertView(title: "Error", message: "\(error)", delegate: nil, cancelButtonTitle: "Ok").show()
+
         })
         
     }
