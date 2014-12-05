@@ -15,6 +15,7 @@ class TasksDetailViewController : UIViewController {
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var emailField: UITextField!
     private var taskId : String?
     private var details : Dictionary<NSObject, AnyObject>?
     
@@ -72,6 +73,19 @@ class TasksDetailViewController : UIViewController {
     }
     
     @IBAction func sendTask(sender:UIButton) {
+        var parameters = ["to" : emailField.text!,
+                        "from" : "nicolas.miyasato@kidozen.com",
+            "subject" : details!["title"] as String,
+            "body" : details!["desc"] as String ]
         
+        kzApplication?.sendMail(parameters: parameters,
+            willStartCb: { () -> () in
+            
+            }, success: { (response, responseObject) -> () in
+                UIAlertView(title: "", message: "Email sent!", delegate: nil, cancelButtonTitle: "Ok").show()
+
+            }, failure: { (response, error) -> () in
+                UIAlertView(title: "Error", message: "\(error)", delegate: nil, cancelButtonTitle: "Ok").show()
+        })
     }
 }

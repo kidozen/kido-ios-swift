@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="categoryLabel" destination="Ney-uq-6bh" id="bXg-T3-pL2"/>
                 <outlet property="descriptionTextView" destination="wul-fu-2Oy" id="3CY-sg-vUK"/>
+                <outlet property="emailField" destination="6ja-y3-lzx" id="PGc-XX-cMZ"/>
                 <outlet property="titleLabel" destination="MlS-qB-1iy" id="M1i-0g-3Q2"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9mw-T1-yvf"/>
             </connections>
@@ -75,15 +76,6 @@
                         <action selector="deleteTask:" destination="-1" eventType="touchUpInside" id="yoe-F2-2SP"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5t-UT-cLl">
-                    <rect key="frame" x="8" y="419" width="304" height="30"/>
-                    <state key="normal" title="Send via email">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="sendTask:" destination="-1" eventType="touchUpInside" id="u4M-Nj-ELe"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LH-yf-NVM">
                     <rect key="frame" x="8" y="343" width="304" height="30"/>
                     <state key="normal" title="Complete">
@@ -93,35 +85,69 @@
                         <action selector="completeTask:" destination="-1" eventType="touchUpInside" id="3wb-Nb-GLB"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="some@email.com" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-y3-lzx">
+                    <rect key="frame" x="102" y="419" width="135" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="mY5-Aw-exv"/>
+                    </constraints>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send email to:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmx-kG-rJh">
+                    <rect key="frame" x="8" y="419" width="90" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="laY-3n-GHC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5t-UT-cLl">
+                    <rect key="frame" x="245" y="419" width="67" height="30"/>
+                    <color key="backgroundColor" red="0.58653736299178361" green="0.86828437186015828" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Send">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="sendTask:" destination="-1" eventType="touchUpInside" id="u4M-Nj-ELe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="trailing" secondItem="kOP-Ji-W81" secondAttribute="trailing" id="0Ar-Gh-33J"/>
-                <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="h5t-UT-cLl" secondAttribute="leading" id="0cb-h4-5Ej"/>
+                <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="h5t-UT-cLl" secondAttribute="leading" constant="-237" id="0cb-h4-5Ej"/>
                 <constraint firstItem="Ney-uq-6bh" firstAttribute="leading" secondItem="q7K-rG-wfu" secondAttribute="trailing" constant="8" symbolic="YES" id="2TC-mL-Ndc"/>
                 <constraint firstItem="Ney-uq-6bh" firstAttribute="firstBaseline" secondItem="q7K-rG-wfu" secondAttribute="firstBaseline" id="2mL-Er-SRb"/>
                 <constraint firstItem="p0W-cm-SjM" firstAttribute="firstBaseline" secondItem="MlS-qB-1iy" secondAttribute="firstBaseline" id="3Qm-k1-Dhk"/>
                 <constraint firstItem="mZ5-fI-wYh" firstAttribute="top" secondItem="Ney-uq-6bh" secondAttribute="bottom" constant="8" symbolic="YES" id="3vn-ZL-JIB"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="trailing" secondItem="h5t-UT-cLl" secondAttribute="trailing" id="4Fc-5M-CLo"/>
                 <constraint firstAttribute="bottom" secondItem="1LH-yf-NVM" secondAttribute="bottom" constant="195" id="5j3-h2-Dec"/>
+                <constraint firstItem="6ja-y3-lzx" firstAttribute="leading" secondItem="Dmx-kG-rJh" secondAttribute="trailing" constant="4" id="5wB-eN-7Ya"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="trailing" secondItem="MlS-qB-1iy" secondAttribute="trailing" id="71D-vk-jCR"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="top" secondItem="wul-fu-2Oy" secondAttribute="bottom" constant="27" id="87w-Ta-NJY"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Bgr-Wh-CzC"/>
                 <constraint firstItem="MlS-qB-1iy" firstAttribute="leading" secondItem="p0W-cm-SjM" secondAttribute="trailing" constant="14" id="CM0-Dx-kdH"/>
+                <constraint firstItem="6ja-y3-lzx" firstAttribute="leading" secondItem="h5t-UT-cLl" secondAttribute="leading" constant="-143" id="CtL-cR-6av"/>
                 <constraint firstItem="p0W-cm-SjM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="61" id="Gex-xU-TGJ"/>
                 <constraint firstItem="q7K-rG-wfu" firstAttribute="top" secondItem="p0W-cm-SjM" secondAttribute="bottom" constant="8" symbolic="YES" id="Gt9-7O-XSK"/>
                 <constraint firstAttribute="trailing" secondItem="1LH-yf-NVM" secondAttribute="trailing" constant="8" id="Hel-0J-b3e"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="trailing" secondItem="wul-fu-2Oy" secondAttribute="trailing" id="J6c-wi-Yfo"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="wul-fu-2Oy" secondAttribute="leading" id="LtB-Nt-mgU"/>
                 <constraint firstItem="wul-fu-2Oy" firstAttribute="top" secondItem="mZ5-fI-wYh" secondAttribute="bottom" constant="8" symbolic="YES" id="NKC-fj-a7r"/>
+                <constraint firstItem="Dmx-kG-rJh" firstAttribute="top" secondItem="kOP-Ji-W81" secondAttribute="bottom" constant="8" id="XVP-d0-jXq"/>
                 <constraint firstItem="p0W-cm-SjM" firstAttribute="baseline" secondItem="MlS-qB-1iy" secondAttribute="baseline" id="XeE-mj-uWo"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="kOP-Ji-W81" secondAttribute="leading" id="YqK-tm-XUU"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="mZ5-fI-wYh" secondAttribute="leading" id="Zwi-o3-GIY"/>
                 <constraint firstItem="h5t-UT-cLl" firstAttribute="top" secondItem="kOP-Ji-W81" secondAttribute="bottom" constant="8" symbolic="YES" id="bB1-oj-4tA"/>
+                <constraint firstItem="6ja-y3-lzx" firstAttribute="top" secondItem="h5t-UT-cLl" secondAttribute="bottom" constant="-30" id="eZt-Oy-ieG"/>
+                <constraint firstItem="6ja-y3-lzx" firstAttribute="trailing" secondItem="h5t-UT-cLl" secondAttribute="trailing" constant="-75" id="fZa-Np-J7D"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="q7K-rG-wfu" secondAttribute="leading" id="gJ1-9V-xP5"/>
                 <constraint firstItem="kOP-Ji-W81" firstAttribute="top" secondItem="1LH-yf-NVM" secondAttribute="bottom" constant="8" symbolic="YES" id="jVk-Nw-h4g"/>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="p0W-cm-SjM" secondAttribute="leading" id="l0O-pZ-RWJ"/>
                 <constraint firstItem="mZ5-fI-wYh" firstAttribute="top" secondItem="q7K-rG-wfu" secondAttribute="bottom" constant="8" symbolic="YES" id="nTI-NC-tL0"/>
+                <constraint firstItem="Dmx-kG-rJh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="pd6-1i-IBr"/>
                 <constraint firstItem="mZ5-fI-wYh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="119" id="rJU-0f-eZT"/>
                 <constraint firstAttribute="trailing" secondItem="Ney-uq-6bh" secondAttribute="trailing" constant="58" id="rxM-Ko-AQs"/>
             </constraints>
