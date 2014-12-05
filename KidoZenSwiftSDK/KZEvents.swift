@@ -13,13 +13,13 @@ let kEventsFilename = "kEventsFilename";
 class KZEvents {
     
 
-    var events : [KZEvent]?
+    var events : [Dictionary<NSObject, AnyObject>] = []
 
     init() {
         events = []
     }
 
-    init(events:[KZEvent]) {
+    init(events:[Dictionary<NSObject, AnyObject>]) {
         if countElements(events) > 0 {
             self.events = events
         }
@@ -28,7 +28,7 @@ class KZEvents {
     class func eventsFromDisk() -> KZEvents {
         
         let fromDisk  = NSArray(contentsOfFile: kEventsFilename.documentsPath())
-        return KZEvents(events: fromDisk as [KZEvent])
+        return KZEvents(events: fromDisk as [Dictionary<NSObject, AnyObject>])
         
     }
     
@@ -43,21 +43,21 @@ class KZEvents {
     }
     
     func addEvent(event:KZEvent) {
-        self.events!.append(event)
+        self.events.append(event.serializedEvent())
     }
     
     func save() {
         let eventsPathFilename = kEventsFilename.documentsPath()
         
         // Necessary to persist events to disk.
-        let arrayEvents = self.events! as NSArray
+        let arrayEvents = self.events as NSArray
         if (!arrayEvents.writeToFile(eventsPathFilename, atomically: true)) {
             println("An error occured while saving the events. Could not write to %@", eventsPathFilename);
         }
     }
     
     func removeCurrentEvents() {
-        self.events?.removeAll(keepCapacity: false)
+        self.events.removeAll(keepCapacity: false)
     }
     
     

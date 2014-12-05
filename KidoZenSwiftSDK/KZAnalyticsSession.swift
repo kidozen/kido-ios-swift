@@ -14,11 +14,16 @@ class KZAnalyticsSession {
 
     var sessionUUID : String!
     var sessionTimeOut : NSTimeInterval!
-    var events : [KZEvents]!
     var startSessionDate : NSDate!
     var deviceInfo : KZDeviceInfo!
     
     private var allEvents : KZEvents!
+    
+    var events : [Dictionary<NSObject, AnyObject>]	 {
+        get {
+            return self.allEvents.events
+        }
+    }
     
     init () {
         self.allEvents = KZEvents()
@@ -92,7 +97,7 @@ class KZAnalyticsSession {
         :returns: true if we've got events in this session. false otherwise.
     */
     func hasEvents() -> Bool {
-        return countElements(self.allEvents.events!) > 0
+        return countElements(self.allEvents.events) > 0
     }
     
     
