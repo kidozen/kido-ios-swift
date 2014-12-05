@@ -33,7 +33,7 @@ class KZDeviceInfo {
     
     private var networkInfo : CTTelephonyNetworkInfo
     
-    private var carrier : CTCarrier!
+    private var carrier : CTCarrier?
     
     var locationManager : KZLocationManager
     
@@ -77,7 +77,7 @@ class KZDeviceInfo {
     
     ///The name of the subscriber's cellular service provider.
     func carrierName() -> String {
-        return self.carrier!.carrierName != nil ? self.carrier!.carrierName : "Unknown";
+        return self.carrier?.carrierName != nil ? self.carrier!.carrierName : "Unknown";
     }
     
     func getUniqueIdentification() -> String {
