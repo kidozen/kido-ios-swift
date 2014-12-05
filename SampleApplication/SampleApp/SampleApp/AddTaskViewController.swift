@@ -95,8 +95,15 @@ class AddTaskViewController : UIViewController  {
         } else {
             return size.width
         }
+        
     }
     
+    func textFieldShouldReturn(textField:UITextField) -> Bool
+    {
+        self.descriptionTextView.becomeFirstResponder()
+        return false
+    }
+ 
     @IBAction func bugPressed(sender:AnyObject) {
         self.bugFeatureButton.selected = true
         self.featureButton.selected = false
