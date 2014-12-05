@@ -99,8 +99,8 @@
                                 <action selector="mailPressed:" destination="-1" eventType="touchUpInside" id="OSv-cQ-ads"/>
                             </connections>
                         </button>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D5E-yC-Bvn">
-                            <rect key="frame" x="142" y="265" width="37" height="37"/>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D5E-yC-Bvn">
+                            <rect key="frame" x="142" y="233" width="37" height="37"/>
                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7N-dO-uNy">
@@ -127,8 +127,10 @@
                         <constraint firstItem="obi-SB-img" firstAttribute="top" secondItem="nWh-hY-yU5" secondAttribute="top" constant="8" id="9kf-FW-0Pa"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="SFB-Jb-epX" secondAttribute="centerX" id="BHQ-tE-bIt"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="0RX-G7-Oai" secondAttribute="centerX" id="DOm-8r-dI2"/>
+                        <constraint firstItem="D5E-yC-Bvn" firstAttribute="centerX" secondItem="cFU-5H-NOx" secondAttribute="centerX" id="Qb0-Of-Ou9"/>
                         <constraint firstItem="vnr-xO-glF" firstAttribute="top" secondItem="0RX-G7-Oai" secondAttribute="bottom" constant="8" id="Qqp-8R-eOK"/>
                         <constraint firstItem="SE3-IJ-ERj" firstAttribute="top" secondItem="fuT-6k-r5v" secondAttribute="bottom" constant="8" id="SUl-FM-TCB"/>
+                        <constraint firstAttribute="bottom" secondItem="D5E-yC-Bvn" secondAttribute="bottom" constant="266" id="Sqf-HO-mgo"/>
                         <constraint firstItem="srK-Sr-xZu" firstAttribute="top" secondItem="cFU-5H-NOx" secondAttribute="bottom" constant="8" id="T3E-kU-Exv"/>
                         <constraint firstItem="cFU-5H-NOx" firstAttribute="top" secondItem="SE3-IJ-ERj" secondAttribute="bottom" constant="8" id="TzM-C3-4W6"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="fuT-6k-r5v" secondAttribute="centerX" id="UqN-cD-3nQ"/>
@@ -139,7 +141,9 @@
                         <constraint firstItem="fuT-6k-r5v" firstAttribute="top" secondItem="vnr-xO-glF" secondAttribute="bottom" constant="8" id="j39-JD-EqD"/>
                         <constraint firstItem="SFB-Jb-epX" firstAttribute="top" secondItem="A7N-dO-uNy" secondAttribute="bottom" constant="8" id="nNv-ds-Yeg"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="cFU-5H-NOx" secondAttribute="centerX" id="pVd-Is-7JF"/>
+                        <constraint firstItem="D5E-yC-Bvn" firstAttribute="top" secondItem="fuT-6k-r5v" secondAttribute="bottom" constant="5" id="rkO-Eq-DfH"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="srK-Sr-xZu" secondAttribute="centerX" id="s96-hp-vgn"/>
+                        <constraint firstAttribute="trailing" secondItem="D5E-yC-Bvn" secondAttribute="trailing" constant="141" id="uq0-SJ-nqN"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="6Kp-ML-9bS" secondAttribute="centerX" id="uxJ-Zt-Z3f"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="SE3-IJ-ERj" secondAttribute="centerX" id="vJY-VY-O0T"/>
                         <constraint firstItem="38B-Qe-Ksx" firstAttribute="centerX" secondItem="vnr-xO-glF" secondAttribute="centerX" id="vvs-1T-u0e"/>
