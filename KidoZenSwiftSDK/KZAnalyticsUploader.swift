@@ -12,9 +12,9 @@ import Foundation
 *   This class is in charge of uploading the analytics session when required.
 *   You can also set it to upload every amount of seconds at most.
 */
-class KZAnalyticsUploader {
+class KZAnalyticsUploader : NSObject {
 
-    private let kMaximumSecondsToUpload  : NSTimeInterval = 500
+    private let kMaximumSecondsToUpload  : NSTimeInterval = 10
     private let kStartDate = "startDate"
     private let kSessionUUID = "sessionUUID"
     private let kBackgroundDate = "backgroundDate"
@@ -22,7 +22,7 @@ class KZAnalyticsUploader {
     private var uploading : Bool
     private var session : KZAnalyticsSession!
     private var logging : KZLogging
-    private var uploadTimer : NSTimer!
+    private var uploadTimer : NSTimer?
     
     /// There is a timer that will try to upload all current events every maximumSecondsToUpload.
     /// Defaults to 300 seconds (5 minutes)
@@ -38,9 +38,11 @@ class KZAnalyticsUploader {
     */
     init(session:KZAnalyticsSession, loggingService:KZLogging) {
         self.uploading = false
+
         self.session = session
         self.logging = loggingService
         self.maximumSecondsToUpload = kMaximumSecondsToUpload
+        super.init()
         
         self.startTimer()
         
@@ -51,13 +53,13 @@ class KZAnalyticsUploader {
     }
     
     private func startTimer() {
-        self.uploadTimer.invalidate()
+        self.uploadTimer?.invalidate()
         
         self.uploadTimer = NSTimer.scheduledTimerWithTimeInterval(self.maximumSecondsToUpload, target: self, selector: Selector("sendCurrentEvents"), userInfo: nil, repeats: true)
 
     }
     
-    private func sendCurrentEvents() {
+    func sendCurrentEvents() {
         if (self.session.hasEvents()) {
             self.uploading  = false
             self.logging.write(object: self.session.events,
@@ -98,17 +100,17 @@ class KZAnalyticsUploader {
     }
     
     private func restartTimer() {
-        self.uploadTimer.invalidate()
+        self.uploadTimer?.invalidate()
         self.startTimer()
     }
 
-    private func didEnterBackground() {
+    func didEnterBackground() {
         if (self.uploading == false) {
             self.saveAnalyticsSessionState()
         }
     }
     
-    private func willEnterForegroundNotification() {
+    func willEnterForegroundNotification() {
         if (self.uploading == false) {
             self.uploadEvents()
         }
