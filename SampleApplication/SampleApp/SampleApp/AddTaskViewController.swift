@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KidoZen
 
 class AddTaskViewController : UIViewController  {
     
@@ -17,6 +18,8 @@ class AddTaskViewController : UIViewController  {
     @IBOutlet weak var featureButton: UIButton!
     
     @IBOutlet weak var bugFeatureButton: UIButton!
+    
+    var storageService : KZStorage?
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -116,6 +119,25 @@ class AddTaskViewController : UIViewController  {
     }
 
     @IBAction func okPressed(sender: AnyObject) {
+
+        if (countElements( self.titleTextField.text) > 0 &&
+            countElements(self.descriptionTextView.text) > 0 ) {
+                let category = self.bugFeatureButton.selected == true ? "Bug" : "Feature"
+
+                let params = ["title" : self.titleTextField.text,
+                    "desc" : self.descriptionTextView.text,
+                    "category" : category,
+                    "completed" :false]
+                
+                storageService?.create(object: params, options: nil, willStartCb: nil, success: { (response, responseObject) -> () in
+                    UIAlertView(title: "", message: "Task Created", delegate: nil, cancelButtonTitle: "Ok").show()
+                    self.cancel()
+                    
+                }, failure: { (response, error) -> () in
+                    UIAlertView(title: "", message: "Error while creating task", delegate: nil, cancelButtonTitle: "Ok").show()
+                })
+        }
+        
         self.hideKeyboard()
     }
 }
