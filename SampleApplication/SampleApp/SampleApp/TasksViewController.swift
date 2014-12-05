@@ -58,7 +58,9 @@ class TasksViewController : UIViewController, UITableViewDataSource, UITableView
     
     func addTask() {
         let addTaskVC = AddTaskViewController(nibName:"AddTaskViewController", bundle:nil)
+        addTaskVC.storageService = storageService
         let navVC = UINavigationController(rootViewController: addTaskVC)
+        
         self.navigationController?.presentViewController(navVC, animated: true, completion: { () -> Void in
             
         })
