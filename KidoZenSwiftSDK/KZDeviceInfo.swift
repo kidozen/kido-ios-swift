@@ -99,7 +99,7 @@ class KZDeviceInfo {
     *  Will enable geolocation to know where the user is using the application.
     */
     func enableGeoLocation() {
-        // TODO: Geolocation
+        self.locationManager.enableLocationManager()
     }
     
     func properties() -> Dictionary<String, AnyObject> {

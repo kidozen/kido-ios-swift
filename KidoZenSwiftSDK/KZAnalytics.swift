@@ -24,6 +24,7 @@ public class KZAnalytics {
     */
     func enableAnalytics() {
         self.sessionUploader = KZAnalyticsUploader(session: self.session, loggingService: self.loggingService)
+        KZDeviceInfo.sharedInstance.enableGeoLocation()
     }
     
     func disableAnalytics() {
