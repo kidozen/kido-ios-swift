@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D135B171A3206C8004C6864 /* KZViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D135B161A3206C8004C6864 /* KZViewExtensions.swift */; };
 		6D1A209B1A1E7C11009D0944 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1A209A1A1E7C11009D0944 /* CoreTelephony.framework */; };
 		6D1A209F1A1E7DCD009D0944 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D1A209D1A1E7DCD009D0944 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D1A20A01A1E7DCD009D0944 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A209E1A1E7DCD009D0944 /* Reachability.m */; };
@@ -152,6 +153,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D135B161A3206C8004C6864 /* KZViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZViewExtensions.swift; sourceTree = "<group>"; };
 		6D1A209A1A1E7C11009D0944 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6D1A209D1A1E7DCD009D0944 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = thirdParty/Reachability/Reachability.h; sourceTree = "<group>"; };
 		6D1A209E1A1E7DCD009D0944 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = thirdParty/Reachability/Reachability.m; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 				6DAD0ECE19D357B900702A3B /* KZDictionaryExtensions.swift */,
 				6DAD0ED519D357B900702A3B /* KZNSDataExtensions.swift */,
 				6DAD0EDD19D357B900702A3B /* KZStringExtensions.swift */,
+				6D135B161A3206C8004C6864 /* KZViewExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				6DAD0E7519D34BAE00702A3B /* AFURLSessionManager.m in Sources */,
 				6D54B67F19FEDCC200DC6B49 /* KZPredefinedEvent.swift in Sources */,
 				6D741CB719F735E200BA39E6 /* ZZDataChannel.m in Sources */,
+				6D135B171A3206C8004C6864 /* KZViewExtensions.swift in Sources */,
 				6DAD0E6819D34BAE00702A3B /* AFHTTPSessionManager.m in Sources */,
 				6D741CB919F735E200BA39E6 /* ZZConstants.m in Sources */,
 				6D741CC219F735E200BA39E6 /* ZZAESDecryptInputStream.mm in Sources */,
