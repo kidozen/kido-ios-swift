@@ -35,12 +35,6 @@ class AddTaskViewController : UIViewController  {
         self.bugFeatureButton.selected = true
         self.featureButton.selected = false
 
-        var sz = UIScreen.mainScreen().bounds.size
-        sz.height = sz.height - self.scrollView.frameY
-        self.scrollView.frameSize = sz
-        
-        self.scrollView.contentSize = CGSizeMake(sz.width, self.okButton.frameMaxY + 5)
-        
         self.registerForKeyboardNotifications()
         addHideTapGestureRecognizer()
     }
