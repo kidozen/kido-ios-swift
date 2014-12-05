@@ -32,6 +32,7 @@ class MenuViewController : UIViewController {
     {
         self.view.userInteractionEnabled = true
         self.activityIndicator.stopAnimating()
+        self.kzApplication?.enableAnalytics()
     }
     
     @IBAction func loggingPressed(sender: AnyObject) {
