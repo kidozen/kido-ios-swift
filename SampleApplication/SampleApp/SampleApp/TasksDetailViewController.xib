@@ -117,7 +117,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1LH-yf-NVM" firstAttribute="trailing" secondItem="kOP-Ji-W81" secondAttribute="trailing" id="0Ar-Gh-33J"/>
-                <constraint firstItem="1LH-yf-NVM" firstAttribute="leading" secondItem="h5t-UT-cLl" secondAttribute="leading" constant="-237" id="0cb-h4-5Ej"/>
                 <constraint firstItem="Ney-uq-6bh" firstAttribute="leading" secondItem="q7K-rG-wfu" secondAttribute="trailing" constant="8" symbolic="YES" id="2TC-mL-Ndc"/>
                 <constraint firstItem="Ney-uq-6bh" firstAttribute="firstBaseline" secondItem="q7K-rG-wfu" secondAttribute="firstBaseline" id="2mL-Er-SRb"/>
                 <constraint firstItem="p0W-cm-SjM" firstAttribute="firstBaseline" secondItem="MlS-qB-1iy" secondAttribute="firstBaseline" id="3Qm-k1-Dhk"/>
@@ -152,11 +151,6 @@
                 <constraint firstAttribute="trailing" secondItem="Ney-uq-6bh" secondAttribute="trailing" constant="58" id="rxM-Ko-AQs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="0cb-h4-5Ej"/>
-                </mask>
-            </variation>
         </view>
     </objects>
 </document>

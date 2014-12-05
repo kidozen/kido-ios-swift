@@ -37,9 +37,11 @@
             <constraints>
                 <constraint firstItem="e9z-7r-WH0" firstAttribute="centerX" secondItem="QRm-u7-eZc" secondAttribute="centerX" id="1OT-BS-ejl"/>
                 <constraint firstAttribute="bottom" secondItem="e9z-7r-WH0" secondAttribute="bottom" id="Yc3-oR-uy7"/>
+                <constraint firstAttribute="bottom" secondItem="e9z-7r-WH0" secondAttribute="bottom" id="iiu-HJ-lN6"/>
                 <constraint firstItem="e9z-7r-WH0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="l48-YB-4yk"/>
                 <constraint firstAttribute="trailing" secondItem="e9z-7r-WH0" secondAttribute="trailing" id="nXl-bi-yYa"/>
                 <constraint firstItem="QRm-u7-eZc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oSc-7V-UKR"/>
+                <constraint firstItem="e9z-7r-WH0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xUs-vH-btH"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
